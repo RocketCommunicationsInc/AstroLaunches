@@ -17,6 +17,28 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
+        #if os(iOS)
+        // must embed List within a NavigationView on iOS or .toolbar wont work
+        NavigationView{
+            List {
+                ForEach(items) { item in
+                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                }
+                .onDelete(perform: deleteItems)
+            }
+            .navigationTitle("Twine")
+            .toolbar {
+                ToolbarItem(placement: .automatic)
+                {
+                    Button(action: addItem) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
+            }
+        }
+        #endif
+        
+        #if os(macOS)
         List {
             ForEach(items) { item in
                 Text("Item at \(item.timestamp!, formatter: itemFormatter)")
@@ -24,14 +46,11 @@ struct ContentView: View {
             .onDelete(perform: deleteItems)
         }
         .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
             Button(action: addItem) {
                 Label("Add Item", systemImage: "plus")
             }
         }
+        #endif
     }
 
     private func addItem() {
