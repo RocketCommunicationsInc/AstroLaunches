@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7CF87F2C25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */; };
 		7CF87F2D25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */; };
 		7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
@@ -117,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +272,9 @@
 			dependencies = (
 			);
 			name = "Astro Launches (iOS)";
+			packageProductDependencies = (
+				7C83150025AE52B700E18441 /* AstroSwiftFoundation */,
+			);
 			productName = "Astro Launches (iOS)";
 			productReference = 7CF87F2025AE45F300BD9D06 /* Astro Launches.app */;
 			productType = "com.apple.product-type.application";
@@ -397,6 +402,9 @@
 				Base,
 			);
 			mainGroup = 7CF87F1025AE45F200BD9D06;
+			packageReferences = (
+				7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */,
+			);
 			productRefGroup = 7CF87F2125AE45F300BD9D06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -962,6 +970,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RocketCommunicationsInc/AstroSwiftFoundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C83150025AE52B700E18441 /* AstroSwiftFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */;
+			productName = AstroSwiftFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */ = {
