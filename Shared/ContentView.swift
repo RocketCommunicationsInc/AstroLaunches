@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import AstroSwiftFoundation
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -25,8 +26,9 @@ struct ContentView: View {
                     Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                 }
                 .onDelete(perform: deleteItems)
+                .listRowBackground(Color(UIColor.astroUITableCell))
             }
-            .navigationTitle("Twine")
+            .navigationTitle("Launches")
             .toolbar {
                 ToolbarItem(placement: .automatic)
                 {
@@ -94,6 +96,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
