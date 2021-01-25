@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import AstroSwiftFoundation
+import SwiftUIListSeparator
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -28,6 +29,7 @@ struct ContentView: View {
                 .onDelete(perform: deleteItems)
                 .listRowBackground(Color(UIColor.astroUITableCell))
             }
+            .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
             .navigationTitle("Launches")
             .toolbar {
                 ToolbarItem(placement: .automatic)

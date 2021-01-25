@@ -9,6 +9,15 @@
           "revision": "5355e40e37b958401759051f11ac009488ae5997",
           "version": "1.0.9"
         }
+      },
+      {
+        "package": "SwiftUIListSeparator",
+        "repositoryURL": "https://github.com/SchmidtyApps/SwiftUIListSeparator",
+        "state": {
+          "branch": null,
+          "revision": "4761aa9ec6142d348adc570fdb55f5cf19400f1a",
+          "version": "1.0.0"
+        }
       }
     ]
   },

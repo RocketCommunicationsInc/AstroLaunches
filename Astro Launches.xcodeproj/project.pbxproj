@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C10706E25BF716800DC1D47 /* SwiftUIListSeparator in Frameworks */ = {isa = PBXBuildFile; productRef = 7C10706D25BF716800DC1D47 /* SwiftUIListSeparator */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7CF87F2C25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */; };
 		7CF87F2D25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */; };
@@ -118,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C10706E25BF716800DC1D47 /* SwiftUIListSeparator in Frameworks */,
 				7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +276,7 @@
 			name = "Astro Launches (iOS)";
 			packageProductDependencies = (
 				7C83150025AE52B700E18441 /* AstroSwiftFoundation */,
+				7C10706D25BF716800DC1D47 /* SwiftUIListSeparator */,
 			);
 			productName = "Astro Launches (iOS)";
 			productReference = 7CF87F2025AE45F300BD9D06 /* Astro Launches.app */;
@@ -404,6 +407,7 @@
 			mainGroup = 7CF87F1025AE45F200BD9D06;
 			packageReferences = (
 				7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */,
+				7C10706C25BF716800DC1D47 /* XCRemoteSwiftPackageReference "SwiftUIListSeparator" */,
 			);
 			productRefGroup = 7CF87F2125AE45F300BD9D06 /* Products */;
 			projectDirPath = "";
@@ -972,6 +976,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7C10706C25BF716800DC1D47 /* XCRemoteSwiftPackageReference "SwiftUIListSeparator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SchmidtyApps/SwiftUIListSeparator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RocketCommunicationsInc/AstroSwiftFoundation.git";
@@ -983,6 +995,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7C10706D25BF716800DC1D47 /* SwiftUIListSeparator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C10706C25BF716800DC1D47 /* XCRemoteSwiftPackageReference "SwiftUIListSeparator" */;
+			productName = SwiftUIListSeparator;
+		};
 		7C83150025AE52B700E18441 /* AstroSwiftFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */;
