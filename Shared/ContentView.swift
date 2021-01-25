@@ -18,6 +18,17 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
 
+    init(){
+        UIView.appearance().backgroundColor = UIColor.astroUIBackground
+
+        // These do nothing when the UIView backgroundColor is set above
+        UINavigationBar.appearance().barStyle = .default
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().barTintColor = UIColor.red
+        UINavigationBar.appearance().backgroundColor = UIColor.red
+
+    }
+    
     var body: some View {
         #if os(iOS)
         // must embed List within a NavigationView on iOS or .toolbar wont work
@@ -39,7 +50,9 @@ struct ContentView: View {
                     }
                 }
             }
+
         }
+
         #endif
         
         #if os(macOS)
