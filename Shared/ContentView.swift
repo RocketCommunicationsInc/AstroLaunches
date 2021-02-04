@@ -9,8 +9,44 @@ import SwiftUI
 import CoreData
 import AstroSwiftFoundation
 import SwiftUIListSeparator
+import Combine
+
+struct LaunchReply:Decodable{
+    let count:Int
+    let result:[Launch]
+}
+
+struct Launch:Decodable{
+    let name:String
+}
+
+class NetworkManager:ObservableObject
+{
+    let objectWillChange = PassthroughSubject<NetworkManager,Never>()
+    
+    var launches = [Launch]() {
+        didSet{objectWillChange.send(self)}
+    }
+    
+    init(){
+        guard let url = URL(string: "https://fdo.rocketlaunch.live/json/launches/next/5") else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data,_ , _) in
+            guard let data = data else {return}
+            let myLaunches = try! JSONDecoder().decode(LaunchReply.self, from: data)
+            self.launches = myLaunches.result
+            print(myLaunches)
+            print("hello world")
+        }.resume()
+    }
+}
+
 
 struct ContentView: View {
+    
+    @State var networkManager = NetworkManager()
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -29,17 +65,17 @@ struct ContentView: View {
 
     }
     
-    var body: some View {
+    var body: some View{
         #if os(iOS)
         // must embed List within a NavigationView on iOS or .toolbar wont work
         NavigationView{
             List {
-                ForEach(items) { item in
-                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                ForEach(networkManager.launches, id: \.name) { item in
+                    Text(item.name)
                 }
-                .onDelete(perform: deleteItems)
-                .listRowBackground(Color(UIColor.astroUITableCell))
+                
             }
+            .listRowBackground(Color(UIColor.astroUITableCell))
             .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
             .navigationTitle("Launches")
             .toolbar {
@@ -50,25 +86,69 @@ struct ContentView: View {
                     }
                 }
             }
-
         }
-
         #endif
         
         #if os(macOS)
         List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+            let launchArray =
+            [
+                Launch.init(name: "Launch 1"),
+                Launch.init(name: "Launch 2")
+            ]
+            ForEach(launchArray, id: \.name) { item in
+                Text(item.name)
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
+            .listRowBackground(Color(UIColor.astroUITableCell))
+        }.toolbar {
             Button(action: addItem) {
                 Label("Add Item", systemImage: "plus")
             }
         }
         #endif
     }
+    
+    
+//    var oldbody: some View {
+//        #if os(iOS)
+//        // must embed List within a NavigationView on iOS or .toolbar wont work
+//        NavigationView{
+//            List {
+//                ForEach(items) { item in
+//                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//                }
+//                .onDelete(perform: deleteItems)
+//                .listRowBackground(Color(UIColor.astroUITableCell))
+//            }
+//            .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
+//            .navigationTitle("Launches")
+//            .toolbar {
+//                ToolbarItem(placement: .automatic)
+//                {
+//                    Button(action: addItem) {
+//                        Label("Add Item", systemImage: "plus")
+//                    }
+//                }
+//            }
+//
+//        }
+//
+//        #endif
+//
+//        #if os(macOS)
+//        List {
+//            ForEach(items) { item in
+//                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//            }
+//            .onDelete(perform: deleteItems)
+//        }
+//        .toolbar {
+//            Button(action: addItem) {
+//                Label("Add Item", systemImage: "plus")
+//            }
+//        }
+//        #endif
+//    }
 
     private func addItem() {
         withAnimation {
