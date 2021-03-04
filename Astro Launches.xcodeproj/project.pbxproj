@@ -9,14 +9,10 @@
 /* Begin PBXBuildFile section */
 		7C10706E25BF716800DC1D47 /* SwiftUIListSeparator in Frameworks */ = {isa = PBXBuildFile; productRef = 7C10706D25BF716800DC1D47 /* SwiftUIListSeparator */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
-		7CF87F2C25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */; };
-		7CF87F2D25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */; };
 		7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
 		7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
 		7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
 		7CF87F3125AE45F300BD9D06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
-		7CF87F3225AE45F300BD9D06 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1A25AE45F300BD9D06 /* Persistence.swift */; };
-		7CF87F3325AE45F300BD9D06 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1A25AE45F300BD9D06 /* Persistence.swift */; };
 		7CF87F3425AE45F300BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
 		7CF87F3525AE45F300BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
 		7CF87F4E25AE498A00BD9D06 /* Astro Launches WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7CF87F4D25AE498A00BD9D06 /* Astro Launches WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -33,8 +29,6 @@
 		7CF87F8825AE49B600BD9D06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8725AE49B600BD9D06 /* ContentView.swift */; };
 		7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8925AE49B700BD9D06 /* Assets.xcassets */; };
 		7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */; };
-		7CF87F8F25AE49B700BD9D06 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8E25AE49B700BD9D06 /* Persistence.swift */; };
-		7CF87F9225AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F9025AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,10 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7CF87F1725AE45F300BD9D06 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7CF87F1925AE45F300BD9D06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7CF87F1A25AE45F300BD9D06 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF87F2025AE45F300BD9D06 /* Astro Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F2325AE45F300BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,8 +101,6 @@
 		7CF87F8725AE49B600BD9D06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CF87F8925AE49B700BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7CF87F8E25AE49B700BD9D06 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		7CF87F9125AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Astro_Launches_TV.xcdatamodel; sourceTree = "<group>"; };
 		7CF87F9325AE49B700BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,9 +156,7 @@
 			children = (
 				7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */,
 				7CF87F1925AE45F300BD9D06 /* ContentView.swift */,
-				7CF87F1A25AE45F300BD9D06 /* Persistence.swift */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
-				7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -242,9 +230,7 @@
 				7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */,
 				7CF87F8725AE49B600BD9D06 /* ContentView.swift */,
 				7CF87F8925AE49B700BD9D06 /* Assets.xcassets */,
-				7CF87F8E25AE49B700BD9D06 /* Persistence.swift */,
 				7CF87F9325AE49B700BD9D06 /* Info.plist */,
-				7CF87F9025AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodeld */,
 				7CF87F8B25AE49B700BD9D06 /* Preview Content */,
 			);
 			path = "Astro Launches TV";
@@ -481,8 +467,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
-				7CF87F3225AE45F300BD9D06 /* Persistence.swift in Sources */,
-				7CF87F2C25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */,
 				7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,8 +476,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
-				7CF87F3325AE45F300BD9D06 /* Persistence.swift in Sources */,
-				7CF87F2D25AE45F300BD9D06 /* Astro_Launches.xcdatamodeld in Sources */,
 				7CF87F3125AE45F300BD9D06 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,9 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CF87F8F25AE49B700BD9D06 /* Persistence.swift in Sources */,
 				7CF87F8825AE49B600BD9D06 /* ContentView.swift in Sources */,
-				7CF87F9225AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodeld in Sources */,
 				7CF87F8625AE49B600BD9D06 /* Astro_Launches_TVApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1008,29 +988,6 @@
 			productName = AstroSwiftFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		7CF87F1625AE45F300BD9D06 /* Astro_Launches.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7CF87F1725AE45F300BD9D06 /* Shared.xcdatamodel */,
-			);
-			currentVersion = 7CF87F1725AE45F300BD9D06 /* Shared.xcdatamodel */;
-			path = Astro_Launches.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		7CF87F9025AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7CF87F9125AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodel */,
-			);
-			currentVersion = 7CF87F9125AE49B700BD9D06 /* Astro_Launches_TV.xcdatamodel */;
-			path = Astro_Launches_TV.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 7CF87F1125AE45F200BD9D06 /* Project object */;
 }

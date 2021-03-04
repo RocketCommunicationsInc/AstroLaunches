@@ -29,7 +29,7 @@ class NetworkManager:ObservableObject
     }
     
     init(){
-        guard let url = URL(string: "https://fdo.rocketlaunch.live/json/launches/next/5") else {
+        guard let url = URL(string: "https://fdo.rocketlaunch.live/json/launches?key=8ce4c428-bb89-4c5f-953c-1ba70eab26fa") else {
             return
         }
         
@@ -47,12 +47,6 @@ class NetworkManager:ObservableObject
 struct ContentView: View {
     
     @State var networkManager = NetworkManager()
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
 
     init(){
         UIView.appearance().backgroundColor = UIColor.astroUIBackground
@@ -81,8 +75,8 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .automatic)
                 {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button(action: showSettings) {
+                        Label("Settings", systemImage: "gear")
                     }
                 }
             }
@@ -102,84 +96,17 @@ struct ContentView: View {
             .listRowBackground(Color(UIColor.astroUITableCell))
         }.toolbar {
             Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+                Label("Add Item", systemImage: "gear")
             }
         }
         #endif
     }
     
     
-//    var oldbody: some View {
-//        #if os(iOS)
-//        // must embed List within a NavigationView on iOS or .toolbar wont work
-//        NavigationView{
-//            List {
-//                ForEach(items) { item in
-//                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//                }
-//                .onDelete(perform: deleteItems)
-//                .listRowBackground(Color(UIColor.astroUITableCell))
-//            }
-//            .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
-//            .navigationTitle("Launches")
-//            .toolbar {
-//                ToolbarItem(placement: .automatic)
-//                {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//
-//        }
-//
-//        #endif
-//
-//        #if os(macOS)
-//        List {
-//            ForEach(items) { item in
-//                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//            }
-//            .onDelete(perform: deleteItems)
-//        }
-//        .toolbar {
-//            Button(action: addItem) {
-//                Label("Add Item", systemImage: "plus")
-//            }
-//        }
-//        #endif
-//    }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+    private func showSettings() {
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
 }
 
 private let itemFormatter: DateFormatter = {
@@ -191,6 +118,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().preferredColorScheme(.dark)
     }
 }
