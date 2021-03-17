@@ -8,11 +8,16 @@
 import SwiftUI
 
 @main
+
+
 struct Astro_LaunchesApp: App {
+
+    @StateObject var networkManager = NetworkManager()
+
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(networkManager)
         }
     }
 }

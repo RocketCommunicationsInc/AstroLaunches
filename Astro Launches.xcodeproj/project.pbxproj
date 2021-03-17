@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7C10706E25BF716800DC1D47 /* SwiftUIListSeparator in Frameworks */ = {isa = PBXBuildFile; productRef = 7C10706D25BF716800DC1D47 /* SwiftUIListSeparator */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
+		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
+		7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
 		7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
 		7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
@@ -74,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7CF87F1925AE45F300BD9D06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 			children = (
 				7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */,
 				7CF87F1925AE45F300BD9D06 /* ContentView.swift */,
+				7CD3C90426028B020071FB78 /* NetworkManager.swift */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -466,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */,
 				7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */,
 			);
@@ -475,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */,
 				7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7CF87F3125AE45F300BD9D06 /* ContentView.swift in Sources */,
 			);
