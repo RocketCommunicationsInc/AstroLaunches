@@ -17,7 +17,8 @@ struct ContentView: View {
     @EnvironmentObject var networkManager: NetworkManager
 
     init(){
-        UIView.appearance().backgroundColor = UIColor.astroUIBackground
+       // UIView.appearance().backgroundColor = UIColor.astroUIBackground
+        // this causes the disappearing view bug
 
 //        // These do nothing when the UIView backgroundColor is set above
 //        UINavigationBar.appearance().barStyle = .default
