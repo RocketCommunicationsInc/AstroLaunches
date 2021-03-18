@@ -80,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRow.swift; sourceTree = "<group>"; };
+		7C3D4CDC2603FF4100CB0C41 /* AstroSwiftFoundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AstroSwiftFoundation; path = ../AstroSwiftFoundation; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7CF87F1925AE45F300BD9D06 /* LaunchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchList.swift; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		7C37E6592603CDC300F259F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C3D4CDC2603FF4100CB0C41 /* AstroSwiftFoundation */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

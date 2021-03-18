@@ -45,7 +45,7 @@ struct LaunchList: View {
                         })
                 }
             }
-           .listRowBackground(Color(UIColor.astroUITableCell))
+            .listRowBackground(Color.astroUITableCell)
           //  .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
             .navigationTitle("Launches")
             .toolbar {
