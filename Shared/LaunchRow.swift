@@ -12,7 +12,11 @@ struct LaunchRow: View {
     var launch:Launch
     
     var body: some View {
-        Text(launch.name)
+        VStack {
+            Image("launch").resizable().frame(minWidth: 10, idealWidth: 100, maxWidth: .infinity, minHeight: 10, idealHeight: 100, maxHeight: 100, alignment: .center)
+            Text(launch.name)
+
+        }
     }
 }
 

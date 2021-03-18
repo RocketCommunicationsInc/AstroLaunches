@@ -33,8 +33,6 @@ struct LaunchList: View {
     
     var body: some View{
         
-        //#if os(iOS)
-        // must embed List within a NavigationView on iOS or .toolbar wont work
         NavigationView{
             List {
                 ForEach(networkManager.launches, id: \.name) { launch in
@@ -57,32 +55,7 @@ struct LaunchList: View {
                 }
             }
         }
-        //#endif
-        
-       /* #if os(macOS)
-        NavigationView{
-        List {
-            ForEach(networkManager.launches, id: \.name) { item in
-                NavigationLink(
-                    destination: Text("Destination"),
-                    label: {
-                        Text(item.name)
-                    })
-            }
-        }
-        .listRowBackground(Color(NSColor.astroUITableCell))
-        .navigationTitle("Launches")
-        .toolbar {
-            ToolbarItem(placement: .primaryAction)
-            {
-                Button(action: showSettings) {
-                    Label("Settings", systemImage: "gear")
-                }
-            }
-        }
-        }
 
-        #endif*/
     }
 
     private func showSettings() {
