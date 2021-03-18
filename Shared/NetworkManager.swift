@@ -30,8 +30,8 @@ class NetworkManager:ObservableObject
             let myLaunches = try! JSONDecoder().decode(LaunchReply.self, from: data)
             DispatchQueue.main.async {
                 self.launches = myLaunches.result
-                print(myLaunches)
-                print("hello world")
+//                print(myLaunches)
+//                print("hello world")
             }
         }.resume()
     }

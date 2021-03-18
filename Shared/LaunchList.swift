@@ -15,7 +15,7 @@ import SwiftUIListSeparator
 //import Combine
 
 
-struct ContentView: View {
+struct LaunchList: View {
     
     @EnvironmentObject var networkManager: NetworkManager
 
@@ -33,20 +33,20 @@ struct ContentView: View {
     
     var body: some View{
         
-        #if os(iOS)
+        //#if os(iOS)
         // must embed List within a NavigationView on iOS or .toolbar wont work
         NavigationView{
             List {
-                ForEach(networkManager.launches, id: \.name) { item in
+                ForEach(networkManager.launches, id: \.name) { launch in
                     NavigationLink(
                         destination: Text("Destination"),
                         label: {
-                            Text(item.name)
+                            LaunchRow(launch:launch)
                         })
                 }
             }
-            .listRowBackground(Color(UIColor.astroUITableCell))
-            .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
+           .listRowBackground(Color(UIColor.astroUITableCell))
+          //  .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
             .navigationTitle("Launches")
             .toolbar {
                 ToolbarItem(placement: .automatic)
@@ -57,9 +57,9 @@ struct ContentView: View {
                 }
             }
         }
-        #endif
+        //#endif
         
-        #if os(macOS)
+       /* #if os(macOS)
         NavigationView{
         List {
             ForEach(networkManager.launches, id: \.name) { item in
@@ -82,7 +82,7 @@ struct ContentView: View {
         }
         }
 
-        #endif
+        #endif*/
     }
 
     private func showSettings() {
@@ -90,15 +90,8 @@ struct ContentView: View {
 
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().preferredColorScheme(.dark)
+        LaunchList().preferredColorScheme(.dark)
     }
 }
