@@ -8,7 +8,10 @@
 import SwiftUI
 import CoreData
 import AstroSwiftFoundation
+#if os(iOS)
 import SwiftUIListSeparator
+#endif
+
 //import Combine
 
 
@@ -57,21 +60,28 @@ struct ContentView: View {
         #endif
         
         #if os(macOS)
+        NavigationView{
         List {
-            let launchArray =
-            [
-                Launch.init(name: "Launch 1"),
-                Launch.init(name: "Launch 2")
-            ]
-            ForEach(launchArray, id: \.name) { item in
-                Text(item.name)
-            }
-            .listRowBackground(Color(UIColor.astroUITableCell))
-        }.toolbar {
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "gear")
+            ForEach(networkManager.launches, id: \.name) { item in
+                NavigationLink(
+                    destination: Text("Destination"),
+                    label: {
+                        Text(item.name)
+                    })
             }
         }
+        .listRowBackground(Color(NSColor.astroUITableCell))
+        .navigationTitle("Launches")
+        .toolbar {
+            ToolbarItem(placement: .primaryAction)
+            {
+                Button(action: showSettings) {
+                    Label("Settings", systemImage: "gear")
+                }
+            }
+        }
+        }
+
         #endif
     }
 

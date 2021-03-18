@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C10706E25BF716800DC1D47 /* SwiftUIListSeparator in Frameworks */ = {isa = PBXBuildFile; productRef = 7C10706D25BF716800DC1D47 /* SwiftUIListSeparator */; };
+		7C37E65B2603CDC300F259F8 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
@@ -121,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C37E65B2603CDC300F259F8 /* AstroSwiftFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +143,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C37E6592603CDC300F259F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7CF87F1025AE45F200BD9D06 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +160,7 @@
 				7CF87F5D25AE498B00BD9D06 /* Astro Launches WatchKit Extension */,
 				7CF87F8425AE49B600BD9D06 /* Astro Launches TV */,
 				7CF87F2125AE45F300BD9D06 /* Products */,
+				7C37E6592603CDC300F259F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,6 +295,9 @@
 			dependencies = (
 			);
 			name = "Astro Launches (macOS)";
+			packageProductDependencies = (
+				7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */,
+			);
 			productName = "Astro Launches (macOS)";
 			productReference = 7CF87F2825AE45F300BD9D06 /* Astro Launches.app */;
 			productType = "com.apple.product-type.application";
@@ -987,6 +1000,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7C10706C25BF716800DC1D47 /* XCRemoteSwiftPackageReference "SwiftUIListSeparator" */;
 			productName = SwiftUIListSeparator;
+		};
+		7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */;
+			productName = AstroSwiftFoundation;
 		};
 		7C83150025AE52B700E18441 /* AstroSwiftFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
