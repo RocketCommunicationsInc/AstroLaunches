@@ -14,6 +14,10 @@ struct Astro_LaunchesApp: App {
 
     @StateObject var networkManager = NetworkManager()
 
+    init(){
+        _ = Settings.sharedInstance // init the Settings
+    }
+    
 
     var body: some Scene {
         WindowGroup {

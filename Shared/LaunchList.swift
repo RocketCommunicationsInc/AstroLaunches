@@ -31,6 +31,8 @@ struct LaunchList: View {
 
     }
     
+    @State var showingSettings = false
+
     var body: some View{
         
         NavigationView{
@@ -44,24 +46,46 @@ struct LaunchList: View {
                 }
             }
             .listRowBackground(Color.astroUITableCell)
-          //  .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
+            //  .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
             .navigationTitle("Launches")
             .toolbar {
                 ToolbarItem(placement: .automatic)
                 {
-                    Button(action: showSettings) {
-                        Label("Settings", systemImage: "gear")
-                    }
+                    Button(action: {self.showingSettings = true
+                    }) {Label("Settings", systemImage: "gear")}
                 }
             }
-        }
+        }.sheet(isPresented: $showingSettings) {
+            SettingsView()}
+
 
     }
 
-    private func showSettings() {
-    }
 
 }
+
+struct SettingsView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @AppStorage(Settings.localDataKey) var localData = Settings.localData
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Toggle(isOn: $localData, label: {
+                    Text("Use Stored Test Data")
+                })
+                
+            }
+            
+            .navigationBarTitle("Settings")
+            .navigationBarItems(trailing: Button("Done", action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }))
+        }
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

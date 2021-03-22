@@ -19,12 +19,11 @@ struct Launch:Decodable{
 class NetworkManager:ObservableObject
 {
     @Published var launches = [Launch]()
-        
+    
     init(){
         
         var url:URL?
-        let localData = true
-        if (localData)
+        if (Settings.localData)
         {
             let path = Bundle.main.path(forResource: "launches", ofType: "json")!
             url = URL(fileURLWithPath: path)
@@ -41,8 +40,7 @@ class NetworkManager:ObservableObject
             let myLaunches = try! JSONDecoder().decode(LaunchReply.self, from: data)
             DispatchQueue.main.async {
                 self.launches = myLaunches.result
-//                print(myLaunches)
-//                print("hello world")
+//              print(myLaunches)
             }
         }.resume()
         }
