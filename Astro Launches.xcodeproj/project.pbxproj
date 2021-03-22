@@ -11,6 +11,10 @@
 		7C37E65B2603CDC300F259F8 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */; };
 		7C3D4CCE2603EFDA00CB0C41 /* LaunchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */; };
 		7C3D4CCF2603EFDA00CB0C41 /* LaunchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */; };
+		7C44C05C2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
+		7C44C05D2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
+		7C44C05E2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
+		7C44C05F2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
@@ -81,6 +85,7 @@
 /* Begin PBXFileReference section */
 		7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRow.swift; sourceTree = "<group>"; };
 		7C3D4CDC2603FF4100CB0C41 /* AstroSwiftFoundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AstroSwiftFoundation; path = ../AstroSwiftFoundation; sourceTree = "<group>"; };
+		7C44C05B2608FEDB00B8D86A /* launches.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launches.json; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7CF87F1925AE45F300BD9D06 /* LaunchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchList.swift; sourceTree = "<group>"; };
@@ -176,6 +181,7 @@
 				7CF87F1925AE45F300BD9D06 /* LaunchList.swift */,
 				7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */,
 				7CD3C90426028B020071FB78 /* NetworkManager.swift */,
+				7C44C05B2608FEDB00B8D86A /* launches.json */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -437,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C44C05C2608FEDB00B8D86A /* launches.json in Resources */,
 				7CF87F3425AE45F300BD9D06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C44C05D2608FEDB00B8D86A /* launches.json in Resources */,
 				7CF87F3525AE45F300BD9D06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +478,7 @@
 			files = (
 				7CF87F6C25AE498C00BD9D06 /* Preview Assets.xcassets in Resources */,
 				7CF87F6925AE498C00BD9D06 /* Assets.xcassets in Resources */,
+				7C44C05E2608FEDB00B8D86A /* launches.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +488,7 @@
 			files = (
 				7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */,
 				7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */,
+				7C44C05F2608FEDB00B8D86A /* launches.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

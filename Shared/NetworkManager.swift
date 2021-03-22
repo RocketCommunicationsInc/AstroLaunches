@@ -21,10 +21,21 @@ class NetworkManager:ObservableObject
     @Published var launches = [Launch]()
         
     init(){
-        guard let url = URL(string: "https://fdo.rocketlaunch.live/json/launches?key=8ce4c428-bb89-4c5f-953c-1ba70eab26fa") else {
-            return
+        
+        var url:URL?
+        let localData = treu
+        if (localData)
+        {
+            let path = Bundle.main.path(forResource: "launches", ofType: "json")!
+            url = URL(fileURLWithPath: path)
+        }
+        else
+        {
+            url = URL(string: "https://fdo.rocketlaunch.live/json/launches?key=8ce4c428-bb89-4c5f-953c-1ba70eab26fa")
         }
         
+        if let url = url
+        {
         URLSession.shared.dataTask(with: url) { (data,_ , _) in
             guard let data = data else {return}
             let myLaunches = try! JSONDecoder().decode(LaunchReply.self, from: data)
@@ -34,5 +45,6 @@ class NetworkManager:ObservableObject
 //                print("hello world")
             }
         }.resume()
+        }
     }
 }
