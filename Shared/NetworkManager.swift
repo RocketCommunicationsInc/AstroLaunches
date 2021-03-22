@@ -23,7 +23,7 @@ class NetworkManager:ObservableObject
     init(){
         
         var url:URL?
-        let localData = treu
+        let localData = true
         if (localData)
         {
             let path = Bundle.main.path(forResource: "launches", ofType: "json")!
