@@ -27,7 +27,7 @@ struct LaunchList: View {
                         destination: Text("Destination"),
                         label: {
                             LaunchRow(launch:launch)
-                        })
+                        }).listRowBackground(Color.astroUITableCell)
                 }
             }
             .listRowBackground(Color.astroUITableCell)
