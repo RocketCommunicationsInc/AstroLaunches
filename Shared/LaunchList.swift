@@ -17,21 +17,21 @@ import SwiftUIListSeparator
 
 struct LaunchList: View {
     
-    @EnvironmentObject var networkManager: NetworkManager
-
-    init(){
-       // UIView.appearance().backgroundColor = UIColor.astroUIBackground
-        // this causes the disappearing view bug
-
-//        // These do nothing when the UIView backgroundColor is set above
-//        UINavigationBar.appearance().barStyle = .default
-//        UINavigationBar.appearance().isTranslucent = true
-//        UINavigationBar.appearance().barTintColor = UIColor.red
-//        UINavigationBar.appearance().backgroundColor = UIColor.red
-
-    }
-    
+    @ObservedObject var networkManager: NetworkManager
     @State var showingSettings = false
+
+//    init(){
+//       // UIView.appearance().backgroundColor = UIColor.astroUIBackground
+//        // this causes the disappearing view bug
+//
+////        // These do nothing when the UIView backgroundColor is set above
+////        UINavigationBar.appearance().barStyle = .default
+////        UINavigationBar.appearance().isTranslucent = true
+////        UINavigationBar.appearance().barTintColor = UIColor.red
+////        UINavigationBar.appearance().backgroundColor = UIColor.red
+//
+//    }
+//    
 
     var body: some View{
         
@@ -49,11 +49,13 @@ struct LaunchList: View {
             //  .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
             .navigationTitle("Launches")
             .toolbar {
+    
                 ToolbarItem(placement: .automatic)
                 {
                     Button(action: {self.showingSettings = true
                     }) {Label("Settings", systemImage: "gear")}
                 }
+
             }
         }.sheet(isPresented: $showingSettings) {
             SettingsView()}
@@ -89,6 +91,7 @@ struct SettingsView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchList().preferredColorScheme(.dark)
+        Text("placeholder")
+        //LaunchList().preferredColorScheme(.dark)
     }
 }
