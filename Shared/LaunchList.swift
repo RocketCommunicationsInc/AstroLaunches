@@ -16,25 +16,10 @@ import SwiftUIListSeparator
 
 
 struct LaunchList: View {
-    
     @ObservedObject var networkManager: NetworkManager
     @State var showingSettings = false
 
-//    init(){
-//       // UIView.appearance().backgroundColor = UIColor.astroUIBackground
-//        // this causes the disappearing view bug
-//
-////        // These do nothing when the UIView backgroundColor is set above
-////        UINavigationBar.appearance().barStyle = .default
-////        UINavigationBar.appearance().isTranslucent = true
-////        UINavigationBar.appearance().barTintColor = UIColor.red
-////        UINavigationBar.appearance().backgroundColor = UIColor.red
-//
-//    }
-//    
-
     var body: some View{
-        
         NavigationView{
             List {
                 ForEach(networkManager.launches, id: \.name) { launch in
@@ -59,15 +44,10 @@ struct LaunchList: View {
             }
         }.sheet(isPresented: $showingSettings) {
             SettingsView()}
-
-
     }
-
-
 }
 
 struct SettingsView: View {
-    
     @Environment(\.presentationMode) var presentationMode
     @AppStorage(Settings.localDataKey) var localData = Settings.localData
     
@@ -79,7 +59,6 @@ struct SettingsView: View {
                 })
                 
             }
-            
             .navigationBarTitle("Settings")
             .navigationBarItems(trailing: Button("Done", action: {
                 self.presentationMode.wrappedValue.dismiss()
