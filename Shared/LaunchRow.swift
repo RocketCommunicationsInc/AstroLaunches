@@ -16,12 +16,7 @@ struct LaunchRow: View {
             ZStack(alignment:.bottomTrailing){
                 Image("launch").resizable().frame(minWidth: 10, idealWidth: 100, maxWidth: .infinity, minHeight: 10, idealHeight: 100, maxHeight: 100, alignment: .center)
                     .cornerRadius(5)
-                HStack {
-                    VStack{
-                        Text("02 08 24 45").foregroundColor(.white).bold()
-                        Text("D H M S").foregroundColor(.white)
-                    }
-                }
+                CountdownPip(launch: launch)
             }
             HStack {
                 Text(launch.name).font(.title2).bold()
@@ -30,51 +25,90 @@ struct LaunchRow: View {
                     .font(Font.system(.body))
             }.padding(.vertical, 4)
             HStack {
-                Image(systemName: "calendar")
-                    .font(.body).foregroundColor(.secondary)
-                Text(launch.date_str).font(.body).foregroundColor(.secondary)
+                CalendarPip(launch: launch)
                 Spacer()
-                Image(systemName: "clock").foregroundColor(.secondary)
-                if let time = launch.t0
-                {
-                    Text(time).font(.body).foregroundColor(.secondary)
-                }
-                else
-                {
-                    Text("-").font(.body).foregroundColor(.secondary)
-                }
+                ClockPip(launch: launch)
                 Spacer()
-                if let weatherIcon = launch.weather_icon
-                {
-                    if weatherIcon.contains("cloud")
-                    {
-                        Image(systemName: "cloud").foregroundColor(.secondary)
-                    }
-                    else if weatherIcon.contains("rain")
-                    {
-                        Image(systemName: "cloud.rain").foregroundColor(.secondary)
-                    }
-                    else
-                    {
-                        Image(systemName: "sun.max").foregroundColor(.secondary)
-                    }
-                }
-                else
-                {
-                Image(systemName: "sun.max").foregroundColor(.secondary)
-                }
-                if let temp = launch.weather_temp
-                {
-                    let tempInt = Int(temp)
-                    Text(String(tempInt)+"°").font(.body).foregroundColor(.secondary)
-                }
-                else
-                {
-                    Text("-").font(.body).foregroundColor(.secondary)
-                }
+                WeatherPip(launch: launch)
 
             }.padding(.vertical, 4)
+        }
+    }
+    
+}
 
+struct CountdownPip: View {
+    var launch:Launch
+
+    var body: some View {
+        HStack {
+            VStack{
+                Text("02 08 24 45").foregroundColor(.white).bold()
+                Text("D H M S").foregroundColor(.white)
+            }
+        }
+    }
+}
+
+struct CalendarPip: View {
+    var launch:Launch
+
+    var body: some View {
+        Image(systemName: "calendar")
+            .font(.body).foregroundColor(.secondary)
+        Text(launch.date_str).font(.body).foregroundColor(.secondary)
+    }
+}
+
+
+struct ClockPip: View {
+    var launch:Launch
+
+    var body: some View {
+        Image(systemName: "clock").foregroundColor(.secondary)
+        if let time = launch.t0
+        {
+            Text(time).font(.body).foregroundColor(.secondary)
+        }
+        else
+        {
+            Text("-").font(.body).foregroundColor(.secondary)
+        }
+    }
+}
+
+
+struct WeatherPip: View {
+    var launch:Launch
+
+    var body: some View {
+        if let weatherIcon = launch.weather_icon
+        {
+            if weatherIcon.contains("cloud")
+            {
+                Image(systemName: "cloud").foregroundColor(.secondary)
+            }
+            else if weatherIcon.contains("rain")
+            {
+                Image(systemName: "cloud.rain").foregroundColor(.secondary)
+            }
+            else
+            {
+                Image(systemName: "sun.max").foregroundColor(.secondary)
+            }
+        }
+        else
+        {
+        Image(systemName: "sun.max").foregroundColor(.secondary)
+        }
+        if let temp = launch.weather_temp
+        {
+            let tempInt = Int(temp)
+            Text(String(tempInt)+"°").font(.body).foregroundColor(.secondary)
+        }
+        else
+        {
+            Text("-").font(.body).foregroundColor(.secondary)
         }
     }
 }
