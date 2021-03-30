@@ -24,6 +24,9 @@ struct Astro_LaunchesApp: App {
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
+        
+        // customize the app-wide List (UITableView) appearance
+        UITableView.appearance().backgroundColor = .astroUIBackground
     }
     
     var body: some Scene {
