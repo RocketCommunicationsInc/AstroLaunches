@@ -13,4 +13,5 @@ struct Launch:Decodable{
     let t0:String?
     let weather_temp:Float?
     let weather_icon:String?
+    let win_open:String?
 }

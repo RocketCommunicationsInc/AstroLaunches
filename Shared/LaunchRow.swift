@@ -43,8 +43,15 @@ struct CountdownPip: View {
     var body: some View {
         HStack {
             VStack{
-                Text("02 08 24 45").foregroundColor(.white).bold()
+                if let win_open = launch.win_open
+                {
+                    let iso8601DateFormatter = ISO8601DateFormatter()
+                    let date = iso8601DateFormatter.date(from: win_open)
+//                    iso8601DateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+                    
+                Text(win_open).foregroundColor(.white).bold()
                 Text("D H M S").foregroundColor(.white)
+                }
             }
         }
     }
@@ -115,7 +122,7 @@ struct WeatherPip: View {
 
 struct LaunchRow_Previews: PreviewProvider {
     
-    static let launchPreview = Launch(name: "Starlink-23",date_str: "Q1 2021",t0: "33", weather_temp: 44.44, weather_icon: "rain")
+    static let launchPreview = Launch(name: "Starlink-23",date_str: "Q1 2021",t0: "33", weather_temp: 44.44, weather_icon: "rain", win_open: "2021-03-22T22:20Z")
     static var previews: some View {
         LaunchRow(launch:launchPreview)
     }
