@@ -17,6 +17,7 @@ struct Astro_LaunchesApp: App {
     init(){
         _ = Settings.sharedInstance // init the Settings
         
+        #if os(iOS)
         // customize the app-wide navgation bar appearance
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
@@ -27,6 +28,8 @@ struct Astro_LaunchesApp: App {
         
         // customize the app-wide List (UITableView) appearance
         UITableView.appearance().backgroundColor = .astroUIBackground
+        #endif
+
     }
     
     var body: some Scene {

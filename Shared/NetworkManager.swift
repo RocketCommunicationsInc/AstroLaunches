@@ -7,19 +7,30 @@
 
 import Foundation
 
-struct LaunchReply:Decodable{
+private struct LaunchReplies:Decodable{
     let count:Int
-    let result:[Launch]
+    let result:[LaunchReply]
+}
+
+
+struct LaunchReply:Decodable{
+    let name:String
+    let date_str:String
+    let t0:String?
+    let weather_temp:Float?
+    let weather_icon:String?
+    let win_open:String?
+    let win_close:String?
 }
 
 
 
 class NetworkManager:ObservableObject
 {
+    private var launchJSONs = [LaunchReply]()
     @Published var launches = [Launch]()
-    
+
     init(){
-        
         var url:URL?
         if (Settings.localData)
         {
@@ -35,9 +46,15 @@ class NetworkManager:ObservableObject
         {
         URLSession.shared.dataTask(with: url) { (data,_ , _) in
             guard let data = data else {return}
-            let myLaunches = try! JSONDecoder().decode(LaunchReply.self, from: data)
+            let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
             DispatchQueue.main.async {
-                self.launches = myLaunches.result
+               // self.launchJSONs = myLaunches.result
+                
+                // post process launchJSONs into launches
+                myLaunches.result.forEach() { launchJSON in
+                    self.launches.append(Launch(launchJSON))
+                }
+
 //              print(myLaunches)
             }
         }.resume()
