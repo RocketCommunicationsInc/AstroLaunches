@@ -43,11 +43,10 @@ struct CountdownPip: View {
     var body: some View {
         HStack {
             VStack{
-                if let preciseDate = launch.preciseDate
+                if let windowOpenDate = launch.windowOpenDate
                 {
-                    let dateFormatter = DateFormatter()
-
-                    Text(dateFormatter.string(from: preciseDate)).foregroundColor(.white).bold()
+                    let dateText = CountdownDateFormatter.sharedInstance.string(from: windowOpenDate)
+                    Text(dateText).foregroundColor(.white).bold()
                 Text("D H M S").foregroundColor(.white)
                 }
             }

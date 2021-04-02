@@ -66,7 +66,8 @@ struct Launch{
 
         if let t0date = launchReply.t0
         {
-            preciseDate = dateFormatter.date(from: t0date)
+            preciseDate = ZuluDateFormatter.sharedInstance.date(from: t0date)
+
         }
         else
         {
@@ -75,7 +76,8 @@ struct Launch{
         
         if let windowOpen = launchReply.win_open
         {
-            windowOpenDate = dateFormatter.date(from: windowOpen)
+            let thewindowOpenDate = ZuluDateFormatter.sharedInstance.date(from: windowOpen)
+            windowOpenDate = thewindowOpenDate
         }
         else
         {
@@ -84,7 +86,7 @@ struct Launch{
         
         if let windowClose = launchReply.win_close
         {
-            windowCloseDate = dateFormatter.date(from: windowClose)
+            windowCloseDate = ZuluDateFormatter.sharedInstance.date(from: windowClose)
         }
         else
         {

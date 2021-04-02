@@ -15,6 +15,8 @@
 		7C44C05D2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7C44C05E2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7C44C05F2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
+		7C54438026178C65007CCCC4 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
+		7C54438126178C65007CCCC4 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
 		7C69540A2612876E008A811E /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
 		7C69540B2612876E008A811E /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
@@ -89,6 +91,7 @@
 /* Begin PBXFileReference section */
 		7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRow.swift; sourceTree = "<group>"; };
 		7C44C05B2608FEDB00B8D86A /* launches.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launches.json; sourceTree = "<group>"; };
+		7C54437F26178C65007CCCC4 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		7C6954092612876E008A811E /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		7C834937260931D1008B4895 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -187,6 +190,7 @@
 				7CD3C90426028B020071FB78 /* NetworkManager.swift */,
 				7C6954092612876E008A811E /* Launch.swift */,
 				7C834937260931D1008B4895 /* Settings.swift */,
+				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
 				7C44C05B2608FEDB00B8D86A /* launches.json */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
 			);
@@ -506,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */,
+				7C54438026178C65007CCCC4 /* DateFormatters.swift in Sources */,
 				7C3D4CCE2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7CF87F3025AE45F300BD9D06 /* LaunchList.swift in Sources */,
@@ -519,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */,
+				7C54438126178C65007CCCC4 /* DateFormatters.swift in Sources */,
 				7C3D4CCF2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7CF87F3125AE45F300BD9D06 /* LaunchList.swift in Sources */,
