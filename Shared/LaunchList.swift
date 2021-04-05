@@ -6,13 +6,7 @@
 //
 
 import SwiftUI
-import CoreData
 import AstroSwiftFoundation
-#if os(iOS)
-import SwiftUIListSeparator
-#endif
-
-//import Combine
 
 
 struct LaunchList: View {
@@ -34,18 +28,25 @@ struct LaunchList: View {
             //  .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
             .navigationTitle("Launches")
             .toolbar {
-    
+                #if os(iOS) // settings on MacOS handled through Settings object
                 ToolbarItem(placement: .automatic)
                 {
                     Button(action: {self.showingSettings = true
                     }) {Label("Settings", systemImage: "gear")}
                 }
-
+                #endif
             }
         }.sheet(isPresented: $showingSettings) {
-            SettingsView()}
+            #if os(iOS)
+
+            SettingsView()
+            #endif
+
+            }
     }
 }
+
+#if os(iOS)
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -66,6 +67,7 @@ struct SettingsView: View {
         }
     }
 }
+#endif
 
 
 struct ContentView_Previews: PreviewProvider {

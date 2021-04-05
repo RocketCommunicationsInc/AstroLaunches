@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct Astro_Launches_TVApp: App {
+    @StateObject var networkManager = NetworkManager()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(networkManager: networkManager)
         }
     }
 }
