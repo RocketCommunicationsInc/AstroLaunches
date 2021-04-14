@@ -13,8 +13,9 @@ struct DateFormatters
         _ = ZuluDateFormatter.sharedInstance // init the ZuluDateFormatter
         _ = CountdownDateFormatter.sharedInstance // init the CountdownDateFormatter
     }
-
 }
+
+
 struct ZuluDateFormatter {
     
     static let sharedInstance = ZuluDateFormatter()

@@ -24,6 +24,10 @@
 		7C5A1B18261BB5E700E452DE /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5A1B17261BB5E700E452DE /* AstroSwiftFoundation */; };
 		7C69540A2612876E008A811E /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
 		7C69540B2612876E008A811E /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
+		7C6A025E26278C6900273563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
+		7C6A025F26278C6900273563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
+		7C6A026026278C6900273563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
+		7C6A026126278C6900273563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7C834938260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
 		7C834939260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
@@ -98,6 +102,7 @@
 		7C44C05B2608FEDB00B8D86A /* launches.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launches.json; sourceTree = "<group>"; };
 		7C54437F26178C65007CCCC4 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		7C6954092612876E008A811E /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		7C6A025D26278C6900273563 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7C834937260931D1008B4895 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
@@ -172,6 +177,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7C6A025626278C0C00273563 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7C6A025D26278C6900273563 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		7CF87F1025AE45F200BD9D06 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +211,7 @@
 				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
 				7C44C05B2608FEDB00B8D86A /* launches.json */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
+				7C6A025626278C0C00273563 /* Preview Content */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -460,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C44C05C2608FEDB00B8D86A /* launches.json in Resources */,
+				7C6A025E26278C6900273563 /* Preview Assets.xcassets in Resources */,
 				7CF87F3425AE45F300BD9D06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C44C05D2608FEDB00B8D86A /* launches.json in Resources */,
+				7C6A025F26278C6900273563 /* Preview Assets.xcassets in Resources */,
 				7CF87F3525AE45F300BD9D06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6A026026278C6900273563 /* Preview Assets.xcassets in Resources */,
 				7CF87F6C25AE498C00BD9D06 /* Preview Assets.xcassets in Resources */,
 				7CF87F6925AE498C00BD9D06 /* Assets.xcassets in Resources */,
 				7C44C05E2608FEDB00B8D86A /* launches.json in Resources */,
@@ -502,6 +519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6A026126278C6900273563 /* Preview Assets.xcassets in Resources */,
 				7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */,
 				7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */,
 				7C44C05F2608FEDB00B8D86A /* launches.json in Resources */,
@@ -698,6 +716,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -720,6 +739,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -746,6 +766,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -771,6 +792,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -792,7 +814,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Astro Launches WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content Astro\\ Launches\\ WatchKit\\ Extension/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Astro Launches WatchKit Extension/Info.plist";
@@ -816,7 +838,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Astro Launches WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content Astro\\ Launches\\ WatchKit\\ Extension/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Astro Launches WatchKit Extension/Info.plist";
@@ -912,7 +934,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Astro Launches TV/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Astro\\ Launches\\ TV/Preview\\ Content Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Astro Launches TV/Info.plist";
@@ -935,7 +957,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Astro Launches TV/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Astro\\ Launches\\ TV/Preview\\ Content Shared/Preview\\ Content";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Astro Launches TV/Info.plist";
