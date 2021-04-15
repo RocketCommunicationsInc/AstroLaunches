@@ -113,10 +113,10 @@ struct WeatherPip: View {
 }
 
 struct LaunchRow_Previews: PreviewProvider {
-//    static let launchPreview = Launch(name: "Starlink-23",date_str: "Q1 2021",t0: "33", weather_temp: 44.44, weather_icon: "rain", win_open: "2021-03-22T22:20Z")
+    static var networkManager = NetworkManager()
+    static var launch1 = networkManager.launches[1]
     static var previews: some View {
-        Text("hello")
-
-      //  LaunchRow(launch:launchPreview)
+        Text("test")
+        // LaunchRow(launch:launch1)
     }
 }

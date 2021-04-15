@@ -71,8 +71,11 @@ struct SettingsView: View {
 
 
 struct ContentView_Previews: PreviewProvider {
+    static var networkManager = NetworkManager()
+
     static var previews: some View {
-        Text("placeholder")
-        //LaunchList().preferredColorScheme(.dark)
+        Group {
+            LaunchList(networkManager:networkManager).preferredColorScheme(.dark)
+        }
     }
 }
