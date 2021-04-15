@@ -21,16 +21,17 @@ struct LaunchRow: View {
             HStack {
                 Text(launch.name).font(.title2).bold()
                 Spacer()
-                Image(systemName: "bell.fill").foregroundColor(.astroUITint)
+                Image(systemName: "bell").foregroundColor(.secondary)
                     .font(Font.system(.body))
             }.padding(.vertical, 4)
-            HStack {
-                CalendarPip(launch: launch)
-                Spacer()
-                ClockPip(launch: launch)
-                Spacer()
-                WeatherPip(launch: launch)
-
+            ZStack{
+                ClockPip(launch: launch) // a trick to center it in the HStack below: add in a zStack where it is naturally centered
+                HStack (){
+                    CalendarPip(launch: launch)
+                    Spacer()
+                    WeatherPip(launch: launch)
+                }
+                
             }.padding(.vertical, 4)
         }
     }
@@ -58,9 +59,11 @@ struct CalendarPip: View {
     var launch:Launch
 
     var body: some View {
-        Image(systemName: "calendar")
-            .font(.body).foregroundColor(.secondary)
-        Text(launch.date).font(.body).foregroundColor(.secondary)
+        HStack{
+            Image(systemName: "calendar")
+                .font(.body).foregroundColor(.secondary)
+            Text(launch.date).font(.body).foregroundColor(.secondary)
+        }//.background(Color(.red))
     }
 }
 
@@ -69,54 +72,63 @@ struct ClockPip: View {
     var launch:Launch
 
     var body: some View {
-        Image(systemName: "clock").foregroundColor(.secondary)
-        if let time = launch.windowOpenDate
-        {
-            let dateFormatter = DateFormatter()
-            Text(dateFormatter.string(from: time)).font(.body).foregroundColor(.secondary)
-        }
-        else
-        {
-            Text("-").font(.body).foregroundColor(.secondary)
-        }
+        HStack{
+            if let time = launch.windowOpenDate
+            {
+                Image(systemName: "clock").foregroundColor(.secondary)
+                let dateString = TwentyFourHourTimeFormatter.sharedInstance.string(from: time)
+                Text(dateString).font(.body).foregroundColor(.secondary)
+            }
+            else
+            {
+               // Text(" ").font(.body).foregroundColor(.secondary)
+            }
+        }//.background(Color(.blue))
     }
 }
 
 
 struct WeatherPip: View {
     var launch:Launch
-
+ 
     var body: some View {
-        switch launch.weather {
-        case .unknown:
-            Text("-").font(.body).foregroundColor(.secondary)
-        case .sun:
-            Image(systemName: "sun.max").foregroundColor(.secondary)
-        case .clouds:
-            Image(systemName: "cloud").foregroundColor(.secondary)
-        case .rain:
-            Image(systemName: "cloud.rain").foregroundColor(.secondary)
-        default:
-            Text("-").font(.body).foregroundColor(.secondary)
-        }
-
-        if let temp = launch.temperature
-        {
-            let tempInt = Int(temp)
-            Text(String(tempInt)+"°").font(.body).foregroundColor(.secondary)
-        }
-//        else
-//        {
-//            Text("-").font(.body).foregroundColor(.secondary)
-//        }
+        HStack{
+            if let weather = launch.weather
+            {
+                switch weather {
+                case .unknown:
+                    Text(" ").font(.body).foregroundColor(.secondary)
+                case .sun:
+                    Image(systemName: "sun.max").foregroundColor(.secondary)
+                case .clouds:
+                    Image(systemName: "cloud").foregroundColor(.secondary)
+                case .rain:
+                    Image(systemName: "cloud.rain").foregroundColor(.secondary)
+                //            default:
+                //                Text(" ").font(.body).foregroundColor(.secondary)
+                }
+            }
+            if let temp = launch.temperature
+            {
+                let tempInt = Int(temp)
+                Text(String(tempInt)+"°").font(.body).foregroundColor(.secondary)
+            }
+            //        else
+            //        {
+            //            Text("-").font(.body).foregroundColor(.secondary)
+            //        }
+        }//.background(Color(.green))
     }
 }
 
 struct LaunchRow_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
-    static var launch1 = networkManager.launches[1]
     static var previews: some View {
-        Text("test")
-        // LaunchRow(launch:launch1)
+        LaunchRow(launch:networkManager.launches[0])
+            .previewLayout(.sizeThatFits)
+        LaunchRow(launch:networkManager.launches[1])
+            .previewLayout(.sizeThatFits)
+        LaunchRow(launch:networkManager.launches[4])
+            .previewLayout(.sizeThatFits)
     }
 }

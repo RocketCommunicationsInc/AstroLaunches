@@ -25,17 +25,11 @@ struct Launch{
     let weather:Weather? //
    // let win_open:String?
     
-    //let dateFormatter = ISO8601DateFormatter()
 
 
     
     init(_ launchReply:LaunchReply)
     {
-        // setup date formatter
-       // dateFormatter.formatOptions = [.withInternetDateTime,.withDashSeparatorInDate,.withColonSeparatorInTime]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm'Z'"
-
         name = launchReply.name
         date  = launchReply.date_str
         temperature  = launchReply.weather_temp

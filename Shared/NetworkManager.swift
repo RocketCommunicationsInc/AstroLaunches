@@ -33,20 +33,20 @@ class NetworkManager:ObservableObject
     init(){
         var url:URL?
         let runningInPreview = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"]
-//        if (runningInPreview == "1")
-//        {
-//            let path = Bundle.main.path(forResource: "launches", ofType: "json")!
-//            url = URL(fileURLWithPath: path)
-//            URLSession.shared.dataTask(with: url!) { (data,_ , _) in
-//                guard let data = data else {return}
-//                let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
-//                myLaunches.result.forEach() { launchJSON in
-//                    self.launches.append(Launch(launchJSON))
-//                }
-//            }
-//            return
-//        }
-        if ((Settings.localData) || runningInPreview == "1")
+        if (runningInPreview == "1")
+        {
+            let path = Bundle.main.path(forResource: "launches", ofType: "json")!
+            url = URL(fileURLWithPath: path)
+            let data = NSData(contentsOf: url!)
+            let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data! as Data)
+            myLaunches.result.forEach() { launchJSON in
+                self.launches.append(Launch(launchJSON))
+
+            }
+            return
+        }
+        
+        if (Settings.localData)
         {
             let path = Bundle.main.path(forResource: "launches", ofType: "json")!
             url = URL(fileURLWithPath: path)

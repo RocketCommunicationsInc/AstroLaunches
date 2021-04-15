@@ -12,6 +12,7 @@ struct DateFormatters
     init() {
         _ = ZuluDateFormatter.sharedInstance // init the ZuluDateFormatter
         _ = CountdownDateFormatter.sharedInstance // init the CountdownDateFormatter
+        _ = TwentyFourHourTimeFormatter.sharedInstance // init the TwentyFourHourTimeFormatter
     }
 }
 
@@ -25,10 +26,9 @@ struct ZuluDateFormatter {
     {
         // Work around a bug in DateFormatter where a nil date is returned when the string is valid
         // by assigning to an NSDate first, then converting back to Date.
-        let preciseNSDate:NSDate = ZuluDateFormatter.dateFormatter.date(from: string)!as NSDate
-        let preciseDate:Date = preciseNSDate as Date
-   //     print(preciseDate)
-        return preciseDate
+        let intermediateNSDate:NSDate = ZuluDateFormatter.dateFormatter.date(from: string)!as NSDate
+        let date:Date = intermediateNSDate as Date
+        return date
     }
     
     init() {
@@ -51,9 +51,25 @@ struct CountdownDateFormatter {
     }
 
     init() {
-        // Set up the particular format that the launch API uses
         CountdownDateFormatter.dateFormatter.dateFormat = "MM dd HH:mm"
-        //ZuluDateFormatter.dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
     }
 
 }
+
+struct TwentyFourHourTimeFormatter {
+    
+    static let sharedInstance = TwentyFourHourTimeFormatter()
+    static var dateFormatter = DateFormatter()
+
+    func string(from date: Date) -> String
+    {
+        let str = TwentyFourHourTimeFormatter.dateFormatter.string(from: date)
+        return str
+    }
+
+    init() {
+        TwentyFourHourTimeFormatter.dateFormatter.dateFormat = "HH:mm"
+    }
+
+}
+
