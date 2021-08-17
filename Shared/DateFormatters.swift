@@ -1,5 +1,5 @@
 //
-//  ZuluDateFormatter.swift
+//  DateFormatters.swift
 //  Astro Launches
 //
 //  Created by rocketjeff on 4/2/21.
@@ -43,10 +43,13 @@ struct CountdownDateFormatter {
     
     static let sharedInstance = CountdownDateFormatter()
     static var dateFormatter = DateFormatter()
-
+    let now = Date()
+    
     func string(from date: Date) -> String
     {
-        let str = CountdownDateFormatter.dateFormatter.string(from: date)
+        let offset = date.timeIntervalSince(now)
+        let formatter = DateComponentsFormatter()
+        let str = formatter.string(from: offset) ?? ""
         return str
     }
 

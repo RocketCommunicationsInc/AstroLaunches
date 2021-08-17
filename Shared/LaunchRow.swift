@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import WidgetKit
 struct LaunchRow: View {
     
     var launch:Launch
@@ -39,17 +39,23 @@ struct LaunchRow: View {
 }
 
 struct CountdownPip: View {
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var launch:Launch
 
     var body: some View {
         HStack {
-            VStack{
-                if let windowOpenDate = launch.windowOpenDate
-                {
-                    let dateText = CountdownDateFormatter.sharedInstance.string(from: windowOpenDate)
-                    Text(dateText).foregroundColor(.white).bold()
-                Text("D H M S").foregroundColor(.white)
-                }
+            if let windowOpenDate = launch.windowOpenDate
+            {
+                Text("T-")
+                    .foregroundColor(.white)
+                
+                Text(windowOpenDate, style: .timer)
+                    .foregroundColor(.white)
+                    .font(.system(.body, design: .monospaced))
+                //                    Text("H: M: S")
+                //                        .foregroundColor(.white)
+                //                        .font(.system(.body, design: .monospaced))
             }
         }
     }
