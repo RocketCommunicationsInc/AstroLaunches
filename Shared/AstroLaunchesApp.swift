@@ -34,7 +34,7 @@ struct Astro_LaunchesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LaunchList(networkManager: networkManager)
+            LaunchList(networkManager: networkManager).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         }
     }
 }
