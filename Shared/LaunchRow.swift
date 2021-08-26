@@ -89,7 +89,7 @@ struct ClockPip: View {
             {
                // Text(" ").font(.body).foregroundColor(.secondary)
             }
-        }//.background(Color(.blue))
+        }
     }
 }
 

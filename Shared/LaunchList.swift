@@ -58,8 +58,8 @@ struct SettingsView: View {
                 Toggle(isOn: $localData, label: {
                     Text("Use Stored Test Data")
                 })
-                
-            }
+            }.padding().background(Color.astroUIBackground)
+            
             .navigationBarTitle("Settings")
             .navigationBarItems(trailing: Button("Done", action: {
                 self.presentationMode.wrappedValue.dismiss()
