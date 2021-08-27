@@ -12,6 +12,8 @@ import AstroSwiftFoundation
 struct LaunchList: View {
     @ObservedObject var networkManager: NetworkManager
     @State var showingSettings = false
+    @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized darkMode in Settings.init
+    @Environment(\.colorScheme) var systemColorScheme
 
     var body: some View{
         NavigationView{
@@ -25,7 +27,7 @@ struct LaunchList: View {
                 }
             }
             .listRowBackground(Color.astroUITableCell)
-            //  .listSeparatorStyle(.singleLine, color: .astroUITableSeparator)
+            // to-do: add list separator color here for iOS 15
             .navigationTitle("Launches")
             .toolbar {
                 #if os(iOS) // settings on MacOS handled through Settings object
@@ -36,12 +38,11 @@ struct LaunchList: View {
                 }
                 #endif
             }
-        }.sheet(isPresented: $showingSettings) {
+        }.conditionalModifier(darkMode, ForceDarkMode())
+        .sheet(isPresented: $showingSettings) {
             #if os(iOS)
-
             SettingsView()
             #endif
-
             }
     }
 }
@@ -51,7 +52,7 @@ struct LaunchList: View {
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @AppStorage(Settings.localDataKey) var localData = false // false is unused because we've initialized localDataKey in Settings.init
-    @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized localDataKey in Settings.init
+    @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized darkMode in Settings.init
 
     
     var body: some View {

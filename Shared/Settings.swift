@@ -21,10 +21,10 @@ struct Settings {
             return UserDefaults.standard.bool(forKey: Settings.localDataKey)
         }
     
-    // Create a get-only property for accessing darkMode where $AppStorage is not allowed
-    static var darkMode:Bool {
-            return UserDefaults.standard.bool(forKey: Settings.darkModeKey)
-        }
+//    // Create a get-only property for accessing darkMode where $AppStorage is not allowed
+//    static var darkMode:Bool {
+//            return UserDefaults.standard.bool(forKey: Settings.darkModeKey)
+//        }
     
     // Do one-time init of these defaults at program start. This means that initial values set in view $AppStorage is ignored.
     init() {
