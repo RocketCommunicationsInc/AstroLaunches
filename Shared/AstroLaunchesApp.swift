@@ -34,7 +34,14 @@ struct Astro_LaunchesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LaunchList(networkManager: networkManager).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+            if (Settings.darkMode)
+            {
+                LaunchList(networkManager: networkManager).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/) // need to find a way to observe changes to dark mode and react. Possibly by pushing this down a level to LaunchList?
+            }
+            else
+            {
+                LaunchList(networkManager: networkManager)
+            }
         }
     }
 }
