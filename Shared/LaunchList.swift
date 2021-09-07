@@ -20,7 +20,7 @@ struct LaunchList: View {
             List {
                 ForEach(networkManager.launches, id: \.name) { launch in
                     NavigationLink(
-                        destination: Text("Destination"),
+                        destination: LaunchDetail(launch: launch),
                         label: {
                             LaunchRow(launch:launch)
                         }).listRowBackground(Color.astroUITableCell)
