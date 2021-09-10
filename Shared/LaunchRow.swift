@@ -13,6 +13,7 @@ struct LaunchRow: View {
     
     var body: some View {
         VStack {
+            // Launch Image and Countdown clock
             ZStack(alignment:.bottomTrailing){
                 Image("launch").resizable().frame(minWidth: 10, idealWidth: 100, maxWidth: .infinity, minHeight: 10, idealHeight: 100, maxHeight: 100, alignment: .center)
                     .cornerRadius(5)
