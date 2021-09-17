@@ -18,16 +18,13 @@ struct LaunchDetail: View {
                     CountdownPip(launch: launch)
                 }
                 HStack {
-                    Text(launch.name).font(.title2).bold()
+                    Text(launch.name).font(.title3).bold()
                     Spacer()
                 }.padding(.vertical, 4)
-                ZStack{
-                    ClockPip(launch: launch) // a trick to center it in the HStack below: add in a zStack where it is naturally centered
-                    HStack (){
-                        CalendarPip(launch: launch)
-                        Spacer()
-                        WeatherPip(launch: launch)
-                    }
+                HStack{
+                    CalendarPip(launch: launch)
+                    Spacer()
+                    ClockPip(launch: launch)
                 }.padding(.vertical, 4)
                 HStack {
                     Text("Mission").font(.title3)
