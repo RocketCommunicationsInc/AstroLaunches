@@ -14,7 +14,14 @@ struct LaunchDetail: View {
             VStack(){
                 // Launch Image and Countdown clock
                 ZStack(alignment:.bottomTrailing){
+                    if let image = launch.image
+                    {
+                        Image(uiImage: image).resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
+                    }
+                    else
+                    {
                     Image("launch").resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
+                    }
                     CountdownPip(launch: launch)
                 }
                 HStack {

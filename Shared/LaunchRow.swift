@@ -15,8 +15,15 @@ struct LaunchRow: View {
         VStack {
             // Launch Image and Countdown clock
             ZStack(alignment:.bottomTrailing){
-                Image("launch").resizable().frame(minWidth: 10, idealWidth: 100, maxWidth: .infinity, minHeight: 10, idealHeight: 100, maxHeight: 100, alignment: .center)
-                    .cornerRadius(5)
+                if let image = launch.image
+                {
+                    Image(uiImage: image).resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
+                        
+                }
+                else
+                {
+                Image("launch").resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
+                }
                 CountdownPip(launch: launch)
             }
             HStack
@@ -94,38 +101,7 @@ struct ClockPip: View {
 }
 
 
-//struct WeatherPip: View {
-//    var launch:Launch
-//
-//    var body: some View {
-//        HStack{
-//            if let weather = launch.weather
-//            {
-//                switch weather {
-//                case .unknown:
-//                    Text(" ").font(.body).foregroundColor(.secondary)
-//                case .sun:
-//                    Image(systemName: "sun.max").foregroundColor(.secondary)
-//                case .clouds:
-//                    Image(systemName: "cloud").foregroundColor(.secondary)
-//                case .rain:
-//                    Image(systemName: "cloud.rain").foregroundColor(.secondary)
-//                //            default:
-//                //                Text(" ").font(.body).foregroundColor(.secondary)
-//                }
-//            }
-//            if let temp = launch.temperature
-//            {
-//                let tempInt = Int(temp)
-//                Text(String(tempInt)+"°").font(.body).foregroundColor(.secondary)
-//            }
-//            //        else
-//            //        {
-//            //            Text("-").font(.body).foregroundColor(.secondary)
-//            //        }
-//        }//.background(Color(.green))
-//    }
-//}
+
 
 struct LaunchRow_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
