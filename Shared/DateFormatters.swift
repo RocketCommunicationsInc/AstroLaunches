@@ -33,7 +33,7 @@ struct ZuluDateFormatter {
     
     init() {
         // Set up the particular format that the launch API uses
-        ZuluDateFormatter.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mmZ"
+        ZuluDateFormatter.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         //ZuluDateFormatter.dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
     }
 }
@@ -72,6 +72,24 @@ struct TwentyFourHourTimeFormatter {
 
     init() {
         TwentyFourHourTimeFormatter.dateFormatter.dateFormat = "HH:mm"
+    }
+
+}
+
+
+struct ShortDateFormatter {
+    
+    static let sharedInstance = ShortDateFormatter()
+    static var dateFormatter = DateFormatter()
+
+    func string(from date: Date) -> String
+    {
+        let str = ShortDateFormatter.dateFormatter.string(from: date)
+        return str
+    }
+
+    init() {
+        ShortDateFormatter.dateFormatter.dateFormat = "MMMMd"
     }
 
 }

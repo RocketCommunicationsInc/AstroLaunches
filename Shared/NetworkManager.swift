@@ -7,22 +7,12 @@
 
 import Foundation
 
+
+
 private struct LaunchReplies:Decodable{
-    let count:Int
-    let result:[LaunchReply]
+    //let count:Int
+    let results:[LaunchReply]
 }
-
-
-struct LaunchReply:Decodable{
-    let name:String
-    let date_str:String
-    let t0:String?
-    let weather_temp:Float?
-    let weather_icon:String?
-    let win_open:String?
-    let win_close:String?
-}
-
 
 
 class NetworkManager:ObservableObject
@@ -39,7 +29,7 @@ class NetworkManager:ObservableObject
             url = URL(fileURLWithPath: path)
             let data = NSData(contentsOf: url!)
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data! as Data)
-            myLaunches.result.forEach() { launchJSON in
+            myLaunches.results.forEach() { launchJSON in
                 self.launches.append(Launch(launchJSON))
 
             }
@@ -53,7 +43,7 @@ class NetworkManager:ObservableObject
         }
         else
         {
-            url = URL(string: "https://fdo.rocketlaunch.live/json/launches?key=8ce4c428-bb89-4c5f-953c-1ba70eab26fa")
+            url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=list")
         }
         
         if let url = url
@@ -65,7 +55,7 @@ class NetworkManager:ObservableObject
                // self.launchJSONs = myLaunches.result
                 
                 // post process launchJSONs into launches
-                myLaunches.result.forEach() { launchJSON in
+                myLaunches.results.forEach() { launchJSON in
                     self.launches.append(Launch(launchJSON))
                 }
 
