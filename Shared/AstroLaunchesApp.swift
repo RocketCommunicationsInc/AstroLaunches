@@ -29,6 +29,11 @@ struct Astro_LaunchesApp: App {
         
         // customize the app-wide List (UITableView) appearance
         UITableView.appearance().backgroundColor = .astroUIBackground
+        UITableViewCell.appearance().selectedBackgroundView = {
+                    let view = UIView()
+                    view.backgroundColor = .astroUITableSelectedCell
+                    return view
+                }()
         #endif
     }
     
