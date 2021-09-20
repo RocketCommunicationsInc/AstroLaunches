@@ -17,26 +17,28 @@ struct LaunchList: View {
 
     var body: some View{
         NavigationView{
-            List {
-                ForEach(networkManager.launches, id: \.name) { launch in
-                    NavigationLink(
-                        destination: LaunchDetail(launch: launch),
-                        label: {
-                            LaunchRow(launch:launch)
-                        }).listRowBackground(Color.astroUITableCell)
+            ScrollView {
+                LazyVStack {
+                    ForEach(networkManager.launches, id: \.name) { launch in
+                        NavigationLink(
+                            destination: LaunchDetail(launch: launch),
+                            label: {
+                                LaunchRow(launch:launch)
+                            }).listRowBackground(Color.astroUITableCell)
+                    }
                 }
+                .listRowBackground(Color.astroUITableCell)
+                // to-do: add list separator color here for iOS 15
+                .navigationTitle("Launches")
+                .toolbar {
+                    #if os(iOS) // settings on MacOS handled through Settings object
+                    ToolbarItem(placement: .automatic)
+                    {
+                        Button(action: {self.showingSettings = true
+                        }) {Label("Settings", systemImage: "gear")}
+                    }
+                    #endif
             }
-            .listRowBackground(Color.astroUITableCell)
-            // to-do: add list separator color here for iOS 15
-            .navigationTitle("Launches")
-            .toolbar {
-                #if os(iOS) // settings on MacOS handled through Settings object
-                ToolbarItem(placement: .automatic)
-                {
-                    Button(action: {self.showingSettings = true
-                    }) {Label("Settings", systemImage: "gear")}
-                }
-                #endif
             }
         }.conditionalModifier(darkMode, ForceDarkMode())
         .sheet(isPresented: $showingSettings) {
