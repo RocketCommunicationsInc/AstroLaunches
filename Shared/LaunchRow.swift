@@ -12,7 +12,7 @@ struct LaunchRow: View {
     var launch:Launch
     
     var body: some View {
-        VStack {
+        VStack(spacing: -8) {
             // Launch Image and Countdown clock
             ZStack(alignment:.bottomTrailing){
                 if let image = launch.image
@@ -25,17 +25,20 @@ struct LaunchRow: View {
                 Image("launch").resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
                 }
                 CountdownPip(launch: launch)
+                    //.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .padding(.all, 8.00)
+                    .background(.ultraThinMaterial)
             }
             HStack
             {
                 Text(launch.name).font(.title2).bold()
                 Spacer()
-            }
+            }.padding()
             HStack{
                 CalendarPip(launch: launch)
                 Spacer()
                 ClockPip(launch: launch)                
-            }.padding(.vertical, 2)
+            }.padding()//.padding(.vertical, 2)
         }
     }
     
@@ -60,7 +63,8 @@ struct CountdownPip: View {
                 //                        .foregroundColor(.white)
                 //                        .font(.system(.body, design: .monospaced))
             }
-        }
+        }//.clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+
     }
 }
 
