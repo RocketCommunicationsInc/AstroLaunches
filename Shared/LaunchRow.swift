@@ -17,12 +17,21 @@ struct LaunchRow: View {
             ZStack(alignment:.bottomTrailing){
                 if let image = launch.image
                 {
-                    Image(uiImage: image).resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
-                        
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .topLeading)
+                        .clipped()
+                    
                 }
                 else
                 {
-                Image("launch").resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
+                    Image("launch")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .topLeading)
+                        .clipped()
+
                 }
                 CountdownPip(launch: launch)
                     //.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))

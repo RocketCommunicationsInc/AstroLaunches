@@ -16,13 +16,24 @@ struct LaunchDetail: View {
                 ZStack(alignment:.bottomTrailing){
                     if let image = launch.image
                     {
-                        Image(uiImage: image).resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 400, maxHeight: 400, alignment: .center)
+                            .clipped()
                     }
                     else
                     {
-                    Image("launch").resizable().frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .center)
+                        Image("launch")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 400, maxHeight: 400, alignment: .center)
+                            .clipped()
                     }
                     CountdownPip(launch: launch)
+                        .padding(.all, 8.00)
+                        .background(.ultraThinMaterial)
+
                 }
                 HStack {
                     Text(launch.name).font(.title3).bold()
