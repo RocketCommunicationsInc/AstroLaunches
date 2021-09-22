@@ -12,9 +12,9 @@ struct LaunchRow: View {
     var launch:Launch
     
     var body: some View {
-        VStack(spacing: -8) {
+        VStack() {
             // Launch Image and Countdown clock
-            ZStack(alignment:.bottomTrailing){
+            ZStack(alignment:.bottom){
                 if let image = launch.image
                 {
                     Image(uiImage: image)
@@ -22,7 +22,6 @@ struct LaunchRow: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .topLeading)
                         .clipped()
-                    
                 }
                 else
                 {
@@ -33,27 +32,39 @@ struct LaunchRow: View {
                         .clipped()
 
                 }
-                CountdownPip(launch: launch)
-                    //.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .padding(.all, 8.00)
-                    .background(.ultraThinMaterial)
+                HStack() {
+                    Image("AstroLogoTiny")
+                        .frame(minWidth: 45, idealWidth: 45, maxWidth: 45, minHeight: 19, idealHeight: 19, maxHeight: 19, alignment: .topLeading)
+                        .padding(.leading, 8)
+                        .padding(.top, 4)
+                        .padding(.bottom, 4)
+
+                    Spacer()
+                    CountdownPip(launch: launch)
+                        .padding(.trailing, 8)
+                        .padding(.top, 4)
+                        .padding(.bottom, 4)
+                }
+                .frame(maxWidth: .infinity)
+                .background(.ultraThinMaterial)
+
             }
             HStack
             {
-                Text(launch.name).font(.title2).bold()
+                Text(launch.name).font(.title2).bold().foregroundColor(Color.textColor)
                 Spacer()
-            }.padding()
+            }.padding(.bottom, 4)
             HStack{
-                CalendarPip(launch: launch)
+                CalendarPip(launch: launch).padding(.trailing, 6)
+                ClockPip(launch: launch)
                 Spacer()
-                ClockPip(launch: launch)                
-            }.padding()//.padding(.vertical, 2)
-        }
+            }//.padding(.vertical, 2)
+        }.padding().background(Color.astroUIBackground)
     }
     
 }
 
-struct CountdownPip: View {
+struct CountdownPip: View { 
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var launch:Launch
@@ -85,9 +96,9 @@ struct CalendarPip: View {
             if let time = launch.windowOpenDate
             {
                 Image(systemName: "calendar")
-                    .font(.body).foregroundColor(.secondary)
+                    .font(.body).foregroundColor(.textColor)
                 let dateString = ShortDateFormatter.sharedInstance.string(from: time)
-                Text(dateString).font(.body).foregroundColor(.secondary)
+                Text(dateString).font(.body).foregroundColor(.textColor)
             }
         }//.background(Color(.red))
     }
@@ -101,9 +112,9 @@ struct ClockPip: View {
         HStack{
             if let time = launch.windowOpenDate
             {
-                Image(systemName: "clock").foregroundColor(.secondary)
+                Image(systemName: "clock").foregroundColor(.textColor)
                 let dateString = TwentyFourHourTimeFormatter.sharedInstance.string(from: time)
-                Text(dateString).font(.body).foregroundColor(.secondary)
+                Text(dateString).font(.body).foregroundColor(.textColor)
             }
             else
             {
@@ -122,6 +133,7 @@ struct LaunchRow_Previews: PreviewProvider {
         LaunchRow(launch:networkManager.launches[0])
             .previewLayout(.sizeThatFits)
         LaunchRow(launch:networkManager.launches[1])
+            .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
         LaunchRow(launch:networkManager.launches[4])
             .previewLayout(.sizeThatFits)
