@@ -32,6 +32,9 @@
 		7C6A026126278C6900273563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
 		7C7243C926E8188400233B33 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7243C826E8188400233B33 /* LaunchDetail.swift */; };
 		7C7243CA26E8188400233B33 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7243C826E8188400233B33 /* LaunchDetail.swift */; };
+		7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
+		7C79988426FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
+		7C79988526FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7C834938260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
 		7C834939260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
@@ -109,6 +112,7 @@
 		7C6954092612876E008A811E /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		7C6A025D26278C6900273563 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7C7243C826E8188400233B33 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
+		7C79988226FB7EC700FCAEF2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7C834937260931D1008B4895 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 				7C6954092612876E008A811E /* Launch.swift */,
 				7C834937260931D1008B4895 /* Settings.swift */,
 				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
+				7C79988226FB7EC700FCAEF2 /* Colors.swift */,
 				7C44C05B2608FEDB00B8D86A /* launches.json */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
 				7C6A025626278C0C00273563 /* Preview Content */,
@@ -438,6 +443,7 @@
 					};
 					7CF87F4925AE498A00BD9D06 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1300;
 					};
 					7CF87F4C25AE498A00BD9D06 = {
 						CreatedOnToolsVersion = 12.3;
@@ -546,6 +552,7 @@
 				7C5661F626D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */,
 				7C3D4CCE2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
+				7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7CF87F3025AE45F300BD9D06 /* LaunchList.swift in Sources */,
 				7C7243C926E8188400233B33 /* LaunchDetail.swift in Sources */,
 				7C69540A2612876E008A811E /* Launch.swift in Sources */,
@@ -562,6 +569,7 @@
 				7C5661F726D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */,
 				7C3D4CCF2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
+				7C79988426FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7CF87F3125AE45F300BD9D06 /* LaunchList.swift in Sources */,
 				7C7243CA26E8188400233B33 /* LaunchDetail.swift in Sources */,
 				7C69540B2612876E008A811E /* Launch.swift in Sources */,
@@ -574,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CF87F6325AE498B00BD9D06 /* NotificationController.swift in Sources */,
+				7C79988526FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7CF87F6125AE498B00BD9D06 /* ContentView.swift in Sources */,
 				7CF87F6725AE498B00BD9D06 /* ComplicationController.swift in Sources */,
 				7CF87F5F25AE498B00BD9D06 /* Astro_LaunchesApp.swift in Sources */,
@@ -662,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -716,7 +725,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -734,7 +743,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -757,7 +766,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -916,13 +925,20 @@
 		7CF87F7825AE498C00BD9D06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -930,9 +946,15 @@
 		7CF87F7925AE498C00BD9D06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -18,12 +18,12 @@ struct LaunchList: View {
     var body: some View{
         NavigationView{
             ScrollView {
-                LazyVStack {
+                LazyVStack() {
                     ForEach(networkManager.launches, id: \.name) { launch in
                         NavigationLink(
                             destination: LaunchDetail(launch: launch),
                             label: {
-                                LaunchRow(launch:launch)
+                                LaunchRow(launch:launch).padding(.all,4)
                             }).listRowBackground(Color.astroUITableCell)
                     }
                 }
