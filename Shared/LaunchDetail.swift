@@ -75,10 +75,11 @@ struct Tag: View {
     var body: some View {
             Text(text)
                 .padding(4.0)
-                .font(.body).foregroundColor(.secondary)
-                //.border(Color.blue, width: 2)
-                .background(Capsule(style: .continuous)
-                                .stroke(Color.astroUITint, style: StrokeStyle(lineWidth: 2)))
-
+                .font(.caption).foregroundColor(.launchesTextColor)
+                .background(RoundedRectangle(cornerRadius: 3.0, style: .continuous)
+                                .stroke(Color.launchesTagBorderColor, style: StrokeStyle(lineWidth: 1))
+                                .background(Color.launchesTagBackgroundColor)
+                )
+               
     }
 }

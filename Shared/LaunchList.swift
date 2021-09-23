@@ -23,7 +23,11 @@ struct LaunchList: View {
                         NavigationLink(
                             destination: LaunchDetail(launch: launch),
                             label: {
-                                LaunchRow(launch:launch).padding(.all,4)
+                                LaunchRow(launch:launch)
+                                    .padding(.top,3)
+                                    .padding(.bottom,3)
+                                    .padding(.leading,6)
+                                    .padding(.trailing,6)
                             }).listRowBackground(Color.astroUITableCell)
                     }
                 }
