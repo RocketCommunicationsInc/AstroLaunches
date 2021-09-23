@@ -212,15 +212,15 @@
 		7CF87F1525AE45F300BD9D06 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */,
 				7C5661F526D99BBA00191E7A /* View+ConditionalModifier.swift */,
+				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
+				7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */,
 				7CF87F1925AE45F300BD9D06 /* LaunchList.swift */,
 				7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */,
 				7C7243C826E8188400233B33 /* LaunchDetail.swift */,
 				7CD3C90426028B020071FB78 /* NetworkManager.swift */,
 				7C6954092612876E008A811E /* Launch.swift */,
 				7C834937260931D1008B4895 /* Settings.swift */,
-				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
 				7C79988226FB7EC700FCAEF2 /* Colors.swift */,
 				7C44C05B2608FEDB00B8D86A /* launches.json */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,

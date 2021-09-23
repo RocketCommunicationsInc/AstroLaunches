@@ -49,17 +49,21 @@ struct LaunchRow: View {
                 .background(.ultraThinMaterial)
 
             }
-            HStack
-            {
-                Text(launch.name).font(.title2).bold().foregroundColor(Color.textColor)
-                Spacer()
-            }.padding(.bottom, 4)
-            HStack{
-                CalendarPip(launch: launch).padding(.trailing, 6)
-                ClockPip(launch: launch)
-                Spacer()
-            }//.padding(.vertical, 2)
-        }.padding().background(Color.astroUIBackground)
+            VStack {
+                HStack
+                {
+                    Text(launch.missionName).font(.title2).bold().foregroundColor(Color.launchesTextColor)
+                    Tag(text: launch.rocketName)
+                    Spacer()
+                }.padding(.bottom, 4)
+                HStack{
+                    CalendarPip(launch: launch).padding(.trailing, 6)
+                    ClockPip(launch: launch)
+                    Spacer()
+                }
+            }.padding()
+           
+        }.background(Color.launchesCardColor).cornerRadius(6)
     }
     
 }
@@ -96,9 +100,9 @@ struct CalendarPip: View {
             if let time = launch.windowOpenDate
             {
                 Image(systemName: "calendar")
-                    .font(.body).foregroundColor(.textColor)
+                    .font(.body).foregroundColor(.launchesTextColor)
                 let dateString = ShortDateFormatter.sharedInstance.string(from: time)
-                Text(dateString).font(.body).foregroundColor(.textColor)
+                Text(dateString).font(.body).foregroundColor(.launchesTextColor)
             }
         }//.background(Color(.red))
     }
@@ -112,9 +116,9 @@ struct ClockPip: View {
         HStack{
             if let time = launch.windowOpenDate
             {
-                Image(systemName: "clock").foregroundColor(.textColor)
+                Image(systemName: "clock").foregroundColor(.launchesTextColor)
                 let dateString = TwentyFourHourTimeFormatter.sharedInstance.string(from: time)
-                Text(dateString).font(.body).foregroundColor(.textColor)
+                Text(dateString).font(.body).foregroundColor(.launchesTextColor)
             }
             else
             {

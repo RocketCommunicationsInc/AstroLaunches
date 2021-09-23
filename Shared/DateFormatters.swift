@@ -89,7 +89,7 @@ struct ShortDateFormatter {
     }
 
     init() {
-        ShortDateFormatter.dateFormatter.dateFormat = "MMMMd"
+        ShortDateFormatter.dateFormatter.dateFormat = "MMMM d"
     }
 
 }

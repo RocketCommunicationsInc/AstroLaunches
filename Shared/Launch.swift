@@ -26,7 +26,9 @@ struct LaunchReply:Decodable{
 
 
 struct Launch{
-    let name:String // the launch mission name, such as "OneWeb-6"
+    let name:String // the rocket and mission name, such as "Atlas V 401 | Landsat 9"
+    let missionName:String
+    let rocketName:String
     let windowOpenDate:Date?// the date and time the launch window opens, if known
     let windowEndDate:Date?// the date and time the launch window closes, if known
     let imageURL:URL?
@@ -37,6 +39,13 @@ struct Launch{
     init(_ launchReply:LaunchReply)
     {
         name = launchReply.name
+        
+        let barIndex = name.firstIndex(of: "|") ?? name.startIndex
+        let missionNameIndex = name.index(barIndex, offsetBy: 2)
+        missionName = String(name[missionNameIndex..<name.endIndex])
+        
+        let rocketNameIndex = name.index(barIndex, offsetBy: -1)
+        rocketName = String(name[name.startIndex..<rocketNameIndex])
 
         // Convert dates using our ZuluDateFormatter, which can handle some peciliaries with this format
         if let date = launchReply.window_start
