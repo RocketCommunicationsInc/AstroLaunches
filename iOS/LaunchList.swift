@@ -19,7 +19,7 @@ struct LaunchList: View {
         NavigationView{
             ScrollView {
                 LazyVStack() {
-                    ForEach(networkManager.launches, id: \.name) { launch in
+                    ForEach(networkManager.launches, id: \.id) { launch in
                         NavigationLink(
                             destination: LaunchDetail(launch: launch),
                             label: {
