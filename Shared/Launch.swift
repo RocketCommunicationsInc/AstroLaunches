@@ -18,16 +18,32 @@ enum Weather{
 
 
 struct LaunchReply:Decodable{
+    let id:String
     let name:String
     let window_start:String?
     let window_end:String?
+    let mission:String?
+    let mission_type:String
+    let status:Status?
     let image:String?
 }
 
+struct Mission:Decodable{
+    let name:String
+    let description:String?
+//    let type:String?
+}
+
+struct Status:Decodable{
+    let name:String
+    let abbrev:String?
+}
 
 struct Launch{
-    let name:String // the rocket and mission name, such as "Atlas V 401 | Landsat 9"
+    let id:String
+   // let name:String // the rocket and mission name, such as "Atlas V 401 | Landsat 9"
     let missionName:String
+  //  let missionDescription:String?
     let rocketName:String
     let windowOpenDate:Date?// the date and time the launch window opens, if known
     let windowEndDate:Date?// the date and time the launch window closes, if known
@@ -38,11 +54,15 @@ struct Launch{
     // Parse a LaunchReply, see which fields were returned and convert to Swift types
     init(_ launchReply:LaunchReply)
     {
-        name = launchReply.name
+        id = launchReply.id
+        let name = launchReply.name
         
+        // the Mission structure is missing from some launches, so derive the rocket and mission name from the long name with the bar separator, such as "Atlas V 401 | Landsat 9"
         let barIndex = name.firstIndex(of: "|") ?? name.startIndex
         let missionNameIndex = name.index(barIndex, offsetBy: 2)
         missionName = String(name[missionNameIndex..<name.endIndex])
+
+      //  missionDescription = launchReply.mission?.description
         
         let rocketNameIndex = name.index(barIndex, offsetBy: -1)
         rocketName = String(name[name.startIndex..<rocketNameIndex])
@@ -75,6 +95,7 @@ struct Launch{
             self.imageURL = nil
         }
         
+
         if (imageURL != nil)
         {
             do {
@@ -88,5 +109,6 @@ struct Launch{
         {
             image = nil
         }
+        
     }
 }

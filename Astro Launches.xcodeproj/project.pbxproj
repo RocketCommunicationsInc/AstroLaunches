@@ -18,7 +18,6 @@
 		7C54438126178C65007CCCC4 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
 		7C5661F626D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5661F526D99BBA00191E7A /* View+ConditionalModifier.swift */; };
 		7C5661F726D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5661F526D99BBA00191E7A /* View+ConditionalModifier.swift */; };
-		7C5A1AF4261BB50F00E452DE /* LaunchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */; };
 		7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7C5A1B02261BB52300E452DE /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
 		7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
@@ -38,6 +37,8 @@
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7C834938260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
 		7C834939260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
+		7C8BFBF1270374BD00D6AB09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
+		7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
@@ -214,13 +215,8 @@
 			children = (
 				7C5661F526D99BBA00191E7A /* View+ConditionalModifier.swift */,
 				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
-				7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */,
-				7CF87F1925AE45F300BD9D06 /* LaunchList.swift */,
-				7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */,
-				7C7243C826E8188400233B33 /* LaunchDetail.swift */,
 				7CD3C90426028B020071FB78 /* NetworkManager.swift */,
 				7C6954092612876E008A811E /* Launch.swift */,
-				7C834937260931D1008B4895 /* Settings.swift */,
 				7C79988226FB7EC700FCAEF2 /* Colors.swift */,
 				7C44C05B2608FEDB00B8D86A /* launches.json */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
@@ -245,6 +241,11 @@
 		7CF87F2225AE45F300BD9D06 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */,
+				7C834937260931D1008B4895 /* Settings.swift */,
+				7CF87F1925AE45F300BD9D06 /* LaunchList.swift */,
+				7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */,
+				7C7243C826E8188400233B33 /* LaunchDetail.swift */,
 				7CF87F2325AE45F300BD9D06 /* Info.plist */,
 			);
 			path = iOS;
@@ -537,6 +538,7 @@
 				7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */,
 				7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */,
 				7C44C05F2608FEDB00B8D86A /* launches.json in Resources */,
+				7C8BFBF1270374BD00D6AB09 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +599,7 @@
 				7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */,
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
 				7CF87F8825AE49B600BD9D06 /* ContentView.swift in Sources */,
-				7C5A1AF4261BB50F00E452DE /* LaunchRow.swift in Sources */,
+				7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */,
 				7C5A1B10261BB54500E452DE /* Settings.swift in Sources */,
 				7C5A1B02261BB52300E452DE /* Launch.swift in Sources */,
 				7CF87F8625AE49B600BD9D06 /* Astro_Launches_TVApp.swift in Sources */,
@@ -983,7 +985,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -1006,7 +1008,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

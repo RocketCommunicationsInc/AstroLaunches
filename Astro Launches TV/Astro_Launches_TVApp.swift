@@ -9,7 +9,12 @@ import SwiftUI
 
 @main
 struct Astro_Launches_TVApp: App {
+    
     @StateObject var networkManager = NetworkManager()
+
+    init(){
+        _ = DateFormatters() // init the DateFormatters
+    }
 
     var body: some Scene {
         WindowGroup {

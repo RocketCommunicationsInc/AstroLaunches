@@ -36,7 +36,7 @@ struct LaunchDetail: View {
 
                 }
                 HStack {
-                    Text(launch.name).font(.title3).bold()
+                    Text(launch.missionName).font(.title3).bold()
                     Spacer()
                 }.padding(.vertical, 4)
                 HStack{
@@ -79,7 +79,10 @@ struct Tag: View {
                 .background(RoundedRectangle(cornerRadius: 3.0, style: .continuous)
                                 .stroke(Color.launchesTagBorderColor, style: StrokeStyle(lineWidth: 1))
                                 .background(Color.launchesTagBackgroundColor)
+                                .shadow(color: .launchesTextColor, radius: 2, x:0, y: 0)
                 )
                
+               
     }
+    
 }
