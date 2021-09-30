@@ -7,23 +7,16 @@
 
 import Foundation
 import UIKit
+import AstroSwiftFoundation
 
-
-enum Weather{
-    case unknown
-    case sun
-    case clouds
-    case rain
-}
-
-
+// The Data Structures found in the JSON //
 struct LaunchReply:Decodable{
     let id:String
     let name:String
     let window_start:String?
     let window_end:String?
-    let mission:String?
-    let mission_type:String
+    let mission:Mission?
+    let rocket:Rocket?
     let status:Status?
     let image:String?
 }
@@ -31,6 +24,7 @@ struct LaunchReply:Decodable{
 struct Mission:Decodable{
     let name:String
     let description:String?
+    let type:String?
 //    let type:String?
 }
 
@@ -39,34 +33,46 @@ struct Status:Decodable{
     let abbrev:String?
 }
 
+struct Rocket:Decodable{
+    let id:Int
+    let configuration:RocketConfiguration?
+}
+
+struct RocketConfiguration:Decodable{
+    let name:String
+}
+
+// Our Launch Struct that converts the JSON data to Swift types, and checks for missing values
 struct Launch{
     let id:String
-   // let name:String // the rocket and mission name, such as "Atlas V 401 | Landsat 9"
     let missionName:String
-  //  let missionDescription:String?
+    let missionDescription:String
     let rocketName:String
     let windowOpenDate:Date?// the date and time the launch window opens, if known
     let windowEndDate:Date?// the date and time the launch window closes, if known
     let imageURL:URL?
     let image:UIImage?
+    let status:String?
+    let astroStatus:AstroStatus
     
-
     // Parse a LaunchReply, see which fields were returned and convert to Swift types
     init(_ launchReply:LaunchReply)
     {
         id = launchReply.id
-        let name = launchReply.name
+        missionName = launchReply.mission?.name ?? "Unknown Mission"
+        missionDescription = launchReply.mission?.description ?? "Unknown Mission Description"
+        rocketName = launchReply.rocket?.configuration?.name ?? "Unknown Rocket"
+        status = launchReply.status?.name ?? nil
         
-        // the Mission structure is missing from some launches, so derive the rocket and mission name from the long name with the bar separator, such as "Atlas V 401 | Landsat 9"
-        let barIndex = name.firstIndex(of: "|") ?? name.startIndex
-        let missionNameIndex = name.index(barIndex, offsetBy: 2)
-        missionName = String(name[missionNameIndex..<name.endIndex])
-
-      //  missionDescription = launchReply.mission?.description
+        if let statusAbbrev = launchReply.status?.abbrev
+        {
+            astroStatus = Launch.AstroStatusForLaunchStatus(abbreviation: statusAbbrev)
+        }
+        else
+        {
+            astroStatus = AstroStatus.Off
+        }
         
-        let rocketNameIndex = name.index(barIndex, offsetBy: -1)
-        rocketName = String(name[name.startIndex..<rocketNameIndex])
-
         // Convert dates using our ZuluDateFormatter, which can handle some peciliaries with this format
         if let date = launchReply.window_start
         {
@@ -86,13 +92,13 @@ struct Launch{
             windowEndDate = nil
         }
         
-        if let imageURL = launchReply.image
+        if let replyImageURL = launchReply.image
         {
-            self.imageURL = URL(string:imageURL)
+            imageURL = URL(string:replyImageURL) ?? nil
         }
         else
         {
-            self.imageURL = nil
+            imageURL = nil
         }
         
 
@@ -111,4 +117,17 @@ struct Launch{
         }
         
     }
+    
+    static func AstroStatusForLaunchStatus(abbreviation:String)->AstroStatus
+    {
+        switch abbreviation {
+        case "TBD","TBC":
+            return AstroStatus.Standby
+        case "Go":
+            return AstroStatus.Normal
+        default:
+            return AstroStatus.Off
+        }
+    }
 }
+

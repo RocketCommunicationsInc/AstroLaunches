@@ -35,22 +35,22 @@ public extension Color
     // Astro status colors
     //——————————————————————————————————————————————————————————————————————————————
     static var astroStatusBorderOff:Color
-    {  return Color("Astro Status Off Border Color")}
+    {  return Color("#32363A")}
     
     static var astroStatusBorderStandby:Color
-    { return Color("Astro Status Standby Border Color")}
+    { return Color("#224C58")}
 
     static var astroStatusBorderNormal:Color
-    { return Color("Astro Status Normal Border Color")}
+    { return Color("#015800")}
     
     static var astroStatusBorderCaution:Color
-    { return Color("Astro Status Caution Border Color")}
+    { return Color("#544900")}
     
     static var astroStatusBorderSerious:Color
-    { return Color("Astro Status Serious Border Color")}
+    { return Color("#64451A")}
     
     static var astroStatusBorderCritical:Color
-    { return Color("Astro Status Critical Border Color")}
+    { return Color("#570D01")}
 
     static func borderColorForAstroStatus(_ status:AstroStatus)->Color
     {
