@@ -42,6 +42,22 @@ struct StatusTag: View {
     }
 }
 
+struct GiantStatusTag: View {
+    var text:String
+    var status:AstroStatus
+    var body: some View {
+            Text(text)
+            .padding(.all,25.0)
+                .font(.system(size: 60)).foregroundColor(.black)
+                .background(RoundedRectangle(cornerRadius: 12.0, style: .continuous)
+                                .stroke(Color.borderColorForAstroStatus(status), style: StrokeStyle(lineWidth: 10))
+                                .background(Color.colorForAstroStatus(status))
+                                .shadow(color:Color.borderColorForAstroStatus(status), radius: 10, x:0, y: 0)
+                                .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous)
+)
+                )
+    }
+}
 
 struct Tag_Previews: PreviewProvider {
     static var previews: some View {
@@ -56,5 +72,10 @@ struct StatusTag_Previews: PreviewProvider {
     }
 }
 
+struct GiantStatusTag_Previews: PreviewProvider {
+    static var previews: some View {
+        GiantStatusTag(text: "test", status:.Normal)
+    }
+}
 
 

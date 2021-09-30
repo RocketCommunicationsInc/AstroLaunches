@@ -19,6 +19,7 @@ struct LaunchReply:Decodable{
     let rocket:Rocket?
     let status:Status?
     let image:String?
+    let pad:Pad?
 }
 
 struct Mission:Decodable{
@@ -32,6 +33,17 @@ struct Status:Decodable{
     let name:String
     let abbrev:String?
 }
+
+struct Pad:Decodable{
+    let name:String
+    let location:Location?
+}
+
+
+struct Location:Decodable{
+    let name:String
+}
+
 
 struct Rocket:Decodable{
     let id:Int
@@ -54,6 +66,8 @@ struct Launch{
     let image:UIImage?
     let status:String?
     let astroStatus:AstroStatus
+    let padName:String
+    let locationName:String
     
     // Parse a LaunchReply, see which fields were returned and convert to Swift types
     init(_ launchReply:LaunchReply)
@@ -116,6 +130,8 @@ struct Launch{
             image = nil
         }
         
+        padName = launchReply.pad?.name ?? "Unknown Pad Name"
+        locationName = launchReply.pad?.location?.name ?? "Unknown Location Name"
     }
     
     static func AstroStatusForLaunchStatus(abbreviation:String)->AstroStatus
