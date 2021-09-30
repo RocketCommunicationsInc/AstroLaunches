@@ -43,7 +43,7 @@ class NetworkManager:ObservableObject
         }
         else
         {
-            url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=list")
+            url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=5&mode=detail")
         }
         
         if let url = url

@@ -11,55 +11,48 @@ struct LaunchDetail: View {
     var launch:Launch
     var body: some View {
         ScrollView(.vertical) {
-            VStack(){
+            VStack(alignment: .leading,spacing:0){
                 // Launch Image and Countdown clock
-                ZStack(alignment:.bottomTrailing){
-                    if let image = launch.image
-                    {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 400, maxHeight: 400, alignment: .center)
-                            .clipped()
-                    }
-                    else
-                    {
-                        Image("launch")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 400, maxHeight: 400, alignment: .center)
-                            .clipped()
-                    }
-                    CountdownPip(launch: launch)
-                        .padding(.all, 8.00)
-                        .background(.ultraThinMaterial)
-
-                }
-                HStack {
-                    Text(launch.missionName).font(.title3).bold()
-                    Spacer()
-                }.padding(.vertical, 4)
-                HStack{
-                    CalendarPip(launch: launch)
-                    Spacer()
-                    ClockPip(launch: launch)
-                }.padding(.vertical, 4)
-                HStack {
-                    Text("Mission").font(.title3)
-                    Spacer()
-                }
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id pellentesque neque. Nulla aliquam magna eu dictum dictum.").font(.body)
-                HStack{
-                    Tag(text: "Astro Commercial Crew Program")
-                    Tag(text: "ISS Expedition")
-                    Tag(text: "Crewed")
-                }
+                ImageAndCountdown(launch: launch, height: 400, showStatus: false)
+                // Mission Name, Calendar, Clock
+                MissionCalendarClock(launch: launch, showRocket: false).padding()
+                MissionDescription(launch: launch)
                 Spacer()
+                DetailTags(launch: launch).padding()
             }//.background(Color.astroUIBackground)
-        }.padding()
+        }
         .background(Color.astroUIBackground)
     }
 }
+
+struct MissionDescription: View {
+    var launch:Launch
+    var body: some View {
+        VStack(alignment: .leading){
+            Text("Mission").font(.title3)
+            Spacer()
+            Text(launch.missionDescription).font(.body)
+
+        }.foregroundColor(.launchesTextColor).padding()
+    }
+}
+
+
+struct DetailTags: View {
+    var launch:Launch
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Status").font(.title3)
+            HStack{
+                if let status = launch.status
+                {
+                    StatusTag(text: status,status: launch.astroStatus)
+                }
+            }
+        }
+    }
+}
+
 
 struct LaunchDetail_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
@@ -68,21 +61,4 @@ struct LaunchDetail_Previews: PreviewProvider {
         LaunchDetail(launch:networkManager.launches[0])
             .preferredColorScheme(.dark)
     }
-}
-
-struct Tag: View {
-    var text:String
-    var body: some View {
-            Text(text)
-                .padding(4.0)
-                .font(.caption).foregroundColor(.launchesTextColor)
-                .background(RoundedRectangle(cornerRadius: 3.0, style: .continuous)
-                                .stroke(Color.launchesTagBorderColor, style: StrokeStyle(lineWidth: 1))
-                                .background(Color.launchesTagBackgroundColor)
-                                .shadow(color: .launchesTextColor, radius: 2, x:0, y: 0)
-                )
-               
-               
-    }
-    
 }

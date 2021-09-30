@@ -12,56 +12,12 @@ struct LaunchRow: View {
     var launch:Launch
     
     var body: some View {
-        VStack() {
+        VStack(spacing:0) {
             // Launch Image and Countdown clock
-            ZStack(alignment:.bottom){
-                if let image = launch.image
-                {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .topLeading)
-                        .clipped()
-                }
-                else
-                {
-                    Image("launch")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: 200, maxHeight: 200, alignment: .topLeading)
-                        .clipped()
-
-                }
-                HStack() {
-                    Image("AstroLogoTiny")
-                        .frame(minWidth: 45, idealWidth: 45, maxWidth: 45, minHeight: 19, idealHeight: 19, maxHeight: 19, alignment: .topLeading)
-                        .padding(.leading, 8)
-                        .padding(.top, 4)
-                        .padding(.bottom, 4)
-
-                    Spacer()
-                    CountdownPip(launch: launch)
-                        .padding(.trailing, 8)
-                        .padding(.top, 4)
-                        .padding(.bottom, 4)
-                }
-                .frame(maxWidth: .infinity)
-                .background(.ultraThinMaterial)
-
-            }
-            VStack {
-                HStack
-                {
-                    Text(launch.missionName).font(.title2).bold().foregroundColor(Color.launchesTextColor)
-                    Tag(text: launch.rocketName)
-                    Spacer()
-                }.padding(.bottom, 4)
-                HStack{
-                    CalendarPip(launch: launch).padding(.trailing, 6)
-                    ClockPip(launch: launch)
-                    Spacer()
-                }
-            }.padding()
+            ImageAndCountdown(launch: launch, height: 200.0, showStatus: true)
+            // Mission Name, Calendar, Clock
+            MissionCalendarClock(launch: launch, showRocket: true)
+                .padding()
            
         }.background(Color.launchesCardColor).cornerRadius(6)
     }
@@ -69,7 +25,7 @@ struct LaunchRow: View {
 }
 
 struct CountdownPip: View { 
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+  //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var launch:Launch
 
@@ -83,12 +39,8 @@ struct CountdownPip: View {
                 Text(windowOpenDate, style: .timer)
                     .foregroundColor(.white)
                     .font(.system(.body, design: .monospaced))
-                //                    Text("H: M: S")
-                //                        .foregroundColor(.white)
-                //                        .font(.system(.body, design: .monospaced))
             }
-        }//.clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-
+        }
     }
 }
 
@@ -97,14 +49,18 @@ struct CalendarPip: View {
 
     var body: some View {
         HStack{
+            Image(systemName: "calendar")
             if let time = launch.windowOpenDate
             {
-                Image(systemName: "calendar")
-                    .font(.body).foregroundColor(.launchesTextColor)
                 let dateString = ShortDateFormatter.sharedInstance.string(from: time)
-                Text(dateString).font(.body).foregroundColor(.launchesTextColor)
+                Text(dateString)
             }
-        }//.background(Color(.red))
+            else
+            {
+                Text("Unknown")
+            }
+        }.font(.body)
+            .foregroundColor(.launchesTextColor)
     }
 }
 
@@ -114,23 +70,98 @@ struct ClockPip: View {
 
     var body: some View {
         HStack{
+            Image(systemName: "clock")
             if let time = launch.windowOpenDate
             {
-                Image(systemName: "clock").foregroundColor(.launchesTextColor)
                 let dateString = TwentyFourHourTimeFormatter.sharedInstance.string(from: time)
-                Text(dateString).font(.body).foregroundColor(.launchesTextColor)
+                Text(dateString)
             }
             else
             {
-               // Text(" ").font(.body).foregroundColor(.secondary)
+                Text("Unknown")
             }
-        }
+        }.font(.body)
+            .foregroundColor(.launchesTextColor)
     }
 }
 
 
+struct ImageAndCountdown: View {
+    
+    var launch:Launch
+    var height:CGFloat
+    var showStatus:Bool
+    var body: some View {
+        
+        ZStack(alignment:.bottom){
+            if let image = launch.image
+            {
+                ZStack(alignment:.topTrailing) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
+                    .clipped()
+                    if let status = launch.status, status == "Go for Launch", showStatus == true
+                    {
+                        StatusTag(text: status,status: launch.astroStatus).padding()
+                    }
+                }
+            }
+            else
+            {
+                Image("launch")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
+                    .clipped()
+                
+            }
+            HStack() {
+                Image("AstroLogoTiny")
+                    .frame(minWidth: 45, idealWidth: 45, maxWidth: 45, minHeight: 19, idealHeight: 19, maxHeight: 19, alignment: .topLeading)
+                    .padding(.leading, 8)
+                    .padding(.top, 4)
+                    .padding(.bottom, 4)
+                
+                Spacer()
+                CountdownPip(launch: launch)
+                    .padding(.trailing, 8)
+                    .padding(.top, 4)
+                    .padding(.bottom, 4)
+            }
+            .frame(maxWidth: .infinity)
+            .background(.ultraThinMaterial)
+        }
+    }
+}
 
-
+struct MissionCalendarClock: View {
+    
+    var launch:Launch
+    var showRocket:Bool
+    var body: some View {
+        
+        VStack {
+            HStack
+            {
+                Text(launch.missionName).font(.title2).bold().foregroundColor(Color.launchesTextColor)
+                if (showRocket)
+                {
+                    Tag(text: launch.rocketName)
+                }
+                Spacer()
+            }.padding(.bottom, 4)
+            HStack{
+                CalendarPip(launch: launch).padding(.trailing, 6)
+                ClockPip(launch: launch)
+                Spacer()
+            }
+        }
+        
+    }
+}
+    
 struct LaunchRow_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {

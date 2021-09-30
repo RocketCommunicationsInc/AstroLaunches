@@ -19,38 +19,76 @@ struct ContentView: View {
             HStack(spacing:0) {
                 if let image = launch.image
                 {
-                    ZStack {
+                    ZStack(alignment:.leading) {
                         Image(uiImage: image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 1280, height: 1080, alignment: .topLeading)
                             .clipped()
+                            .blur(radius:2)
                         
-                        VStack
+                        VStack(alignment: .leading)
                         {
-                            Spacer()
-                            HStack {
-                                Text(launch.missionName)
-                                    .padding()
-                                    .font(.system(size: 90
-                                                  , weight: .semibold, design: .default))
-                                    .frame(alignment: .leading)
-                                Spacer()
-                                Text("T- 00:00:00")
-                                    .padding()
-                                    .font(.system(size: 90
-                                                  , weight: .semibold, design: .default))
-                            }
-                            .frame(width: 1280, alignment: .leading)
-                            .background(.ultraThinMaterial)
-                        }.frame(width: 1280)
+                            Text(launch.missionName)
+                                .font(.system(size: 90
+                                              , weight: .semibold, design: .default))
+                                .padding()
+                            Countdown(launch:launch)
+                                .padding()
+                        }.padding(.leading,40)//.frame(width: 1280)
                     }
                 }
-                VStack {
+                VStack(alignment: .leading) {
                     Image("AstroLogoLarge")
-                }.padding()
+                    Spacer()
+                    Text("ROCKET").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
+                    Text(launch.rocketName).font(.system(size: 60))                                .foregroundColor(.white)
+                    Spacer()
+                    
+                    Text("STATUS").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
+                    if let status = launch.status
+                    {
+                        GiantStatusTag(text: status,status: launch.astroStatus)
+                    }
+                    Spacer()
+                    
+                    Text("LOCATION").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
+                    Text(launch.locationName).font(.system(size: 60))                                .foregroundColor(.white)
+
+                }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
                     .background(Color.launchesCardColor)
+                
+                
+            }
+        }
+    }
+}
+
+
+struct Countdown: View {
+  //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    var launch:Launch
+
+    var body: some View {
+        HStack {
+            if let windowOpenDate = launch.windowOpenDate
+            {
+                HStack {
+                    Text("T-")
+                        .font(.system(size: 90
+                                      , weight: .semibold, design: .default))
+                    .foregroundColor(.white)
+                    
+                    Text(windowOpenDate, style: .timer)
+                        .foregroundColor(.white)
+                        .font(.system(size: 90, weight: .semibold,design: .monospaced))
+
+                }.padding()
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(6)
+                
                 
                 
             }
