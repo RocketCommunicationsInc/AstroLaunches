@@ -31,7 +31,6 @@ class NetworkManager:ObservableObject
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data! as Data)
             myLaunches.results.forEach() { launchJSON in
                 self.launches.append(Launch(launchJSON))
-
             }
             return
         }
@@ -43,25 +42,27 @@ class NetworkManager:ObservableObject
         }
         else
         {
-            url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=5&mode=detail")
+            // If building for debug, use the lldev URL, as requested by the provider. Get just 5 launches
+            #if DEBUG
+                url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=5&mode=detail")
+            // If building for release, use the real URL. Get 10 launches
+            #else
+                url = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=detail")
+            #endif
         }
         
         if let url = url
         {
-        URLSession.shared.dataTask(with: url) { (data,_ , _) in
-            guard let data = data else {return}
-            let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
-            DispatchQueue.main.async {
-               // self.launchJSONs = myLaunches.result
-                
-                // post process launchJSONs into launches
-                myLaunches.results.forEach() { launchJSON in
-                    self.launches.append(Launch(launchJSON))
+            URLSession.shared.dataTask(with: url) { (data,_ , _) in
+                guard let data = data else {return}
+                let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
+                DispatchQueue.main.async {
+                    // post process launchJSONs into launches
+                    myLaunches.results.forEach() { launchJSON in
+                        self.launches.append(Launch(launchJSON))
+                    }
                 }
-
-//              print(myLaunches)
-            }
-        }.resume()
+            }.resume()
         }
     }
 }

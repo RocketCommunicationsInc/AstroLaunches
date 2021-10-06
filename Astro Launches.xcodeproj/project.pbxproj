@@ -39,6 +39,7 @@
 		7C834939260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
 		7C8BFBF1270374BD00D6AB09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
 		7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
+		7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */; };
 		7CB1EE8727062383004E0CD4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1EE8627062383004E0CD4 /* Tag.swift */; };
 		7CB1EE8827062810004E0CD4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1EE8627062383004E0CD4 /* Tag.swift */; };
 		7CB1EE8927062816004E0CD4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1EE8627062383004E0CD4 /* Tag.swift */; };
@@ -61,7 +62,7 @@
 		7CF87F6925AE498C00BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F6825AE498C00BD9D06 /* Assets.xcassets */; };
 		7CF87F6C25AE498C00BD9D06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F6B25AE498C00BD9D06 /* Preview Assets.xcassets */; };
 		7CF87F8625AE49B600BD9D06 /* Astro_Launches_TVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */; };
-		7CF87F8825AE49B600BD9D06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8725AE49B600BD9D06 /* ContentView.swift */; };
+		7CF87F8825AE49B600BD9D06 /* OpsFloorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */; };
 		7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8925AE49B700BD9D06 /* Assets.xcassets */; };
 		7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,7 @@
 		7C7243C826E8188400233B33 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7C79988226FB7EC700FCAEF2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7C834937260931D1008B4895 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceRoomView.swift; sourceTree = "<group>"; };
 		7CB1EE8627062383004E0CD4 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
@@ -144,7 +146,7 @@
 		7CF87F6E25AE498C00BD9D06 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		7CF87F8325AE49B600BD9D06 /* Astro Launches TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astro_Launches_TVApp.swift; sourceTree = "<group>"; };
-		7CF87F8725AE49B600BD9D06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpsFloorView.swift; sourceTree = "<group>"; };
 		7CF87F8925AE49B700BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CF87F9325AE49B700BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -302,7 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */,
-				7CF87F8725AE49B600BD9D06 /* ContentView.swift */,
+				7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */,
+				7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */,
 				7CF87F8925AE49B700BD9D06 /* Assets.xcassets */,
 				7CF87F9325AE49B700BD9D06 /* Info.plist */,
 				7CF87F8B25AE49B700BD9D06 /* Preview Content */,
@@ -606,7 +609,8 @@
 				7CB1EE8927062816004E0CD4 /* Tag.swift in Sources */,
 				7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */,
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
-				7CF87F8825AE49B600BD9D06 /* ContentView.swift in Sources */,
+				7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */,
+				7CF87F8825AE49B600BD9D06 /* OpsFloorView.swift in Sources */,
 				7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */,
 				7C5A1B10261BB54500E452DE /* Settings.swift in Sources */,
 				7C5A1B02261BB52300E452DE /* Launch.swift in Sources */,
