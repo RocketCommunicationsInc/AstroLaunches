@@ -7,9 +7,9 @@
 
 import SwiftUI
 import AstroSwiftFoundation
+import SDWebImageSwiftUI
 
-
-struct ContentView: View {
+struct OpsFloorView: View {
     
     @ObservedObject var networkManager: NetworkManager
 
@@ -17,10 +17,10 @@ struct ContentView: View {
         if let launch = networkManager.launches.first
         {
             HStack(spacing:0) {
-                if let image = launch.image
+                if let imageURL = launch.imageURL
                 {
                     ZStack(alignment:.leading) {
-                        Image(uiImage: image)
+                        WebImage(url: imageURL)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 1280, height: 1080, alignment: .topLeading)
@@ -33,7 +33,7 @@ struct ContentView: View {
                                 .font(.system(size: 90
                                               , weight: .semibold, design: .default))
                                 .padding()
-                            Countdown(launch:launch)
+                            GiantCountdown(launch:launch)
                                 .padding()
                         }.padding(.leading,40)//.frame(width: 1280)
                     }
@@ -57,7 +57,7 @@ struct ContentView: View {
 
                 }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
-                    .background(Color.launchesCardColor)
+                    .background(Color.launchesSurfaceColor)
                 
                 
             }
@@ -66,7 +66,7 @@ struct ContentView: View {
 }
 
 
-struct Countdown: View {
+struct GiantCountdown: View {
   //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var launch:Launch
@@ -100,7 +100,7 @@ struct ContentView_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
 
     static var previews: some View {
-        ContentView(networkManager: networkManager)
+        OpsFloorView(networkManager: networkManager)
     }
 }
 

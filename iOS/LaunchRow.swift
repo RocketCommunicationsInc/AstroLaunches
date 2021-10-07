@@ -7,6 +7,8 @@
 
 import SwiftUI
 import WidgetKit
+import SDWebImageSwiftUI
+
 struct LaunchRow: View {
     
     var launch:Launch
@@ -16,74 +18,18 @@ struct LaunchRow: View {
             // Launch Image and Countdown clock
             ImageAndCountdown(launch: launch, height: 200.0, showStatus: true)
             // Mission Name, Calendar, Clock
-            MissionCalendarClock(launch: launch, showRocket: true)
+            MissionCalendarClock(launch: launch, showRocket: true, showStatus: true)
                 .padding()
            
-        }.background(Color.launchesCardColor).cornerRadius(6)
+        }.background(Color.launchesSurfaceColor).cornerRadius(6)
     }
     
 }
 
-struct CountdownPip: View { 
-  //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    var launch:Launch
-
-    var body: some View {
-        HStack {
-            if let windowOpenDate = launch.windowOpenDate
-            {
-                Text("T-")
-                    .foregroundColor(.white)
-                
-                Text(windowOpenDate, style: .timer)
-                    .foregroundColor(.white)
-                    .font(.system(.body, design: .monospaced))
-            }
-        }
-    }
-}
-
-struct CalendarPip: View {
-    var launch:Launch
-
-    var body: some View {
-        HStack{
-            Image(systemName: "calendar")
-            if let time = launch.windowOpenDate
-            {
-                let dateString = ShortDateFormatter.sharedInstance.string(from: time)
-                Text(dateString)
-            }
-            else
-            {
-                Text("Unknown")
-            }
-        }.font(.body)
-            .foregroundColor(.launchesTextColor)
-    }
-}
 
 
-struct ClockPip: View {
-    var launch:Launch
 
-    var body: some View {
-        HStack{
-            Image(systemName: "clock")
-            if let time = launch.windowOpenDate
-            {
-                let dateString = TwentyFourHourTimeFormatter.sharedInstance.string(from: time)
-                Text(dateString)
-            }
-            else
-            {
-                Text("Unknown")
-            }
-        }.font(.body)
-            .foregroundColor(.launchesTextColor)
-    }
-}
+
 
 
 struct ImageAndCountdown: View {
@@ -94,18 +40,15 @@ struct ImageAndCountdown: View {
     var body: some View {
         
         ZStack(alignment:.bottom){
-            if let image = launch.image
+            if let imageURL = launch.imageURL
             {
                 ZStack(alignment:.topTrailing) {
-                    Image(uiImage: image)
+                    WebImage(url:imageURL)
                         .resizable()
+                        .indicator(.activity)
                         .aspectRatio(contentMode: .fill)
                         .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
                     .clipped()
-                    if let status = launch.status, status == "Go for Launch", showStatus == true
-                    {
-                        StatusTag(text: status,status: launch.astroStatus).padding()
-                    }
                 }
             }
             else
@@ -118,17 +61,20 @@ struct ImageAndCountdown: View {
                 
             }
             HStack() {
-                Image("AstroLogoTiny")
-                    .frame(minWidth: 45, idealWidth: 45, maxWidth: 45, minHeight: 19, idealHeight: 19, maxHeight: 19, alignment: .topLeading)
-                    .padding(.leading, 8)
-                    .padding(.top, 4)
-                    .padding(.bottom, 4)
-                
+                if let url = launch.agency?.logoURL
+                {
+                    WebImage(url:url)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40,  alignment: .center)
+                        .padding(.leading, 8)
+
+                }
                 Spacer()
-                CountdownPip(launch: launch)
+                LaunchCountdown(launch: launch)
                     .padding(.trailing, 8)
-                    .padding(.top, 4)
-                    .padding(.bottom, 4)
+                    .padding(.top, 2)
+                    .padding(.bottom, 2)
             }
             .frame(maxWidth: .infinity)
             .background(.ultraThinMaterial)
@@ -140,6 +86,8 @@ struct MissionCalendarClock: View {
     
     var launch:Launch
     var showRocket:Bool
+    var showStatus:Bool
+    
     var body: some View {
         
         VStack {
@@ -150,11 +98,17 @@ struct MissionCalendarClock: View {
                 {
                     Tag(text: launch.rocketName)
                 }
+                if let status = launch.status, status == "Go for Launch", showStatus == true
+                {
+                    StatusTag(text: status,status: launch.astroStatus)
+                }
+
                 Spacer()
             }.padding(.bottom, 4)
+
             HStack{
-                CalendarPip(launch: launch).padding(.trailing, 6)
-                ClockPip(launch: launch)
+                LaunchCalendar(launch: launch).padding(.trailing, 6)
+                LaunchClock(launch: launch)
                 Spacer()
             }
         }
