@@ -20,13 +20,20 @@ struct LaunchReply:Decodable{
     let status:Status?
     let image:String?
     let pad:Pad?
+    let launch_service_provider:LaunchServiceProvider?
 }
+
+struct AgencyReply:Decodable{
+    let id:Int
+    let name:String
+    let logo_url:String?
+}
+
 
 struct Mission:Decodable{
     let name:String
     let description:String?
     let type:String?
-//    let type:String?
 }
 
 struct Status:Decodable{
@@ -54,6 +61,12 @@ struct RocketConfiguration:Decodable{
     let name:String
 }
 
+struct LaunchServiceProvider:Decodable{
+    let name:String
+    let type:String
+    let url:URL?
+}
+
 // Our Launch Struct that converts the JSON data to Swift types, and checks for missing values
 struct Launch{
     let id:String
@@ -63,11 +76,14 @@ struct Launch{
     let windowOpenDate:Date?// the date and time the launch window opens, if known
     let windowEndDate:Date?// the date and time the launch window closes, if known
     let imageURL:URL?
-    let image:UIImage?
+   // let image:UIImage?
     let status:String?
     let astroStatus:AstroStatus
     let padName:String
     let locationName:String
+    let serviceProviderName:String
+    let serviceProviderType:String
+    var agency:Agency?
     
     // Parse a LaunchReply, see which fields were returned and convert to Swift types
     init(_ launchReply:LaunchReply)
@@ -116,22 +132,49 @@ struct Launch{
         }
         
 
-        if (imageURL != nil)
-        {
-            do {
-                let data = try Data(contentsOf: imageURL!)
-                self.image = UIImage(data:data)
-            } catch  {
-                image = nil
-            }
-        }
-        else
-        {
-            image = nil
-        }
+//        if (imageURL != nil)
+//        {
+//            do {
+//                let data = try Data(contentsOf: imageURL!)
+//                self.image = UIImage(data:data)
+//            } catch  {
+//                image = nil
+//            }
+//        }
+//        else
+//        {
+//            image = nil
+//        }
         
         padName = launchReply.pad?.name ?? "Unknown Pad Name"
         locationName = launchReply.pad?.location?.name ?? "Unknown Location Name"
+        serviceProviderName = launchReply.launch_service_provider?.name ?? "Unknown Provider Name"
+        serviceProviderType = launchReply.launch_service_provider?.type ?? "Unknown Type"
+        
+        if let agencyURL = launchReply.launch_service_provider?.url
+        {
+            do {
+                let data = try Data(contentsOf: agencyURL)
+                let theAgency = try! JSONDecoder().decode(AgencyReply.self, from: data)
+                agency = Agency(theAgency)
+            } catch  {
+                agency = nil
+            }
+
+        }
+ //       self.agency = nil
+        
+//        if let agencyURL = launchReply.launch_service_provider?.dataURL
+//        {
+//            URLSession.shared.dataTask(with: agencyURL) { (data,_ , _) in
+//                guard let data = data else {return}
+//                let theAgency = try! JSONDecoder().decode(AgencyReply.self, from: data)
+//                DispatchQueue.main.async {
+//                    // post process Agency
+//                    self.agency = Agency(theAgency)
+//                }
+//            }.resume()
+//        }
     }
     
     static func AstroStatusForLaunchStatus(abbreviation:String)->AstroStatus
@@ -146,4 +189,28 @@ struct Launch{
         }
     }
 }
+
+    
+    struct Agency:Decodable{
+        let id:Int
+        let name:String
+        let logoURL:URL?
+        
+        // Parse a LaunchReply, see which fields were returned and convert to Swift types
+        init(_ agencyReply:AgencyReply)
+        {
+            id = agencyReply.id
+            name = agencyReply.name
+            
+            if let replyLogoURL = agencyReply.logo_url
+            {
+                logoURL = URL(string:replyLogoURL) ?? nil
+            }
+            else
+            {
+                logoURL = nil
+            }
+        }
+    }
+
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AstroSwiftFoundation
-
+import SDWebImageSwiftUI
 
 struct ConferenceRoomView: View {
     
@@ -17,10 +17,10 @@ struct ConferenceRoomView: View {
         if let launch = networkManager.launches.first
         {
             HStack(spacing:0) {
-                if let image = launch.image
+                if let imageURL = launch.imageURL
                 {
                     ZStack(alignment:.leading) {
-                        Image(uiImage: image)
+                        WebImage(url: imageURL)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 1280, height: 1080, alignment: .topLeading)
@@ -28,7 +28,17 @@ struct ConferenceRoomView: View {
                             .blur(radius:4)
                         
                         HStack(alignment: .center) {
-                            Image("AstroLogoLarge").frame(width: 300, height: 300).background(Color.launchesCardColor)
+                            if let url = launch.agency?.logoURL
+                            {
+                                WebImage(url:url)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 300, height: 300,alignment: .center)
+                                    .background(Color.launchesSurfaceColor)
+                                    .padding()
+                            }
+
+//                            Image("AstroLogoLarge").frame(width: 300, height: 300).background(Color.launchesCardColor)
                             VStack(alignment: .leading)
                             {
                                 Text(launch.missionName)
@@ -76,7 +86,7 @@ struct ConferenceRoomView: View {
 
                 }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
-                    .background(Color.launchesCardColor)
+                    .background(Color.launchesSurfaceColor)
                 
                 
             }

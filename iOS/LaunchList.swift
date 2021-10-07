@@ -12,6 +12,7 @@ import AstroSwiftFoundation
 struct LaunchList: View {
     @ObservedObject var networkManager: NetworkManager
     @State var showingSettings = false
+
     @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized darkMode in Settings.init
     @Environment(\.colorScheme) var systemColorScheme
 

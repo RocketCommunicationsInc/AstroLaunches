@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AstroSwiftFoundation
-
+import SDWebImageSwiftUI
 
 struct OpsFloorView: View {
     
@@ -17,10 +17,10 @@ struct OpsFloorView: View {
         if let launch = networkManager.launches.first
         {
             HStack(spacing:0) {
-                if let image = launch.image
+                if let imageURL = launch.imageURL
                 {
                     ZStack(alignment:.leading) {
-                        Image(uiImage: image)
+                        WebImage(url: imageURL)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 1280, height: 1080, alignment: .topLeading)
@@ -57,7 +57,7 @@ struct OpsFloorView: View {
 
                 }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
-                    .background(Color.launchesCardColor)
+                    .background(Color.launchesSurfaceColor)
                 
                 
             }

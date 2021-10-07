@@ -78,9 +78,12 @@ public extension Color
     static var launchesBackgroundColor:Color
     {return Color("Background Color")} //
 
-    static var launchesCardColor:Color
-    {return Color("Card Color")} //
+    static var launchesSurfaceColor:Color
+    {return Color("Surface Color")} //
     
+    static var launchesBoxColor:Color
+    {return Color("Box Color")} //
+
     static var launchesTagBorderColor:Color
     {return Color("Tag Border")} // not Astro colors
 

@@ -10,9 +10,10 @@ import Foundation
 struct DateFormatters
 {
     init() {
-        _ = ZuluDateFormatter.sharedInstance // init the ZuluDateFormatter
-        _ = CountdownDateFormatter.sharedInstance // init the CountdownDateFormatter
-        _ = TwentyFourHourTimeFormatter.sharedInstance // init the TwentyFourHourTimeFormatter
+//        _ = ZuluDateFormatter.sharedInstance // init the ZuluDateFormatter
+//       // _ = CountdownDateFormatter.sharedInstance // init the CountdownDateFormatter
+//        _ = TwentyFourHourTimeFormatter.sharedInstance // init the TwentyFourHourTimeFormatter
+//        _ = ShortDateFormatter.sharedInstance // init the ShortDateFormatter
     }
 }
 
@@ -20,7 +21,7 @@ struct DateFormatters
 struct ZuluDateFormatter {
     
     static let sharedInstance = ZuluDateFormatter()
-    static var dateFormatter = DateFormatter()
+    static let dateFormatter = DateFormatter()
     
     func date(from string: String) -> Date
     {
@@ -39,30 +40,11 @@ struct ZuluDateFormatter {
 }
 
 
-struct CountdownDateFormatter {
-    
-    static let sharedInstance = CountdownDateFormatter()
-    static var dateFormatter = DateFormatter()
-    let now = Date()
-    
-    func string(from date: Date) -> String
-    {
-        let offset = date.timeIntervalSince(now)
-        let formatter = DateComponentsFormatter()
-        let str = formatter.string(from: offset) ?? ""
-        return str
-    }
-
-    init() {
-        CountdownDateFormatter.dateFormatter.dateFormat = "MM dd HH:mm"
-    }
-
-}
 
 struct TwentyFourHourTimeFormatter {
     
     static let sharedInstance = TwentyFourHourTimeFormatter()
-    static var dateFormatter = DateFormatter()
+    static let dateFormatter = DateFormatter()
 
     func string(from date: Date) -> String
     {
@@ -80,7 +62,7 @@ struct TwentyFourHourTimeFormatter {
 struct ShortDateFormatter {
     
     static let sharedInstance = ShortDateFormatter()
-    static var dateFormatter = DateFormatter()
+    static let dateFormatter = DateFormatter()
 
     func string(from date: Date) -> String
     {
@@ -91,6 +73,70 @@ struct ShortDateFormatter {
     init() {
         ShortDateFormatter.dateFormatter.dateFormat = "MMMM d"
     }
-
 }
 
+struct DayFormatter {
+    
+    static let sharedInstance = DayFormatter()
+    static let dayFormatter = DateFormatter()
+    
+    func string(from date: Date) -> String
+    {
+        let str = DayFormatter.dayFormatter.string(from: date)
+        return str
+    }
+    
+    init() {
+        DayFormatter.dayFormatter.dateFormat = "dd"
+    }
+}
+
+
+struct HourFormatter {
+    
+    static let sharedInstance = HourFormatter()
+    static let hourFormatter = DateFormatter()
+    
+    func string(from date: Date) -> String
+    {
+        let str = HourFormatter.hourFormatter.string(from: date)
+        return str
+    }
+    
+    init() {
+        HourFormatter.hourFormatter.dateFormat = "hh"
+    }
+}
+
+struct MinuteFormatter {
+    
+    static let sharedInstance = MinuteFormatter()
+    static let hourFormatter = DateFormatter()
+    
+    func string(from date: Date) -> String
+    {
+        let str = MinuteFormatter.hourFormatter.string(from: date)
+        return str
+    }
+    
+    init() {
+        MinuteFormatter.hourFormatter.dateFormat = "mm"
+    }
+}
+
+
+struct SecondFormatter {
+    
+    static let sharedInstance = SecondFormatter()
+    static let secondFormatter = DateFormatter()
+    
+    func string(from date: Date) -> String
+    {
+        let str = SecondFormatter.secondFormatter.string(from: date)
+        return str
+    }
+    
+    init() {
+        SecondFormatter.secondFormatter.dateFormat = "ss"
+    }
+}
