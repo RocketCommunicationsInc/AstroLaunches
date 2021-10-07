@@ -27,72 +27,51 @@ struct ConferenceRoomView: View {
                             .clipped()
                             .blur(radius:4)
                         
-                        HStack(alignment: .center) {
-                            if let url = launch.agency?.logoURL
-                            {
-                                WebImage(url:url)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 300, height: 300,alignment: .center)
-                                    .background(Color.launchesSurfaceColor)
-                                    .padding()
-                            }
+                        VStack(alignment:.leading) {
+                            HStack(alignment: .center) {
+                                if let url = launch.agency?.logoURL
+                                {
+                                    WebImage(url:url)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 300, height: 300,alignment: .center)
+                                        .background(Color.launchesBackgroundColor)
+                                        .padding()
+                                        .cornerRadius(6)
+                                }
 
-//                            Image("AstroLogoLarge").frame(width: 300, height: 300).background(Color.launchesCardColor)
-                            VStack(alignment: .leading)
-                            {
-                                Text(launch.missionName)
-                                    .font(.system(size: 100
-                                                  
-                                                  , weight: .semibold, design: .default))
-                                    .padding()
-                                Countdown(launch:launch)
-                                    .padding()
-                            }.padding(.leading,40)
-                            
-                        }.frame(width: 1280)
+                                VStack(alignment: .leading)
+                                {
+                                    Text(launch.missionName)
+                                        .font(.system(size: 100
+                                                      
+                                                      , weight: .semibold, design: .default))
+                                        .padding()
+                                    LargeLaunchCountdown(launch:launch)
+                                        .padding()
+                                            .background(.ultraThinMaterial)
+                                            .cornerRadius(6)
+                                }
+                                
+                            }.frame(width: 1280)
+                            HStack{
+                                LaunchCalendar(launch:launch).font(.system(size: 60))
+                                LaunchClock(launch:launch).font(.system(size: 60))
+                            }
+                        }.padding()
+                        
+                        
                     }
                 }
-                VStack(alignment: .leading) {
-                 //   Image("AstroLogoLarge")
-                    Group {
-                        Text("ROCKET").font(.system(size: 24))
-                            .foregroundColor(.launchesTextColor)
-                        Text(launch.rocketName).font(.system(size: 32))
-                            .foregroundColor(.white)
-                    }
-                    Divider()
-                    
-                    Group {
-                        Text("LOCATION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                        Text(launch.locationName).font(.system(size: 32))                                .foregroundColor(.white)
-                    }
-                    Divider()
-
-                    Group {
-                        Text("MISSION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                        Text(launch.missionDescription).font(.system(size: 32))                                .foregroundColor(.white)
-                    }
-                    Divider()
-
-                    Group {
-                        Text("STATUS").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                        if let status = launch.status
-                        {
-                            StatusTag(text: status,status: launch.astroStatus)
-                        }
-                    }
-                    Divider()
-
-                }.padding(.all,40)
-                    .frame(width: 640, height: 1080, alignment: .leading)
-                    .background(Color.launchesSurfaceColor)
+                Sidebar(launch: launch)
                 
                 
             }
         }
     }
 }
+
+
 
 
 struct Countdown: View {
@@ -133,3 +112,54 @@ struct ConferenceRoomView_Previews: PreviewProvider {
 
 
 
+
+struct Sidebar: View {
+    var launch:Launch
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Group {
+                Spacer()
+
+                Text("ROCKET").font(.system(size: 24))
+                    .foregroundColor(.launchesTextColor)
+                Text(launch.rocketName).font(.system(size: 32))
+                    .foregroundColor(.white)
+                Spacer()
+                Divider()
+
+
+            }
+            Group {
+                Spacer()
+
+                Text("LOCATION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
+                Text(launch.locationName).font(.system(size: 32))                                .foregroundColor(.white)
+                Spacer()
+                Divider()
+
+            }
+            Group {
+                Spacer()
+
+                Text("MISSION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
+                Text(launch.missionDescription).font(.system(size: 32))                                .foregroundColor(.white)
+                Spacer()
+                Divider()
+            }
+            Group {
+                Spacer()
+
+                Text("STATUS").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
+                if let status = launch.status
+                {
+                    StatusTag(text: status,status: launch.astroStatus)
+                }
+
+            }
+            Spacer()
+        }.padding(.all,40)
+            .frame(width: 640, height: 1080, alignment: .leading)
+            .background(Color.launchesSurfaceColor)
+    }
+}
