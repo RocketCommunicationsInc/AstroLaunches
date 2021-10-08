@@ -16,101 +16,29 @@ struct ConferenceRoomView: View {
     var body: some View {
         if let launch = networkManager.launches.first
         {
+            // HStack for the whole screen
             HStack(spacing:0) {
-                if let imageURL = launch.imageURL
-                {
-                    ZStack(alignment:.leading) {
-                        WebImage(url: imageURL)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 1280, height: 1080, alignment: .topLeading)
-                            .clipped()
-                            .blur(radius:4)
-                        
-                        VStack(alignment:.leading) {
-                            HStack(alignment: .center) {
-                                if let url = launch.agency?.logoURL
-                                {
-                                    WebImage(url:url)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 300, height: 300,alignment: .center)
-                                        .background(Color.launchesBackgroundColor)
-                                        .padding()
-                                        .cornerRadius(6)
-                                }
-
-                                VStack(alignment: .leading)
-                                {
-                                    Text(launch.missionName)
-                                        .font(.system(size: 100
-                                                      
-                                                      , weight: .semibold, design: .default))
-                                        .padding()
-                                    LargeLaunchCountdown(launch:launch)
-                                        .padding()
-                                            .background(.ultraThinMaterial)
-                                            .cornerRadius(6)
-                                }
-                                
-                            }.frame(width: 1280)
-                            HStack{
-                                LaunchCalendar(launch:launch).font(.system(size: 60))
-                                LaunchClock(launch:launch).font(.system(size: 60))
-                            }
-                        }.padding()
-                        
-                        
-                    }
+                ZStack(alignment:.leading) {
+                    WebImage(url: launch.imageURL)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 1280, height: 1080, alignment: .topLeading)
+                        .clipped()
+                        .blur(radius:4)
+                    
+                    VStack(alignment:.leading,spacing: 100) {
+                        LogoNameCountdown(launch:launch)
+                        HStack{
+                            LaunchCalendar(launch:launch, labelStyle:.headline)
+                            LaunchClock(launch:launch, labelStyle:.headline)
+                        }
+                    }.padding(.leading, 80)
                 }
                 Sidebar(launch: launch)
-                
-                
             }
         }
     }
 }
-
-
-
-
-struct Countdown: View {
-  //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    var launch:Launch
-
-    var body: some View {
-        HStack {
-            if let windowOpenDate = launch.windowOpenDate
-            {
-                HStack {
-                    Text("T-")
-                        .font(.system(size: 90
-                                      , weight: .semibold, design: .default))
-                    .foregroundColor(.white)
-                    
-                    Text(windowOpenDate, style: .timer)
-                        .foregroundColor(.white)
-                        .font(.system(size: 80, weight: .semibold,design: .monospaced))
-
-                }.padding()
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(6)
-                
-            }
-        }
-    }
-}
-
-struct ConferenceRoomView_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
-
-    static var previews: some View {
-        ConferenceRoomView(networkManager: networkManager)
-    }
-}
-
-
 
 
 struct Sidebar: View {
@@ -163,3 +91,49 @@ struct Sidebar: View {
             .background(Color.launchesSurfaceColor)
     }
 }
+
+
+struct LogoNameCountdown: View {
+    var launch:Launch
+
+    var body: some View {
+        HStack(alignment: .center) {
+            if let url = launch.agency?.logoURL
+            {
+                WebImage(url:url)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300,alignment: .center)
+                    .background(Color.launchesBackgroundColor)
+                    .cornerRadius(6)
+            }
+            
+            VStack(alignment: .leading)
+            {
+                let titleFontSize = UIFont.preferredFont(forTextStyle: .title1).pointSize
+                
+                Text(launch.missionName)
+                    .font(.system(size: titleFontSize * 1.2, weight: .semibold))
+                    .padding()
+                LaunchCountdown(launch:launch, digitStyle: .title, labelStyle: .caption)
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(6)
+            }
+            Spacer()
+        }//.frame(width: 1280)
+    }
+}
+
+
+
+struct ConferenceRoomView_Previews: PreviewProvider {
+    static var networkManager = NetworkManager()
+
+    static var previews: some View {
+        ConferenceRoomView(networkManager: networkManager)
+    }
+}
+
+
+

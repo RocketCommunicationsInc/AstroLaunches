@@ -9,9 +9,10 @@ import SwiftUI
 
 struct LaunchClock: View {
     var launch:Launch
+    var labelStyle:Font.TextStyle = .body
 
     var body: some View {
-        HStack{
+        HStack(spacing: 10){
             Image(systemName: "clock")
             if let time = launch.windowOpenDate
             {
@@ -22,7 +23,7 @@ struct LaunchClock: View {
             {
                 Text("Unknown")
             }
-        }.font(.body)
+        }.font(Font.system(labelStyle))
         .foregroundColor(.launchesTextColor)
     }
 }
@@ -36,8 +37,6 @@ struct LaunchClock_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
         LaunchClock(launch:networkManager.launches[1])
             .preferredColorScheme(.dark)
-            .previewLayout(.sizeThatFits)
-        LaunchClock(launch:networkManager.launches[4])
             .previewLayout(.sizeThatFits)
     }
 }
