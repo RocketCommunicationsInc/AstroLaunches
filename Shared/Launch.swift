@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AstroSwiftFoundation
+import MapKit
 
 // The Data Structures found in the JSON //
 struct LaunchReply:Decodable{
@@ -43,13 +44,14 @@ struct Status:Decodable{
 
 struct Pad:Decodable{
     let name:String
-    let location:Location?
+    let latitude:String?
+    let longitude:String?
 }
 
 
-struct Location:Decodable{
-    let name:String
-}
+//struct PadLocation:Decodable{
+//    let name:String
+//}
 
 
 struct Rocket:Decodable{
@@ -81,6 +83,7 @@ struct Launch{
     let astroStatus:AstroStatus
     let padName:String
     let locationName:String
+    let locationCoordinate:CLLocationCoordinate2D
     let serviceProviderName:String
     let serviceProviderType:String
     var agency:Agency?
@@ -147,10 +150,14 @@ struct Launch{
 //        }
         
         padName = launchReply.pad?.name ?? "Unknown Pad Name"
-        locationName = launchReply.pad?.location?.name ?? "Unknown Location Name"
+        locationName = launchReply.pad?.name ?? "Unknown Location Name"
         serviceProviderName = launchReply.launch_service_provider?.name ?? "Unknown Provider Name"
         serviceProviderType = launchReply.launch_service_provider?.type ?? "Unknown Type"
         
+        let latitudeCoordinate = Double(launchReply.pad?.latitude ?? "31.422878000000000")
+        let longitudeCoordinate = Double(launchReply.pad?.longitude ?? "-122.009_020")
+        locationCoordinate = CLLocationCoordinate2D(latitude: latitudeCoordinate ?? -122.009_020 , longitude: longitudeCoordinate ?? 31.422878000000000)
+
         if let agencyURL = launchReply.launch_service_provider?.url
         {
             do {

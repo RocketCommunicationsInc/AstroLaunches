@@ -8,6 +8,7 @@
 import SwiftUI
 import AstroSwiftFoundation
 import SDWebImageSwiftUI
+import MapKit
 
 struct ConferenceRoomView: View {
     
@@ -63,6 +64,7 @@ struct Sidebar: View {
 
                 Text("LOCATION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
                 Text(launch.locationName).font(.system(size: 32))                                .foregroundColor(.white)
+                PadMap(coord:launch.locationCoordinate)
                 Spacer()
                 Divider()
 
@@ -92,6 +94,24 @@ struct Sidebar: View {
     }
 }
 
+struct PadMap: View {
+    var coord:CLLocationCoordinate2D
+    @State private var region:MKCoordinateRegion
+  
+    init(coord :CLLocationCoordinate2D)
+    {
+        self.coord = coord
+        region = MKCoordinateRegion(
+            center: coord,
+            latitudinalMeters: 440233,
+            longitudinalMeters: 440233
+            )
+    }
+    var body: some View {
+        Map(coordinateRegion: $region, interactionModes: [])
+    }
+}
+
 
 struct LogoNameCountdown: View {
     var launch:Launch
@@ -102,6 +122,7 @@ struct LogoNameCountdown: View {
             {
                 WebImage(url:url)
                     .resizable()
+                    .padding()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300,alignment: .center)
                     .background(Color.launchesBackgroundColor)
