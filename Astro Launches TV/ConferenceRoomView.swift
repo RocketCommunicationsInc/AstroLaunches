@@ -12,11 +12,17 @@ import SDWebImageSwiftUI
 struct ConferenceRoomView: View {
     
     @ObservedObject var networkManager: NetworkManager
-
+    @State var launchIndex = 0
+    
+    let timer = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
+   
     var body: some View {
-        if let launch = networkManager.launches.first
+
+        if networkManager.launches.count > 0
         {
-            // HStack for the whole screen
+        let launch = networkManager.launches[launchIndex]
+
+        // HStack for the whole screen
             HStack(spacing:0) {
                 ZStack(alignment:.leading) {
                     WebImage(url: launch.imageURL)
@@ -35,6 +41,10 @@ struct ConferenceRoomView: View {
                     }.padding(.leading, 80)
                 }
                 Sidebar(launch: launch)
+            }
+          //  .animation(Animation.easeInOut, value: launchIndex)
+            .onReceive(self.timer) { _ in
+                launchIndex = (launchIndex + 1)  % networkManager.launches.count
             }
         }
     }
