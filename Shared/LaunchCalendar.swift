@@ -9,9 +9,10 @@ import SwiftUI
 
 struct LaunchCalendar: View {
     var launch:Launch
+    var labelStyle:Font.TextStyle = .body
 
     var body: some View {
-        HStack{
+        HStack(spacing: 10){
             Image(systemName: "calendar")
             if let time = launch.windowOpenDate
             {
@@ -22,8 +23,8 @@ struct LaunchCalendar: View {
             {
                 Text("Unknown")
             }
-        }.font(.body)
-            .foregroundColor(.launchesTextColor)
+        }.font(Font.system(labelStyle))
+        .foregroundColor(.launchesTextColor)
     }
 }
 

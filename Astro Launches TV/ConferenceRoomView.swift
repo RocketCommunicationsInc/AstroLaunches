@@ -16,112 +16,119 @@ struct ConferenceRoomView: View {
     var body: some View {
         if let launch = networkManager.launches.first
         {
+            // HStack for the whole screen
             HStack(spacing:0) {
-                if let imageURL = launch.imageURL
-                {
-                    ZStack(alignment:.leading) {
-                        WebImage(url: imageURL)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 1280, height: 1080, alignment: .topLeading)
-                            .clipped()
-                            .blur(radius:4)
-                        
-                        HStack(alignment: .center) {
-                            if let url = launch.agency?.logoURL
-                            {
-                                WebImage(url:url)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 300, height: 300,alignment: .center)
-                                    .background(Color.launchesSurfaceColor)
-                                    .padding()
-                            }
-
-//                            Image("AstroLogoLarge").frame(width: 300, height: 300).background(Color.launchesCardColor)
-                            VStack(alignment: .leading)
-                            {
-                                Text(launch.missionName)
-                                    .font(.system(size: 100
-                                                  
-                                                  , weight: .semibold, design: .default))
-                                    .padding()
-                                Countdown(launch:launch)
-                                    .padding()
-                            }.padding(.leading,40)
-                            
-                        }.frame(width: 1280)
-                    }
-                }
-                VStack(alignment: .leading) {
-                 //   Image("AstroLogoLarge")
-                    Group {
-                        Text("ROCKET").font(.system(size: 24))
-                            .foregroundColor(.launchesTextColor)
-                        Text(launch.rocketName).font(.system(size: 32))
-                            .foregroundColor(.white)
-                    }
-                    Divider()
+                ZStack(alignment:.leading) {
+                    WebImage(url: launch.imageURL)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 1280, height: 1080, alignment: .topLeading)
+                        .clipped()
+                        .blur(radius:4)
                     
-                    Group {
-                        Text("LOCATION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                        Text(launch.locationName).font(.system(size: 32))                                .foregroundColor(.white)
-                    }
-                    Divider()
-
-                    Group {
-                        Text("MISSION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                        Text(launch.missionDescription).font(.system(size: 32))                                .foregroundColor(.white)
-                    }
-                    Divider()
-
-                    Group {
-                        Text("STATUS").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                        if let status = launch.status
-                        {
-                            StatusTag(text: status,status: launch.astroStatus)
+                    VStack(alignment:.leading,spacing: 100) {
+                        LogoNameCountdown(launch:launch)
+                        HStack{
+                            LaunchCalendar(launch:launch, labelStyle:.headline)
+                            LaunchClock(launch:launch, labelStyle:.headline)
                         }
-                    }
-                    Divider()
-
-                }.padding(.all,40)
-                    .frame(width: 640, height: 1080, alignment: .leading)
-                    .background(Color.launchesSurfaceColor)
-                
-                
+                    }.padding(.leading, 80)
+                }
+                Sidebar(launch: launch)
             }
         }
     }
 }
 
 
-struct Countdown: View {
-  //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+struct Sidebar: View {
     var launch:Launch
 
     var body: some View {
-        HStack {
-            if let windowOpenDate = launch.windowOpenDate
-            {
-                HStack {
-                    Text("T-")
-                        .font(.system(size: 90
-                                      , weight: .semibold, design: .default))
-                    .foregroundColor(.white)
-                    
-                    Text(windowOpenDate, style: .timer)
-                        .foregroundColor(.white)
-                        .font(.system(size: 80, weight: .semibold,design: .monospaced))
+        VStack(alignment: .leading) {
+            Group {
+                Spacer()
 
-                }.padding()
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(6)
-                
+                Text("ROCKET").font(.system(size: 24))
+                    .foregroundColor(.launchesTextColor)
+                Text(launch.rocketName).font(.system(size: 32))
+                    .foregroundColor(.white)
+                Spacer()
+                Divider()
+
+
             }
-        }
+            Group {
+                Spacer()
+
+                Text("LOCATION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
+                Text(launch.locationName).font(.system(size: 32))                                .foregroundColor(.white)
+                PadMap(coord:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
+                Spacer()
+                Divider()
+
+            }
+            Group {
+                Spacer()
+
+                Text("MISSION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
+                Text(launch.missionDescription).font(.system(size: 32))                                .foregroundColor(.white)
+                Spacer()
+                Divider()
+            }
+            Group {
+                Spacer()
+
+                Text("STATUS").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
+                if let status = launch.status
+                {
+                    StatusTag(text: status,status: launch.astroStatus)
+                }
+
+            }
+            Spacer()
+        }.padding(.all,40)
+            .frame(width: 640, height: 1080, alignment: .leading)
+            .background(Color.launchesSurfaceColor)
     }
 }
+
+
+
+struct LogoNameCountdown: View {
+    var launch:Launch
+
+    var body: some View {
+        HStack(alignment: .bottom) {
+            if let url = launch.agency?.logoURL
+            {
+                WebImage(url:url)
+                    .resizable()
+                    .padding()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300,alignment: .center)
+                    .background(Color.launchesBackgroundColor)
+                    .cornerRadius(6)
+            }
+            
+            VStack(alignment: .leading)
+            {
+                let titleFontSize = UIFont.preferredFont(forTextStyle: .title1).pointSize
+                
+                Text(launch.missionName)
+                    .font(.system(size: titleFontSize * 1.2, weight: .semibold))
+                    .padding()
+                LaunchCountdown(launch:launch, digitStyle: .title, labelStyle: .caption)
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(6)
+            }
+            Spacer()
+        }//.frame(width: 1280)
+    }
+}
+
+
 
 struct ConferenceRoomView_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
