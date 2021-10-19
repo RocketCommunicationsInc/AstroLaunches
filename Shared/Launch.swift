@@ -26,24 +26,24 @@ struct LaunchReply:Decodable{
 
 struct AgencyReply:Decodable{
     let id:Int
-    let name:String
+    let name:String?
     let logo_url:String?
 }
 
 
 struct Mission:Decodable{
-    let name:String
+    let name:String?
     let description:String?
     let type:String?
 }
 
 struct Status:Decodable{
-    let name:String
+    let name:String?
     let abbrev:String?
 }
 
 struct Pad:Decodable{
-    let name:String
+    let name:String?
     let latitude:String?
     let longitude:String?
 }
@@ -60,12 +60,12 @@ struct Rocket:Decodable{
 }
 
 struct RocketConfiguration:Decodable{
-    let name:String
+    let name:String?
 }
 
 struct LaunchServiceProvider:Decodable{
-    let name:String
-    let type:String
+    let name:String?
+    let type:String?
     let url:URL?
 }
 
@@ -207,8 +207,8 @@ struct Launch{
         init(_ agencyReply:AgencyReply)
         {
             id = agencyReply.id
-            name = agencyReply.name
-            
+            name = agencyReply.name ?? "Unknown Agency Name"
+
             if let replyLogoURL = agencyReply.logo_url
             {
                 logoURL = URL(string:replyLogoURL) ?? nil
