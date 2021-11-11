@@ -14,7 +14,7 @@ struct ConferenceRoomView: View {
     @ObservedObject var networkManager: NetworkManager
     @State var launchIndex = 0
     
-    let timer = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
+    let timer = Timer.publish(every: 15, on: .current, in: .common).autoconnect()
    
     var body: some View {
 
