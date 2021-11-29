@@ -48,6 +48,9 @@
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7C834938260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
 		7C834939260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
+		7C8976C227556A8F000815F7 /* CentralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8976C127556A8F000815F7 /* CentralTimer.swift */; };
+		7C8976C327556A8F000815F7 /* CentralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8976C127556A8F000815F7 /* CentralTimer.swift */; };
+		7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8976C127556A8F000815F7 /* CentralTimer.swift */; };
 		7C8BFBF1270374BD00D6AB09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
 		7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7C9BDD88271642EC00A97374 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
@@ -136,6 +139,7 @@
 		7C7243C826E8188400233B33 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7C79988226FB7EC700FCAEF2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7C834937260931D1008B4895 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7C8976C127556A8F000815F7 /* CentralTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralTimer.swift; sourceTree = "<group>"; };
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
 		7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceRoomView.swift; sourceTree = "<group>"; };
 		7CB1EE8627062383004E0CD4 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 				7C79988226FB7EC700FCAEF2 /* Colors.swift */,
 				7CB1EE8627062383004E0CD4 /* Tag.swift */,
 				7C3CB5D5270F4F98000448C6 /* LaunchClock.swift */,
+				7C8976C127556A8F000815F7 /* CentralTimer.swift */,
 				7C3CB5D9270F4FA4000448C6 /* LaunchCalendar.swift */,
 				7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */,
 				7C9BDD87271642EC00A97374 /* PadMap.swift */,
@@ -591,6 +596,7 @@
 				7C3D4CCE2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7C3CB5DE270F4FD1000448C6 /* LaunchCountdown.swift in Sources */,
+				7C8976C227556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7C9BDD88271642EC00A97374 /* PadMap.swift in Sources */,
 				7CB1EE8727062383004E0CD4 /* Tag.swift in Sources */,
@@ -613,6 +619,7 @@
 				7C3D4CCF2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7C3CB5DF270F4FD1000448C6 /* LaunchCountdown.swift in Sources */,
+				7C8976C327556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C79988426FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7C9BDD89271642EC00A97374 /* PadMap.swift in Sources */,
 				7CB1EE8827062810004E0CD4 /* Tag.swift in Sources */,
@@ -644,6 +651,7 @@
 				7C47D6182710B53100F5997E /* LaunchCountdown.swift in Sources */,
 				7CB1EE8927062816004E0CD4 /* Tag.swift in Sources */,
 				7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */,
+				7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
 				7C3CB5DC270F4FA4000448C6 /* LaunchCalendar.swift in Sources */,
 				7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */,

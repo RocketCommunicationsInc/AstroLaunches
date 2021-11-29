@@ -9,11 +9,9 @@ import SwiftUI
 
 struct LaunchCountdown: View {
     var launch:Launch
-
-    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
     
     @State var timeRemaining: TimeInterval = 0
-    
+
     // defaults sizes can be overridden
     var digitStyle:Font.TextStyle = .body
     var labelStyle:Font.TextStyle = .caption2
@@ -55,10 +53,9 @@ struct LaunchCountdown: View {
                     }
 
                 }.foregroundColor(Color(.label))
-                .onReceive(self.timer) { _ in
+                .onReceive(centralTimer) { _ in
                     self.timeRemaining = LaunchCountdown.calcRemainingTime(launchDate:launch.windowOpenDate!)
-                            }
-                
+                }
             
         }
     }
