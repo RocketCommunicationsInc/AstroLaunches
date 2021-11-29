@@ -13,7 +13,7 @@ struct LaunchDetail: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading,spacing:0){
                 // Launch Image and Countdown clock
-                ImageAndCountdown(launch: launch, height: 400, showStatus: false)
+                ImageAndCountdown(launch: launch, height: 400, showStatus: false, wide:true)
                 // Mission Name, Calendar, Clock
                 MissionCalendarClock(launch: launch, showRocket: false,showStatus: false).padding()
                 MissionDescription(launch: launch).padding()

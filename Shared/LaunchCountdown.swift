@@ -9,11 +9,9 @@ import SwiftUI
 
 struct LaunchCountdown: View {
     var launch:Launch
-
-    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
     
     @State var timeRemaining: TimeInterval = 0
-    
+
     // defaults sizes can be overridden
     var digitStyle:Font.TextStyle = .body
     var labelStyle:Font.TextStyle = .caption2
@@ -21,73 +19,60 @@ struct LaunchCountdown: View {
     var body: some View {
         HStack {
             HStack()
-                {
-                    let digitFont = Font.system(digitStyle).weight(.semibold).monospacedDigit()
-                    let labelFont = Font.system(labelStyle)
-
-                    VStack (alignment: .trailing){
-                        Text(timeRemaining.daysFromTimeInterval())
-                            .font(digitFont)
-                        Text("DAYS")
-                            .font(labelFont)
-                    }
-
-                    VStack (alignment: .trailing){
-                        Text(timeRemaining.hoursFromTimeInterval())
-                            .font(digitFont)
-                        Text("HRS")
-                            .font(labelFont)
-                    }
-
-                    
-                    VStack (alignment: .trailing){
-                        Text(timeRemaining.minutesFromTimeInterval())
-                            .font(digitFont)
-                        Text("MIN")
-                            .font(labelFont)
-                    }
-                    
-                    VStack (alignment: .trailing){
-                        Text(timeRemaining.secondsFromTimeInterval())
-                            .font(digitFont)
-                        Text("SEC")
-                            .font(labelFont)
-                    }
-
-                }.foregroundColor(Color(.label))
-                .onReceive(self.timer) { _ in
-                    self.timeRemaining = LaunchCountdown.calcRemainingTime(launchDate:launch.windowOpenDate!)
-                            }
+            {
+                let digitFont = Font.system(digitStyle).weight(.semibold).monospacedDigit()
+                let labelFont = Font.system(labelStyle)
                 
-            
+                VStack (alignment: .trailing){
+                    Text(timeRemaining.days())
+                        .font(digitFont)
+                    Text("DAYS")
+                        .font(labelFont)
+                }
+                
+                VStack (alignment: .trailing){
+                    Text(timeRemaining.hours())
+                        .font(digitFont)
+                    Text("HRS")
+                        .font(labelFont)
+                }
+                
+                VStack (alignment: .trailing){
+                    Text(timeRemaining.minutes())
+                        .font(digitFont)
+                    Text("MIN")
+                        .font(labelFont)
+                }
+                
+                VStack (alignment: .trailing){
+                    Text(timeRemaining.seconds())
+                        .font(digitFont)
+                    Text("SEC")
+                        .font(labelFont)
+                }
+                
+            }.foregroundColor(Color(.label))
+            .onReceive(centralTimer) { _ in
+                    // refresh the time every second
+                    calcTimeRemaining()
+                }
+            .onAppear {
+                    // refresh the time when first shown
+                    calcTimeRemaining()
+                }
         }
     }
     
 
-    static func calcRemainingTime(launchDate:Date)->TimeInterval
-    {
-        let interval = Date().timeIntervalSince(launchDate)
-        return interval
-
-       // return launchDate
+    func calcTimeRemaining()
+    {                                                               timeRemaining = Date().timeIntervalSince(launch.windowOpenDate!)
     }
 }
 
+// extend TimeInterval to output units of time as Strings, always with two digits
 extension TimeInterval{
     
-//    func stringFromTimeInterval() -> String {
-//        
-//        let time = NSInteger(self)
-//        
-//        let seconds = abs(time % 60)
-//        let minutes = abs((time / 60) % 60)
-//        let hours = abs((time / 3600) % 24)
-//        let days = abs((time / 86400))
-//        
-//        return String(format: "%0.2d %0.2d %0.2d %0.2d",days, hours,minutes,seconds)
-//    }
-    
-    func daysFromTimeInterval() -> String {
+    func days()->String {
         
         let time = NSInteger(self)
         let days = abs((time / 86400))
@@ -95,7 +80,7 @@ extension TimeInterval{
         return String(format: "%0.2d",days)
     }
     
-    func hoursFromTimeInterval() -> String {
+    func hours()->String {
         
         let time = NSInteger(self)
         let hours = abs((time / 3600) % 24)
@@ -103,7 +88,7 @@ extension TimeInterval{
         return String(format: "%0.2d",hours)
     }
     
-    func minutesFromTimeInterval() -> String {
+    func minutes()->String {
         
         let time = NSInteger(self)
         let minutes = abs((time / 60) % 60)
@@ -111,7 +96,7 @@ extension TimeInterval{
         return String(format: "%0.2d",minutes)
     }
     
-    func secondsFromTimeInterval() -> String {
+    func seconds()->String {
         
         let time = NSInteger(self)
         let seconds = abs(time % 60)

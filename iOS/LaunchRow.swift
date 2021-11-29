@@ -37,21 +37,43 @@ struct ImageAndCountdown: View {
     var launch:Launch
     var height:CGFloat
     var showStatus:Bool
+    var wide = false
     var body: some View {
         
         ZStack(alignment:.bottom){
             if let imageURL = launch.imageURL
             {
                 ZStack(alignment:.topTrailing) {
-                    WebImage(url:imageURL)
-                        .resizable()
-                        .indicator(.activity)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
-                    .clipped()
+                    if (wide) // wide mode for display on ipad detail screen
+                    {
+                        WebImage(url:imageURL)
+                            .resizable()
+                            .indicator(.activity)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                            .blur(radius:8)
+                            .clipped()
+                        
+                        
+                        WebImage(url:imageURL)
+                            .resizable()
+                            .indicator(.activity)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                            .clipped()
+                    }
+                    else
+                    {
+                        WebImage(url:imageURL)
+                            .resizable()
+                            .indicator(.activity)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                            .clipped()
+                    }
                 }
             }
-            else
+            else // no image available, use our stock photo
             {
                 Image("launch")
                     .resizable()
