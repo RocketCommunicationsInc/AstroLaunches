@@ -18,10 +18,9 @@ struct LaunchDetail: View {
                 MissionCalendarClock(launch: launch, showRocket: false,showStatus: false).padding()
                 MissionDescription(launch: launch).padding()
                 MissionStatus(launch: launch).padding()
+                RocketAndLocationBoxes(launch:launch).padding()
+                PadMap(coord:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6).padding()
 
-                HStack{
-                    RocketBox(launch:launch)
-                }.padding()
             }
         }
         .background(Color.launchesSurfaceColor)
@@ -71,7 +70,7 @@ struct MissionStatus: View {
 
 
 
-struct RocketBox: View {
+struct RocketAndLocationBoxes: View {
     var launch:Launch
     var body: some View {
         VStack(alignment: .leading) {

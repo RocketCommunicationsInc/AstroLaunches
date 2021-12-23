@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct DateFormatters
-{
-    init() {
-//        _ = ZuluDateFormatter.sharedInstance // init the ZuluDateFormatter
-//       // _ = CountdownDateFormatter.sharedInstance // init the CountdownDateFormatter
-//        _ = TwentyFourHourTimeFormatter.sharedInstance // init the TwentyFourHourTimeFormatter
-//        _ = ShortDateFormatter.sharedInstance // init the ShortDateFormatter
-    }
-}
+//struct DateFormatters
+//{
+//    init() {
+////        _ = ZuluDateFormatter.sharedInstance // init the ZuluDateFormatter
+////       // _ = CountdownDateFormatter.sharedInstance // init the CountdownDateFormatter
+////        _ = TwentyFourHourTimeFormatter.sharedInstance // init the TwentyFourHourTimeFormatter
+////        _ = ShortDateFormatter.sharedInstance // init the ShortDateFormatter
+//    }
+//}
 
 
 struct ZuluDateFormatter {
@@ -35,7 +35,6 @@ struct ZuluDateFormatter {
     init() {
         // Set up the particular format that the launch API uses
         ZuluDateFormatter.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        //ZuluDateFormatter.dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
     }
 }
 
@@ -55,10 +54,9 @@ struct TwentyFourHourTimeFormatter {
     init() {
         TwentyFourHourTimeFormatter.dateFormatter.dateFormat = "HH:mm"
     }
-
 }
 
-
+// Return a formatter for the abbreviated form used in some Launches displays
 struct ShortDateFormatter {
     
     static let sharedInstance = ShortDateFormatter()
@@ -75,6 +73,7 @@ struct ShortDateFormatter {
     }
 }
 
+// Return a formatter to extract only the day
 struct DayFormatter {
     
     static let sharedInstance = DayFormatter()
@@ -91,7 +90,7 @@ struct DayFormatter {
     }
 }
 
-
+// Return a formatter to extract only the hour
 struct HourFormatter {
     
     static let sharedInstance = HourFormatter()
@@ -108,6 +107,7 @@ struct HourFormatter {
     }
 }
 
+// Return a formatter to extract only the minute
 struct MinuteFormatter {
     
     static let sharedInstance = MinuteFormatter()
@@ -124,7 +124,7 @@ struct MinuteFormatter {
     }
 }
 
-
+// Return a formatter to extract only the second
 struct SecondFormatter {
     
     static let sharedInstance = SecondFormatter()
