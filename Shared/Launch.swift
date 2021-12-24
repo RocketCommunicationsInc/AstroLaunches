@@ -134,21 +134,6 @@ struct Launch{
             imageURL = nil
         }
         
-
-//        if (imageURL != nil)
-//        {
-//            do {
-//                let data = try Data(contentsOf: imageURL!)
-//                self.image = UIImage(data:data)
-//            } catch  {
-//                image = nil
-//            }
-//        }
-//        else
-//        {
-//            image = nil
-//        }
-        
         padName = launchReply.pad?.name ?? "Unknown Pad Name"
         locationName = launchReply.pad?.name ?? "Unknown Location Name"
         serviceProviderName = launchReply.launch_service_provider?.name ?? "Unknown Provider Name"

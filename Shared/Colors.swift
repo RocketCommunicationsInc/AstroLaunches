@@ -24,7 +24,6 @@ public extension Color
         {
             return light
         }
-       // return Color { colorScheme == .dark ? dark : light }
     }
 
     //——————————————————————————————————————————————————————————————————————————————
@@ -70,7 +69,7 @@ public extension Color
         }
     }
     //——————————————————————————————————————————————————————————————————————————————
-    // Semantic UI colors
+    // Semantic UI colors for this app, should be elevated to Foundation
     //——————————————————————————————————————————————————————————————————————————————
     static var launchesTextColor:Color
     {return Color("Text Color")} // astroUIPrimaryLighten4,astroUITertiaryLighten1
