@@ -19,33 +19,33 @@ struct IdentifiablePlace: Identifiable {
     }
 }
 
+// Show a map extending 500 miles wide across, centered on the launch site coodiates
+// Automatically update the region as the
 struct PadMap: View {
-    var coord:CLLocationCoordinate2D
+    var coordinates:CLLocationCoordinate2D
     @State private var region:MKCoordinateRegion
+    let fiveHundredMiles:Double = 804672 // meters
     
-    init(coord :CLLocationCoordinate2D)
+    init(coordinates :CLLocationCoordinate2D)
     {
-        self.coord = coord
+        self.coordinates = coordinates
         region = MKCoordinateRegion(
-            center: coord,
-            latitudinalMeters: 880233,
-            longitudinalMeters: 880233
+            center: coordinates,
+            latitudinalMeters: fiveHundredMiles,
+            longitudinalMeters: fiveHundredMiles
         )
     }
     var body: some View {
-        let place = IdentifiablePlace(lat:self.coord.latitude,long:self.coord.longitude)
-        Group{
-
-            Map(coordinateRegion: $region, interactionModes: [],annotationItems: [place])
-            { place in
-                MapMarker(coordinate: place.location,
-                          tint: Color.astroUITint)
-            }
-        }.onChange(of: coord) { newCoord in
+        let place = IdentifiablePlace(lat: coordinates.latitude,long: coordinates.longitude)
+        Map(coordinateRegion: $region, interactionModes: [],annotationItems: [place])
+        { place in
+            MapMarker(coordinate: place.location,   // put a marker at the launch site coordinates
+                      tint: Color.astroUITint)
+        }.onChange(of: coordinates) { newCoordinates in // on change of coordinates, update our related state variable 'region'
             region = MKCoordinateRegion(
-                center: newCoord,
-                latitudinalMeters: 880233,
-                longitudinalMeters: 880233
+                center: newCoordinates,
+                latitudinalMeters: fiveHundredMiles,
+                longitudinalMeters: fiveHundredMiles
             )
         }
         
