@@ -35,6 +35,7 @@ struct PadMap: View {
     var body: some View {
         let place = IdentifiablePlace(lat:self.coord.latitude,long:self.coord.longitude)
         Group{
+
             Map(coordinateRegion: $region, interactionModes: [],annotationItems: [place])
             { place in
                 MapMarker(coordinate: place.location,
@@ -42,7 +43,7 @@ struct PadMap: View {
             }
         }.onChange(of: coord) { newCoord in
             region = MKCoordinateRegion(
-                center: coord,
+                center: newCoord,
                 latitudinalMeters: 880233,
                 longitudinalMeters: 880233
             )
@@ -58,8 +59,4 @@ public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool
     return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
 
-//struct PadMap_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PadMap()
-//    }
-//}
+
