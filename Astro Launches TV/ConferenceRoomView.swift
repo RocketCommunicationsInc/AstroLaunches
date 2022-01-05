@@ -14,6 +14,7 @@ struct ConferenceRoomView: View {
     @ObservedObject var networkManager: NetworkManager
     @State var launchIndex = 0
     
+    // every 15 seconds publish a message that will cause an update to the next launch
     let timer = Timer.publish(every: 15, on: .current, in: .common).autoconnect()
    
     var body: some View {
@@ -21,9 +22,9 @@ struct ConferenceRoomView: View {
         if networkManager.launches.count > 0
         {
         let launch = networkManager.launches[launchIndex]
-
-        // HStack for the whole screen
+            // HStack for the whole screen
             HStack(spacing:0) {
+                // ZStack for the large left side image and overlaid contents
                 ZStack(alignment:.leading) {
                     WebImage(url: launch.imageURL)
                         .resizable()
@@ -40,10 +41,16 @@ struct ConferenceRoomView: View {
                         }
                     }.padding(.leading, 80)
                 }
+                // Right side bar
                 Sidebar(launch: launch)
             }
-          //  .animation(Animation.easeInOut, value: launchIndex)
+          //  .animation(Animation.easeInOut, value: launchIndex) // uncomment to animate the change. Its a bit much
             .onReceive(self.timer) { _ in
+                // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
+                // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
+                // I have not found any workaround for this, including putting the launchIndex on another thread.
+                // This is a common pattern to update the view, seen throuhout the SwiftUI literature. Not sure why the warning happens
+                // here, maybe because the update is so major, a whole screenful of content?
                 launchIndex = (launchIndex + 1)  % networkManager.launches.count
             }
         }
@@ -66,35 +73,39 @@ struct Sidebar: View {
                 Spacer()
                 Divider()
 
-
             }
             Group {
                 Spacer()
-
-                Text("LOCATION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                Text(launch.locationName).font(.system(size: 32))                                .foregroundColor(.white)
-                PadMap(coord:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
+                
+                Text("LOCATION").font(.system(size: 24))
+                    .foregroundColor(.launchesTextColor)
+                Text(launch.locationName).font(.system(size: 32))
+                    .foregroundColor(.white)
+                PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
                 Spacer()
                 Divider()
-
+                
             }
             Group {
                 Spacer()
-
-                Text("MISSION").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
-                Text(launch.missionDescription).font(.system(size: 32))                                .foregroundColor(.white)
+                
+                Text("MISSION").font(.system(size: 24))
+                    .foregroundColor(.launchesTextColor)
+                Text(launch.missionDescription).font(.system(size: 32))
+                    .foregroundColor(.white)
                 Spacer()
                 Divider()
             }
             Group {
                 Spacer()
-
-                Text("STATUS").font(.system(size: 24))                                .foregroundColor(.launchesTextColor)
+                
+                Text("STATUS").font(.system(size: 24))
+                    .foregroundColor(.launchesTextColor)
                 if let status = launch.status
                 {
                     StatusTag(text: status,status: launch.astroStatus)
                 }
-
+                
             }
             Spacer()
         }.padding(.all,40)
@@ -134,7 +145,7 @@ struct LogoNameCountdown: View {
                     .cornerRadius(6)
             }
             Spacer()
-        }//.frame(width: 1280)
+        }
     }
 }
 
