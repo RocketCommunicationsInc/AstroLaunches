@@ -60,12 +60,22 @@ struct LaunchCountdown: View {
                     // refresh the time when first shown
                     calcTimeRemaining()
                 }
+            .onChange(of: launch) { newLaunch in // on change of coordinates, update our related state variable 'region'
+                calcTimeRemaining(newlaunch:newLaunch)
+                print()
+            }
+            
         }
     }
     
+    func calcTimeRemaining(newlaunch:Launch)
+    {
+        timeRemaining = Date().timeIntervalSince(newlaunch.windowOpenDate!)
+    }
 
     func calcTimeRemaining()
-    {                                                               timeRemaining = Date().timeIntervalSince(launch.windowOpenDate!)
+    {
+        timeRemaining = Date().timeIntervalSince(launch.windowOpenDate!)
     }
 }
 

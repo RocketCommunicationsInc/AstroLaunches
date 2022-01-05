@@ -69,8 +69,9 @@ struct LaunchServiceProvider:Decodable{
     let url:URL?
 }
 
+
 // Our Launch Struct that converts the JSON data to Swift types, and checks for missing values
-struct Launch{
+struct Launch: Equatable{
     let id:String
     let missionName:String
     let missionDescription:String
@@ -88,6 +89,11 @@ struct Launch{
     let serviceProviderType:String
     var agency:Agency?
     
+    // for equatable conformance, use id
+    static public func ==(lhs: Launch, rhs: Launch) -> Bool {
+        return lhs.id == rhs.id
+    }
+
     // Parse a LaunchReply, see which fields were returned and convert to Swift types
     init(_ launchReply:LaunchReply)
     {
