@@ -19,7 +19,7 @@ struct LaunchDetail: View {
                 MissionDescription(launch: launch).padding()
                 MissionStatus(launch: launch).padding()
                 RocketAndLocationBoxes(launch:launch).padding()
-                PadMap(coord:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6).padding()
+                PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6).padding()
 
             }
         }
