@@ -54,35 +54,6 @@ struct LaunchList: View {
     }
 }
 
-#if os(iOS)
-
-struct SettingsView: View {
-    @Environment(\.presentationMode) var presentationMode
-    @AppStorage(Settings.localDataKey) var localData = false // false is unused because we've initialized localDataKey in Settings.init
-    @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized darkMode in Settings.init
-
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                Toggle(isOn: $localData, label: {
-                    Text("Use Stored Test Data")
-                })
-                Toggle(isOn: $darkMode, label: {
-                    Text("Always Use Dark Mode")
-                })
-
-            }.padding().background(Color.astroUIBackground)
-            
-            .navigationBarTitle("Settings")
-            .navigationBarItems(trailing: Button("Done", action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }))
-        }
-    }
-}
-#endif
-
 
 struct ContentView_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
