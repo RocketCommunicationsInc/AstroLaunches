@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @AppStorage(Settings.localDataKey) var localData = false // false is unused because we've initialized localDataKey in Settings.init
-    @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized darkMode in Settings.init
+//    @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized darkMode in Settings.init
 
     
     var body: some View {
@@ -21,9 +21,9 @@ struct SettingsView: View {
                     Text("Use Stored Test Data")
                 })
                 #endif
-                Toggle(isOn: $darkMode, label: {
-                    Text("Always Use Dark Mode")
-                })
+//                Toggle(isOn: $darkMode, label: {
+//                    Text("Always Use Dark Mode")
+//                })
             }
             .padding(.top,8)
             .background(Color.astroUIBackground)

@@ -13,8 +13,6 @@ struct LaunchList: View {
     @ObservedObject var networkManager: NetworkManager
     @State var showingSettings = false
 
-    @AppStorage(Settings.darkModeKey) var darkMode = false // false is unused because we've initialized darkMode in Settings.init
-    @Environment(\.colorScheme) var systemColorScheme
 
     var body: some View{
         NavigationView{
@@ -36,16 +34,17 @@ struct LaunchList: View {
                 // to-do: add list separator color here for iOS 15
                 .navigationTitle("Launches")
                 .toolbar {
+                    ColorSchemeAutomaticToolbarContent()
                     #if os(iOS) // settings on MacOS handled through Settings object
-                    ToolbarItem(placement: .automatic)
-                    {
-                        Button(action: {self.showingSettings = true
-                        }) {Label("Settings", systemImage: "gear")}
-                    }
+//                    ToolbarItem(placement: .automatic)
+//                    {
+//                        Button(action: {self.showingSettings = true
+//                        }) {Label("Settings", systemImage: "gear")}
+//                    }
                     #endif
             }
             }
-        }.conditionalModifier(darkMode, ForceDarkMode())
+        }.modifier(colorSchemeAutomatic())
         .sheet(isPresented: $showingSettings) {
             #if os(iOS)
             SettingsView()

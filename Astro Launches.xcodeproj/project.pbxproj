@@ -45,6 +45,9 @@
 		7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7C79988426FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7C79988526FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
+		7C7E0C84279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E0C83279F79AD00F07BDF /* ColorSchemeAutomatic.swift */; };
+		7C7E0C85279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E0C83279F79AD00F07BDF /* ColorSchemeAutomatic.swift */; };
+		7C7E0C86279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E0C83279F79AD00F07BDF /* ColorSchemeAutomatic.swift */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7C834938260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
 		7C834939260931D1008B4895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* Settings.swift */; };
@@ -139,6 +142,7 @@
 		7C6A025D26278C6900273563 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7C7243C826E8188400233B33 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7C79988226FB7EC700FCAEF2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7C7E0C83279F79AD00F07BDF /* ColorSchemeAutomatic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeAutomatic.swift; sourceTree = "<group>"; };
 		7C834937260931D1008B4895 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7C8976C127556A8F000815F7 /* CentralTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralTimer.swift; sourceTree = "<group>"; };
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		7CF87F1525AE45F300BD9D06 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7C7E0C83279F79AD00F07BDF /* ColorSchemeAutomatic.swift */,
 				7C5661F526D99BBA00191E7A /* View+ConditionalModifier.swift */,
 				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
 				7CD3C90426028B020071FB78 /* NetworkManager.swift */,
@@ -592,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C7E0C84279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */,
 				7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */,
 				7C54438026178C65007CCCC4 /* DateFormatters.swift in Sources */,
 				7C5661F626D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */,
@@ -621,6 +627,7 @@
 				7C5661F726D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */,
 				7C3CB5D7270F4F98000448C6 /* LaunchClock.swift in Sources */,
 				7C3D4CCF2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
+				7C7E0C85279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */,
 				7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7C3CB5DF270F4FD1000448C6 /* LaunchCountdown.swift in Sources */,
 				7C8976C327556A8F000815F7 /* CentralTimer.swift in Sources */,
@@ -655,6 +662,7 @@
 				7C47D6182710B53100F5997E /* LaunchCountdown.swift in Sources */,
 				7CB1EE8927062816004E0CD4 /* Tag.swift in Sources */,
 				7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */,
+				7C7E0C86279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */,
 				7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
 				7C3CB5DC270F4FA4000448C6 /* LaunchCalendar.swift in Sources */,
