@@ -128,7 +128,7 @@ struct LogoNameCountdown: View {
                     .padding()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300,alignment: .center)
-                    .background(.white)
+                    .background(.ultraThinMaterial)
                     .cornerRadius(6)
             }
             

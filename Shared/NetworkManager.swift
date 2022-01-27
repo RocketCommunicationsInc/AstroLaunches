@@ -44,7 +44,7 @@ class NetworkManager:ObservableObject
         {
             // If building for debug, use the lldev URL, as requested by the provider. Get just 5 launches, possibly stale data
             #if DEBUG
-                url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=5&mode=detail")
+                url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=detail")
             // If building for release, use the real URL. Get 10 launches
             #else
                 url = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=detail")
