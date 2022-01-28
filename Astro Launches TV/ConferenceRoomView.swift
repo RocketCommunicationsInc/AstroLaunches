@@ -123,13 +123,26 @@ struct LogoNameCountdown: View {
         HStack(alignment: .bottom) {
             if let url = launch.agency?.logoURL
             {
-                WebImage(url:url)
+                if url == URL(string: "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/logo/spacex_logo_20191121063502.png")
+                {
+                    Image(uiImage: UIImage(named:"spacex_logo_trimmed")!)
+                    .resizable()
+                    .padding(4)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300,alignment: .center)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(6)
+                }
+                else
+                {
+                    WebImage(url:url)
                     .resizable()
                     .padding()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300,alignment: .center)
                     .background(.ultraThinMaterial)
                     .cornerRadius(6)
+                }
             }
             
             VStack(alignment: .leading)
