@@ -1,10 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "shelf static image.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
+      "filename" : "shelf static image@2x.png",
       "idiom" : "tv",
       "scale" : "2x"
     },

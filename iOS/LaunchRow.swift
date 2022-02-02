@@ -115,7 +115,7 @@ struct MissionCalendarClock: View {
         VStack {
             HStack
             {
-                Text(launch.missionName).font(.title2).bold().foregroundColor(Color.launchesTextColor)
+                Text(launch.missionName).font(.title2).bold().foregroundColor(Color(uiColor:.label))
                 if (showRocket)
                 {
                     Tag(text: launch.rocketName)

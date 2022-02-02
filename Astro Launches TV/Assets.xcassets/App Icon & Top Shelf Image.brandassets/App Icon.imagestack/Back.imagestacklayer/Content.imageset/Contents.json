@@ -1,11 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "app icon back.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
-      "filename" : "astro-tv-layer-background.png",
+      "filename" : "app icon back@2x.png",
       "idiom" : "tv",
       "scale" : "2x"
     }
