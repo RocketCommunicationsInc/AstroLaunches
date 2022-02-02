@@ -44,7 +44,7 @@ struct ConferenceRoomView: View {
                 // Right side bar
                 Sidebar(launch: launch)
             }
-          //  .animation(Animation.easeInOut, value: launchIndex) // uncomment to animate the change. Its a bit much
+            //.animation(Animation.easeInOut, value: launchIndex) // uncomment to animate the change. Its a bit much
             .onReceive(self.timer) { _ in
                 // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
                 // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
@@ -69,7 +69,7 @@ struct Sidebar: View {
                 Text("ROCKET").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 Text(launch.rocketName).font(.system(size: 32))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(.label))
                 Spacer()
                 Divider()
 
@@ -80,7 +80,7 @@ struct Sidebar: View {
                 Text("LOCATION").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 Text(launch.locationName).font(.system(size: 32))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(.label))
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
                 Spacer()
                 Divider()
@@ -92,7 +92,7 @@ struct Sidebar: View {
                 Text("MISSION").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 Text(launch.missionDescription).font(.system(size: 32))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(.label))
                 Spacer()
                 Divider()
             }
@@ -123,13 +123,26 @@ struct LogoNameCountdown: View {
         HStack(alignment: .bottom) {
             if let url = launch.agency?.logoURL
             {
-                WebImage(url:url)
+                if url == URL(string: "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/logo/spacex_logo_20191121063502.png")
+                {
+                    Image(uiImage: UIImage(named:"spacex_logo_trimmed")!)
+                    .resizable()
+                    .padding(4)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300,alignment: .center)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(6)
+                }
+                else
+                {
+                    WebImage(url:url)
                     .resizable()
                     .padding()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300,alignment: .center)
-                    .background(.white)
+                    .background(.ultraThinMaterial)
                     .cornerRadius(6)
+                }
             }
             
             VStack(alignment: .leading)

@@ -31,11 +31,12 @@ struct MissionDescription: View {
     var launch:Launch
     var body: some View {
         VStack(alignment: .leading){
-            Text("MISSION").font(.headline)
+            Text("MISSION").font(.headline).foregroundColor(.launchesTextColor)
+
             Spacer()
             Text(launch.missionDescription).font(.body)
 
-        }.foregroundColor(.launchesTextColor)
+        }
     }
 }
 
@@ -45,7 +46,8 @@ struct LaunchAgency: View {
     var launch:Launch
     var body: some View {
         VStack(alignment: .leading){
-            Text("AGENCY").font(.headline)
+            Text("AGENCY").font(.headline).foregroundColor(.launchesTextColor)
+
             Spacer()
             Text(launch.serviceProviderName).font(.body)
 
@@ -59,12 +61,13 @@ struct MissionStatus: View {
     var launch:Launch
     var body: some View {
         VStack(alignment: .leading) {
-            Text("STATUS").font(.headline)
+            Text("STATUS").font(.headline).foregroundColor(.launchesTextColor)
+
             if let status = launch.status
             {
-                StatusTag(text: status,status: launch.astroStatus)
+                StatusTag(text: status,status: launch.astroStatus).foregroundColor(.launchesTextColor)
             }
-        }.foregroundColor(.launchesTextColor)
+        }
     }
 }
 
@@ -76,28 +79,28 @@ struct RocketAndLocationBoxes: View {
         VStack(alignment: .leading) {
             HStack(spacing:16){
                 VStack(alignment: .leading){
-                    Text("ROCKET").font(.headline)
+                    Text("ROCKET").font(.headline).foregroundColor(.launchesTextColor)
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
                             .fill(Color.launchesBoxColor).frame(minHeight:73)
-                        Text(launch.rocketName).padding(.all,6)
+                        Text(launch.rocketName).padding(.all,6).foregroundColor(.launchesTextColor)
                         
                     }
                 }
                 VStack(alignment: .leading){
-                    Text("LOCATION").font(.headline)
+                    Text("LOCATION").font(.headline).foregroundColor(.launchesTextColor)
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
                             .fill(Color.launchesBoxColor).frame(minHeight:73)
-                        Text(launch.locationName).padding(.all,6)
+                        Text(launch.locationName).padding(.all,6).foregroundColor(.launchesTextColor)
                         
                     }
                 }
             }
             
-        }.foregroundColor(.launchesTextColor)
+        }
     }
 }
 

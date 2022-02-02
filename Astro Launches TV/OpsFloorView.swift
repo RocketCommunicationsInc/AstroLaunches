@@ -42,7 +42,7 @@ struct OpsFloorView: View {
                     Image("AstroLogoLarge")
                     Spacer()
                     Text("ROCKET").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
-                    Text(launch.rocketName).font(.system(size: 60))                                .foregroundColor(.white)
+                    Text(launch.rocketName).font(.system(size: 60))                                .foregroundColor(Color(.label))
                     Spacer()
                     
                     Text("STATUS").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
@@ -53,7 +53,7 @@ struct OpsFloorView: View {
                     Spacer()
                     
                     Text("LOCATION").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
-                    Text(launch.locationName).font(.system(size: 60))                                .foregroundColor(.white)
+                    Text(launch.locationName).font(.system(size: 60))                                .foregroundColor(Color(.label))
 
                 }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
@@ -79,10 +79,10 @@ struct GiantCountdown: View {
                     Text("T-")
                         .font(.system(size: 90
                                       , weight: .semibold, design: .default))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(.label))
                     
                     Text(windowOpenDate, style: .timer)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(.label))
                         .font(.system(size: 90, weight: .semibold,design: .monospaced))
 
                 }.padding()
