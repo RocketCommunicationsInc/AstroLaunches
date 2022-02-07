@@ -157,7 +157,7 @@
 		7CF87F2825AE45F300BD9D06 /* Astro Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F2A25AE45F300BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF87F2B25AE45F300BD9D06 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		7CF87F4A25AE498A00BD9D06 /* Astro Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CF87F4A25AE498A00BD9D06 /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F4D25AE498A00BD9D06 /* Astro Launches WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F5225AE498B00BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF87F5425AE498B00BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 			children = (
 				7CF87F2025AE45F300BD9D06 /* Astro Launches.app */,
 				7CF87F2825AE45F300BD9D06 /* Astro Launches.app */,
-				7CF87F4A25AE498A00BD9D06 /* Astro Launches.app */,
+				7CF87F4A25AE498A00BD9D06 /* Launches.app */,
 				7CF87F4D25AE498A00BD9D06 /* Astro Launches WatchKit App.app */,
 				7CF87F5925AE498B00BD9D06 /* Astro Launches WatchKit Extension.appex */,
 				7CF87F8325AE49B600BD9D06 /* Astro Launches TV.app */,
@@ -415,7 +415,7 @@
 			);
 			name = "Astro Launches";
 			productName = "Astro Launches";
-			productReference = 7CF87F4A25AE498A00BD9D06 /* Astro Launches.app */;
+			productReference = 7CF87F4A25AE498A00BD9D06 /* Launches.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
 		};
 		7CF87F4C25AE498A00BD9D06 /* Astro Launches WatchKit App */ = {
@@ -1007,7 +1007,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Launches;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1028,7 +1028,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Launches;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
