@@ -182,6 +182,10 @@ struct Launch: Equatable{
             return AstroStatus.Standby
         case "Go":
             return AstroStatus.Normal
+        case "Success":
+            return AstroStatus.Standby
+        case "Failure":
+            return AstroStatus.Caution
         default:
             return AstroStatus.Off
         }

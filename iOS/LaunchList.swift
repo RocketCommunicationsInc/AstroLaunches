@@ -44,12 +44,18 @@ struct LaunchList: View {
                     #endif
             }
             }
-        }.modifier(colorSchemeAutomatic())
+        }.alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
+            Button("Continue", role: .cancel) {}
+        } message: {
+            Text(networkManager.alertMessage)
+        }
         .sheet(isPresented: $showingSettings) {
             #if os(iOS)
             SettingsView()
             #endif
             }
+        .modifier(colorSchemeAutomatic())
+
     }
 }
 
