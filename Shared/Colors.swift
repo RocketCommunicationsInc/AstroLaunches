@@ -51,6 +51,7 @@ public extension Color
     static var astroStatusBorderCritical:Color
     { return Color("Astro Status Critical Border Color")}
 
+
     static func borderColorForAstroStatus(_ status:AstroStatus)->Color
     {
         switch status {
