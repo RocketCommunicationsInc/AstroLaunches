@@ -10,7 +10,7 @@ import AstroSwiftFoundation
 
 
 struct Tag: View {
-    @State var text:String
+    var text:String
     private let font:Font = .caption
     @ScaledMetric(relativeTo: .caption) private var radius: CGFloat = 3
     @ScaledMetric(relativeTo: .caption) private var padding: CGFloat = 4
@@ -33,8 +33,8 @@ struct Tag: View {
 
 
 struct StatusTag: View {
-    @State var text:String
-    @State var status:AstroStatus
+    var text:String
+    var status:AstroStatus
     private let font:Font = .caption
     @ScaledMetric(relativeTo: .caption) private var radius: CGFloat = 3
     @ScaledMetric(relativeTo: .caption) private var padding: CGFloat = 4
@@ -56,8 +56,8 @@ struct StatusTag: View {
 }
 
 struct TitleStatusTag: View {
-    @State var text:String
-    @State var status:AstroStatus
+    var text:String
+    var status:AstroStatus
     private let font:Font = .largeTitle
     @ScaledMetric(relativeTo: .largeTitle) private var radius: CGFloat = 6
     @ScaledMetric(relativeTo: .largeTitle) private var padding: CGFloat = 8
