@@ -9,23 +9,6 @@ import SwiftUI
 import AstroSwiftFoundation
 
 
-//struct Tag: View {
-//    var text:String
-//
-//    var body: some View {
-//            Text(text)
-//                .padding(4.0)
-//                .font(.caption).foregroundColor(.launchesTextColor)
-//                .background(Color.launchesTagBackgroundColor)
-//
-//                .background(RoundedRectangle(cornerRadius: 3.0, style: .continuous)
-//                .stroke(Color.launchesTagBorderColor, style: StrokeStyle(lineWidth: 1))
-//                .shadow(color: .launchesTagBorderColor, radius: 1, x:0, y: 0)
-//                .clipShape(RoundedRectangle(cornerRadius: 3.0, style: .continuous))
-//                )
-//    }
-//}
-
 struct Tag: View {
     @State var text:String
     private let font:Font = .caption
