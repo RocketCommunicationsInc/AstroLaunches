@@ -48,7 +48,7 @@ struct OpsFloorView: View {
                     Text("STATUS").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
                     if let status = launch.status
                     {
-                        GiantStatusTag(text: status,status: launch.astroStatus)
+                        TitleStatusTag(text: status,status: launch.astroStatus)
                     }
                     Spacer()
                     

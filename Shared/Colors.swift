@@ -33,42 +33,81 @@ public extension Color
     //——————————————————————————————————————————————————————————————————————————————
     // Astro status colors
     //——————————————————————————————————————————————————————————————————————————————
-    static var astroStatusBorderOff:Color
-    {  return Color("Astro Status Off Border Color")}
+//    static var astroStatusBorderOff:Color
+//    {  return Color("Astro Status Off Border Color")}
+//    
+//    static var astroStatusBorderStandby:Color
+//    { return Color("Astro Status Standby Border Color")}
+//
+//    static var astroStatusBorderNormal:Color
+//    { return Color("Astro Status Normal Border Color")}
+//    
+//    static var astroStatusBorderCaution:Color
+//    { return Color("Astro Status Caution Border Color")}
+//    
+//    static var astroStatusBorderSerious:Color
+//    { return Color("Astro Status Serious Border Color")}
+//    
+//    static var astroStatusBorderCritical:Color
+//    { return Color("Astro Status Critical Border Color")}
+//
+//
+//    static func borderColorForAstroStatus(_ status:AstroStatus)->Color
+//    {
+//        switch status {
+//        case .Off:
+//            return Color.astroStatusBorderOff
+//        case .Standby:
+//            return Color.astroStatusBorderStandby
+//        case .Normal:
+//            return Color.astroStatusBorderNormal
+//        case .Caution:
+//            return Color.astroStatusBorderCaution
+//        case .Serious:
+//            return Color.astroStatusBorderSerious
+//        case .Critical:
+//            return Color.astroStatusBorderCritical
+//        }
+//    }
+//    
+    static var astroStatus200Off:Color
+    {  return Color("Astro Status Off 200 Color")}
     
-    static var astroStatusBorderStandby:Color
-    { return Color("Astro Status Standby Border Color")}
+    static var astroStatus200Standby:Color
+    { return Color("Astro Status Standby 200 Color")}
 
-    static var astroStatusBorderNormal:Color
-    { return Color("Astro Status Normal Border Color")}
+    static var astroStatus200Normal:Color
+    { return Color("Astro Status Normal 200 Color")}
     
-    static var astroStatusBorderCaution:Color
-    { return Color("Astro Status Caution Border Color")}
+    static var astroStatus200Caution:Color
+    { return Color("Astro Status Caution 200 Color")}
     
-    static var astroStatusBorderSerious:Color
-    { return Color("Astro Status Serious Border Color")}
+    static var astroStatus200Serious:Color
+    { return Color("Astro Status Serious 200 Color")}
     
-    static var astroStatusBorderCritical:Color
-    { return Color("Astro Status Critical Border Color")}
+    static var astroStatus200Critical:Color
+    { return Color("Astro Status Critical 200 Color")}
 
 
-    static func borderColorForAstroStatus(_ status:AstroStatus)->Color
+    static func color200ForAstroStatus(_ status:AstroStatus)->Color
     {
         switch status {
         case .Off:
-            return Color.astroStatusBorderOff
+            return Color.astroStatus200Off
         case .Standby:
-            return Color.astroStatusBorderStandby
+            return Color.astroStatus200Standby
         case .Normal:
-            return Color.astroStatusBorderNormal
+            return Color.astroStatus200Normal
         case .Caution:
-            return Color.astroStatusBorderCaution
+            return Color.astroStatus200Caution
         case .Serious:
-            return Color.astroStatusBorderSerious
+            return Color.astroStatus200Serious
         case .Critical:
-            return Color.astroStatusBorderCritical
+            return Color.astroStatus200Critical
         }
     }
+    
+    
     //——————————————————————————————————————————————————————————————————————————————
     // Semantic UI colors for this app, should be elevated to Foundation
     //——————————————————————————————————————————————————————————————————————————————

@@ -9,32 +9,29 @@ import SwiftUI
 import AstroSwiftFoundation
 
 
+//struct Tag: View {
+//    var text:String
+//
+//    var body: some View {
+//            Text(text)
+//                .padding(4.0)
+//                .font(.caption).foregroundColor(.launchesTextColor)
+//                .background(Color.launchesTagBackgroundColor)
+//
+//                .background(RoundedRectangle(cornerRadius: 3.0, style: .continuous)
+//                .stroke(Color.launchesTagBorderColor, style: StrokeStyle(lineWidth: 1))
+//                .shadow(color: .launchesTagBorderColor, radius: 1, x:0, y: 0)
+//                .clipShape(RoundedRectangle(cornerRadius: 3.0, style: .continuous))
+//                )
+//    }
+//}
+
 struct Tag: View {
-    var text:String
-
-    var body: some View {
-            Text(text)
-                .padding(4.0)
-                .font(.caption).foregroundColor(.launchesTextColor)
-                .background(Color.launchesTagBackgroundColor)
-
-                .background(RoundedRectangle(cornerRadius: 3.0, style: .continuous)
-                .stroke(Color.launchesTagBorderColor, style: StrokeStyle(lineWidth: 1))
-                .shadow(color: .launchesTagBorderColor, radius: 1, x:0, y: 0)
-                .clipShape(RoundedRectangle(cornerRadius: 3.0, style: .continuous))
-                )
-    }
-}
-
-
-struct StatusTag: View {
     @State var text:String
-    @State var status:AstroStatus
+    private let font:Font = .caption
     @ScaledMetric(relativeTo: .caption) private var radius: CGFloat = 3
     @ScaledMetric(relativeTo: .caption) private var padding: CGFloat = 4
     @Environment(\.colorScheme) var colorScheme
-    
-
 
     var body: some View {
         Text(text)
@@ -42,12 +39,35 @@ struct StatusTag: View {
             .padding(.bottom,padding)
             .padding(.leading,padding*2)
             .padding(.trailing,padding*2)
-            .font(.caption).foregroundColor(Color(.label))
+            .font(font).foregroundColor(Color(.label))
+            .background(RoundedRectangle(cornerRadius: radius, style: .continuous)
+                            .stroke(Color.launchesTagBorderColor, style: StrokeStyle(lineWidth: 2))
+                            .background(colorScheme == .light ? Color.launchesTagBackgroundColor : Color.launchesTagBorderColor.opacity(0.1) )
+                            .shadow(color:Color.launchesTagBorderColor, radius: 1, x:0, y: 0)
+            )
+    }
+}
+
+
+struct StatusTag: View {
+    @State var text:String
+    @State var status:AstroStatus
+    private let font:Font = .caption
+    @ScaledMetric(relativeTo: .caption) private var radius: CGFloat = 3
+    @ScaledMetric(relativeTo: .caption) private var padding: CGFloat = 4
+    @Environment(\.colorScheme) var colorScheme
+
+    var body: some View {
+        Text(text)
+            .padding(.top,padding)
+            .padding(.bottom,padding)
+            .padding(.leading,padding*2)
+            .padding(.trailing,padding*2)
+            .font(font).foregroundColor(Color(.label))
             .background(RoundedRectangle(cornerRadius: radius, style: .continuous)
                             .stroke(Color.colorForAstroStatus(status), style: StrokeStyle(lineWidth: 2))
-                            .background(colorScheme == .light ? Color.colorForAstroStatus(status).opacity(0.1) : Color.colorForAstroStatus(status).opacity(0.1) )
+                            .background(colorScheme == .light ? Color.color200ForAstroStatus(status) : Color.colorForAstroStatus(status).opacity(0.1) )
                             .shadow(color:Color.colorForAstroStatus(status), radius: 1, x:0, y: 0)
-                           //.clipShape(RoundedRectangle(cornerRadius: 3.0, style: .continuous))
             )
     }
 }
@@ -69,10 +89,9 @@ struct TitleStatusTag: View {
             .font(font).foregroundColor(Color(.label))
             .background(RoundedRectangle(cornerRadius: radius, style: .continuous)
                             .stroke(Color.colorForAstroStatus(status), style: StrokeStyle(lineWidth: 2))
-                            .background(colorScheme == .light ? Color.colorForAstroStatus(status).opacity(0.1) : Color.colorForAstroStatus(status).opacity(0.1) )
+                            .background(colorScheme == .light ? Color.color200ForAstroStatus(status) : Color.colorForAstroStatus(status).opacity(0.1) )
                             .shadow(color:Color.colorForAstroStatus(status), radius: 1
                                     , x:0, y: 0)
-                        //   .clipShape(RoundedRectangle(cornerRadius: 3.0, style: .continuous))
             )
     }
 }
@@ -96,19 +115,21 @@ struct Tag_Previews: PreviewProvider {
 struct StatusTag_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
+            Tag(text: "Astro")
             StatusTag(text: "Off", status:.Off)
             StatusTag(text: "Standby", status:.Standby)
             StatusTag(text: "Normal", status:.Normal)
             StatusTag(text: "Caution", status:.Caution)
-            StatusTag(text: "Serious", status:.Serious)
+            StatusTag(text: "Serious", status:.Serious).environment(\.sizeCategory, .accessibilityLarge)
             StatusTag(text: "Critical", status:.Critical)
         }.preferredColorScheme(.dark).previewInterfaceOrientation(.landscapeLeft)
         VStack {
+            Tag(text: "Astro")
             StatusTag(text: "Off", status:.Off)
             StatusTag(text: "Standby", status:.Standby)
             StatusTag(text: "Normal", status:.Normal)
             StatusTag(text: "Caution", status:.Caution)
-            StatusTag(text: "Serious", status:.Serious)
+            StatusTag(text: "Serious", status:.Serious).environment(\.sizeCategory, .accessibilityLarge)
             StatusTag(text: "Critical", status:.Critical)
         }.preferredColorScheme(.light).previewInterfaceOrientation(.landscapeLeft)
 
