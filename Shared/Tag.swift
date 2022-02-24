@@ -35,6 +35,7 @@ struct Tag: View {
 struct StatusTag: View {
     var text:String
     var status:AstroStatus
+ //   var symbol = ""
     private let font:Font = .caption
     @ScaledMetric(relativeTo: .caption) private var radius: CGFloat = 3
     @ScaledMetric(relativeTo: .caption) private var padding: CGFloat = 4
@@ -100,6 +101,7 @@ struct StatusTag_Previews: PreviewProvider {
         VStack {
             Tag(text: "Astro")
             StatusTag(text: "Off", status:.Off)
+ //           Label("long test", systemImage: "star")
             StatusTag(text: "Standby", status:.Standby)
             StatusTag(text: "Normal", status:.Normal)
             StatusTag(text: "Caution", status:.Caution)
