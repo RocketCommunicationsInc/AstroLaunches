@@ -19,6 +19,7 @@ struct Astro_Launches_TVApp: App {
     var body: some Scene {
         WindowGroup {
             ConferenceRoomView(networkManager: networkManager)
+            //OpsFloorView(networkManager: networkManager)
         }
     }
 }
