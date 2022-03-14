@@ -43,7 +43,8 @@ struct ConferenceRoomView: View {
                 }
                 // Right side bar
                 Sidebar(launch: launch)
-            }
+            }.transition(.opacity.animation(.easeInOut(duration:2.0)))
+                .id("Main" + "\(launchIndex)")
             //.animation(Animation.easeInOut, value: launchIndex) // uncomment to animate the change. Its a bit much
             .onReceive(self.timer) { _ in
                 // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
@@ -74,6 +75,10 @@ struct Sidebar: View {
                 Divider()
 
             }
+            Button("Go!") {
+                             print("do something!")
+            }
+
             Group {
                 Spacer()
                 
@@ -82,6 +87,7 @@ struct Sidebar: View {
                 Text(launch.locationName).font(.system(size: 32))
                     .foregroundColor(Color(.label))
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
+                    .focusable(false)
                 Spacer()
                 Divider()
                 
@@ -108,6 +114,7 @@ struct Sidebar: View {
                 
             }
             Spacer()
+            
         }.padding(.all,40)
             .frame(width: 640, height: 1080, alignment: .leading)
             .background(Color.launchesSurfaceColor)

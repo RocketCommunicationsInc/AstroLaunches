@@ -41,7 +41,8 @@ struct PadMap: View {
         { place in
             MapMarker(coordinate: place.location,   // put a marker at the launch site coordinates
                       tint: Color.astroUITint)
-        }.onChange(of: coordinates) { newCoordinates in // on change of coordinates, update our related state variable 'region'
+        }.focusable(false)
+        .onChange(of: coordinates) { newCoordinates in // on change of coordinates, update our related state variable 'region'
             region = MKCoordinateRegion(
                 center: newCoordinates,
                 latitudinalMeters: fiveHundredMiles,
