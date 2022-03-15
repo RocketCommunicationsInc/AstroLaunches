@@ -33,14 +33,16 @@ struct OpsFloorView: View {
                                 .font(.system(size: 90
                                               , weight: .semibold, design: .default))
                                 .padding()
+                                .background(.thickMaterial)
+                                .cornerRadius(6)
+
+
                             GiantCountdown(launch:launch)
                                 .padding()
                         }.padding(.leading,40)//.frame(width: 1280)
                     }
                 }
                 VStack(alignment: .leading) {
-                    Image("AstroLogoLarge")
-                    Spacer()
                     Text("ROCKET").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
                     Text(launch.rocketName).font(.system(size: 60))                                .foregroundColor(Color(.label))
                     Spacer()
@@ -48,7 +50,7 @@ struct OpsFloorView: View {
                     Text("STATUS").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
                     if let status = launch.status
                     {
-                        GiantStatusTag(text: status,status: launch.astroStatus)
+                        TitleStatusTag(text: status,status: launch.astroStatus)
                     }
                     Spacer()
                     
@@ -58,7 +60,6 @@ struct OpsFloorView: View {
                 }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
                     .background(Color.launchesSurfaceColor)
-                
                 
             }
         }
@@ -75,22 +76,16 @@ struct GiantCountdown: View {
         HStack {
             if let windowOpenDate = launch.windowOpenDate
             {
+                let digitFont = Font.system(size: 90).weight(.semibold).monospacedDigit()
+
                 HStack {
-                    Text("T-")
-                        .font(.system(size: 90
-                                      , weight: .semibold, design: .default))
-                    .foregroundColor(Color(.label))
-                    
                     Text(windowOpenDate, style: .timer)
                         .foregroundColor(Color(.label))
-                        .font(.system(size: 90, weight: .semibold,design: .monospaced))
+                        .font(digitFont)
 
                 }.padding()
-                    .background(.ultraThinMaterial)
+                    .background(.thickMaterial)
                     .cornerRadius(6)
-                
-                
-                
             }
         }
     }

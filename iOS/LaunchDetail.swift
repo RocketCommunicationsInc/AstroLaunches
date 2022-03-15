@@ -65,7 +65,7 @@ struct MissionStatus: View {
 
             if let status = launch.status
             {
-                StatusTag(text: status,status: launch.astroStatus).foregroundColor(.launchesTextColor)
+                StatusTag(text: status,status: launch.astroStatus)//.foregroundColor(.launchesTextColor)
             }
         }
     }

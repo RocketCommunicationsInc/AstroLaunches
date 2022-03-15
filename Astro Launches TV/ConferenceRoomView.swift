@@ -43,7 +43,8 @@ struct ConferenceRoomView: View {
                 }
                 // Right side bar
                 Sidebar(launch: launch)
-            }
+            }.transition(.opacity.animation(.easeInOut(duration:2.0)))
+                .id("Main" + "\(launchIndex)")
             //.animation(Animation.easeInOut, value: launchIndex) // uncomment to animate the change. Its a bit much
             .onReceive(self.timer) { _ in
                 // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
@@ -68,12 +69,14 @@ struct Sidebar: View {
 
                 Text("ROCKET").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
+                    .focusable(true) // attract the automatic focus when swiftui loads this view, so the map doesn't get improperly focused
                 Text(launch.rocketName).font(.system(size: 32))
                     .foregroundColor(Color(.label))
                 Spacer()
                 Divider()
 
             }
+
             Group {
                 Spacer()
                 
@@ -82,6 +85,7 @@ struct Sidebar: View {
                 Text(launch.locationName).font(.system(size: 32))
                     .foregroundColor(Color(.label))
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
+                    .focusable(false) // doesn't work, still get focus if it's the only thing onscreen
                 Spacer()
                 Divider()
                 
@@ -108,6 +112,7 @@ struct Sidebar: View {
                 
             }
             Spacer()
+            
         }.padding(.all,40)
             .frame(width: 640, height: 1080, alignment: .leading)
             .background(Color.launchesSurfaceColor)
