@@ -40,9 +40,8 @@ struct LaunchCountdown: View {
                 VStack (alignment: .trailing){
                     Text(timeRemaining.minutes())
                         .font(digitFont)
-                        .transition(.opacity.animation(.easeInOut(duration:0.3)))
-                     //   .transition(.scale.animation(.easeInOut(duration:0.3)))
-                        .id("Minutes" + timeRemaining.minutes())
+//                        .transition(.opacity.animation(.easeInOut(duration:0.3)))
+//                        .id("Minutes" + timeRemaining.minutes())
                     Text("MIN")
                         .font(labelFont)
                 }

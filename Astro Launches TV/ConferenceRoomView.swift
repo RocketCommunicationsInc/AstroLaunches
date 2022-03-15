@@ -69,14 +69,12 @@ struct Sidebar: View {
 
                 Text("ROCKET").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
+                    .focusable(true) // attract the automatic focus when swiftui loads this view, so the map doesn't get improperly focused
                 Text(launch.rocketName).font(.system(size: 32))
                     .foregroundColor(Color(.label))
                 Spacer()
                 Divider()
 
-            }
-            Button("Go!") {
-                             print("do something!")
             }
 
             Group {
@@ -87,7 +85,7 @@ struct Sidebar: View {
                 Text(launch.locationName).font(.system(size: 32))
                     .foregroundColor(Color(.label))
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
-                    .focusable(false)
+                    .focusable(false) // doesn't work, still get focus if it's the only thing onscreen
                 Spacer()
                 Divider()
                 
