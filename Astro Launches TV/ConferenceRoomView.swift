@@ -43,9 +43,8 @@ struct ConferenceRoomView: View {
                 }
                 // Right side bar
                 Sidebar(launch: launch)
-            }.transition(.opacity.animation(.easeInOut(duration:2.0)))
-                .id("Main" + "\(launchIndex)")
-            //.animation(Animation.easeInOut, value: launchIndex) // uncomment to animate the change. Its a bit much
+            }.transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
+                .id("Main" + "\(launchIndex)") // force a unique ID to let transition work
             .onReceive(self.timer) { _ in
                 // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
                 // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
@@ -128,6 +127,7 @@ struct LogoNameCountdown: View {
         HStack(alignment: .bottom) {
             if let url = launch.agency?.logoURL
             {
+                // if this malformed spaceX logo is referenced, use our internal copy instead
                 if url == URL(string: "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/logo/spacex_logo_20191121063502.png")
                 {
                     Image(uiImage: UIImage(named:"spacex_logo_trimmed")!)

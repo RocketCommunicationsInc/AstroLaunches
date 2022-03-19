@@ -7,16 +7,22 @@
 
 import SwiftUI
 
+// storage key constants
+let appStorageViewModeKey = "ViewMode" // 0 for Conference Room, 1 for Ops Floor
 
+enum ViewMode:Int{
+    case conferenceRoom
+    case bigScreen
+}
 struct ContentView: View {
     @StateObject var networkManager = NetworkManager()
-    @State var conferenceRoomDisplay = false
     @State private var selection: Int = 1
-
+    @AppStorage(appStorageViewModeKey) var viewMode:ViewMode = .conferenceRoom // default to Conference Room
+    
     var body: some View {
         // show ConferenceRoomView or OpsFloorView
         ZStack{
-            if (conferenceRoomDisplay)
+            if (viewMode == .conferenceRoom)
             {
                 ConferenceRoomView(networkManager: networkManager)
             }
@@ -26,8 +32,8 @@ struct ContentView: View {
             }
             
         } .contextMenu {
-            Button("Conference Room View") { conferenceRoomDisplay = true }
-            Button("Operations Floor View")  { conferenceRoomDisplay = false }
+            Button("Conference Room View") { viewMode = .conferenceRoom }
+            Button("Big Screen View")  { viewMode = .bigScreen }
         }
     }
 }
