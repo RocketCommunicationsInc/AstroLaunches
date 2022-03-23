@@ -39,7 +39,7 @@ struct ZuluDateFormatter {
 }
 
 
-
+// Return a formatter for the Hour and minute
 struct TwentyFourHourTimeFormatter {
     
     static let sharedInstance = TwentyFourHourTimeFormatter()

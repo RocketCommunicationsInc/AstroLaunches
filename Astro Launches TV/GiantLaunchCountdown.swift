@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+// a super-sized and simplified version of the LaunchCountdown view
 struct GiantLaunchCountdown: View {
     var launch:Launch
     

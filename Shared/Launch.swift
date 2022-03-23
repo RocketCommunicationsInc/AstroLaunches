@@ -10,7 +10,13 @@ import UIKit
 import AstroSwiftFoundation
 import MapKit
 
-// The Data Structures found in the JSON //
+// Representing a single Launch, the central data type of the application
+
+
+// Many structs that mirror the Data Structures found in the response JSON
+// Property names must match json element names exactly, and be optional if presense in the json is not assured
+// This allows JSONDecoder().decode to do most of the decoding work
+
 struct LaunchReply:Decodable{
     let id:String
     let name:String
@@ -79,7 +85,6 @@ struct Launch: Equatable{
     let windowOpenDate:Date?// the date and time the launch window opens, if known
     let windowEndDate:Date?// the date and time the launch window closes, if known
     let imageURL:URL?
-   // let image:UIImage?
     let status:String?
     let astroStatus:AstroStatus
     let padName:String

@@ -9,46 +9,43 @@ import SwiftUI
 import AstroSwiftFoundation
 import SDWebImageSwiftUI
 
+// Display Launch info in a super-sized format suitable for larger screens and longer distance, a "30-foot UI"
 struct OpsFloorView: View {
     
     @ObservedObject var networkManager: NetworkManager
     @Binding var launchIndex:Int
     
-    
     var body: some View {
         if networkManager.launches.count > 0 // don't display until networkManager has data
         {
             let launch = networkManager.launches[launchIndex]
+            // HStack for the whole screen
             HStack(spacing:0) {
-                if let imageURL = launch.imageURL
-                {
-                    // Left side: image, mission name and coundtown clock
-                    ZStack(alignment:.leading) {
-                        WebImage(url: imageURL)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 1280, height: 1080, alignment: .topLeading)
-                            .clipped()
-                            .blur(radius:2)
+                // Left side: image, mission name and coundtown clock
+                ZStack(alignment:.leading) {
+                    WebImage(url: launch.imageURL)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 1280, height: 1080, alignment: .topLeading)
+                        .clipped()
+                        .blur(radius:2)
+                    
+                    VStack(alignment: .leading)
+                    {
+                        Text(launch.missionName)
+                            .font(.system(size: 90, weight: .semibold, design: .default))
+                            .padding()
+                            .background(.thickMaterial)
+                            .cornerRadius(6)
                         
-                        VStack(alignment: .leading)
-                        {
-                            Text(launch.missionName)
-                                .font(.system(size: 90, weight: .semibold, design: .default))
-                                .padding()
-                                .background(.thickMaterial)
-                                .cornerRadius(6)
-                            
-                            GiantLaunchCountdown(launch:launch)
-                                .padding()
-                                .background(.thickMaterial)
-                                .cornerRadius(6)
-                            
-                            //.padding()
-                        }.padding(.leading,40)//.frame(width: 1280)
-                    }
+                        GiantLaunchCountdown(launch:launch)
+                            .padding()
+                            .background(.thickMaterial)
+                            .cornerRadius(6)
+                        
+                    }.padding(.leading,40)
                 }
-                // Right side: image, info bar, rocket name, status and location
+                // Right rocket name, status and location
                 VStack(alignment: .leading) {
                     Text("ROCKET")
                         .font(.system(size: 60))
@@ -76,17 +73,8 @@ struct OpsFloorView: View {
                     .frame(width: 640, height: 1080, alignment: .leading)
                     .background(Color.launchesSurfaceColor)
                 
-            }.transition(.opacity.animation(.easeInOut(duration:1.0)))
-                .id("Ops" + "\(launchIndex)")
-                .onReceive(centralDisplayTimer) { _ in
-                    // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
-                    // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
-                    // I have not found any workaround for this, including putting the launchIndex on another thread.
-                    // This is a common pattern to update the view, seen throuhout the SwiftUI literature. Not sure why the warning happens
-                    // here, maybe because the update is so major, a whole screenful of content?
-                    launchIndex = (launchIndex + 1)  % networkManager.launches.count
-                }
-            
+            }.transition(.opacity.animation(.easeInOut(duration:1.0)))  // fade when launch updates
+                .id("Ops" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
         }
     }
 }

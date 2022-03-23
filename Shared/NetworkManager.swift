@@ -7,13 +7,13 @@
 
 import Foundation
 
+// NetworkManager handles the data connection and initiates the parsing of the results into an array of *Launch* objects
 
 
 private struct LaunchReplies:Decodable{
     //let count:Int
     let results:[LaunchReply]
 }
-
 
 class NetworkManager:ObservableObject
 {

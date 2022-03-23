@@ -41,15 +41,7 @@ struct ConferenceRoomView: View {
                 // Right side bar
                 Sidebar(launch: launch)
             }.transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
-                .id("Main" + "\(launchIndex)") // force a unique ID to let transition work
-            .onReceive(centralDisplayTimer) { _ in
-                // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
-                // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
-                // I have not found any workaround for this, including putting the launchIndex on another thread.
-                // This is a common pattern to update the view, seen throuhout the SwiftUI literature. Not sure why the warning happens
-                // here, maybe because the update is so major, a whole screenful of content?
-                launchIndex = (launchIndex + 1)  % networkManager.launches.count
-            }
+                .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
         }
     }
 }
@@ -62,7 +54,6 @@ struct Sidebar: View {
         VStack(alignment: .leading) {
             Group {
                 Spacer()
-
                 Text("ROCKET").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                     .focusable(true) // attract the automatic focus when swiftui loads this view, so the map doesn't get improperly focused
@@ -70,12 +61,10 @@ struct Sidebar: View {
                     .foregroundColor(Color(.label))
                 Spacer()
                 Divider()
-
             }
 
             Group {
                 Spacer()
-                
                 Text("LOCATION").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 Text(launch.locationName).font(.system(size: 32))
@@ -88,7 +77,6 @@ struct Sidebar: View {
             }
             Group {
                 Spacer()
-                
                 Text("MISSION").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 Text(launch.missionDescription).font(.system(size: 32))
@@ -98,14 +86,12 @@ struct Sidebar: View {
             }
             Group {
                 Spacer()
-                
                 Text("STATUS").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 if let status = launch.status
                 {
                     StatusTag(text: status,status: launch.astroStatus)
                 }
-                
             }
             Spacer()
             

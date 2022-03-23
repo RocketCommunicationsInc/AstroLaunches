@@ -27,11 +27,6 @@ struct LaunchRow: View {
 }
 
 
-
-
-
-
-
 struct ImageAndCountdown: View {
     
     var launch:Launch

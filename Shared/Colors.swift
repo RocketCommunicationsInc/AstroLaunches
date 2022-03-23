@@ -33,43 +33,6 @@ public extension Color
     //——————————————————————————————————————————————————————————————————————————————
     // Astro status colors
     //——————————————————————————————————————————————————————————————————————————————
-//    static var astroStatusBorderOff:Color
-//    {  return Color("Astro Status Off Border Color")}
-//    
-//    static var astroStatusBorderStandby:Color
-//    { return Color("Astro Status Standby Border Color")}
-//
-//    static var astroStatusBorderNormal:Color
-//    { return Color("Astro Status Normal Border Color")}
-//    
-//    static var astroStatusBorderCaution:Color
-//    { return Color("Astro Status Caution Border Color")}
-//    
-//    static var astroStatusBorderSerious:Color
-//    { return Color("Astro Status Serious Border Color")}
-//    
-//    static var astroStatusBorderCritical:Color
-//    { return Color("Astro Status Critical Border Color")}
-//
-//
-//    static func borderColorForAstroStatus(_ status:AstroStatus)->Color
-//    {
-//        switch status {
-//        case .Off:
-//            return Color.astroStatusBorderOff
-//        case .Standby:
-//            return Color.astroStatusBorderStandby
-//        case .Normal:
-//            return Color.astroStatusBorderNormal
-//        case .Caution:
-//            return Color.astroStatusBorderCaution
-//        case .Serious:
-//            return Color.astroStatusBorderSerious
-//        case .Critical:
-//            return Color.astroStatusBorderCritical
-//        }
-//    }
-//    
     static var astroStatus200Off:Color
     {  return Color("Astro Status Off 200 Color")}
     
@@ -128,18 +91,4 @@ public extension Color
 
     static var launchesTagBackgroundColor:Color
     {return Color("Tag Background")} //astroUIPrimaryLighten2,astroUISecondaryLighten4
-
-//    static var launchesTextColor:Color
-//    {
-//        @Environment(\.colorScheme) var colorScheme // iOS 15.0, always returns light
-//
-//        if (colorScheme == .dark)
-//        {
-//            return .astroUITertiaryLighten1
-//        }
-//        else
-//        {
-//            return .astroUIPrimaryLighten4
-//        }
-//    }
 }
