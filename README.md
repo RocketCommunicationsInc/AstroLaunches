@@ -1,4 +1,4 @@
-# AstroLaunches
+# Astro Launches
 
 Astro Launches is a multiplatorm SwiftUI app that displays interesting info about upcoming space launches all over the world.
 
