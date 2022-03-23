@@ -12,10 +12,8 @@ import SDWebImageSwiftUI
 struct OpsFloorView: View {
     
     @ObservedObject var networkManager: NetworkManager
-    @State var launchIndex = 0
+    @Binding var launchIndex:Int
     
-    // every 15 seconds publish a message that will cause an update to the next launch
-    let timer = Timer.publish(every: 15, on: .current, in: .common).autoconnect()
     
     var body: some View {
         if networkManager.launches.count > 0 // don't display until networkManager has data
@@ -80,7 +78,7 @@ struct OpsFloorView: View {
                 
             }.transition(.opacity.animation(.easeInOut(duration:1.0)))
                 .id("Ops" + "\(launchIndex)")
-                .onReceive(self.timer) { _ in
+                .onReceive(centralDisplayTimer) { _ in
                     // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
                     // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
                     // I have not found any workaround for this, including putting the launchIndex on another thread.
@@ -93,14 +91,6 @@ struct OpsFloorView: View {
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
-
-    static var previews: some View {
-        OpsFloorView(networkManager: networkManager)
-    }
-}
 
 
 

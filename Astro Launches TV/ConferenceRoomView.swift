@@ -12,11 +12,8 @@ import SDWebImageSwiftUI
 struct ConferenceRoomView: View {
     
     @ObservedObject var networkManager: NetworkManager
-    @State var launchIndex = 0
-    
-    // every 15 seconds publish a message that will cause an update to the next launch
-    let timer = Timer.publish(every: 15, on: .current, in: .common).autoconnect()
-   
+    @Binding var launchIndex:Int
+       
     var body: some View {
 
         if networkManager.launches.count > 0
@@ -45,7 +42,7 @@ struct ConferenceRoomView: View {
                 Sidebar(launch: launch)
             }.transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
                 .id("Main" + "\(launchIndex)") // force a unique ID to let transition work
-            .onReceive(self.timer) { _ in
+            .onReceive(centralDisplayTimer) { _ in
                 // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
                 // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
                 // I have not found any workaround for this, including putting the launchIndex on another thread.
@@ -164,16 +161,6 @@ struct LogoNameCountdown: View {
             }
             Spacer()
         }
-    }
-}
-
-
-
-struct ConferenceRoomView_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
-
-    static var previews: some View {
-        ConferenceRoomView(networkManager: networkManager)
     }
 }
 

@@ -45,8 +45,7 @@ struct GiantLaunchCountdown: View {
                     calcTimeRemaining()
                 }
             .onChange(of: launch) { newLaunch in // on change of coordinates, update our related state variable 'region'
-                calcTimeRemaining(newlaunch:newLaunch)
-                print()
+                calcTimeRemaining(newlaunch:newLaunch) // must pass in the new launch, as the launch property is not set yet
             }
             
         }
