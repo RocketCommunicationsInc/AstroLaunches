@@ -41,7 +41,10 @@ struct PadMap: View {
         { place in
             MapMarker(coordinate: place.location,   // put a marker at the launch site coordinates
                       tint: Color.astroUITint)
-        }.focusable(false) // doesn't work, still gets focus if it's the only thing onscreen
+        }
+        #if os(tvOS)
+        .focusable(false) // doesn't work, still gets focus if it's the only thing onscreen
+        #endif
         .onChange(of: coordinates) { newCoordinates in // on change of coordinates, update our related state variable 'region'
             region = MKCoordinateRegion(
                 center: newCoordinates,

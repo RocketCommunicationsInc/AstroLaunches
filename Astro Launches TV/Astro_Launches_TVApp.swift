@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct Astro_Launches_TVApp: App {
     
-    @StateObject var networkManager = NetworkManager()
 
     init(){
        // _ = DateFormatters() // init the DateFormatters
@@ -18,8 +17,8 @@ struct Astro_Launches_TVApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ConferenceRoomView(networkManager: networkManager)
-            //OpsFloorView(networkManager: networkManager)
+            ContentView()
+                .onAppear { UIApplication.shared.isIdleTimerDisabled = true } // disables screen saver
         }
     }
 }

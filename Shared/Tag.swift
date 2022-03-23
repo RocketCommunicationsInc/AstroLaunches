@@ -66,6 +66,7 @@ struct TitleStatusTag: View {
     
     var body: some View {
         Text(text)
+            .fontWeight(Font.Weight.semibold)
             .padding(.top,padding)
             .padding(.bottom,padding)
             .padding(.leading,padding*2)

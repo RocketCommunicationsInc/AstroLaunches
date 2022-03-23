@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  OpsFloorView.swift
 //  Astro Launches TV
 //
 //  Created by rocketjeff on 1/12/21.
@@ -9,95 +9,76 @@ import SwiftUI
 import AstroSwiftFoundation
 import SDWebImageSwiftUI
 
+// Display Launch info in a super-sized format suitable for larger screens and longer distance, a "30-foot UI"
 struct OpsFloorView: View {
     
     @ObservedObject var networkManager: NetworkManager
-
+    @Binding var launchIndex:Int
+    
     var body: some View {
-        if let launch = networkManager.launches.first
+        if networkManager.launches.count > 0 // don't display until networkManager has data
         {
+            let launch = networkManager.launches[launchIndex]
+            // HStack for the whole screen
             HStack(spacing:0) {
-                if let imageURL = launch.imageURL
-                {
-                    ZStack(alignment:.leading) {
-                        WebImage(url: imageURL)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 1280, height: 1080, alignment: .topLeading)
-                            .clipped()
-                            .blur(radius:2)
+                // Left side: image, mission name and coundtown clock
+                ZStack(alignment:.leading) {
+                    WebImage(url: launch.imageURL)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 1280, height: 1080, alignment: .topLeading)
+                        .clipped()
+                        .blur(radius:2)
+                    
+                    VStack(alignment: .leading)
+                    {
+                        Text(launch.missionName)
+                            .font(.system(size: 90, weight: .semibold, design: .default))
+                            .padding()
+                            .background(.thickMaterial)
+                            .cornerRadius(6)
                         
-                        VStack(alignment: .leading)
-                        {
-                            Text(launch.missionName)
-                                .font(.system(size: 90
-                                              , weight: .semibold, design: .default))
-                                .padding()
-                                .background(.thickMaterial)
-                                .cornerRadius(6)
-
-
-                            GiantCountdown(launch:launch)
-                                .padding()
-                        }.padding(.leading,40)//.frame(width: 1280)
-                    }
+                        GiantLaunchCountdown(launch:launch)
+                            .padding()
+                            .background(.thickMaterial)
+                            .cornerRadius(6)
+                        
+                    }.padding(.leading,40)
                 }
+                // Right rocket name, status and location
                 VStack(alignment: .leading) {
-                    Text("ROCKET").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
-                    Text(launch.rocketName).font(.system(size: 60))                                .foregroundColor(Color(.label))
+                    Text("ROCKET")
+                        .font(.system(size: 60))
+                        .foregroundColor(.launchesTextColor)
+                        .focusable(true) // attract the automatic focus when swiftui loads this view, something has to be focusable for the parent view to receive contextMenu long press
+                    Text(launch.rocketName)
+                        .font(.system(size: 60, weight: .semibold))
+                        .foregroundColor(Color(.label))
                     Spacer()
                     
-                    Text("STATUS").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
+                    Text("STATUS").font(.system(size: 60))
+                        .foregroundColor(.launchesTextColor)
                     if let status = launch.status
                     {
                         TitleStatusTag(text: status,status: launch.astroStatus)
                     }
                     Spacer()
                     
-                    Text("LOCATION").font(.system(size: 60))                                .foregroundColor(.launchesTextColor)
-                    Text(launch.locationName).font(.system(size: 60))                                .foregroundColor(Color(.label))
-
+                    Text("LOCATION").font(.system(size: 60))
+                        .foregroundColor(.launchesTextColor)
+                    Text(launch.locationName).font(.system(size: 60, weight: .semibold))
+                        .foregroundColor(Color(.label))
+                    
                 }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
                     .background(Color.launchesSurfaceColor)
                 
-            }
+            }.transition(.opacity.animation(.easeInOut(duration:1.0)))  // fade when launch updates
+                .id("Ops" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
         }
     }
 }
 
-
-struct GiantCountdown: View {
-  //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    var launch:Launch
-
-    var body: some View {
-        HStack {
-            if let windowOpenDate = launch.windowOpenDate
-            {
-                let digitFont = Font.system(size: 90).weight(.semibold).monospacedDigit()
-
-                HStack {
-                    Text(windowOpenDate, style: .timer)
-                        .foregroundColor(Color(.label))
-                        .font(digitFont)
-
-                }.padding()
-                    .background(.thickMaterial)
-                    .cornerRadius(6)
-            }
-        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
-
-    static var previews: some View {
-        OpsFloorView(networkManager: networkManager)
-    }
-}
 
 
 

@@ -16,7 +16,6 @@ struct Astro_LaunchesApp: App {
 
     init(){
         _ = Settings.sharedInstance // init the Settings
-   //     _ = DateFormatters() // init the DateFormatters
 
         #if os(iOS)
         // customize the app-wide navgation bar appearance

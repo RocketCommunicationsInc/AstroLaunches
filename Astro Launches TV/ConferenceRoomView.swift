@@ -12,11 +12,8 @@ import SDWebImageSwiftUI
 struct ConferenceRoomView: View {
     
     @ObservedObject var networkManager: NetworkManager
-    @State var launchIndex = 0
-    
-    // every 15 seconds publish a message that will cause an update to the next launch
-    let timer = Timer.publish(every: 15, on: .current, in: .common).autoconnect()
-   
+    @Binding var launchIndex:Int
+       
     var body: some View {
 
         if networkManager.launches.count > 0
@@ -43,17 +40,8 @@ struct ConferenceRoomView: View {
                 }
                 // Right side bar
                 Sidebar(launch: launch)
-            }.transition(.opacity.animation(.easeInOut(duration:2.0)))
-                .id("Main" + "\(launchIndex)")
-            //.animation(Animation.easeInOut, value: launchIndex) // uncomment to animate the change. Its a bit much
-            .onReceive(self.timer) { _ in
-                // When receiving the 15 second timer, advance to the next launchIndex, wrapping around.
-                // Note that this will cause a runtime warning  "Modifying state during view update, this will cause undefined behavior."
-                // I have not found any workaround for this, including putting the launchIndex on another thread.
-                // This is a common pattern to update the view, seen throuhout the SwiftUI literature. Not sure why the warning happens
-                // here, maybe because the update is so major, a whole screenful of content?
-                launchIndex = (launchIndex + 1)  % networkManager.launches.count
-            }
+            }.transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
+                .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
         }
     }
 }
@@ -66,7 +54,6 @@ struct Sidebar: View {
         VStack(alignment: .leading) {
             Group {
                 Spacer()
-
                 Text("ROCKET").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                     .focusable(true) // attract the automatic focus when swiftui loads this view, so the map doesn't get improperly focused
@@ -74,12 +61,10 @@ struct Sidebar: View {
                     .foregroundColor(Color(.label))
                 Spacer()
                 Divider()
-
             }
 
             Group {
                 Spacer()
-                
                 Text("LOCATION").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 Text(launch.locationName).font(.system(size: 32))
@@ -92,7 +77,6 @@ struct Sidebar: View {
             }
             Group {
                 Spacer()
-                
                 Text("MISSION").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 Text(launch.missionDescription).font(.system(size: 32))
@@ -102,14 +86,12 @@ struct Sidebar: View {
             }
             Group {
                 Spacer()
-                
                 Text("STATUS").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
                 if let status = launch.status
                 {
                     StatusTag(text: status,status: launch.astroStatus)
                 }
-                
             }
             Spacer()
             
@@ -128,6 +110,7 @@ struct LogoNameCountdown: View {
         HStack(alignment: .bottom) {
             if let url = launch.agency?.logoURL
             {
+                // if this malformed spaceX logo is referenced, use our internal copy instead
                 if url == URL(string: "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/logo/spacex_logo_20191121063502.png")
                 {
                     Image(uiImage: UIImage(named:"spacex_logo_trimmed")!)
@@ -164,16 +147,6 @@ struct LogoNameCountdown: View {
             }
             Spacer()
         }
-    }
-}
-
-
-
-struct ConferenceRoomView_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
-
-    static var previews: some View {
-        ConferenceRoomView(networkManager: networkManager)
     }
 }
 
