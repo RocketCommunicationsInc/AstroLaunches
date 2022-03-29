@@ -27,6 +27,8 @@ struct LaunchReply:Decodable{
     let status:Status?
     let image:String?
     let pad:Pad?
+    let webwebcast_live:Bool?
+    let vidURLs:[VidURL]?
     let launch_service_provider:LaunchServiceProvider?
 }
 
@@ -52,6 +54,15 @@ struct Pad:Decodable{
     let name:String?
     let latitude:String?
     let longitude:String?
+}
+
+
+struct VidURL:Decodable{
+    let priority:Int?
+    let title:String?
+    let description:String?
+    let feature_image:String?
+    let url:String?
 }
 
 
@@ -93,6 +104,8 @@ struct Launch: Equatable{
     let serviceProviderName:String
     let serviceProviderType:String
     var agency:Agency?
+    var webcast:Bool? = false
+    var videoURL:URL? = nil
     
     // for equatable conformance, use id
     static public func ==(lhs: Launch, rhs: Launch) -> Bool {
@@ -178,6 +191,19 @@ struct Launch: Equatable{
 //                }
 //            }.resume()
 //        }
+        
+        // videos
+        webcast =  launchReply.webwebcast_live // non-nil and true if live video is available
+        
+        // vidURLs is an array of associated videos, we're only interested in the first one, if it exists.
+        if let urls = launchReply.vidURLs // if the array was returned
+        {
+            if let first = urls.first?.url // if there is a first entry that has a URK
+            {
+                videoURL = URL(string:first) ?? nil // if it us a proper URL, set videoURL
+            }
+        }
+
     }
     
     static func AstroStatusForLaunchStatus(abbreviation:String)->AstroStatus
