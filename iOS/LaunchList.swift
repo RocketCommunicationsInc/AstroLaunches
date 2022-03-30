@@ -106,7 +106,7 @@ struct UpcomingLaunches: View {
                 }
             }
             .tabItem {
-                Label("Past", systemImage: "clock.arrow.circlepath")}
+                Label("Past", systemImage: "arrow.counterclockwise.circle")}
             .alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
                 Button("Continue", role: .cancel) {}
             } message: {

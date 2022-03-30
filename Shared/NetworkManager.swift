@@ -56,10 +56,10 @@ class NetworkManager:ObservableObject
         
         // If building for debug, use the lldev URL, as requested by the provider, possibly stale data
         #if DEBUG
-        url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/\(timeframeParam)/?limit=10&mode=detailed")
+        url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/\(timeframeParam)/?limit=5&mode=detailed")
         // If building for release, use the real URL. Get 10 launches
         #else
-        url = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/\(timeframeParam)/?limit=10&mode=detailed")
+        url = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/\(timeframeParam)/?limit=5&mode=detailed")
         #endif
         
         URLSession.shared.dataTask(with: url!) { data, urlResponse, error in

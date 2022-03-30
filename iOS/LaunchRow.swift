@@ -8,6 +8,7 @@
 import SwiftUI
 import WidgetKit
 import SDWebImageSwiftUI
+import AstroSwiftFoundation
 
 struct LaunchRow: View {
     
@@ -76,6 +77,7 @@ struct ImageAndCountdown: View {
                     .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
                     .clipped()
             }
+
             HStack() {
                 if let url = launch.agency?.logoURL
                 {
@@ -98,6 +100,28 @@ struct ImageAndCountdown: View {
                             .padding(.bottom, 2)
                     }
                 }
+                // video if available
+                if let videoURL = launch.videoURL
+                {
+                    Button(action: {
+                        print(videoURL)
+                    }) {
+                        if (launch.webcast){
+                            HStack {
+                                Image(systemName: "play.fill")
+                                Text("Live")
+                            }
+                        }
+                        else {
+                            HStack {
+                                Image(systemName: "play.fill")
+                                Text("Play")
+                            }
+                        }
+                    }.buttonStyle(.bordered).font(.caption).padding(.trailing,6)
+
+                }
+
             }
             .frame(maxWidth: .infinity)
             .background(.ultraThinMaterial)
@@ -121,7 +145,7 @@ struct MissionCalendarClock: View {
                 {
                     Tag(text: launch.rocketName)
                 }
-                if let status = launch.status, status == "Go for Launch", showStatus == true
+                if let status = launch.status, launch.astroStatus != AstroStatus.Standby, showStatus == true
                 {
                     StatusTag(text: status,status: launch.astroStatus)
                 }
