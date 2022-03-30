@@ -108,7 +108,7 @@ struct LaunchDetail_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
 
     static var previews: some View {
-        LaunchDetail(launch:networkManager.launches[0])
+        LaunchDetail(launch:networkManager.upcomingLaunches[0])
             .preferredColorScheme(.dark)
     }
 }

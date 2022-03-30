@@ -39,7 +39,7 @@ struct UpcomingLaunches: View {
         NavigationView{
             ScrollView {
                 LazyVStack() {
-                    ForEach(networkManager.launches, id: \.id) { launch in
+                    ForEach(networkManager.upcomingLaunches, id: \.id) { launch in
                         NavigationLink(
                             destination: LaunchDetail(launch: launch),
                             label: {

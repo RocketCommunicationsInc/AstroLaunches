@@ -16,9 +16,9 @@ struct ConferenceRoomView: View {
        
     var body: some View {
 
-        if networkManager.launches.count > 0
+        if networkManager.upcomingLaunches.count > 0
         {
-        let launch = networkManager.launches[launchIndex]
+        let launch = networkManager.upcomingLaunches[launchIndex]
             // HStack for the whole screen
             HStack(spacing:0) {
                 // ZStack for the large left side image and overlaid contents

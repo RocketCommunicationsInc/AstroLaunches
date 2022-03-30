@@ -53,13 +53,28 @@ struct GiantLaunchCountdown: View {
     
     func calcTimeRemaining(newlaunch:Launch)
     {
-        timeRemaining = Date().timeIntervalSince(newlaunch.windowOpenDate!)
+        if let date = newlaunch.windowOpenDate
+        {
+            timeRemaining = Date().timeIntervalSince(date)
+        }
+        else
+        {
+            timeRemaining = 0
+        }
     }
 
     func calcTimeRemaining()
     {
-        timeRemaining = Date().timeIntervalSince(launch.windowOpenDate!)
+        if let date = launch.windowOpenDate
+        {
+            timeRemaining = Date().timeIntervalSince(date)
+        }
+        else
+        {
+            timeRemaining = 0
+        }
     }
+
 }
 
 

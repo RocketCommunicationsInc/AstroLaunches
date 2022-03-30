@@ -17,16 +17,18 @@ private struct LaunchReplies:Decodable{
 
 class NetworkManager:ObservableObject
 {
-    private var launchJSONs = [LaunchReply]()
-    private var pastLaunchJSONs = [LaunchReply]()
-    @Published var launches = [Launch]()
+    // the main observable lists of launch objects, upcoming and past
+    @Published var upcomingLaunches = [Launch]()
     @Published var pastLaunches = [Launch]()
-    @Published var transportError:Error?
+    
+    // stored when encountering a network error
     @Published var statusCode:Int?
     @Published var alertTitle = ""
     @Published var alertMessage = ""
     @Published var isShowingNetworkAlert = false
     
+    // Let observers know that an error has occured.
+    // Do nothing if a previous error has not been acknowledged by setting isShowingNetworkAlert to false
     func prepareAlert(title:String, message:String)
     {
         DispatchQueue.main.async {
@@ -38,175 +40,68 @@ class NetworkManager:ObservableObject
     }
     
     init(){
-        var upcomingUrl:URL?
+        // load upcoming Launches
+        loadLaunches(upcoming: true)
+        
+        // if iOS also load past Launches
+        #if os(iOS)
+        loadLaunches(upcoming: false)
+        #endif
+    }
+    
+    func loadLaunches(upcoming:Bool)
+    {
+        var url:URL?
+        var timeframeParam:String = upcoming ? "upcoming" : "previous"
+        
         // If building for debug, use the lldev URL, as requested by the provider, possibly stale data
         #if DEBUG
-        upcomingUrl = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=detailed")
+        url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/\(timeframeParam)/?limit=10&mode=detailed")
         // If building for release, use the real URL. Get 10 launches
         #else
-        upcomingUrl = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=detailed")
+        url = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/\(timeframeParam)/?limit=10&mode=detailed")
         #endif
         
-        if let upcomingUrl = upcomingUrl
-        {
-            URLSession.shared.dataTask(with: upcomingUrl) { data, urlResponse, error in
-                if let myError = error {
-                    self.prepareAlert(title: "Network Error", message: myError.localizedDescription)
-                    return
+        URLSession.shared.dataTask(with: url!) { data, urlResponse, error in
+            if let myError = error {
+                self.prepareAlert(title: "Network Error", message: myError.localizedDescription)
+                return
+            }
+            
+            let response = urlResponse as! HTTPURLResponse
+            let status = response.statusCode
+            guard (200...299).contains(status) else {
+                if (status == 429)
+                {
+                    // handle "Too Many Requests" error
+                    self.prepareAlert(title: "Too Many Requests", message: HTTPURLResponse.localizedString(forStatusCode: status))
                 }
-                
-                let response = urlResponse as! HTTPURLResponse
-                let status = response.statusCode
-                guard (200...299).contains(status) else {
-                    if (status == 429)
-                    {
-                        // handle "Too Many Requests" error
-                        self.prepareAlert(title: "Too Many Requests", message: HTTPURLResponse.localizedString(forStatusCode: status))
-                    }
-                    else
-                    {
-                        // handle generic error
-                        self.prepareAlert(title: "Server Error", message: HTTPURLResponse.localizedString(forStatusCode: status))
-                    }
-                    return
+                else
+                {
+                    // handle generic error
+                    self.prepareAlert(title: "Server Error", message: HTTPURLResponse.localizedString(forStatusCode: status))
                 }
+                return
+            }
 
-                guard let data = data else {
-                    // handle zero data error
-                    return
-                }
-                
-                let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
-                DispatchQueue.main.async {
-                    // post process launchJSONs into launches
-                    myLaunches.results.forEach() { launchJSON in
-                        self.launches.append(Launch(launchJSON))
+            guard let data = data else {
+                // handle zero data error
+                self.prepareAlert(title: "No Data Returned", message: HTTPURLResponse.localizedString(forStatusCode: status))
+                return
+            }
+            
+            let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
+            DispatchQueue.main.async {
+                // post process launchJSONs into launches
+                myLaunches.results.forEach() { launchJSON in
+                    if (upcoming) {
+                        self.upcomingLaunches.append(Launch(launchJSON))
                     }
-                }
-            }.resume()
-        }
-        
-        var pastURL:URL?
-        // If building for debug, use the lldev URL, as requested by the provider, possibly stale data
-        #if DEBUG
-        pastURL = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=10&mode=detailed")
-        // If building for release, use the real URL. Get 10 launches
-        #else
-        pastURL = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/previous/?limit=10&mode=detailed")
-        #endif
-
-        if let pastURL = pastURL
-        {
-            URLSession.shared.dataTask(with: pastURL) { data, urlResponse, error in
-                if let myError = error {
-                    self.prepareAlert(title: "Network Error", message: myError.localizedDescription)
-                    return
-                }
-                
-                let response = urlResponse as! HTTPURLResponse
-                let status = response.statusCode
-                guard (200...299).contains(status) else {
-                    if (status == 429)
-                    {
-                        // handle "Too Many Requests" error
-                        self.prepareAlert(title: "Too Many Requests", message: HTTPURLResponse.localizedString(forStatusCode: status))
-                    }
-                    else
-                    {
-                        // handle generic error
-                        self.prepareAlert(title: "Server Error", message: HTTPURLResponse.localizedString(forStatusCode: status))
-                    }
-                    return
-                }
-
-                guard let data = data else {
-                    // handle zero data error
-                    return
-                }
-                
-                let myPastLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
-                DispatchQueue.main.async {
-                    // post process launchJSONs into launches
-                    myPastLaunches.results.forEach() { launchJSON in
+                    else {
                         self.pastLaunches.append(Launch(launchJSON))
                     }
                 }
-            }.resume()
-        }
+            }
+        }.resume()
     }
 }
-
-
-
-
-//init(){
-//    var url:URL?
-//    let runningInPreview = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"]
-//    if (runningInPreview == "1") // if in the SwiftUI Canvas, always load stored test data
-//    {
-//        let path = Bundle.main.path(forResource: "launches", ofType: "json")!
-//        url = URL(fileURLWithPath: path)
-//        let data = NSData(contentsOf: url!)
-//        let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data! as Data)
-//        myLaunches.results.forEach() { launchJSON in
-//            self.launches.append(Launch(launchJSON))
-//        }
-//        return
-//    }
-//
-//    if (Settings.localData) // if the user setting to use stored data is on, load stored test data
-//    {
-//        let path = Bundle.main.path(forResource: "launches", ofType: "json")!
-//        url = URL(fileURLWithPath: path)
-//    }
-//    else
-//    {
-//        // If building for debug, use the lldev URL, as requested by the provider, possibly stale data
-//        #if DEBUG
-//        url = URL(string: "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=detailed&format=json")
-//        // If building for release, use the real URL. Get 10 launches
-//        #else
-//        url = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&mode=detailed")
-//        #endif
-//    }
-//
-//    if let url = url
-//    {
-//        URLSession.shared.dataTask(with: url) { data, urlResponse, error in
-//            if let myError = error {
-//                self.prepareAlert(title: "Network Error", message: myError.localizedDescription)
-//                return
-//            }
-//
-//            let response = urlResponse as! HTTPURLResponse
-//            let status = response.statusCode
-//            guard (200...299).contains(status) else {
-//                if (status == 429)
-//                {
-//                    // handle "Too Many Requests" error
-//                    self.prepareAlert(title: "Too Many Requests", message: HTTPURLResponse.localizedString(forStatusCode: status))
-//                }
-//                else
-//                {
-//                    // handle generic error
-//                    self.prepareAlert(title: "Server Error", message: HTTPURLResponse.localizedString(forStatusCode: status))
-//                }
-//                return
-//            }
-//
-//            guard let data = data else {
-//                // handle zero data error
-//                return
-//            }
-//
-//            let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
-//            DispatchQueue.main.async {
-//                // post process launchJSONs into launches
-//                myLaunches.results.forEach() { launchJSON in
-//                    self.launches.append(Launch(launchJSON))
-//                }
-//            }
-//        }.resume()
-//    }
-//}
-//}

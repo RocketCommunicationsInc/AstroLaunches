@@ -16,9 +16,9 @@ struct OpsFloorView: View {
     @Binding var launchIndex:Int
     
     var body: some View {
-        if networkManager.launches.count > 0 // don't display until networkManager has data
+        if networkManager.upcomingLaunches.count > 0 // don't display until networkManager has data
         {
-            let launch = networkManager.launches[launchIndex]
+            let launch = networkManager.upcomingLaunches[launchIndex]
             // HStack for the whole screen
             HStack(spacing:0) {
                 // Left side: image, mission name and coundtown clock

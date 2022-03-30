@@ -45,7 +45,7 @@ struct ContentView: View {
         }
         .onReceive(displayTimer) { _ in
             // When receiving the timer, advance to the next launchIndex, wrapping around.
-            launchIndex = (launchIndex + 1)  % networkManager.launches.count
+            launchIndex = (launchIndex + 1)  % networkManager.upcomingLaunches.count
         }
     }
 }

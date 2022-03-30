@@ -33,9 +33,9 @@ struct LaunchClock: View {
 struct LaunchClock_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {
-        LaunchClock(launch:networkManager.launches[0])
+        LaunchClock(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
-        LaunchClock(launch:networkManager.launches[1])
+        LaunchClock(launch:networkManager.upcomingLaunches[1])
             .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
     }

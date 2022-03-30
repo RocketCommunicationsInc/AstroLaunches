@@ -75,7 +75,6 @@ struct ImageAndCountdown: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
                     .clipped()
-                
             }
             HStack() {
                 if let url = launch.agency?.logoURL
@@ -88,10 +87,17 @@ struct ImageAndCountdown: View {
 
                 }
                 Spacer()
-                LaunchCountdown(launch: launch)
-                    .padding(.trailing, 8)
-                    .padding(.top, 2)
-                    .padding(.bottom, 2)
+                // only show countown for launches in the future
+                if let interval = launch.windowOpenDate?.timeIntervalSinceNow
+                {
+                    if interval > 0
+                    {
+                        LaunchCountdown(launch: launch)
+                            .padding(.trailing, 8)
+                            .padding(.top, 2)
+                            .padding(.bottom, 2)
+                    }
+                }
             }
             .frame(maxWidth: .infinity)
             .background(.ultraThinMaterial)
@@ -136,12 +142,12 @@ struct MissionCalendarClock: View {
 struct LaunchRow_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {
-        LaunchRow(launch:networkManager.launches[0])
+        LaunchRow(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
-        LaunchRow(launch:networkManager.launches[1])
+        LaunchRow(launch:networkManager.upcomingLaunches[1])
             .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
-        LaunchRow(launch:networkManager.launches[4])
+        LaunchRow(launch:networkManager.upcomingLaunches[4])
             .previewLayout(.sizeThatFits)
     }
 }

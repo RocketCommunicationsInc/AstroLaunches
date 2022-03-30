@@ -31,12 +31,12 @@ struct LaunchCalendar: View {
 struct LaunchCalendar_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {
-        LaunchCalendar(launch:networkManager.launches[0])
+        LaunchCalendar(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
-        LaunchCalendar(launch:networkManager.launches[1])
+        LaunchCalendar(launch:networkManager.upcomingLaunches[1])
             .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
-        LaunchCalendar(launch:networkManager.launches[4])
+        LaunchCalendar(launch:networkManager.upcomingLaunches[4])
             .previewLayout(.sizeThatFits)
     }
 }
