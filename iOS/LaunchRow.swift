@@ -30,6 +30,7 @@ struct LaunchRow: View {
 
 struct ImageAndCountdown: View {
     
+    @Environment(\.openURL) var openURL
     var launch:Launch
     var height:CGFloat
     var showStatus:Bool
@@ -104,7 +105,7 @@ struct ImageAndCountdown: View {
                 if let videoURL = launch.videoURL
                 {
                     Button(action: {
-                        print(videoURL)
+                        openURL(videoURL)
                     }) {
                         if (launch.webcast){
                             HStack {
