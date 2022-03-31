@@ -18,10 +18,10 @@ struct LaunchRow: View {
         VStack(spacing:0) {
             // Launch Image and Countdown clock
             ImageAndCountdown(launch: launch, height: 200.0, showStatus: true)
-            // Mission Name, Calendar, Clock
+            // Mission Name, Status Tags, Calendar, Clock
             MissionCalendarClock(launch: launch, showRocket: true, showStatus: true)
                 .padding()
-           
+            
         }.background(Color.launchesSurfaceColor).cornerRadius(6)
     }
     
@@ -78,54 +78,60 @@ struct ImageAndCountdown: View {
                     .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
                     .clipped()
             }
-
-            HStack() {
-                if let url = launch.agency?.logoURL
-                {
-                    WebImage(url:url)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40,  alignment: .center)
-                        .padding(.leading, 8)
-
-                }
-                Spacer()
-                // only show countown for launches in the future
-                if let interval = launch.windowOpenDate?.timeIntervalSinceNow
-                {
-                    if interval > 0
+            
+            // video if available
+            VStack{
+                HStack{
+                    Spacer()
+                    if let videoURL = launch.videoURL
                     {
-                        LaunchCountdown(launch: launch)
-                            .padding(.trailing, 8)
-                            .padding(.top, 2)
-                            .padding(.bottom, 2)
+                        Button(action: {
+                            openURL(videoURL)
+                        }) {
+                            if (launch.webcast){
+                                HStack {
+                                    Image(systemName: "video.fill")
+                                    Text("Watch Live")
+                                }
+                            }
+                            else {
+                                HStack {
+                                    Image(systemName: "video.fill")
+                                    Text("Watch")
+                                }
+                            }
+                        }.buttonStyle(.bordered).font(.caption).background(.regularMaterial)//.padding(.trailing,6)
                     }
-                }
-                // video if available
-                if let videoURL = launch.videoURL
-                {
-                    Button(action: {
-                        openURL(videoURL)
-                    }) {
-                        if (launch.webcast){
-                            HStack {
-                                Image(systemName: "play.fill")
-                                Text("Live")
-                            }
+                }.padding(6)
+                Spacer()
+                
+                HStack() {
+                    if let url = launch.agency?.logoURL
+                    {
+                        WebImage(url:url)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40,  alignment: .center)
+                            .padding(.leading, 8)
+                        
+                    }
+                    Spacer()
+                    // only show countown for launches in the future
+                    if let interval = launch.windowOpenDate?.timeIntervalSinceNow
+                    {
+                        if interval > 0
+                        {
+                            LaunchCountdown(launch: launch)
+                                .padding(.trailing, 8)
+                                .padding(.top, 2)
+                                .padding(.bottom, 2)
                         }
-                        else {
-                            HStack {
-                                Image(systemName: "play.fill")
-                                Text("Play")
-                            }
-                        }
-                    }.buttonStyle(.bordered).font(.caption).padding(.trailing,6)
-
+                    }
+                    
                 }
-
+                .frame(maxWidth: .infinity)
+                .background(.ultraThinMaterial)
             }
-            .frame(maxWidth: .infinity)
-            .background(.ultraThinMaterial)
         }
     }
 }
@@ -139,21 +145,28 @@ struct MissionCalendarClock: View {
     var body: some View {
         
         VStack {
+            HStack{
+                Text(launch.missionName).font(.title2).bold().foregroundColor(Color(uiColor:.label))
+                Spacer()
+            }
             HStack
             {
-                Text(launch.missionName).font(.title2).bold().foregroundColor(Color(uiColor:.label))
                 if (showRocket)
                 {
                     Tag(text: launch.rocketName)
                 }
-                if let status = launch.status, launch.astroStatus != AstroStatus.Standby, showStatus == true
+                //                if let status = launch.status, launch.astroStatus != AstroStatus.Standby, showStatus == true
+                //                {
+                //                    StatusTag(text: status,status: launch.astroStatus)
+                //                }
+                if let status = launch.status, showStatus == true
                 {
                     StatusTag(text: status,status: launch.astroStatus)
                 }
-
+                
                 Spacer()
             }.padding(.bottom, 4)
-
+            
             HStack{
                 LaunchCalendar(launch: launch).padding(.trailing, 6)
                 LaunchClock(launch: launch)
@@ -163,7 +176,7 @@ struct MissionCalendarClock: View {
         
     }
 }
-    
+
 struct LaunchRow_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {

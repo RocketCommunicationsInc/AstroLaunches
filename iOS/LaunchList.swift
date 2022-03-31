@@ -18,7 +18,8 @@ struct LaunchList: View {
         TabView {
             UpcomingLaunches(networkManager: networkManager)
             PastLaunches(networkManager: networkManager)
-    }
+    }.accentColor(Color("AccentColor")) // necessary because our forced light/dark modes, and UIAppearance usage, breaks automatic loading of AccentColor
+
 }
 
 
@@ -98,7 +99,7 @@ struct UpcomingLaunches: View {
                     }
                     .listRowBackground(Color.astroUITableCell)
                     // to-do: add list separator color here for iOS 15
-                    .navigationTitle("Past")
+                    .navigationTitle("Previous")
                     .toolbar {
                         ColorSchemeAutomaticToolbarContent()
                         
@@ -106,7 +107,7 @@ struct UpcomingLaunches: View {
                 }
             }
             .tabItem {
-                Label("Past", systemImage: "arrow.counterclockwise.circle")}
+                Label("Previous", systemImage: "arrow.counterclockwise.circle")}
             .alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
                 Button("Continue", role: .cancel) {}
             } message: {
