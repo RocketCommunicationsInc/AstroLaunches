@@ -18,8 +18,8 @@ struct LaunchRow: View {
         VStack(spacing:0) {
             // Launch Image and Countdown clock
             ImageAndCountdown(launch: launch, height: 200.0, showStatus: true)
-            // Mission Name, Status Tags, Calendar, Clock
-            MissionCalendarClock(launch: launch, showRocket: true, showStatus: true)
+            // Mission Name, Status Tags, Date, Time
+            MissionBlock(launch: launch, showRocket: true, showStatus: true)
                 .padding()
             
         }.background(Color.launchesSurfaceColor).cornerRadius(6)
@@ -136,46 +136,6 @@ struct ImageAndCountdown: View {
     }
 }
 
-struct MissionCalendarClock: View {
-    
-    var launch:Launch
-    var showRocket:Bool
-    var showStatus:Bool
-    
-    var body: some View {
-        
-        VStack {
-            HStack{
-                Text(launch.missionName).font(.title2).bold().foregroundColor(Color(uiColor:.label))
-                Spacer()
-            }
-            HStack
-            {
-                if (showRocket)
-                {
-                    Tag(text: launch.rocketName)
-                }
-                //                if let status = launch.status, launch.astroStatus != AstroStatus.Standby, showStatus == true
-                //                {
-                //                    StatusTag(text: status,status: launch.astroStatus)
-                //                }
-                if let status = launch.status, showStatus == true
-                {
-                    StatusTag(text: status,status: launch.astroStatus)
-                }
-                
-                Spacer()
-            }.padding(.bottom, 4)
-            
-            HStack{
-                LaunchCalendar(launch: launch).padding(.trailing, 6)
-                LaunchClock(launch: launch)
-                Spacer()
-            }
-        }
-        
-    }
-}
 
 struct LaunchRow_Previews: PreviewProvider {
     static var networkManager = NetworkManager()

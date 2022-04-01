@@ -15,7 +15,7 @@ struct LaunchDetail: View {
                 // Launch Image and Countdown clock
                 ImageAndCountdown(launch: launch, height: 400, showStatus: false, wide:true)
                 // Mission Name, Calendar, Clock
-                MissionCalendarClock(launch: launch, showRocket: false,showStatus: false).padding()
+                MissionBlock(launch: launch, showRocket: false,showStatus: false).padding()
                 MissionDescription(launch: launch).padding()
                 MissionStatus(launch: launch).padding()
                 RocketAndLocationBoxes(launch:launch).padding()
