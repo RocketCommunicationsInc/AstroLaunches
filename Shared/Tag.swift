@@ -9,6 +9,8 @@ import SwiftUI
 import AstroSwiftFoundation
 
 
+// A tag using standard Astro Colors. Uses the .caption font.
+// Scales in response to accessibility settings.
 struct Tag: View {
     var text:String
     private let font:Font = .caption
@@ -31,31 +33,41 @@ struct Tag: View {
     }
 }
 
-
+// A tag using Astro Status Colors and Status Symbols. Uses the .caption font.
+// Scales in response to accessibility settings.
 struct StatusTag: View {
     var text:String
     var status:AstroStatus
- //   var symbol = ""
     private let font:Font = .caption
     @ScaledMetric(relativeTo: .caption) private var radius: CGFloat = 3
     @ScaledMetric(relativeTo: .caption) private var padding: CGFloat = 4
+    @ScaledMetric(relativeTo: .caption) private var scale: CGFloat = 1
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
+        HStack(spacing:0){
+            Image(uiImage: UIImage.imageForAstroStatus(status))
+            .resizable()
+            .frame(width: 10 * scale, height: 10 * scale)
+            .padding(.leading,padding*2)
+            .padding(.trailing,padding/2)
         Text(text)
             .padding(.top,padding)
             .padding(.bottom,padding)
-            .padding(.leading,padding*2)
+            .padding(.leading,padding/2)
             .padding(.trailing,padding*2)
             .font(font).foregroundColor(Color(.label))
-            .background(RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .stroke(Color.colorForAstroStatus(status), style: StrokeStyle(lineWidth: 1))
-                            .background(colorScheme == .light ? Color.color200ForAstroStatus(status) : Color.colorForAstroStatus(status).opacity(0.1) )
-                            .shadow(color:Color.colorForAstroStatus(status), radius: 1, x:0, y: 0)
-            )
+        }
+        .background(RoundedRectangle(cornerRadius: radius, style: .continuous)
+        .stroke(Color.colorForAstroStatus(status), style: StrokeStyle(lineWidth: 1))
+                        .background(colorScheme == .light ? Color.color200ForAstroStatus(status) : Color.colorForAstroStatus(status).opacity(0.1) )
+                        .shadow(color:Color.colorForAstroStatus(status), radius: 1, x:0, y: 0))
+
     }
 }
 
+// A large tag using Astro Status Colors, suitable for tvOS
+// Scales in response to accessibility settings.
 struct TitleStatusTag: View {
     var text:String
     var status:AstroStatus
@@ -75,8 +87,7 @@ struct TitleStatusTag: View {
             .background(RoundedRectangle(cornerRadius: radius, style: .continuous)
                             .stroke(Color.colorForAstroStatus(status), style: StrokeStyle(lineWidth: 2))
                             .background(colorScheme == .light ? Color.color200ForAstroStatus(status) : Color.colorForAstroStatus(status).opacity(0.1) )
-                            .shadow(color:Color.colorForAstroStatus(status), radius: 1
-                                    , x:0, y: 0)
+                            .shadow(color:Color.colorForAstroStatus(status), radius: 1, x:0, y: 0)
             )
     }
 }
@@ -89,20 +100,12 @@ struct Tag_Previews: PreviewProvider {
         Tag(text: "test")
     }
 }
-/*
- case Off
- case Standby
- case Normal
- case Caution
- case Serious
- case Critical
- */
+
 struct StatusTag_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Tag(text: "Astro")
             StatusTag(text: "Off", status:.Off)
- //           Label("long test", systemImage: "star")
             StatusTag(text: "Standby", status:.Standby)
             StatusTag(text: "Normal", status:.Normal)
             StatusTag(text: "Caution", status:.Caution)
@@ -132,7 +135,6 @@ struct TitleStatusTag_Previews: PreviewProvider {
             TitleStatusTag(text: "Serious", status:.Serious)
             TitleStatusTag(text: "Critical", status:.Critical)
         }.preferredColorScheme(.dark)
-            //.environment(\.sizeCategory, .accessibilityLarge)
     }
 }
 
