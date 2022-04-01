@@ -38,8 +38,8 @@ struct MissionBlock: View {
             }.padding(.bottom, 4)
             
             HStack{
-                LaunchCalendar(launch: launch).padding(.trailing, 6)
-                LaunchClock(launch: launch)
+                LaunchDate(launch: launch).padding(.trailing, 6)
+                LaunchTime(launch: launch)
                 Spacer()
             }
         }

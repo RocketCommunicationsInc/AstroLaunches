@@ -33,8 +33,8 @@ struct ConferenceRoomView: View {
                     VStack(alignment:.leading,spacing: 100) {
                         LogoNameCountdown(launch:launch)
                         HStack{
-                            LaunchCalendar(launch:launch, labelStyle:.headline)
-                            LaunchClock(launch:launch, labelStyle:.headline)
+                            LaunchDate(launch:launch, labelStyle:.headline)
+                            LaunchTime(launch:launch, labelStyle:.headline)
                         }
                     }.padding(.leading, 80)
                 }

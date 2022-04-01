@@ -11,12 +11,12 @@
 		7C268AD2270E4E09005932AB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7C268AD1270E4E09005932AB /* SDWebImageSwiftUI */; };
 		7C31CEB727F7B74600EA2DCC /* MissionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB627F7B6C000EA2DCC /* MissionBlock.swift */; };
 		7C37E65B2603CDC300F259F8 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */; };
-		7C3CB5D6270F4F98000448C6 /* LaunchClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchClock.swift */; };
-		7C3CB5D7270F4F98000448C6 /* LaunchClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchClock.swift */; };
-		7C3CB5D8270F4F98000448C6 /* LaunchClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchClock.swift */; };
-		7C3CB5DA270F4FA4000448C6 /* LaunchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchCalendar.swift */; };
-		7C3CB5DB270F4FA4000448C6 /* LaunchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchCalendar.swift */; };
-		7C3CB5DC270F4FA4000448C6 /* LaunchCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchCalendar.swift */; };
+		7C3CB5D6270F4F98000448C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
+		7C3CB5D7270F4F98000448C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
+		7C3CB5D8270F4F98000448C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
+		7C3CB5DA270F4FA4000448C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
+		7C3CB5DB270F4FA4000448C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
+		7C3CB5DC270F4FA4000448C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
 		7C3CB5DE270F4FD1000448C6 /* LaunchCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */; };
 		7C3CB5DF270F4FD1000448C6 /* LaunchCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */; };
 		7C3D4CCE2603EFDA00CB0C41 /* LaunchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */; };
@@ -115,8 +115,8 @@
 
 /* Begin PBXFileReference section */
 		7C31CEB627F7B6C000EA2DCC /* MissionBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionBlock.swift; sourceTree = "<group>"; };
-		7C3CB5D5270F4F98000448C6 /* LaunchClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchClock.swift; sourceTree = "<group>"; };
-		7C3CB5D9270F4FA4000448C6 /* LaunchCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCalendar.swift; sourceTree = "<group>"; };
+		7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTime.swift; sourceTree = "<group>"; };
+		7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDate.swift; sourceTree = "<group>"; };
 		7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCountdown.swift; sourceTree = "<group>"; };
 		7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRow.swift; sourceTree = "<group>"; };
 		7C44C05B2608FEDB00B8D86A /* launches.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launches.json; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 				7C79988226FB7EC700FCAEF2 /* Colors.swift */,
 				7C8976C127556A8F000815F7 /* CentralTimer.swift */,
 				7CB1EE8627062383004E0CD4 /* Tag.swift */,
-				7C3CB5D5270F4F98000448C6 /* LaunchClock.swift */,
-				7C3CB5D9270F4FA4000448C6 /* LaunchCalendar.swift */,
+				7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */,
+				7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */,
 				7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */,
 				7C9BDD87271642EC00A97374 /* PadMap.swift */,
 				7C44C05B2608FEDB00B8D86A /* launches.json */,
@@ -559,7 +559,7 @@
 				7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */,
 				7C54438026178C65007CCCC4 /* DateFormatters.swift in Sources */,
 				7C5661F626D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */,
-				7C3CB5D6270F4F98000448C6 /* LaunchClock.swift in Sources */,
+				7C3CB5D6270F4F98000448C6 /* LaunchTime.swift in Sources */,
 				7C3D4CCE2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7CB0A2C82788F99200A542D5 /* SettingsView.swift in Sources */,
 				7C31CEB727F7B74600EA2DCC /* MissionBlock.swift in Sources */,
@@ -570,7 +570,7 @@
 				7C9BDD88271642EC00A97374 /* PadMap.swift in Sources */,
 				7CB1EE8727062383004E0CD4 /* Tag.swift in Sources */,
 				7CF87F3025AE45F300BD9D06 /* LaunchList.swift in Sources */,
-				7C3CB5DA270F4FA4000448C6 /* LaunchCalendar.swift in Sources */,
+				7C3CB5DA270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7C7243C926E8188400233B33 /* LaunchDetail.swift in Sources */,
 				7C69540A2612876E008A811E /* Launch.swift in Sources */,
 				7C834938260931D1008B4895 /* Settings.swift in Sources */,
@@ -584,7 +584,7 @@
 				7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */,
 				7C54438126178C65007CCCC4 /* DateFormatters.swift in Sources */,
 				7C5661F726D99BBA00191E7A /* View+ConditionalModifier.swift in Sources */,
-				7C3CB5D7270F4F98000448C6 /* LaunchClock.swift in Sources */,
+				7C3CB5D7270F4F98000448C6 /* LaunchTime.swift in Sources */,
 				7C3D4CCF2603EFDA00CB0C41 /* LaunchRow.swift in Sources */,
 				7C7E0C85279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */,
 				7CF87F2F25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */,
@@ -594,7 +594,7 @@
 				7C9BDD89271642EC00A97374 /* PadMap.swift in Sources */,
 				7CB1EE8827062810004E0CD4 /* Tag.swift in Sources */,
 				7CF87F3125AE45F300BD9D06 /* LaunchList.swift in Sources */,
-				7C3CB5DB270F4FA4000448C6 /* LaunchCalendar.swift in Sources */,
+				7C3CB5DB270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7C7243CA26E8188400233B33 /* LaunchDetail.swift in Sources */,
 				7C69540B2612876E008A811E /* Launch.swift in Sources */,
 				7C834939260931D1008B4895 /* Settings.swift in Sources */,
@@ -624,7 +624,7 @@
 				7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7CF260E127E3C1990030A98F /* GiantLaunchCountdown.swift in Sources */,
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
-				7C3CB5DC270F4FA4000448C6 /* LaunchCalendar.swift in Sources */,
+				7C3CB5DC270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */,
 				7CF87F8825AE49B600BD9D06 /* OpsFloorView.swift in Sources */,
 				7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */,
@@ -633,7 +633,7 @@
 				7CF43B5E27E256E400A7DD4F /* ContentView.swift in Sources */,
 				7CF87F8625AE49B600BD9D06 /* Astro_Launches_TVApp.swift in Sources */,
 				7C9BDD8A271642EC00A97374 /* PadMap.swift in Sources */,
-				7C3CB5D8270F4F98000448C6 /* LaunchClock.swift in Sources */,
+				7C3CB5D8270F4F98000448C6 /* LaunchTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
