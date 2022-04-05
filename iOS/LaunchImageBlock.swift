@@ -1,5 +1,5 @@
 //
-//  ImageBlock.swift
+//  LaunchImageBlock.swift
 //  Astro Launches (iOS)
 //
 //  Created by rocketjeff on 4/1/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ImageBlock: View {
+struct LaunchImageBlock: View {
     
     var launch:Launch
     var height:CGFloat
@@ -63,7 +63,7 @@ struct ImageBlock: View {
             // Overlay some items over the image
             VStack{
                 PlayButtonBlock(launch:launch)
-                Spacer() // force the info row to the bottom
+                Spacer() // force the LogoCountdownBlock to the bottom
                 LogoCountdownBlock(launch: launch)
             }
         }
@@ -84,21 +84,10 @@ struct PlayButtonBlock: View {
                 Button(action: {
                     openURL(videoURL)
                 }) {
-                    if (launch.webcast){    // if the video is live
-                        HStack {
-                            Image(systemName: "video.fill")
-                            Text("Watch Live")
-                        }
-                    }
-                    else { // if the video is recorded
-                        HStack {
-                            Image(systemName: "video.fill")
-                            Text("Watch")
-                        }
-                    }
-                }.buttonStyle(.bordered).font(.caption).background(.regularMaterial)
+                Label(launch.webcast ? "Watch Live" : "Watch", systemImage: "video.fill").background(.clear)
+                }.buttonStyle(.bordered).font(.caption).background(.thinMaterial, in:RoundedRectangle(cornerRadius: 6)) // need to add RoundedRectangle as setting a background color seems to spoil the shape usually given by the .bordered style
             }
-        }.padding(6)
+        }.padding(6) // inset from the top right
     }
 }
 

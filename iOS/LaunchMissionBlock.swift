@@ -1,5 +1,5 @@
 //
-//  MissionBlock.swift
+//  LaunchMissionBlock.swift
 //  Astro Launches
 //
 //  Created by rocketjeff on 4/1/22.
@@ -11,7 +11,7 @@ import SwiftUI
 // Row 1: Mission name
 // Row 2: optional rocket name and status, as tags
 // Row 3: Launch Date and Time as icon and text
-struct MissionBlock: View {
+struct LaunchMissionBlock: View {
     
     var launch:Launch
     var showRocket:Bool

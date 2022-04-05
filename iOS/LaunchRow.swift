@@ -16,9 +16,9 @@ struct LaunchRow: View {
     var body: some View {
         VStack(spacing:0) {
             // Launch Image and Countdown clock
-            ImageBlock(launch: launch, height: 200.0, showStatus: true)
+            LaunchImageBlock(launch: launch, height: 200.0, showStatus: true)
             // Mission Name, Status Tags, Date, Time
-            MissionBlock(launch: launch, showRocket: true, showStatus: true)
+            LaunchMissionBlock(launch: launch, showRocket: true, showStatus: true)
                 .padding()
             
         }.background(Color.launchesSurfaceColor).cornerRadius(6)
