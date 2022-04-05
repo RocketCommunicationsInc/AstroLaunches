@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Not used right now, left behind for possible reuse later
+
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @AppStorage(Settings.localDataKey) var localData = false
