@@ -42,10 +42,12 @@ class NetworkManager:ObservableObject
     init(){
         // load upcoming Launches
         loadLaunches(upcoming: true)
-        
+        //loadCache(upcoming: true)
+
         // if iOS also load past Launches
         #if os(iOS)
         loadLaunches(upcoming: false)
+        //loadCache(upcoming: false)
         #endif
     }
     
@@ -91,6 +93,19 @@ class NetworkManager:ObservableObject
             }
             
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
+            
+            // because it was successfully decoded, write out this json to a disk cache
+            if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                                 in: .userDomainMask).first {
+                let pathWithFileName = documentDirectory.appendingPathComponent(upcoming ? "upcomingJSON" : "previousJSON")
+                do {
+                    try data.write(to: pathWithFileName)
+                } catch {
+                    // handle error
+                    print("failed to write cache")
+                }
+            }
+            
             DispatchQueue.main.async {
                 // post process launchJSONs into launches
                 myLaunches.results.forEach() { launchJSON in
@@ -104,4 +119,54 @@ class NetworkManager:ObservableObject
             }
         }.resume()
     }
+    
+    func loadCache(upcoming:Bool)
+    {
+        var url:URL?
+       // var timeframeParam:String = upcoming ? "upcoming" : "previous"
+        
+        // If building for debug, use the lldev URL, as requested by the provider, possibly stale data
+        #if DEBUG
+        if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                             in: .userDomainMask).first {
+            url = documentDirectory.appendingPathComponent(upcoming ? "upcomingJSON" : "previousJSON")
+        }
+        // If building for release, use the real URL. Get 10 launches
+        #else
+            fatalError() // we never want to use the case on release builds
+        #endif
+                
+        do {
+            var data:Data
+            NSLog("JH loading data")
+            try data = Data(contentsOf: url!)
+            NSLog("JH done loading data")
+            
+            NSLog("JH decoding data to json")
+            let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
+            NSLog("JH done decoding data to json")
+
+            NSLog("JH processing launchJSONs into launches")
+            DispatchQueue.main.async {
+                // post process launchJSONs into launches
+                myLaunches.results.forEach() { launchJSON in
+                    if (upcoming) {
+                        self.upcomingLaunches.append(Launch(launchJSON))
+                    }
+                    else {
+                        self.pastLaunches.append(Launch(launchJSON))
+                    }
+                }
+            }
+            NSLog("JH done processing launchJSONs into launches")
+
+
+        } catch {
+            // handle error
+            print("failed to read data file")
+        }
+
+            
+    }
+
 }
