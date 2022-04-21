@@ -12,14 +12,12 @@ import MapKit
 
 // Representing a single Launch, the central data type of the application
 
-
-// Many structs that mirror the Data Structures found in the response JSON
+// Structs that mirror the Data Structures found in the response JSON
 // Property names must match json element names exactly, and be optional if presense in the json is not assured
 // This allows JSONDecoder().decode to do most of the decoding work
-
 struct LaunchReply:Decodable{
     let id:String
-    let name:String
+    let name:String?
     let window_start:String?
     let window_end:String?
     let mission:Mission?
@@ -27,6 +25,8 @@ struct LaunchReply:Decodable{
     let status:Status?
     let image:String?
     let pad:Pad?
+    let webwebcast_live:Bool?
+    let vidURLs:[VidURL]?
     let launch_service_provider:LaunchServiceProvider?
 }
 
@@ -35,7 +35,6 @@ struct AgencyReply:Decodable{
     let name:String?
     let logo_url:String?
 }
-
 
 struct Mission:Decodable{
     let name:String?
@@ -54,11 +53,17 @@ struct Pad:Decodable{
     let longitude:String?
 }
 
+struct VidURL:Decodable{
+    let priority:Int?
+    let title:String?
+    let description:String?
+    let feature_image:String?
+    let url:String?
+}
 
 //struct PadLocation:Decodable{
 //    let name:String
 //}
-
 
 struct Rocket:Decodable{
     let id:Int
@@ -75,10 +80,11 @@ struct LaunchServiceProvider:Decodable{
     let url:URL?
 }
 
-
-// Our Launch Struct that converts the JSON data to Swift types, and checks for missing values
+//
+// Our Launch struct that represents the original JSON data as Swift types, and checks for missing values
+//
 struct Launch: Equatable{
-    let id:String
+    let id:String // a unique ID, always present
     let missionName:String
     let missionDescription:String
     let rocketName:String
@@ -93,6 +99,8 @@ struct Launch: Equatable{
     let serviceProviderName:String
     let serviceProviderType:String
     var agency:Agency?
+    let webcast:Bool
+    let videoURL:URL?
     
     // for equatable conformance, use id
     static public func ==(lhs: Launch, rhs: Launch) -> Bool {
@@ -104,50 +112,38 @@ struct Launch: Equatable{
     {
         id = launchReply.id
         missionName = launchReply.mission?.name ?? "Unknown Mission"
-        missionDescription = launchReply.mission?.description ?? "Unknown Mission Description"
+        missionDescription = launchReply.mission?.description ?? "Unknown Mission"
         rocketName = launchReply.rocket?.configuration?.name ?? "Unknown Rocket"
         status = launchReply.status?.name ?? nil
         
-        if let statusAbbrev = launchReply.status?.abbrev
-        {
+        if let statusAbbrev = launchReply.status?.abbrev {
             astroStatus = Launch.AstroStatusForLaunchStatus(abbreviation: statusAbbrev)
-        }
-        else
-        {
+        } else {
             astroStatus = AstroStatus.Off
         }
         
         // Convert dates using our ZuluDateFormatter, which can handle some peciliaries with this format
-        if let date = launchReply.window_start
-        {
-            windowOpenDate = ZuluDateFormatter.sharedInstance.date(from: date)
-        }
-        else
-        {
+        if let date = launchReply.window_start {
+            windowOpenDate = ZuluDateFormatter.sharedInstance.date(from: date) }
+        else {
             windowOpenDate = nil
         }
         
-        if let date = launchReply.window_end
-        {
+        if let date = launchReply.window_end {
             windowEndDate = ZuluDateFormatter.sharedInstance.date(from: date)
-        }
-        else
-        {
+        } else {
             windowEndDate = nil
         }
         
-        if let replyImageURL = launchReply.image
-        {
+        if let replyImageURL = launchReply.image {
             imageURL = URL(string:replyImageURL) ?? nil
-        }
-        else
-        {
+        } else {
             imageURL = nil
         }
         
-        padName = launchReply.pad?.name ?? "Unknown Pad Name"
-        locationName = launchReply.pad?.name ?? "Unknown Location Name"
-        serviceProviderName = launchReply.launch_service_provider?.name ?? "Unknown Provider Name"
+        padName = launchReply.pad?.name ?? "Unknown Pad"
+        locationName = launchReply.pad?.name ?? "Unknown Location"
+        serviceProviderName = launchReply.launch_service_provider?.name ?? "Unknown Provider"
         serviceProviderType = launchReply.launch_service_provider?.type ?? "Unknown Type"
         
         let latitudeCoordinate = Double(launchReply.pad?.latitude ?? "31.422878000000000")
@@ -163,7 +159,6 @@ struct Launch: Equatable{
             } catch  {
                 agency = nil
             }
-
         }
  //       self.agency = nil
         
@@ -178,17 +173,34 @@ struct Launch: Equatable{
 //                }
 //            }.resume()
 //        }
+        
+        // webcast_live is non-nil and true if live video is availabl
+        if let webwebcast_live = launchReply.webwebcast_live {
+            webcast = webwebcast_live
+        } else {
+            webcast = false
+        }
+        
+        // vidURLs is an array of associated videos, we're only interested in the first one, if it exists.
+        if let urls = launchReply.vidURLs {// if the array was returned
+            if let first = urls.first?.url { // if there is a first entry that has a URL
+                videoURL = URL(string:first) ?? nil // if it us a proper URL, set videoURL
+            } else {
+                videoURL = nil
+            }
+        } else {
+            videoURL = nil
+        }
     }
     
+    // Convert API Status to Astro Status
     static func AstroStatusForLaunchStatus(abbreviation:String)->AstroStatus
     {
         switch abbreviation {
         case "TBD","TBC":
             return AstroStatus.Standby
-        case "Go":
+        case "Go","Success":
             return AstroStatus.Normal
-        case "Success":
-            return AstroStatus.Standby
         case "Failure":
             return AstroStatus.Caution
         default:
@@ -204,17 +216,13 @@ struct Launch: Equatable{
         let logoURL:URL?
         
         // Parse a LaunchReply, see which fields were returned and convert to Swift types
-        init(_ agencyReply:AgencyReply)
-        {
+        init(_ agencyReply:AgencyReply) {
             id = agencyReply.id
-            name = agencyReply.name ?? "Unknown Agency Name"
+            name = agencyReply.name ?? "Unknown Agency"
 
-            if let replyLogoURL = agencyReply.logo_url
-            {
+            if let replyLogoURL = agencyReply.logo_url {
                 logoURL = URL(string:replyLogoURL) ?? nil
-            }
-            else
-            {
+            } else {
                 logoURL = nil
             }
         }

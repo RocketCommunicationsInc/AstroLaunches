@@ -16,9 +16,9 @@ struct ConferenceRoomView: View {
        
     var body: some View {
 
-        if networkManager.launches.count > 0
+        if networkManager.upcomingLaunches.count > 0
         {
-        let launch = networkManager.launches[launchIndex]
+        let launch = networkManager.upcomingLaunches[launchIndex]
             // HStack for the whole screen
             HStack(spacing:0) {
                 // ZStack for the large left side image and overlaid contents
@@ -33,8 +33,8 @@ struct ConferenceRoomView: View {
                     VStack(alignment:.leading,spacing: 100) {
                         LogoNameCountdown(launch:launch)
                         HStack{
-                            LaunchCalendar(launch:launch, labelStyle:.headline)
-                            LaunchClock(launch:launch, labelStyle:.headline)
+                            LaunchDate(launch:launch, labelStyle:.headline)
+                            LaunchTime(launch:launch, labelStyle:.headline)
                         }
                     }.padding(.leading, 80)
                 }

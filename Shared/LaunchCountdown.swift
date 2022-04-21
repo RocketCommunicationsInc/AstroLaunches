@@ -75,12 +75,26 @@ struct LaunchCountdown: View {
     
     func calcTimeRemaining(newlaunch:Launch)
     {
-        timeRemaining = Date().timeIntervalSince(newlaunch.windowOpenDate!)
+        if let date = newlaunch.windowOpenDate
+        {
+            timeRemaining = Date().timeIntervalSince(date)
+        }
+        else
+        {
+            timeRemaining = 0
+        }
     }
 
     func calcTimeRemaining()
     {
-        timeRemaining = Date().timeIntervalSince(launch.windowOpenDate!)
+        if let date = launch.windowOpenDate
+        {
+            timeRemaining = Date().timeIntervalSince(date)
+        }
+        else
+        {
+            timeRemaining = 0
+        }
     }
 }
 
@@ -124,9 +138,9 @@ extension TimeInterval{
 struct LaunchCountdown_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {
-        LaunchCountdown(launch:networkManager.launches[0])
+        LaunchCountdown(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
-        LaunchCountdown(launch:networkManager.launches[1])
+        LaunchCountdown(launch:networkManager.upcomingLaunches[1])
             .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
     }

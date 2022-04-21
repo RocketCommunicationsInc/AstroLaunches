@@ -40,12 +40,12 @@ struct ContentView: View {
             }
         }
         .contextMenu { // activaged by long press on remote center button
-            Button("Conference Room View") { viewMode = .conferenceRoom }
-            Button("Big Screen View")  { viewMode = .bigScreen }
+            Button("Standard") { viewMode = .conferenceRoom }
+            Button("Giant Screen")  { viewMode = .bigScreen }
         }
         .onReceive(displayTimer) { _ in
             // When receiving the timer, advance to the next launchIndex, wrapping around.
-            launchIndex = (launchIndex + 1)  % networkManager.launches.count
+            launchIndex = (launchIndex + 1)  % networkManager.upcomingLaunches.count
         }
     }
 }

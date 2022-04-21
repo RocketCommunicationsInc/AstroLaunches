@@ -13,14 +13,17 @@ struct LaunchDetail: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading,spacing:0){
                 // Launch Image and Countdown clock
-                ImageAndCountdown(launch: launch, height: 400, showStatus: false, wide:true)
+                LaunchImageBlock(launch: launch, height: 400, showStatus: false, wide:true)
                 // Mission Name, Calendar, Clock
-                MissionCalendarClock(launch: launch, showRocket: false,showStatus: false).padding()
+                LaunchMissionBlock(launch: launch, showRocket: false,showStatus: false).padding()
+                // Longer mission description
                 MissionDescription(launch: launch).padding()
+                // Mission status, as a title and tag
                 MissionStatus(launch: launch).padding()
-                RocketAndLocationBoxes(launch:launch).padding()
+                // Rocket and Location in stylized boxes, someday linking to detail views.
+                RocketAndLocation(launch:launch).padding()
+                // Map of the Launch Pad
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6).padding()
-
             }
         }
         .background(Color.launchesSurfaceColor)
@@ -32,10 +35,8 @@ struct MissionDescription: View {
     var body: some View {
         VStack(alignment: .leading){
             Text("MISSION").font(.headline).foregroundColor(.launchesTextColor)
-
             Spacer()
             Text(launch.missionDescription).font(.body)
-
         }
     }
 }
@@ -47,10 +48,8 @@ struct LaunchAgency: View {
     var body: some View {
         VStack(alignment: .leading){
             Text("AGENCY").font(.headline).foregroundColor(.launchesTextColor)
-
             Spacer()
             Text(launch.serviceProviderName).font(.body)
-
         }.foregroundColor(.launchesTextColor)
     }
 }
@@ -73,7 +72,7 @@ struct MissionStatus: View {
 
 
 
-struct RocketAndLocationBoxes: View {
+struct RocketAndLocation: View {
     var launch:Launch
     var body: some View {
         VStack(alignment: .leading) {
@@ -88,6 +87,7 @@ struct RocketAndLocationBoxes: View {
                         
                     }
                 }
+                
                 VStack(alignment: .leading){
                     Text("LOCATION").font(.headline).foregroundColor(.launchesTextColor)
                     
@@ -99,7 +99,6 @@ struct RocketAndLocationBoxes: View {
                     }
                 }
             }
-            
         }
     }
 }
@@ -108,7 +107,7 @@ struct LaunchDetail_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
 
     static var previews: some View {
-        LaunchDetail(launch:networkManager.launches[0])
+        LaunchDetail(launch:networkManager.upcomingLaunches[0])
             .preferredColorScheme(.dark)
     }
 }
