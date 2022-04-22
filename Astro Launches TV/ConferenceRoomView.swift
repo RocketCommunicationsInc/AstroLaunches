@@ -9,6 +9,7 @@ import SwiftUI
 import AstroSwiftFoundation
 import SDWebImageSwiftUI
 
+// Display Launch info with conventional tvOS sizing
 struct ConferenceRoomView: View {
     
     @ObservedObject var networkManager: NetworkManager
@@ -40,7 +41,8 @@ struct ConferenceRoomView: View {
                 }
                 // Right side bar
                 Sidebar(launch: launch)
-            }.transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
+            }
+            .transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
                 .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
         }
     }
@@ -56,7 +58,6 @@ struct Sidebar: View {
                 Spacer()
                 Text("ROCKET").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
-                    .focusable(true) // attract the automatic focus when swiftui loads this view, so the map doesn't get improperly focused
                 Text(launch.rocketName).font(.system(size: 32))
                     .foregroundColor(Color(.label))
                 Spacer()
@@ -70,7 +71,7 @@ struct Sidebar: View {
                 Text(launch.locationName).font(.system(size: 32))
                     .foregroundColor(Color(.label))
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6)
-                    .focusable(false) // doesn't work, still get focus if it's the only thing onscreen
+                    .focusable(false) // doesn't always work, still get focus if it's the only thing onscreen
                 Spacer()
                 Divider()
                 
@@ -95,9 +96,10 @@ struct Sidebar: View {
             }
             Spacer()
             
-        }.padding(.all,40)
-            .frame(width: 640, height: 1080, alignment: .leading)
-            .background(Color.launchesSurfaceColor)
+        }
+        .padding(.all,40)
+        .frame(width: 640, height: 1080, alignment: .leading)
+        .background(Color.launchesSurfaceColor)
     }
 }
 

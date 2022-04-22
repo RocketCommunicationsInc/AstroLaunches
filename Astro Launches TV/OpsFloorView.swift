@@ -9,7 +9,7 @@ import SwiftUI
 import AstroSwiftFoundation
 import SDWebImageSwiftUI
 
-// Display Launch info in a super-sized format suitable for larger screens and longer distance, a "30-foot UI"
+// Display Launch info in a super-sized format suitable for larger screens and longer distance, a "Giant Screen UI"
 struct OpsFloorView: View {
     
     @ObservedObject var networkManager: NetworkManager
@@ -50,7 +50,6 @@ struct OpsFloorView: View {
                     Text("ROCKET")
                         .font(.system(size: 60))
                         .foregroundColor(.launchesTextColor)
-                        .focusable(true) // attract the automatic focus when swiftui loads this view, something has to be focusable for the parent view to receive contextMenu long press
                     Text(launch.rocketName)
                         .font(.system(size: 60, weight: .semibold))
                         .foregroundColor(Color(.label))
@@ -73,7 +72,8 @@ struct OpsFloorView: View {
                     .frame(width: 640, height: 1080, alignment: .leading)
                     .background(Color.launchesSurfaceColor)
                 
-            }.transition(.opacity.animation(.easeInOut(duration:1.0)))  // fade when launch updates
+            }
+            .transition(.opacity.animation(.easeInOut(duration:1.0)))  // fade when launch updates
                 .id("Ops" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
         }
     }
