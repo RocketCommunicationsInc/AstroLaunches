@@ -21,7 +21,7 @@ struct LaunchRow: View {
             LaunchMissionBlock(launch: launch, showRocket: true, showStatus: true)
                 .padding()
             
-        }.background(Color.launchesSurfaceColor).cornerRadius(6)
+        }.background(Color.astroUISecondaryBackground).cornerRadius(6)
     }
     
 }
