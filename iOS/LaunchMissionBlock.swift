@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AstroSwiftFoundation
 
 // Displays info common to LaunchRow and LaunchDetail
 // Row 1: Mission name
@@ -33,7 +32,7 @@ struct LaunchMissionBlock: View {
                 }
                 if let status = launch.status, showStatus == true // make sure the launch has a status
                 {
-                    Tag(text: status,status: launch.astroStatus)
+                    StatusTag(text: status,status: launch.astroStatus)
                 }
                 Spacer()
             }.padding(.bottom, 4)
