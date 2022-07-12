@@ -40,7 +40,7 @@ struct PadMap: View {
         Map(coordinateRegion: $region, interactionModes: [],annotationItems: [place])
         { place in
             MapMarker(coordinate: place.location,   // put a marker at the launch site coordinates
-                      tint: Color.astroUIAccent)
+                      tint: Color.astroUITint)
         }
         #if os(tvOS)
         .focusable(false) // doesn't work, still gets focus if it's the only thing onscreen
