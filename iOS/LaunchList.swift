@@ -44,15 +44,14 @@ struct LaunchList: View {
                                         .padding(.bottom,3)
                                         .padding(.leading,6)
                                         .padding(.trailing,6)
-                                }).listRowBackground(Color.astroUITableCell)
+                                }).listRowBackground(Color.astroUISecondaryBackground)
                         }
                     }
-                    .listRowBackground(Color.astroUITableCell)
                     .navigationTitle(upcoming ? "Upcoming" : "Previous")
                     .toolbar {
                         ColorSchemeAutomaticToolbarContent() // show the theme switching menu
                     }
-                }
+                }.background(Color.astroUIBackground)
             }
             .tabItem { Label(upcoming ? "Upcoming" : "Previous", systemImage:upcoming ? "clock" : "arrow.counterclockwise.circle" )}
             .modifier(colorSchemeAutomatic())
