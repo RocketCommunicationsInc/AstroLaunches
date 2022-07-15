@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import CachedAsyncImage
 
 struct LaunchImageBlock: View {
     
@@ -24,30 +24,36 @@ struct LaunchImageBlock: View {
                     if (wide) // wide mode for display on ipad detail screen
                     {
                         // put a full width blurred image in the background, to fill space that the image might not cover
-                        WebImage(url:imageURL)
-                            .resizable()
-                            .indicator(.activity)
-                            .aspectRatio(contentMode: .fill)
-                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
-                            .blur(radius:8)
-                            .clipped()
+                        CachedAsyncImage(url:imageURL, content: { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                                .blur(radius:8)
+                                .clipped()
+                        }, placeholder: {
+                            ProgressView()
+                        })
                         
                         // the actual image
-                        WebImage(url:imageURL)
-                            .resizable()
-                            .indicator(.activity)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
-                            .clipped()
+                        CachedAsyncImage(url:imageURL, content: { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                                .clipped()
+                        }, placeholder: {
+                            ProgressView()
+                        })
                     }
                     else  // narrow mode for display on list view
                     {
-                        WebImage(url:imageURL)
-                            .resizable()
-                            .indicator(.activity)
-                            .aspectRatio(contentMode: .fill)
-                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
-                            .clipped()
+                        CachedAsyncImage(url:imageURL , content: { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                                .clipped()
+                        }, placeholder: {
+                            ProgressView()
+                        })
                     }
                 }
             }
@@ -84,7 +90,7 @@ struct PlayButtonBlock: View {
                 Button(action: {
                     openURL(videoURL)
                 }) {
-                Label(launch.webcast ? "Watch Live" : "Watch", systemImage: "video.fill").background(.clear)
+                    Label(launch.webcast ? "Watch Live" : "Watch", systemImage: "video.fill").background(.clear)
                 }.buttonStyle(.bordered).font(.caption).background(.thinMaterial, in:RoundedRectangle(cornerRadius: 6)) // need to add RoundedRectangle as setting a background color seems to spoil the shape usually given by the .bordered style
             }
         }.padding(6) // inset from the top right
@@ -99,11 +105,14 @@ struct LogoCountdownBlock: View {
         HStack() {
             if let url = launch.agency?.logoURL
             {
-                WebImage(url:url)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40,  alignment: .center)
-                    .padding(.leading, 8)
+                CachedAsyncImage(url:url, content: { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40,  alignment: .center)
+                        .padding(.leading, 8)
+                }, placeholder: {
+                    ProgressView()
+                })
                 
             }
             Spacer()
