@@ -32,7 +32,7 @@ struct ConferenceRoomView: View {
                             .blur(radius:4)
                     }, placeholder: {
                         ProgressView()
-                    })
+                    }).frame(width: 1280, height: 1080)
                     
                     VStack(alignment:.leading,spacing: 100) {
                         LogoNameCountdown(launch:launch)
@@ -138,7 +138,7 @@ struct LogoNameCountdown: View {
 
                     }, placeholder: {
                         ProgressView()
-                    })
+                    }).frame(width: 300, height: 300)
                 }
             }
             

@@ -34,7 +34,7 @@ struct OpsFloorView: View {
                             .blur(radius:2)
                     }, placeholder: {
                         ProgressView()
-                    })
+                    }).frame(width: 1280, height: 1080)
 
                     VStack(alignment: .leading)
                     {

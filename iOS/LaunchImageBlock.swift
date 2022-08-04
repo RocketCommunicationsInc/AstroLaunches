@@ -32,7 +32,7 @@ struct LaunchImageBlock: View {
                                 .clipped()
                         }, placeholder: {
                             ProgressView()
-                        })
+                        }).frame(height: height)
                         
                         // the actual image
                         CachedAsyncImage(url:imageURL, content: { image in
@@ -42,7 +42,7 @@ struct LaunchImageBlock: View {
                                 .clipped()
                         }, placeholder: {
                             ProgressView()
-                        })
+                        }).frame(height: height)
                     }
                     else  // narrow mode for display on list view
                     {
@@ -53,7 +53,7 @@ struct LaunchImageBlock: View {
                                 .clipped()
                         }, placeholder: {
                             ProgressView()
-                        })
+                        }).frame(height: height)
                     }
                 }
             }
@@ -112,7 +112,7 @@ struct LogoCountdownBlock: View {
                         .padding(.leading, 8)
                 }, placeholder: {
                     ProgressView()
-                })
+                }).frame(width: 40, height: 40)
                 
             }
             Spacer()
