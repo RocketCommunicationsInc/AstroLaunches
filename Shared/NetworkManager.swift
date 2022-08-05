@@ -51,6 +51,7 @@ class NetworkManager:ObservableObject
     
     func loadLaunches(upcoming:Bool)
     {
+        print("***** starting load launches")
         var url:URL?
         var timeframeParam:String = upcoming ? "upcoming" : "previous"
         
@@ -90,6 +91,7 @@ class NetworkManager:ObservableObject
                 return
             }
             
+            print("starting JSON decoding")
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
             DispatchQueue.main.async {
                 // post process launchJSONs into launches
@@ -101,7 +103,10 @@ class NetworkManager:ObservableObject
                         self.pastLaunches.append(Launch(launchJSON))
                     }
                 }
+                print("ending JSON decoding")
             }
         }.resume()
+        print("***** ending load launches")
+
     }
 }
