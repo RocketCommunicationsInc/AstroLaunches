@@ -30,7 +30,8 @@ struct LaunchList: View {
     struct LaunchesView: View {
         @ObservedObject var networkManager: NetworkManager
         var upcoming:Bool
-    
+        @State var previousLaunchesLoaded = false
+
         var body: some View {
             NavigationView{
                 ZStack{
@@ -60,6 +61,14 @@ struct LaunchList: View {
             }
             .tabItem { Label(upcoming ? "Upcoming" : "Previous", systemImage:upcoming ? "clock" : "arrow.counterclockwise.circle" )}
             .modifier(colorSchemeAutomatic())
+            .onAppear(){
+                // wait until the previous tab is shown the first time to load the previous launches, making startup faster and reducing server usage if the user never visits previous
+                if !upcoming && !previousLaunchesLoaded
+                {
+                    previousLaunchesLoaded = true
+                    networkManager.loadPreviousLaunches()
+                }
+            }
         }
     }
 }

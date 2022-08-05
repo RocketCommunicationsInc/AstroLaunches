@@ -43,10 +43,15 @@ class NetworkManager:ObservableObject
         // load upcoming Launches
         loadLaunches(upcoming: true)
         
-        // if iOS also load past Launches
-        #if os(iOS)
+//        // if iOS also load past Launches
+//        #if os(iOS)
+//        loadLaunches(upcoming: false)
+//        #endif
+    }
+    
+    func loadPreviousLaunches() -> Void
+    {
         loadLaunches(upcoming: false)
-        #endif
     }
     
     func loadLaunches(upcoming:Bool)
