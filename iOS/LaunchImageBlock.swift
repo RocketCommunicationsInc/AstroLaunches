@@ -10,24 +10,23 @@ import CachedAsyncImage
 
 struct LaunchImageBlock: View {
     
+    @Environment(\.horizontalSizeClass) var hClass
     var launch:Launch
     var height:CGFloat
     var showStatus:Bool
-    var wide = false
     var body: some View {
-        
         ZStack(alignment:.bottom){
             // Image, or placehoder
             if let imageURL = launch.imageURL
             {
                 ZStack(alignment:.topTrailing) {
-                    if (wide) // wide mode for display on ipad detail screen
+                    if (hClass == .regular) // wide mode for display on ipad detail screen
                     {
                         // put a full width blurred image in the background, to fill space that the image might not cover
                         CachedAsyncImage(url:imageURL, content: { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
                                 .blur(radius:8)
                                 .clipped()
                         }, placeholder: {
@@ -38,7 +37,7 @@ struct LaunchImageBlock: View {
                         CachedAsyncImage(url:imageURL, content: { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
                                 .clipped()
                         }, placeholder: {
                             ProgressView()
@@ -49,7 +48,7 @@ struct LaunchImageBlock: View {
                         CachedAsyncImage(url:imageURL , content: { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, maxHeight: height, alignment: .top)
+                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
                                 .clipped()
                         }, placeholder: {
                             ProgressView()
