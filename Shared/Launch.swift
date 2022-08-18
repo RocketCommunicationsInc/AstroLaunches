@@ -83,7 +83,7 @@ struct LaunchServiceProvider:Decodable{
 //
 // Our Launch struct that represents the original JSON data as Swift types, and checks for missing values
 //
-struct Launch: Equatable{
+class Launch: Equatable{
     let id:String // a unique ID, always present
     let missionName:String
     let missionDescription:String
@@ -150,29 +150,6 @@ struct Launch: Equatable{
         let longitudeCoordinate = Double(launchReply.pad?.longitude ?? "-122.009_020")
         locationCoordinate = CLLocationCoordinate2D(latitude: latitudeCoordinate ?? -122.009_020 , longitude: longitudeCoordinate ?? 31.422878000000000)
 
-        if let agencyURL = launchReply.launch_service_provider?.url
-        {
-            do {
-                let data = try Data(contentsOf: agencyURL)
-                let theAgency = try! JSONDecoder().decode(AgencyReply.self, from: data)
-                agency = Agency(theAgency)
-            } catch  {
-                agency = nil
-            }
-        }
- //       self.agency = nil
-        
-//        if let agencyURL = launchReply.launch_service_provider?.dataURL
-//        {
-//            URLSession.shared.dataTask(with: agencyURL) { (data,_ , _) in
-//                guard let data = data else {return}
-//                let theAgency = try! JSONDecoder().decode(AgencyReply.self, from: data)
-//                DispatchQueue.main.async {
-//                    // post process Agency
-//                    self.agency = Agency(theAgency)
-//                }
-//            }.resume()
-//        }
         
         // webcast_live is non-nil and true if live video is availabl
         if let webwebcast_live = launchReply.webwebcast_live {
@@ -190,6 +167,31 @@ struct Launch: Equatable{
             }
         } else {
             videoURL = nil
+        }
+        
+        // fetching the agency requires another web request, start that on another thread
+        self.agency = nil
+        if let agencyURL = launchReply.launch_service_provider?.url
+        {
+            URLSession.shared.dataTask(with: agencyURL) { data, urlResponse, error in
+                if let _ = error {
+                    return // don't show an error, the agency will just remain nil
+                }
+
+                let response = urlResponse as! HTTPURLResponse
+                let status = response.statusCode
+                guard (200...299).contains(status) else {
+                    return  // don't show an error, the agency will just remain nil
+                }
+
+                guard let data = data else {
+                    // handle zero data error
+                    return  // don't show an error, the agency will just remain nil
+                }
+
+                let theAgency = try! JSONDecoder().decode(AgencyReply.self, from: data)
+                self.agency = Agency(theAgency)
+            }.resume()
         }
     }
     
@@ -215,7 +217,7 @@ struct Launch: Equatable{
         let name:String
         let logoURL:URL?
         
-        // Parse a LaunchReply, see which fields were returned and convert to Swift types
+        // Parse a AgencyReply, see which fields were returned and convert to Swift types
         init(_ agencyReply:AgencyReply) {
             id = agencyReply.id
             name = agencyReply.name ?? "Unknown Agency"

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C268AD0270E4C3E005932AB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7C268ACF270E4C3E005932AB /* SDWebImageSwiftUI */; };
-		7C268AD2270E4E09005932AB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7C268AD1270E4E09005932AB /* SDWebImageSwiftUI */; };
 		7C31CEB727F7B74600EA2DCC /* LaunchMissionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB627F7B6C000EA2DCC /* LaunchMissionBlock.swift */; };
 		7C31CEB927F7BC3D00EA2DCC /* LaunchImageBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB827F7BC3D00EA2DCC /* LaunchImageBlock.swift */; };
 		7C37E65B2603CDC300F259F8 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */; };
@@ -60,6 +58,9 @@
 		7C9BDD88271642EC00A97374 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7C9BDD89271642EC00A97374 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7C9BDD8A271642EC00A97374 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
+		7C9FCDDC2882057F0032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDB2882057F0032EA88 /* CachedAsyncImage */; };
+		7C9FCDDE288208F70032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDD288208F70032EA88 /* CachedAsyncImage */; };
+		7C9FCDE0288209040032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDF288209040032EA88 /* CachedAsyncImage */; };
 		7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */; };
 		7CB0A2C82788F99200A542D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0A2C72788F99200A542D5 /* SettingsView.swift */; };
 		7CB1EE8727062383004E0CD4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1EE8627062383004E0CD4 /* Tag.swift */; };
@@ -172,7 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C268AD0270E4C3E005932AB /* SDWebImageSwiftUI in Frameworks */,
+				7C9FCDDC2882057F0032EA88 /* CachedAsyncImage in Frameworks */,
 				7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C37E65B2603CDC300F259F8 /* AstroSwiftFoundation in Frameworks */,
+				7C9FCDDE288208F70032EA88 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,8 +198,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C268AD2270E4E09005932AB /* SDWebImageSwiftUI in Frameworks */,
 				7C5A1B18261BB5E700E452DE /* AstroSwiftFoundation in Frameworks */,
+				7C9FCDE0288209040032EA88 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +368,7 @@
 			name = "Astro Launches (iOS)";
 			packageProductDependencies = (
 				7C83150025AE52B700E18441 /* AstroSwiftFoundation */,
-				7C268ACF270E4C3E005932AB /* SDWebImageSwiftUI */,
+				7C9FCDDB2882057F0032EA88 /* CachedAsyncImage */,
 			);
 			productName = "Astro Launches (iOS)";
 			productReference = 7CF87F2025AE45F300BD9D06 /* Astro Launches.app */;
@@ -387,6 +389,7 @@
 			name = "Astro Launches (macOS)";
 			packageProductDependencies = (
 				7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */,
+				7C9FCDDD288208F70032EA88 /* CachedAsyncImage */,
 			);
 			productName = "Astro Launches (macOS)";
 			productReference = 7CF87F2825AE45F300BD9D06 /* Astro Launches.app */;
@@ -441,7 +444,7 @@
 			name = "Astro Launches TV";
 			packageProductDependencies = (
 				7C5A1B17261BB5E700E452DE /* AstroSwiftFoundation */,
-				7C268AD1270E4E09005932AB /* SDWebImageSwiftUI */,
+				7C9FCDDF288209040032EA88 /* CachedAsyncImage */,
 			);
 			productName = "Astro Launches TV";
 			productReference = 7CF87F8325AE49B600BD9D06 /* Astro Launches TV.app */;
@@ -484,7 +487,7 @@
 			mainGroup = 7CF87F1025AE45F200BD9D06;
 			packageReferences = (
 				7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */,
-				7C268ACE270E4C3E005932AB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = 7CF87F2125AE45F300BD9D06 /* Products */;
 			projectDirPath = "";
@@ -1073,35 +1076,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7C268ACE270E4C3E005932AB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RocketCommunicationsInc/AstroSwiftFoundation.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.8;
+				minimumVersion = 2.0.0;
+			};
+		};
+		7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7C268ACF270E4C3E005932AB /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C268ACE270E4C3E005932AB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
-		7C268AD1270E4E09005932AB /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C268ACE270E4C3E005932AB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
 		7C37E65A2603CDC300F259F8 /* AstroSwiftFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */;
@@ -1116,6 +1109,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */;
 			productName = AstroSwiftFoundation;
+		};
+		7C9FCDDB2882057F0032EA88 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		7C9FCDDD288208F70032EA88 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		7C9FCDDF288209040032EA88 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

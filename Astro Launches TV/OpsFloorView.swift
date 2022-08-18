@@ -7,7 +7,8 @@
 
 import SwiftUI
 import AstroSwiftFoundation
-import SDWebImageSwiftUI
+//import SDWebImageSwiftUI
+import CachedAsyncImage
 
 // Display Launch info in a super-sized format suitable for larger screens and longer distance, a "Giant Screen UI"
 struct OpsFloorView: View {
@@ -23,13 +24,18 @@ struct OpsFloorView: View {
             HStack(spacing:0) {
                 // Left side: image, mission name and coundtown clock
                 ZStack(alignment:.leading) {
-                    WebImage(url: launch.imageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 1280, height: 1080, alignment: .topLeading)
-                        .clipped()
-                        .blur(radius:2)
-                    
+              
+                    CachedAsyncImage(url:launch.imageURL, content: { image in
+                        image.resizable()
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 1280, height: 1080, alignment: .topLeading)
+                            .clipped()
+                            .blur(radius:2)
+                    }, placeholder: {
+                        ProgressView()
+                    }).frame(width: 1280, height: 1080)
+
                     VStack(alignment: .leading)
                     {
                         Text(launch.missionName)

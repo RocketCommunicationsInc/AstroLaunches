@@ -7,8 +7,7 @@
 
 import SwiftUI
 import AstroSwiftFoundation
-import SDWebImageSwiftUI
-
+import CachedAsyncImage
 // Display Launch info with conventional tvOS sizing
 struct ConferenceRoomView: View {
     
@@ -24,12 +23,16 @@ struct ConferenceRoomView: View {
             HStack(spacing:0) {
                 // ZStack for the large left side image and overlaid contents
                 ZStack(alignment:.leading) {
-                    WebImage(url: launch.imageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 1280, height: 1080, alignment: .topLeading)
-                        .clipped()
-                        .blur(radius:4)
+                    
+                    CachedAsyncImage(url:launch.imageURL, content: { image in
+                            image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 1280, height: 1080, alignment: .topLeading)
+                            .clipped()
+                            .blur(radius:4)
+                    }, placeholder: {
+                        ProgressView()
+                    }).frame(width: 1280, height: 1080)
                     
                     VStack(alignment:.leading,spacing: 100) {
                         LogoNameCountdown(launch:launch)
@@ -125,13 +128,17 @@ struct LogoNameCountdown: View {
                 }
                 else
                 {
-                    WebImage(url:url)
-                    .resizable()
-                    .padding()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 300, height: 300,alignment: .center)
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(6)
+                    CachedAsyncImage(url:url, content: { image in
+                            image.resizable()
+                            .padding()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 300, height: 300,alignment: .center)
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(6)
+
+                    }, placeholder: {
+                        ProgressView()
+                    }).frame(width: 300, height: 300)
                 }
             }
             

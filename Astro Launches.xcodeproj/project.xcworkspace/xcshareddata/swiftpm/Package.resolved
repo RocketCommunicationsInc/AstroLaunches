@@ -5,26 +5,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RocketCommunicationsInc/AstroSwiftFoundation.git",
       "state" : {
-        "revision" : "f071c518e86bdaf66e8debdc1ec56c84ff90e596",
-        "version" : "1.1.0"
+        "revision" : "03db5d05516d348da170c3dc0d954d842b0554f2",
+        "version" : "2.0.0"
       }
     },
     {
-      "identity" : "sdwebimage",
+      "identity" : "swiftui-cached-async-image",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "location" : "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
       "state" : {
-        "revision" : "a72df4849408da7e5d3c1b586797b7c601c41d1b",
-        "version" : "5.12.1"
-      }
-    },
-    {
-      "identity" : "sdwebimageswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
-      "state" : {
-        "revision" : "cd8625b7cf11a97698e180d28bb7d5d357196678",
-        "version" : "2.0.2"
+        "branch" : "main",
+        "revision" : "f94be38411297c71aa8df69c6875127e6d8d7a92"
       }
     }
   ],
