@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AstroSwiftFoundation
 
 struct LaunchDetail: View {
     var launch:Launch
@@ -27,7 +26,7 @@ struct LaunchDetail: View {
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6).padding()
             }
         }
-        .background(Color.astroUIBackground)
+        .background(Color.launchesSurfaceColor)
     }
 }
 
@@ -65,7 +64,7 @@ struct MissionStatus: View {
 
             if let status = launch.status
             {
-                Tag(text: status,status: launch.astroStatus)
+                StatusTag(text: status,status: launch.astroStatus)//.foregroundColor(.launchesTextColor)
             }
         }
     }
@@ -83,7 +82,7 @@ struct RocketAndLocation: View {
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
-                            .fill(Color.astroUISecondaryBackground).frame(minHeight:73)
+                            .fill(Color.launchesBoxColor).frame(minHeight:73)
                         Text(launch.rocketName).padding(.all,6).foregroundColor(.launchesTextColor)
                         
                     }
@@ -94,7 +93,7 @@ struct RocketAndLocation: View {
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
-                            .fill(Color.astroUISecondaryBackground).frame(minHeight:73)
+                            .fill(Color.launchesBoxColor).frame(minHeight:73)
                         Text(launch.locationName).padding(.all,6).foregroundColor(.launchesTextColor)
                         
                     }

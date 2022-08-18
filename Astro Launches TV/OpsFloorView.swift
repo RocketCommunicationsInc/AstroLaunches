@@ -65,7 +65,7 @@ struct OpsFloorView: View {
                         .foregroundColor(.launchesTextColor)
                     if let status = launch.status
                     {
-                        Tag(text: status,status: launch.astroStatus)
+                        TitleStatusTag(text: status,status: launch.astroStatus)
                     }
                     Spacer()
                     
@@ -76,7 +76,7 @@ struct OpsFloorView: View {
                     
                 }.padding(.all,40)
                     .frame(width: 640, height: 1080, alignment: .leading)
-                    .background(Color.astroUISecondaryBackground)
+                    .background(Color.launchesSurfaceColor)
                 
             }
             .transition(.opacity.animation(.easeInOut(duration:1.0)))  // fade when launch updates

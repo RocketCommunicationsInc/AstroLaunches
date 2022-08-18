@@ -94,7 +94,7 @@ struct Sidebar: View {
                     .foregroundColor(.launchesTextColor)
                 if let status = launch.status
                 {
-                    Tag(text: status,status: launch.astroStatus)
+                    StatusTag(text: status,status: launch.astroStatus)
                 }
             }
             Spacer()
@@ -102,7 +102,7 @@ struct Sidebar: View {
         }
         .padding(.all,40)
         .frame(width: 640, height: 1080, alignment: .leading)
-        .background(Color.astroUIBackground)
+        .background(Color.launchesSurfaceColor)
     }
 }
 
