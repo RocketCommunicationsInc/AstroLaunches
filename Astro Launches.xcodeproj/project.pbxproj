@@ -1074,8 +1074,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RocketCommunicationsInc/AstroSwiftFoundation.git";
 			requirement = {
-				branch = development;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
