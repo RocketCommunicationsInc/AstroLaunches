@@ -16,24 +16,11 @@ struct Astro_LaunchesApp: App {
 
     init(){
         _ = Settings.sharedInstance // init the Settings
-
-        #if os(iOS)
-        // customize the app-wide navgation bar appearance
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = .astroUIBar
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
         
-        // customize the app-wide List (UITableView) appearance
-        UITableView.appearance().backgroundColor = .astroUIBackground
-        UITableViewCell.appearance().selectedBackgroundView = {
-                    let view = UIView()
-                    view.backgroundColor = .astroUITableSelectedCell
-                    return view
-                }()
-        #endif
+    #if os(iOS)
+        // allow background colors set by List's .background modifier to work in grouped configurations in light mode
+        UITableView.appearance().backgroundColor = .clear
+    #endif
     }
     
     var body: some Scene {

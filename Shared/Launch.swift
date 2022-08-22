@@ -119,7 +119,7 @@ class Launch: Equatable{
         if let statusAbbrev = launchReply.status?.abbrev {
             astroStatus = Launch.AstroStatusForLaunchStatus(abbreviation: statusAbbrev)
         } else {
-            astroStatus = AstroStatus.Off
+            astroStatus = AstroStatus.off
         }
         
         // Convert dates using our ZuluDateFormatter, which can handle some peciliaries with this format
@@ -200,13 +200,13 @@ class Launch: Equatable{
     {
         switch abbreviation {
         case "TBD","TBC":
-            return AstroStatus.Standby
+            return AstroStatus.standby
         case "Go","Success":
-            return AstroStatus.Normal
+            return AstroStatus.normal
         case "Failure":
-            return AstroStatus.Caution
+            return AstroStatus.caution
         default:
-            return AstroStatus.Off
+            return AstroStatus.off
         }
     }
 }

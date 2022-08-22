@@ -63,9 +63,6 @@
 		7C9FCDE0288209040032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDF288209040032EA88 /* CachedAsyncImage */; };
 		7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */; };
 		7CB0A2C82788F99200A542D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0A2C72788F99200A542D5 /* SettingsView.swift */; };
-		7CB1EE8727062383004E0CD4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1EE8627062383004E0CD4 /* Tag.swift */; };
-		7CB1EE8827062810004E0CD4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1EE8627062383004E0CD4 /* Tag.swift */; };
-		7CB1EE8927062816004E0CD4 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1EE8627062383004E0CD4 /* Tag.swift */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CD3C90626028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CF260E127E3C1990030A98F /* GiantLaunchCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */; };
@@ -135,7 +132,6 @@
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
 		7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceRoomView.swift; sourceTree = "<group>"; };
 		7CB0A2C72788F99200A542D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		7CB1EE8627062383004E0CD4 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiantLaunchCountdown.swift; sourceTree = "<group>"; };
 		7CF43B5D27E256E400A7DD4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -245,7 +241,6 @@
 				7C6954092612876E008A811E /* Launch.swift */,
 				7C79988226FB7EC700FCAEF2 /* Colors.swift */,
 				7C8976C127556A8F000815F7 /* CentralTimer.swift */,
-				7CB1EE8627062383004E0CD4 /* Tag.swift */,
 				7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */,
 				7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */,
 				7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */,
@@ -575,7 +570,6 @@
 				7C8976C227556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7C9BDD88271642EC00A97374 /* PadMap.swift in Sources */,
-				7CB1EE8727062383004E0CD4 /* Tag.swift in Sources */,
 				7CF87F3025AE45F300BD9D06 /* LaunchList.swift in Sources */,
 				7C3CB5DA270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7C7243C926E8188400233B33 /* LaunchDetail.swift in Sources */,
@@ -599,7 +593,6 @@
 				7C8976C327556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C79988426FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7C9BDD89271642EC00A97374 /* PadMap.swift in Sources */,
-				7CB1EE8827062810004E0CD4 /* Tag.swift in Sources */,
 				7CF87F3125AE45F300BD9D06 /* LaunchList.swift in Sources */,
 				7C3CB5DB270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7C7243CA26E8188400233B33 /* LaunchDetail.swift in Sources */,
@@ -626,7 +619,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C47D6182710B53100F5997E /* LaunchCountdown.swift in Sources */,
-				7CB1EE8927062816004E0CD4 /* Tag.swift in Sources */,
 				7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */,
 				7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7CF260E127E3C1990030A98F /* GiantLaunchCountdown.swift in Sources */,
@@ -713,6 +705,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TVOS_DEPLOYMENT_TARGET = 15.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -767,6 +760,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TVOS_DEPLOYMENT_TARGET = 15.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -785,7 +779,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "Astro Launches";
 				SDKROOT = iphoneos;
@@ -809,7 +803,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "Astro Launches";
 				SDKROOT = iphoneos;
@@ -838,7 +832,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "Astro Launches";
 				SDKROOT = macosx;
@@ -865,7 +859,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "Astro Launches";
 				SDKROOT = macosx;
@@ -887,7 +881,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -912,7 +906,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -934,7 +928,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				IBSC_MODULE = Astro_Launches_WatchKit_Extension;
 				INFOPLIST_FILE = "Astro Launches WatchKit App/Info.plist";
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -955,7 +949,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				IBSC_MODULE = Astro_Launches_WatchKit_Extension;
 				INFOPLIST_FILE = "Astro Launches WatchKit App/Info.plist";
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -981,7 +975,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1005,7 +999,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
