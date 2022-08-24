@@ -11,6 +11,7 @@ import AstroSwiftFoundation
 
 struct LaunchList: View {
     @ObservedObject var networkManager: NetworkManager
+    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
     
     // the main view on iPhone, or sidebar on iPad
     var body: some View{
@@ -25,13 +26,15 @@ struct LaunchList: View {
             Text(networkManager.alertMessage)
         }
         .accentColor(Color("AccentColor")) // necessary because our forced light/dark modes, and UIAppearance usage, breaks automatic loading of AccentColor
+        .preferredColorScheme(colorSchemeAutomatic == .light ? .light : colorSchemeAutomatic == .dark ? .dark : nil)
     }
-
+    
     struct LaunchesView: View {
         @ObservedObject var networkManager: NetworkManager
         var upcoming:Bool
         @State var previousLaunchesLoaded = false
-
+        @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic // LaunchesView does not use this, but this must be present for ColorSchemeAutomaticToolbarContent to receive updates to colorSchemeAutomatic??
+        
         var body: some View {
             NavigationView{
                 ZStack{
@@ -60,7 +63,6 @@ struct LaunchList: View {
                 }
             }
             .tabItem { Label(upcoming ? "Upcoming" : "Previous", systemImage:upcoming ? "clock" : "arrow.counterclockwise.circle" )}
-            .modifier(colorSchemeAutomatic())
             .onAppear(){
                 // wait until the previous tab is shown the first time to load the previous launches, making startup faster and reducing server usage if the user never visits previous
                 if !upcoming && !previousLaunchesLoaded
