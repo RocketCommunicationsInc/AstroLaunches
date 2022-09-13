@@ -12,15 +12,14 @@ import SwiftUI
 //
 // The problem:
 // The system enum ColorScheme only has light and dark values.
-// The system ViewModifier preferredColorScheme only allows light and dark values.
-// To use the system's current color scheme, a view must be unmodified. There is no value that can be passed to preferredColorScheme to choose the system scheme
+
 //
 // The solutions:
-// Provide an enum, ViewModifier, ToolbarContent, and an AppStorage value that support switching among automatic (system), light, and dark schemes.
+// Provide an enum, ToolbarContent, and an AppStorage value that support switching among automatic (system), light, and dark schemes.
 //
 // Note that many solutions try to use "@Environment(\.colorScheme) var colorScheme" to detect the system theme, but this actually returns the current view's scheme.
 // Once the view's scheme has been manually set to light or dark, (\.colorScheme) will return light or dark, regardless of the system's scheme.
-// The best solution is to leave a view's color scheme unmodified to use the system theme.
+// The best solution is to leave a view's color scheme unmodified to use the system scheme.
 
 // An enum that adds automatic mode, missing from ColorScheme
 public enum ColorSchemeAutomatic:Int{
@@ -29,41 +28,28 @@ public enum ColorSchemeAutomatic:Int{
     case dark
 }
 
+// Set the entire app scheme by attaching this to the highest level container view...
+// Usage:
+//    .preferredColorScheme(colorSchemeAutomatic == .light ? .light : colorSchemeAutomatic == .dark ? .dark : nil)
+
+
 // The name of the AppStorage item that holds and stores the selected ColorSchemeAutomatic value.
 // Usage:
 //      @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
 public let colorSchemeAutomaticName = "ColorSchemeAutomatic"
 
 
-// A ViewModifier that applies the current value to a view
-// Usage:
-//      .modifier(colorSchemeAutomatic())
-public struct colorSchemeAutomatic: ViewModifier {
-    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
-    
-    public init(){
-    }
-
-    public func body(content: Content) -> some View {
-        if (colorSchemeAutomatic == .light) {
-            content.preferredColorScheme(.light)
-        }
-        else if (colorSchemeAutomatic == .dark) {
-            content.preferredColorScheme(.dark)
-        }
-        else { // automatic
-            content // return the unmodified view content
-        }
-    }
-}
-
 // ToolbarContent that adds a ToolbarItem and emits a menu to switch color schemes
+// Usage:
 //               .toolbar {
 //                   ColorSchemeAutomaticToolbarContent()
 //                }
+// * note that the view containing the toolbar should also declare...
+//    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
 public struct ColorSchemeAutomaticToolbarContent: ToolbarContent  {
     var placement:ToolbarItemPlacement = .automatic
-    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
+  
+    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic  // must also be declared in our parent view to receive automatic updates
 
     public init(placement:ToolbarItemPlacement){
         self.placement = placement
