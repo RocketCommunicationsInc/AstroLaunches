@@ -56,7 +56,16 @@ struct LaunchCountdown: View {
                         .font(labelFont)
                 }
                 
-            }.foregroundColor(Color(.label))
+            }
+            
+#if os(iOS)
+    .foregroundColor(Color(.label))
+#endif
+#if os(macOS)
+    .foregroundColor(Color(.labelColor))
+#endif
+
+            
             .onReceive(centralTimer) { _ in
                     // refresh the time every second
                     calcTimeRemaining()

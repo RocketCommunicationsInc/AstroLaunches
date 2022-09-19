@@ -22,7 +22,14 @@ struct LaunchMissionBlock: View {
         
         VStack {
             HStack{
-                Text(launch.missionName).font(.title2).bold().foregroundColor(Color(uiColor:.label))
+
+                Text(launch.missionName).font(.title2).bold()
+#if os(iOS) || os(tvOS)
+    .foregroundColor(Color(.label))
+#endif
+#if os(macOS)
+    .foregroundColor(Color(.labelColor))
+#endif
                 Spacer()
             }
             HStack
