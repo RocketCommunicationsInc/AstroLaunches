@@ -36,31 +36,34 @@ struct LaunchList: View {
         @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic // LaunchesView does not use this, but this must be present for ColorSchemeAutomaticToolbarContent to receive updates to colorSchemeAutomatic??
         
         var body: some View {
-            NavigationView{
+            NavigationSplitView{
                 ZStack{
                     ScrollView {
                         LazyVStack() {
                             ForEach(upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches, id: \.id) { launch in
-                                NavigationLink(
-                                    destination: LaunchDetail(launch: launch),
-                                    label: {
                                         LaunchRow(launch:launch)
                                             .padding(.top,3)
                                             .padding(.bottom,3)
                                             .padding(.leading,6)
                                             .padding(.trailing,6)
-                                    }).listRowBackground(Color.astroUISecondaryBackground)
-                            }
-                        }
+                                    }.listRowBackground(Color.astroUISecondaryBackground)
+                        }.listStyle(.plain)
                         .navigationTitle(upcoming ? "Upcoming" : "Previous")
                         .toolbar {
                             ColorSchemeAutomaticToolbarContent() // show the theme switching menu
                         }
+                        
                     }.background(Color.astroUIBackground)
                     // if no data is available show a ProgressView
                     let zeroData = upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
                     ProgressView().opacity(zeroData ? 1 : 0)
+                }.navigationDestination(for: Launch.self) { launch in
+                    LaunchDetail(launch: launch)
                 }
+
+            }
+        detail: {
+                EmptyView()
             }
             .tabItem { Label(upcoming ? "Upcoming" : "Previous", systemImage:upcoming ? "clock" : "arrow.counterclockwise.circle" )}
             .onAppear(){

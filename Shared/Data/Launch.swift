@@ -82,7 +82,7 @@ struct LaunchServiceProvider:Decodable{
 //
 // Our Launch struct that represents the original JSON data as Swift types, and checks for missing values
 //
-class Launch: Equatable{
+class Launch: Equatable, Hashable{
     let id:String // a unique ID, always present
     let missionName:String
     let missionDescription:String
@@ -104,6 +104,11 @@ class Launch: Equatable{
     // for equatable conformance, use id
     static public func ==(lhs: Launch, rhs: Launch) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+    // for hashable conformance, use id
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
     }
 
     // Parse a LaunchReply, see which fields were returned and convert to Swift types
