@@ -13,7 +13,6 @@ struct LaunchList: View {
     @ObservedObject var networkManager: NetworkManager
     @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
     
-    // the main view on iPhone, or sidebar on iPad
     var body: some View{
         TabView {
             LaunchesView(networkManager: networkManager, upcoming: true)
@@ -41,38 +40,46 @@ struct LaunchList: View {
                     ScrollView {
                         LazyVStack() {
                             ForEach(upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches, id: \.id) { launch in
-                                        LaunchRow(launch:launch)
-                                            .padding(.top,3)
-                                            .padding(.bottom,3)
-                                            .padding(.leading,6)
-                                            .padding(.trailing,6)
-                                    }.listRowBackground(Color.astroUISecondaryBackground)
-                        }.listStyle(.plain)
+                                NavigationLink {
+                                    LaunchDetail(launch: launch)
+                                } label: {
+                                    LaunchRow(launch:launch)
+                                        .padding(.top,3)
+                                        .padding(.bottom,3)
+                                        .padding(.leading,6)
+                                        .padding(.trailing,6)
+                                }.listRowBackground(Color.astroUISecondaryBackground)
+                            }
+                        }
                         .navigationTitle(upcoming ? "Upcoming" : "Previous")
                         .toolbar {
                             ColorSchemeAutomaticToolbarContent() // show the theme switching menu
                         }
-                        
                     }.background(Color.astroUIBackground)
+                    
                     // if no data is available show a ProgressView
                     let zeroData = upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
                     ProgressView().opacity(zeroData ? 1 : 0)
-                }.navigationDestination(for: Launch.self) { launch in
-                    LaunchDetail(launch: launch)
                 }
-
             }
         detail: {
-                EmptyView()
+            // preload the detail view before any selection is made, otherwise teh
+            let launches = upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches
+            if let launch = launches.first{
+                LaunchDetail(launch: launch)
             }
-            .tabItem { Label(upcoming ? "Upcoming" : "Previous", systemImage:upcoming ? "clock" : "arrow.counterclockwise.circle" )}
-            .onAppear(){
-                // wait until the previous tab is shown the first time to load the previous launches, making startup faster and reducing server usage if the user never visits previous
-                if !upcoming && !previousLaunchesLoaded
-                {
-                    previousLaunchesLoaded = true
-                    networkManager.loadPreviousLaunches()
-                }
+        }
+        .tabItem {
+            Label(upcoming ? "Upcoming" : "Previous", systemImage:upcoming ? "clock" : "arrow.counterclockwise.circle" )
+            
+        }
+        .onAppear(){
+            // wait until the previous tab is shown the first time to load the previous launches, making startup faster and reducing server usage if the user never visits previous
+            if !upcoming && !previousLaunchesLoaded {
+                previousLaunchesLoaded = true
+                networkManager.loadPreviousLaunches()
+            }
+            
             }
         }
     }
