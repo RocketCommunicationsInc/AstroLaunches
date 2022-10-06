@@ -14,10 +14,10 @@ struct LaunchList: View {
     @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
     
     var body: some View{
-        TabView {
+//        TabView {
             LaunchesView(networkManager: networkManager, upcoming: true)
-            LaunchesView(networkManager: networkManager, upcoming: false)
-        }
+        //    LaunchesView(networkManager: networkManager, upcoming: false)
+      //  }
         // watch for an alert posted by the networkManager
         .alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
             Button("Continue", role: .cancel) {}
@@ -48,7 +48,9 @@ struct LaunchList: View {
                                         .padding(.bottom,3)
                                         .padding(.leading,6)
                                         .padding(.trailing,6)
-                                }.listRowBackground(Color.astroUISecondaryBackground)
+                                }
+                                    .buttonStyle(BorderlessButtonStyle())
+                                    .listRowBackground(Color.astroUISecondaryBackground)
                             }
                         }
                         .navigationTitle(upcoming ? "Upcoming" : "Previous")
@@ -60,7 +62,7 @@ struct LaunchList: View {
                     // if no data is available show a ProgressView
                     let zeroData = upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
                     ProgressView().opacity(zeroData ? 1 : 0)
-                }
+                }.navigationSplitViewColumnWidth(min: 225, ideal: 275, max: 325) .navigationTitle(upcoming ? "Upcoming" : "Previous")
             }
         detail: {
             // preload the detail view before any selection is made, otherwise teh
