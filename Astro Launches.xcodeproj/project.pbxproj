@@ -33,6 +33,9 @@
 		7C69540A2612876E008A811E /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
 		7C6A025E26278C6900273563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
 		7C6A026126278C6900273563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
+		7C71FEA228F0DC5600F75C77 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7243C826E8188400233B33 /* LaunchDetail.swift */; };
+		7C71FEA328F0DC9F00F75C77 /* LaunchMissionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB627F7B6C000EA2DCC /* LaunchMissionBlock.swift */; };
+		7C71FEA428F0DDD400F75C77 /* LaunchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */; };
 		7C7243C926E8188400233B33 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7243C826E8188400233B33 /* LaunchDetail.swift */; };
 		7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7C7E0C84279F79AD00F07BDF /* ColorSchemeAutomatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E0C83279F79AD00F07BDF /* ColorSchemeAutomatic.swift */; };
@@ -66,10 +69,7 @@
 		7CE6156028D91F550082459A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7CE6156128D91F550082459A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
 		7CE6156228D91F550082459A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
-		7CE6157028D920CA0082459A /* LaunchMissionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6156B28D920CA0082459A /* LaunchMissionBlock.swift */; };
 		7CE6157128D920CA0082459A /* LaunchImageBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6156C28D920CA0082459A /* LaunchImageBlock.swift */; };
-		7CE6157228D920CA0082459A /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6156D28D920CA0082459A /* LaunchDetail.swift */; };
-		7CE6157428D920CA0082459A /* LaunchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6156F28D920CA0082459A /* LaunchRow.swift */; };
 		7CF260E127E3C1990030A98F /* GiantLaunchCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */; };
 		7CF43B5E27E256E400A7DD4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF43B5D27E256E400A7DD4F /* ContentView.swift */; };
 		7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
@@ -109,12 +109,8 @@
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CE6156628D91F550082459A /* Astro Launches (macOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches (macOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6156728D91F550082459A /* Astro Launches iOS macOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Astro Launches iOS macOS copy-Info.plist"; path = "/Users/rocketjeff/Projects/AstroLaunches/Astro Launches iOS macOS copy-Info.plist"; sourceTree = "<absolute>"; };
-		7CE6156B28D920CA0082459A /* LaunchMissionBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchMissionBlock.swift; sourceTree = "<group>"; };
 		7CE6156C28D920CA0082459A /* LaunchImageBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchImageBlock.swift; sourceTree = "<group>"; };
-		7CE6156D28D920CA0082459A /* LaunchDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7CE6156E28D920CA0082459A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CE6156F28D920CA0082459A /* LaunchRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchRow.swift; sourceTree = "<group>"; };
-		7CE6157528D920CF0082459A /* LaunchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchList.swift; sourceTree = "<group>"; };
 		7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiantLaunchCountdown.swift; sourceTree = "<group>"; };
 		7CF43B5D27E256E400A7DD4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
@@ -187,6 +183,10 @@
 				7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */,
 				7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */,
 				7C9BDD87271642EC00A97374 /* PadMap.swift */,
+				7CF87F1925AE45F300BD9D06 /* LaunchList.swift */,
+				7C7243C826E8188400233B33 /* LaunchDetail.swift */,
+				7C31CEB627F7B6C000EA2DCC /* LaunchMissionBlock.swift */,
+				7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,11 +237,7 @@
 		7CE6156828D920870082459A /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				7CE6157528D920CF0082459A /* LaunchList.swift */,
-				7CE6156D28D920CA0082459A /* LaunchDetail.swift */,
 				7CE6156C28D920CA0082459A /* LaunchImageBlock.swift */,
-				7CE6156B28D920CA0082459A /* LaunchMissionBlock.swift */,
-				7CE6156F28D920CA0082459A /* LaunchRow.swift */,
 				7CE6156E28D920CA0082459A /* Info.plist */,
 			);
 			path = macOS;
@@ -290,11 +286,7 @@
 		7CF87F2225AE45F300BD9D06 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				7CF87F1925AE45F300BD9D06 /* LaunchList.swift */,
-				7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */,
-				7C7243C826E8188400233B33 /* LaunchDetail.swift */,
 				7C31CEB827F7BC3D00EA2DCC /* LaunchImageBlock.swift */,
-				7C31CEB627F7B6C000EA2DCC /* LaunchMissionBlock.swift */,
 				7CB0A2C72788F99200A542D5 /* SettingsView.swift */,
 				7CF87F2325AE45F300BD9D06 /* Info.plist */,
 			);
@@ -514,20 +506,20 @@
 				7CE6154B28D91F550082459A /* NetworkManager.swift in Sources */,
 				7CE6154C28D91F550082459A /* DateFormatters.swift in Sources */,
 				7CE6154D28D91F550082459A /* View+ConditionalModifier.swift in Sources */,
+				7C71FEA328F0DC9F00F75C77 /* LaunchMissionBlock.swift in Sources */,
 				7CE6154E28D91F550082459A /* LaunchTime.swift in Sources */,
-				7CE6157428D920CA0082459A /* LaunchRow.swift in Sources */,
 				7C92392128E394D700364E5A /* Settings.swift in Sources */,
 				7CE6155328D91F550082459A /* LaunchCountdown.swift in Sources */,
 				7CE6155428D91F550082459A /* CentralTimer.swift in Sources */,
 				7C92392028E394CD00364E5A /* AstroLaunchesApp.swift in Sources */,
 				7CE6155528D91F550082459A /* Colors.swift in Sources */,
+				7C71FEA428F0DDD400F75C77 /* LaunchRow.swift in Sources */,
 				7CE6157128D920CA0082459A /* LaunchImageBlock.swift in Sources */,
 				7CE6155628D91F550082459A /* PadMap.swift in Sources */,
 				7CE6155828D91F550082459A /* LaunchDate.swift in Sources */,
 				7C09A5B528E7A8110035CBD4 /* LaunchList.swift in Sources */,
+				7C71FEA228F0DC5600F75C77 /* LaunchDetail.swift in Sources */,
 				7CE6155A28D91F550082459A /* Launch.swift in Sources */,
-				7CE6157028D920CA0082459A /* LaunchMissionBlock.swift in Sources */,
-				7CE6157228D920CA0082459A /* LaunchDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

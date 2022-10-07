@@ -18,7 +18,7 @@ struct LaunchRow: View {
             // Launch Image and Countdown clock
             LaunchImageBlock(launch: launch, height: 200.0, showStatus: true)
             // Mission Name, Status Tags, Date, Time
-            LaunchMissionBlock(launch: launch, showRocket: true, showStatus: true)
+            LaunchMissionBlock(launch: launch, showRocket: true, showStatus: true, showMissionName: true)
                 .padding()
             
         }.background(Color.astroUISecondaryBackground).cornerRadius(6)

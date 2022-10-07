@@ -17,20 +17,22 @@ struct LaunchMissionBlock: View {
     var launch:Launch
     var showRocket:Bool
     var showStatus:Bool
+    var showMissionName:Bool
     
     var body: some View {
         
         VStack {
-            HStack{
-
+            if (showMissionName) {
+                HStack{
                 Text(launch.missionName).font(.title2).bold()
-#if os(iOS) || os(tvOS)
-    .foregroundColor(Color(.label))
+#if os(iOS)
+                    .foregroundColor(Color(.label))
 #endif
 #if os(macOS)
-    .foregroundColor(Color(.labelColor))
+                    .foregroundColor(Color(.labelColor))
 #endif
                 Spacer()
+            }
             }
             HStack
             {

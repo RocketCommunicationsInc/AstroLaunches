@@ -16,7 +16,7 @@ struct LaunchDetail: View {
                 // Launch Image and Countdown clock
                 LaunchImageBlock(launch: launch, height: 400, showStatus: false)
                 // Mission Name, Calendar, Clock
-                LaunchMissionBlock(launch: launch, showRocket: false,showStatus: false).padding()
+                LaunchMissionBlock(launch: launch, showRocket: false,showStatus: false, showMissionName: false).padding()
                 // Longer mission description
                 MissionDescription(launch: launch).padding()
                 // Mission status, as a title and tag
@@ -28,6 +28,7 @@ struct LaunchDetail: View {
             }
         }
         .background(Color.astroUIBackground)
+        .navigationTitle(launch.missionName)
     }
 }
 
