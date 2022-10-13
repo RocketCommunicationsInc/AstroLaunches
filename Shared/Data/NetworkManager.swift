@@ -9,7 +9,6 @@ import Foundation
 
 // NetworkManager handles the data connection and initiates the parsing of the results into an array of *Launch* objects
 
-
 private struct LaunchReplies:Decodable{
     //let count:Int
     let results:[LaunchReply]
@@ -42,21 +41,12 @@ class NetworkManager:ObservableObject
     init(){
         // load upcoming Launches
         loadLaunches(upcoming: true)
-        
-//        // if iOS also load past Launches
-//        #if os(iOS)
-//        loadLaunches(upcoming: false)
-//        #endif
-    }
-    
-    func loadPreviousLaunches() -> Void
-    {
         loadLaunches(upcoming: false)
     }
     
+    
     func loadLaunches(upcoming:Bool)
     {
-        print("***** starting load launches")
         var url:URL?
         var timeframeParam:String = upcoming ? "upcoming" : "previous"
         
@@ -96,7 +86,6 @@ class NetworkManager:ObservableObject
                 return
             }
             
-            print("starting JSON decoding")
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
             DispatchQueue.main.async {
                 // post process launchJSONs into launches
@@ -108,10 +97,7 @@ class NetworkManager:ObservableObject
                         self.pastLaunches.append(Launch(launchJSON))
                     }
                 }
-                print("ending JSON decoding")
             }
         }.resume()
-        print("***** ending load launches")
-
     }
 }
