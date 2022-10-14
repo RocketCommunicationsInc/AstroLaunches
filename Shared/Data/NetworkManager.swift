@@ -30,7 +30,7 @@ class NetworkManager:ObservableObject
     // Do nothing if a previous error has not been acknowledged by setting isShowingNetworkAlert to false
     func prepareAlert(title:String, message:String)
     {
-        DispatchQueue.main.async {
+        Task { @MainActor in // post the alert from the main thread
             if self.isShowingNetworkAlert {return}
             self.alertTitle = title
             self.alertMessage = message
@@ -39,13 +39,15 @@ class NetworkManager:ObservableObject
     }
     
     init(){
-        // load upcoming Launches
-        loadLaunches(upcoming: true)
-        loadLaunches(upcoming: false)
+        // load both TimePeriods
+        Task{
+            await loadLaunches(upcoming: true)
+            await loadLaunches(upcoming: false)
+        }
     }
     
     
-    func loadLaunches(upcoming:Bool)
+    func loadLaunches(upcoming:Bool) async
     {
         var url:URL?
         var timeframeParam:String = upcoming ? "upcoming" : "previous"
@@ -58,14 +60,10 @@ class NetworkManager:ObservableObject
         url = URL(string: "https://ll.thespacedevs.com/2.2.0/launch/\(timeframeParam)/?limit=10&mode=detailed")
         #endif
         
-        URLSession.shared.dataTask(with: url!) { data, urlResponse, error in
-            if let myError = error {
-                self.prepareAlert(title: "Network Error", message: myError.localizedDescription)
-                return
-            }
-            
-            let response = urlResponse as! HTTPURLResponse
-            let status = response.statusCode
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url!)
+            let urlResponse = response as! HTTPURLResponse
+            let status = urlResponse.statusCode
             guard (200...299).contains(status) else {
                 if (status == 429)
                 {
@@ -80,15 +78,15 @@ class NetworkManager:ObservableObject
                 return
             }
 
-            guard let data = data else {
+            guard !data.isEmpty else {
                 // handle zero data error
                 self.prepareAlert(title: "No Data Returned", message: HTTPURLResponse.localizedString(forStatusCode: status))
                 return
             }
             
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
-            DispatchQueue.main.async {
-                // post process launchJSONs into launches
+            Task { @MainActor in
+                // post process launchJSONs into launches on the main thread, as this will trigger UI updates
                 myLaunches.results.forEach() { launchJSON in
                     if (upcoming) {
                         self.upcomingLaunches.append(Launch(launchJSON))
@@ -98,6 +96,10 @@ class NetworkManager:ObservableObject
                     }
                 }
             }
-        }.resume()
+        }
+        catch {
+            self.prepareAlert(title: "Network Error", message: error.localizedDescription)
+            return
+        }
     }
 }
