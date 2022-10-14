@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C09A5B528E7A8110035CBD4 /* LaunchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* LaunchList.swift */; };
+		7C09A5B528E7A8110035CBD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
 		7C184B0E28D52CD300DCCEFF /* Astro_LaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */; };
 		7C184B1028D52CD300DCCEFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0F28D52CD300DCCEFF /* ContentView.swift */; };
 		7C184B1228D52CD400DCCEFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C184B1128D52CD400DCCEFF /* Assets.xcassets */; };
@@ -73,7 +73,7 @@
 		7CF260E127E3C1990030A98F /* GiantLaunchCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */; };
 		7CF43B5E27E256E400A7DD4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF43B5D27E256E400A7DD4F /* ContentView.swift */; };
 		7CF87F2E25AE45F300BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
-		7CF87F3025AE45F300BD9D06 /* LaunchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* LaunchList.swift */; };
+		7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
 		7CF87F3425AE45F300BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
 		7CF87F8625AE49B600BD9D06 /* Astro_Launches_TVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */; };
 		7CF87F8825AE49B600BD9D06 /* OpsFloorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */; };
@@ -114,7 +114,7 @@
 		7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiantLaunchCountdown.swift; sourceTree = "<group>"; };
 		7CF43B5D27E256E400A7DD4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
-		7CF87F1925AE45F300BD9D06 /* LaunchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchList.swift; sourceTree = "<group>"; };
+		7CF87F1925AE45F300BD9D06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF87F2025AE45F300BD9D06 /* Astro Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F2325AE45F300BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 				7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */,
 				7C3CB5DD270F4FD1000448C6 /* LaunchCountdown.swift */,
 				7C9BDD87271642EC00A97374 /* PadMap.swift */,
-				7CF87F1925AE45F300BD9D06 /* LaunchList.swift */,
+				7CF87F1925AE45F300BD9D06 /* ContentView.swift */,
 				7C7243C826E8188400233B33 /* LaunchDetail.swift */,
 				7C31CEB627F7B6C000EA2DCC /* LaunchMissionBlock.swift */,
 				7C3D4CCD2603EFDA00CB0C41 /* LaunchRow.swift */,
@@ -517,7 +517,7 @@
 				7CE6157128D920CA0082459A /* LaunchImageBlock.swift in Sources */,
 				7CE6155628D91F550082459A /* PadMap.swift in Sources */,
 				7CE6155828D91F550082459A /* LaunchDate.swift in Sources */,
-				7C09A5B528E7A8110035CBD4 /* LaunchList.swift in Sources */,
+				7C09A5B528E7A8110035CBD4 /* ContentView.swift in Sources */,
 				7C71FEA228F0DC5600F75C77 /* LaunchDetail.swift in Sources */,
 				7CE6155A28D91F550082459A /* Launch.swift in Sources */,
 			);
@@ -540,7 +540,7 @@
 				7C8976C227556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7C9BDD88271642EC00A97374 /* PadMap.swift in Sources */,
-				7CF87F3025AE45F300BD9D06 /* LaunchList.swift in Sources */,
+				7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */,
 				7C3CB5DA270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7C7243C926E8188400233B33 /* LaunchDetail.swift in Sources */,
 				7C69540A2612876E008A811E /* Launch.swift in Sources */,

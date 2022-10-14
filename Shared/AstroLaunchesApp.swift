@@ -25,7 +25,7 @@ struct Astro_LaunchesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LaunchList(networkManager: networkManager)
+            ContentView(networkManager: networkManager)
         }
     }
 }

@@ -19,7 +19,7 @@ enum TimePeriod:Int {
 
 // The Main View of the app.
 // Divide the screen with a NavigationSplitView, list of launches on the left, detail view on the right
-struct LaunchList: View {
+struct ContentView: View {
     @ObservedObject var networkManager: NetworkManager
     @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
     @AppStorage("TimePeriod") private var timeSpan:TimePeriod = .upcoming
