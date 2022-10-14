@@ -19,7 +19,7 @@ struct Astro_LaunchesApp: App {
         
     #if os(iOS)
         // allow background colors set by List's .background modifier to work in grouped configurations in light mode
-        UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = .clear // *** Astro customization
     #endif
     }
     
