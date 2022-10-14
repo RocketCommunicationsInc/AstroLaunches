@@ -17,6 +17,8 @@ enum TimePeriod:Int {
     }
 }
 
+// The Main View of the app.
+// Divide the screen with a NavigationSplitView, list of launches on the left, detail view on the right
 struct LaunchList: View {
     @ObservedObject var networkManager: NetworkManager
     @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
@@ -34,8 +36,12 @@ struct LaunchList: View {
                     LaunchStack(networkManager: networkManager, timePeriod: .recent)
                         .navigationTitle("Recent")
                 }
-            }.toolbar{
-#if os(iOS)
+            }
+#if os(macOS)
+            .navigationSplitViewColumnWidth(min: 225, ideal: 275, max: 325)
+#endif
+            .toolbar{
+#if os(iOS) // on iOS show a toolbar icon with attached menu to switch time period
                 ToolbarItem() {
                     Menu {
                         Picker(selection: $timeSpan, label:Text("Unused")) {
@@ -48,7 +54,7 @@ struct LaunchList: View {
                     }
                 }
 #endif
-#if os(macOS)
+#if os(macOS) // on macOS show an inline toolbar menu to switch time period
                 ToolbarItem(placement: .automatic)
                 {
                     Picker("", selection: self.$timeSpan) {
@@ -60,17 +66,19 @@ struct LaunchList: View {
             }
         }
     detail: {
-        // preload the detail view before any selection is made, otherwise teh
+        // preload the detail view before any selection is made
         let launches = timeSpan == .upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches
         if let launch = launches.first{
             LaunchDetail(launch: launch)
         }
     }
+    // show any alerts created by the NetworkManager
     .alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
         Button("Continue", role: .cancel) {}
     } message: {
         Text(networkManager.alertMessage)
     }
+    // *** Astro customization
     .accentColor(Color("AccentColor")) // necessary because our forced light/dark modes, and UIAppearance usage, breaks automatic loading of AccentColor
     .preferredColorScheme(colorSchemeAutomatic == .light ? .light : colorSchemeAutomatic == .dark ? .dark : nil)
     }
@@ -96,21 +104,18 @@ struct LaunchList: View {
                                     .padding(.trailing,6)
                             }
                             .buttonStyle(BorderlessButtonStyle())
-                            .listRowBackground(Color.astroUISecondaryBackground)
+                            .listRowBackground(Color.astroUISecondaryBackground) // *** Astro customization
                         }
                     }
                     .toolbar {
                         ColorSchemeAutomaticToolbarContent() // show the theme switching menu
                     }
-                }.background(Color.astroUIBackground)
+                }.background(Color.astroUIBackground) // *** Astro customization
                 
                 // if no data is available show a ProgressView
                 let zeroData = timePeriod == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
                 ProgressView().opacity(zeroData ? 1 : 0)
             }
-#if os(macOS)
-    .navigationSplitViewColumnWidth(min: 225, ideal: 275, max: 325) // not working
-#endif
 
         }
     }
