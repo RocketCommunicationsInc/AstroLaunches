@@ -107,7 +107,7 @@
 		7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceRoomView.swift; sourceTree = "<group>"; };
 		7CB0A2C72788F99200A542D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		7CE6156628D91F550082459A /* Astro Launches (macOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches (macOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE6156628D91F550082459A /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6156728D91F550082459A /* Astro Launches iOS macOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Astro Launches iOS macOS copy-Info.plist"; path = "/Users/rocketjeff/Projects/AstroLaunches/Astro Launches iOS macOS copy-Info.plist"; sourceTree = "<absolute>"; };
 		7CE6156C28D920CA0082459A /* LaunchImageBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchImageBlock.swift; sourceTree = "<group>"; };
 		7CE6156E28D920CA0082459A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 				7CF87F2025AE45F300BD9D06 /* Astro Launches.app */,
 				7CF87F8325AE49B600BD9D06 /* Astro Launches (tvOS).app */,
 				7C184B0B28D52CD300DCCEFF /* Astro Launches (watchOS).app */,
-				7CE6156628D91F550082459A /* Astro Launches (macOS).app */,
+				7CE6156628D91F550082459A /* Launches.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,7 +354,7 @@
 				7CE6154728D91F550082459A /* CachedAsyncImage */,
 			);
 			productName = "Astro Launches (iOS)";
-			productReference = 7CE6156628D91F550082459A /* Astro Launches (macOS).app */;
+			productReference = 7CE6156628D91F550082459A /* Launches.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7CF87F1F25AE45F300BD9D06 /* Astro Launches (iOS) */ = {
@@ -585,7 +585,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Astro Launches";
+				INFOPLIST_KEY_CFBundleDisplayName = Launches;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -617,7 +617,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Astro Launches";
+				INFOPLIST_KEY_CFBundleDisplayName = Launches;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -648,7 +648,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Astro Launches";
+				INFOPLIST_KEY_CFBundleDisplayName = Launches;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,7 +657,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Launches;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
@@ -676,7 +676,7 @@
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Astro Launches";
+				INFOPLIST_KEY_CFBundleDisplayName = Launches;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -685,7 +685,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Launches;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
