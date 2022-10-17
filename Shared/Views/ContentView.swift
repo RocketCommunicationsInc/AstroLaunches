@@ -8,14 +8,7 @@
 import SwiftUI
 import AstroSwiftFoundation
 
-enum TimePeriod:Int {
-    case upcoming
-    case recent
-    
-    func name()->String{
-        return self == .upcoming ? "Upcoming" : "Recent"
-    }
-}
+
 
 // The Main View of the app.
 // Divide the screen with a NavigationSplitView, list of launches on the left, detail view on the right
@@ -30,11 +23,11 @@ struct ContentView: View {
             ZStack{
                 if (timeSpan == .upcoming){
                     LaunchStack(networkManager: networkManager, timePeriod: .upcoming)
-                        .navigationTitle("Upcoming")
+                        .navigationTitle(timeSpan.name())
                 }
                 else {
                     LaunchStack(networkManager: networkManager, timePeriod: .recent)
-                        .navigationTitle("Recent")
+                        .navigationTitle(timeSpan.name())
                 }
             }
 #if os(macOS)
@@ -45,8 +38,8 @@ struct ContentView: View {
                 ToolbarItem() {
                     Menu {
                         Picker(selection: $timeSpan, label:Text("Unused")) {
-                            Text("Upcoming").tag(TimePeriod.upcoming)
-                            Text("Recent").tag(TimePeriod.recent)
+                            Text(TimePeriod.upcoming.name()).tag(TimePeriod.upcoming)
+                            Text(TimePeriod.recent.name()).tag(TimePeriod.recent)
                         }
                     }
                     label: {
@@ -58,8 +51,8 @@ struct ContentView: View {
                 ToolbarItem(placement: .automatic)
                 {
                     Picker("", selection: self.$timeSpan) {
-                        Text("Upcoming").tag(TimePeriod.upcoming)
-                        Text("Recent").tag(TimePeriod.recent)
+                        Text(TimePeriod.upcoming.name()).tag(TimePeriod.upcoming)
+                        Text(TimePeriod.recent.name()).tag(TimePeriod.recent)
                     }.pickerStyle(.menu).frame(minWidth:110)
                 }
 #endif

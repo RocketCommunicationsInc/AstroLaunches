@@ -9,6 +9,16 @@ import Foundation
 
 // NetworkManager handles the data connection and initiates the parsing of the results into an array of *Launch* objects
 
+enum TimePeriod:Int {
+    case upcoming
+    case recent
+    
+    func name()->String{
+        return self == .upcoming ? "Upcoming" : "Recent"
+    }
+}
+
+
 private struct LaunchReplies:Decodable{
     //let count:Int
     let results:[LaunchReply]
