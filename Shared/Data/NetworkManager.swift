@@ -51,16 +51,16 @@ class NetworkManager:ObservableObject
     init(){
         // load both TimePeriods
         Task{
-            await loadLaunches(upcoming: true)
-            await loadLaunches(upcoming: false)
+            await loadLaunches(TimePeriod.upcoming)
+            await loadLaunches(TimePeriod.recent)
         }
     }
     
     
-    func loadLaunches(upcoming:Bool) async
+    func loadLaunches(_ timePeriod:TimePeriod) async
     {
         var url:URL?
-        var timeframeParam:String = upcoming ? "upcoming" : "previous"
+        var timeframeParam:String = timePeriod == .upcoming ? "upcoming" : "previous"
         
         // If building for debug, use the lldev URL, as requested by the provider, possibly stale data
         #if DEBUG
@@ -98,7 +98,7 @@ class NetworkManager:ObservableObject
             Task { @MainActor in
                 // post process launchJSONs into launches on the main thread, as this will trigger UI updates
                 myLaunches.results.forEach() { launchJSON in
-                    if (upcoming) {
+                    if (timePeriod == .upcoming) {
                         self.upcomingLaunches.append(Launch(launchJSON))
                     }
                     else {
