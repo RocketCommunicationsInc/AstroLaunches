@@ -27,7 +27,7 @@ struct LaunchDetail: View {
                 PadMap(coordinates:launch.locationCoordinate).frame(minHeight:100,idealHeight: 175).cornerRadius(6).padding()
             }
         }
-        .background(Color.astroUIBackground)
+        .background(Color.astroUIBackground) // *** Astro customization
         .navigationTitle(launch.missionName)
     }
 }
@@ -84,7 +84,7 @@ struct RocketAndLocation: View {
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
-                            .fill(Color.astroUISecondaryBackground).frame(minHeight:73)
+                            .fill(Color.astroUISecondaryBackground).frame(minHeight:73) // *** Astro customization
                         Text(launch.rocketName).padding(.all,6).foregroundColor(.launchesTextColor)
                         
                     }
@@ -95,7 +95,7 @@ struct RocketAndLocation: View {
                     
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
-                            .fill(Color.astroUISecondaryBackground).frame(minHeight:73)
+                            .fill(Color.astroUISecondaryBackground).frame(minHeight:73) // *** Astro customization
                         Text(launch.locationName).padding(.all,6).foregroundColor(.launchesTextColor)
                         
                     }
