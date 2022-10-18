@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7CE6154428D91F550082459A"
-               BuildableName = "Astro Launches (macOS).app"
+               BuildableName = "Launches.app"
                BlueprintName = "Astro Launches (macOS)"
                ReferencedContainer = "container:Astro Launches.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7CE6154428D91F550082459A"
-            BuildableName = "Astro Launches (macOS).app"
+            BuildableName = "Launches.app"
             BlueprintName = "Astro Launches (macOS)"
             ReferencedContainer = "container:Astro Launches.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7CE6154428D91F550082459A"
-            BuildableName = "Astro Launches (macOS).app"
+            BuildableName = "Launches.app"
             BlueprintName = "Astro Launches (macOS)"
             ReferencedContainer = "container:Astro Launches.xcodeproj">
          </BuildableReference>
