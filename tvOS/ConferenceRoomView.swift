@@ -149,7 +149,7 @@ struct LogoNameCountdown: View {
                 Text(launch.missionName)
                     .font(.system(size: titleFontSize * 1.2, weight: .semibold))
                     .padding()
-                LaunchCountdown(launch:launch, digitStyle: .title, labelStyle: .caption)
+                Countdown(launch:launch, digitStyle: .title, labelStyle: .caption)
                     .padding()
                     .background(.ultraThinMaterial)
                     .cornerRadius(6)

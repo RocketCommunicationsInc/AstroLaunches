@@ -47,42 +47,26 @@ struct LaunchCardImage: View {
 
 struct LaunchDetailImage: View {
     
-    var wideMode:Bool = true
     var launch:Launch
-    var height:CGFloat
     var body: some View {
         ZStack(alignment:.bottom){
             // Image or placehoder
             if let imageURL = launch.imageURL
             {
-                ZStack(alignment:.topTrailing) {
-                    // put a full width blurred image in the background, to fill space that the image might not cover
-                    CachedAsyncImage(url:imageURL, content: { image in
-                        image.resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
-                           .blur(radius:8)
+                // the actual image
+                CachedAsyncImage(url:imageURL, content: { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
                         .clipped()
-                    }, placeholder: {
-                        ProgressView()
-                    }).frame(height: height)
-                    
-                    // the actual image
-                    CachedAsyncImage(url:imageURL, content: { image in
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
-                            .clipped()
-                    }, placeholder: {
-                        ProgressView()
-                    }).frame(height: height)
-                }
+                }, placeholder: {
+                    ProgressView()
+                })
             }
             else { // no image available, use our stock photo
                 Image("launch")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: 10, idealHeight: height, maxHeight: height, alignment: .top)
                     .clipped()
             }
             
@@ -128,12 +112,12 @@ struct LogoCountdownBlock: View {
                 CachedAsyncImage(url:url, content: { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40,  alignment: .center)
-                        .padding(.leading, 8)
                 }, placeholder: {
                     ProgressView()
-                }).frame(width: 40, height: 40)
-                
+                })
+                .frame(width: 40, height: 40)
+                .padding([.top, .bottom], 2)
+                .padding(.leading, 8)
             }
             Spacer()
             // only show countown for launches in the future

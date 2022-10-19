@@ -14,7 +14,7 @@ struct LaunchDetail: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading,spacing:0){
                 // Launch Image and Countdown clock
-                LaunchDetailImage(launch: launch, height: 400)
+                LaunchDetailImage(launch: launch)
                 // Mission Name, Calendar, Clock
                 MissionStatusDate(launch: launch, showRocket: false,showStatus: false, showMissionName: false).padding()
                 // Longer mission description
@@ -86,7 +86,6 @@ struct RocketAndLocation: View {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
                             .fill(Color.astroUISecondaryBackground).frame(minHeight:73) // *** Astro customization
                         Text(launch.rocketName).padding(.all,6).foregroundColor(.launchesTextColor)
-                        
                     }
                 }
                 
@@ -97,7 +96,6 @@ struct RocketAndLocation: View {
                         RoundedRectangle(cornerRadius: 3.0, style: .continuous)
                             .fill(Color.astroUISecondaryBackground).frame(minHeight:73) // *** Astro customization
                         Text(launch.locationName).padding(.all,6).foregroundColor(.launchesTextColor)
-                        
                     }
                 }
             }
