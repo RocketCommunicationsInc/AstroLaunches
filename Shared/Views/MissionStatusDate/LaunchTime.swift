@@ -1,5 +1,5 @@
 //
-//  LaunchCalendar.swift
+//  LaunchClock.swift
 //  Astro Launches
 //
 //  Created by rocketjeff on 10/7/21.
@@ -7,20 +7,18 @@
 
 import SwiftUI
 
-struct LaunchDate: View {
+struct LaunchTime: View {
     var launch:Launch
     var labelStyle:Font.TextStyle = .body
 
     var body: some View {
         HStack(spacing: 10){
-            Image(systemName: "calendar")
-            if let time = launch.windowOpenDate
-            {
-                let dateString = ShortDateFormatter.sharedInstance.string(from: time)
+            Image(systemName: "clock")
+            if let time = launch.windowOpenDate {
+                let dateString = TwentyFourHourTimeFormatter.sharedInstance.string(from: time)
                 Text(dateString)
             }
-            else
-            {
+            else {
                 Text("Unknown")
             }
         }.font(Font.system(labelStyle))
@@ -28,15 +26,15 @@ struct LaunchDate: View {
     }
 }
 
-struct LaunchCalendar_Previews: PreviewProvider {
+
+
+struct LaunchClock_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {
-        LaunchDate(launch:networkManager.upcomingLaunches[0])
+        LaunchTime(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
-        LaunchDate(launch:networkManager.upcomingLaunches[1])
+        LaunchTime(launch:networkManager.upcomingLaunches[1])
             .preferredColorScheme(.dark)
-            .previewLayout(.sizeThatFits)
-        LaunchDate(launch:networkManager.upcomingLaunches[4])
             .previewLayout(.sizeThatFits)
     }
 }

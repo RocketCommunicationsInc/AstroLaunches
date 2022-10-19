@@ -1,5 +1,5 @@
 //
-//  LaunchRow.swift
+//  LaunchCard.swift
 //  Astro Launches
 //
 //  Created by rocketjeff on 3/18/21.
@@ -9,16 +9,16 @@ import SwiftUI
 import WidgetKit
 import AstroSwiftFoundation
 
-struct LaunchRow: View {
+struct LaunchCard: View {
     
     var launch:Launch
     
     var body: some View {
         VStack(spacing:0) {
             // Launch Image and Countdown clock
-            LaunchImageBlock(launch: launch, height: 200.0, showStatus: true)
+            LaunchCardImage(launch: launch, height: 200.0)
             // Mission Name, Status Tags, Date, Time
-            LaunchMissionBlock(launch: launch, showRocket: true, showStatus: true, showMissionName: true)
+            MissionStatusDate(launch: launch, showRocket: true, showStatus: true, showMissionName: true)
                 .padding()
             
         }.background(Color.astroUISecondaryBackground).cornerRadius(6)
@@ -32,12 +32,12 @@ struct LaunchRow: View {
 struct LaunchRow_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {
-        LaunchRow(launch:networkManager.upcomingLaunches[0])
+        LaunchCard(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
-        LaunchRow(launch:networkManager.upcomingLaunches[1])
+        LaunchCard(launch:networkManager.upcomingLaunches[1])
             .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
-        LaunchRow(launch:networkManager.upcomingLaunches[4])
+        LaunchCard(launch:networkManager.upcomingLaunches[4])
             .previewLayout(.sizeThatFits)
     }
 }

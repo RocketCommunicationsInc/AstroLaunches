@@ -1,5 +1,5 @@
 //
-//  LaunchCountdown.swift
+//  Countdown.swift
 //  Astro Launches
 //
 //  Created by rocketjeff on 10/7/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LaunchCountdown: View {
+struct Countdown: View {
     var launch:Launch
     
     @State var timeRemaining: TimeInterval = 0
@@ -147,9 +147,9 @@ extension TimeInterval{
 struct LaunchCountdown_Previews: PreviewProvider {
     static var networkManager = NetworkManager()
     static var previews: some View {
-        LaunchCountdown(launch:networkManager.upcomingLaunches[0])
+        Countdown(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
-        LaunchCountdown(launch:networkManager.upcomingLaunches[1])
+        Countdown(launch:networkManager.upcomingLaunches[1])
             .preferredColorScheme(.dark)
             .previewLayout(.sizeThatFits)
     }

@@ -90,7 +90,7 @@ struct ContentView: View {
                             NavigationLink {
                                 LaunchDetail(launch: launch)
                             } label: {
-                                LaunchRow(launch:launch)
+                                LaunchCard(launch:launch)
                                     .padding(.top,3)
                                     .padding(.bottom,3)
                                     .padding(.leading,6)

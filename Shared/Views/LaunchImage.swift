@@ -1,5 +1,5 @@
 //
-//  LaunchImageBlock.swift
+//  LaunchImage.swift
 //  Astro Launches (iOS)
 //
 //  Created by rocketjeff on 4/1/22.
@@ -8,56 +8,77 @@
 import SwiftUI
 import CachedAsyncImage
 
-struct LaunchImageBlock: View {
+struct LaunchCardImage: View {
     
-    @Environment(\.horizontalSizeClass) var hClass
     var launch:Launch
     var height:CGFloat
-    var showStatus:Bool
     var body: some View {
         ZStack(alignment:.bottom){
-            // Image, or placehoder
+            // Image or placehoder
+            if let imageURL = launch.imageURL
+            {
+                CachedAsyncImage(url:imageURL , content: { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
+                        .clipped()
+                }, placeholder: {
+                    ProgressView()
+                }).frame(height: height)
+            }
+            else { // no image available, use our stock photo
+                Image("launch")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, idealHeight: height, maxHeight: height, alignment: .top)
+                    .clipped()
+            }
+            
+            // Overlay some items over the image
+            VStack{
+                PlayButtonBlock(launch:launch)
+                Spacer() // force the LogoCountdownBlock to the bottom
+                LogoCountdownBlock(launch: launch)
+            }
+        }
+    }
+}
+
+
+struct LaunchDetailImage: View {
+    
+    var wideMode:Bool = true
+    var launch:Launch
+    var height:CGFloat
+    var body: some View {
+        ZStack(alignment:.bottom){
+            // Image or placehoder
             if let imageURL = launch.imageURL
             {
                 ZStack(alignment:.topTrailing) {
-                    if (hClass == .regular) // wide mode for display on ipad detail screen
-                    {
-                        // put a full width blurred image in the background, to fill space that the image might not cover
-                        CachedAsyncImage(url:imageURL, content: { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
-                                .blur(radius:8)
-                                .clipped()
-                        }, placeholder: {
-                            ProgressView()
-                        }).frame(height: height)
-                        
-                        // the actual image
-                        CachedAsyncImage(url:imageURL, content: { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
-                                .clipped()
-                        }, placeholder: {
-                            ProgressView()
-                        }).frame(height: height)
-                    }
-                    else  // narrow mode for display on list view
-                    {
-                        CachedAsyncImage(url:imageURL , content: { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
-                                .clipped()
-                        }, placeholder: {
-                            ProgressView()
-                        }).frame(height: height)
-                    }
+                    // put a full width blurred image in the background, to fill space that the image might not cover
+                    CachedAsyncImage(url:imageURL, content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
+                           .blur(radius:8)
+                        .clipped()
+                    }, placeholder: {
+                        ProgressView()
+                    }).frame(height: height)
+                    
+                    // the actual image
+                    CachedAsyncImage(url:imageURL, content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
+                            .clipped()
+                    }, placeholder: {
+                        ProgressView()
+                    }).frame(height: height)
                 }
             }
-            else // no image available, use our stock photo
-            {
+            else { // no image available, use our stock photo
                 Image("launch")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -120,7 +141,7 @@ struct LogoCountdownBlock: View {
             {
                 if interval > 0
                 {
-                    LaunchCountdown(launch: launch)
+                    Countdown(launch: launch)
                         .padding(.trailing, 8)
                         .padding(.top, 2)
                         .padding(.bottom, 2)
