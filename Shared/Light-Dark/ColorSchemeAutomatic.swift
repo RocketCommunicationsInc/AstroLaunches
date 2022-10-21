@@ -28,7 +28,7 @@ public enum ColorSchemeAutomatic:Int{
     case dark
 }
 
-// Set the entire app scheme by attaching this to the highest level container view...
+// Set an scene by attaching this to the highest level container view...
 // Usage:
 //    .preferredColorScheme(colorSchemeAutomatic == .light ? .light : colorSchemeAutomatic == .dark ? .dark : nil)
 
@@ -38,7 +38,7 @@ public enum ColorSchemeAutomatic:Int{
 //      @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
 public let colorSchemeAutomaticName = "ColorSchemeAutomatic"
 
-
+#if os(iOS) || os(macOS)
 // ToolbarContent that adds a ToolbarItem and emits a menu to switch color schemes
 // Usage:
 //               .toolbar {
@@ -75,3 +75,4 @@ public struct ColorSchemeAutomaticToolbarContent: ToolbarContent  {
         }
     }
 }
+#endif

@@ -58,7 +58,6 @@
 		7CB57D6729035A280044577E /* ColorSchemeAutomatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB57D6329035A280044577E /* ColorSchemeAutomatic.swift */; };
 		7CB57D6829035A280044577E /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB57D6429035A280044577E /* View+ConditionalModifier.swift */; };
 		7CB57D6929035A280044577E /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB57D6429035A280044577E /* View+ConditionalModifier.swift */; };
-		7CB57D6A29035A280044577E /* View+ConditionalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB57D6429035A280044577E /* View+ConditionalModifier.swift */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CE6154B28D91F550082459A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CE6154C28D91F550082459A /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
@@ -572,7 +571,6 @@
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
 				7C3CB5DC270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */,
-				7CB57D6A29035A280044577E /* View+ConditionalModifier.swift in Sources */,
 				7CF87F8825AE49B600BD9D06 /* OpsFloorView.swift in Sources */,
 				7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */,
 				7C5A1B10261BB54500E452DE /* AppSettings.swift in Sources */,
