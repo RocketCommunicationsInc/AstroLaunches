@@ -15,17 +15,23 @@ struct Astro_LaunchesApp: App {
     @StateObject var networkManager = NetworkManager()
 
     init(){
-        _ = Settings.sharedInstance // init the Settings
+        _ = AppSettings.sharedInstance // init the AppSettings
         
-    #if os(iOS)
+#if os(iOS)
         // allow background colors set by List's .background modifier to work in grouped configurations in light mode
         UITableView.appearance().backgroundColor = .clear // *** Astro customization
-    #endif
+#endif
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView(networkManager: networkManager)
         }
+
+#if os(macOS)
+        Settings {
+            SettingsView()
+        }
+#endif
     }
 }

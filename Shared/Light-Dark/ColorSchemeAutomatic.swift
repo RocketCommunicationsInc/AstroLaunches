@@ -61,44 +61,17 @@ public struct ColorSchemeAutomaticToolbarContent: ToolbarContent  {
     public var body: some ToolbarContent {
         ToolbarItem(placement: placement)  {
 
-            Menu(content: {
-                
-                Button(action : {
-                    colorSchemeAutomatic = .automatic
-                }) {
-                    if colorSchemeAutomatic == .automatic {
-                        Label("Automatic", systemImage:"checkmark")
-                    }
-                    else {
-                        Text("Automatic")
-                    }
+            Menu {
+                Picker(selection: $colorSchemeAutomatic, label: Text("Appearance")) {
+                    Text("Light").tag(ColorSchemeAutomatic.light)
+                    Text("Dark").tag(ColorSchemeAutomatic.dark)
+                    Text("Automatic").tag(ColorSchemeAutomatic.automatic)
                 }
-                
-                Button(action : {
-                    colorSchemeAutomatic = .light
-                }) {
-                    if colorSchemeAutomatic == .light {
-                        Label("Light", systemImage:"checkmark")
-                    }
-                    else {
-                        Text("Light")
-                    }
-                }
-
-                Button(action : {
-                    colorSchemeAutomatic = .dark
-                }) {
-                    if colorSchemeAutomatic == .dark {
-                        Label("Dark", systemImage:"checkmark")
-                    }
-                    else {
-                        Text("Dark")
-                    }
-                }
-            })
-            {
-                Image(systemName: "circle.righthalf.filled")
             }
+            label: {
+                Image(systemName:"circle.righthalf.filled")
+            }
+
         }
     }
 }

@@ -14,7 +14,7 @@ import AstroSwiftFoundation
 // Divide the screen with a NavigationSplitView, list of launches on the left, detail view on the right
 struct ContentView: View {
     @ObservedObject var networkManager: NetworkManager
-    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
+    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .dark
     @AppStorage("TimePeriod") private var timeSpan:TimePeriod = .upcoming
     
     var body: some View{
@@ -42,9 +42,9 @@ struct ContentView: View {
                             Text(TimePeriod.recent.name()).tag(TimePeriod.recent)
                         }
                     }
-                    label: {
-                        Image(systemName:"clock")
-                    }
+                label: {
+                    Image(systemName:"clock")
+                }
                 }
 #endif
 #if os(macOS) // on macOS show an inline toolbar menu to switch time period
@@ -65,13 +65,13 @@ struct ContentView: View {
             LaunchDetail(launch: launch)
         }
     }
-    // show any alerts created by the NetworkManager
+        // show any alerts created by the NetworkManager
     .alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
         Button("Continue", role: .cancel) {}
     } message: {
         Text(networkManager.alertMessage)
     }
-    // *** Astro customization
+        // *** Astro customization
     .accentColor(Color("AccentColor")) // necessary because our forced light/dark modes, and UIAppearance usage, breaks automatic loading of AccentColor
     .preferredColorScheme(colorSchemeAutomatic == .light ? .light : colorSchemeAutomatic == .dark ? .dark : nil)
     }
@@ -79,8 +79,7 @@ struct ContentView: View {
     struct LaunchStack: View {
         @ObservedObject var networkManager: NetworkManager
         var timePeriod:TimePeriod
-        //  @State var previousLaunchesLoaded = false
-        @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic // LaunchesView does not use this, but this must be present for ColorSchemeAutomaticToolbarContent to receive updates to colorSchemeAutomatic??
+//        @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .dark // LaunchStack does not use this, but this must be present for ColorSchemeAutomaticToolbarContent to receive updates to colorSchemeAutomatic??
         
         var body: some View {
             ZStack{
@@ -100,16 +99,18 @@ struct ContentView: View {
                             .listRowBackground(Color.astroUISecondaryBackground) // *** Astro customization
                         }
                     }
+#if os(iOS)
                     .toolbar {
                         ColorSchemeAutomaticToolbarContent() // show the theme switching menu
                     }
+#endif
                 }.background(Color.astroUIBackground) // *** Astro customization
                 
                 // if no data is available show a ProgressView
                 let zeroData = timePeriod == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
                 ProgressView().opacity(zeroData ? 1 : 0)
             }
-
+            
         }
     }
 }
