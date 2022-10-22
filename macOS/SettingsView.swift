@@ -5,7 +5,7 @@
 //
 
 import SwiftUI
-
+import AstroSwiftUtilities
 /// SettingsView used by the Settings scene on macOS
 struct SettingsView: View {
     @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .dark

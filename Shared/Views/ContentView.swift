@@ -7,8 +7,7 @@
 
 import SwiftUI
 import AstroSwiftFoundation
-
-
+import AstroSwiftUtilities
 
 // The Main View of the app.
 // Divide the screen with a NavigationSplitView, list of launches on the left, detail view on the right

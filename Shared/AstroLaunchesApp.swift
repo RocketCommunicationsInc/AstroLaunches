@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 
-
 struct Astro_LaunchesApp: App {
 
     @StateObject var networkManager = NetworkManager()
