@@ -35,5 +35,7 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2022 Rocket Communications, Inc.</string>
 </dict>
 </plist>

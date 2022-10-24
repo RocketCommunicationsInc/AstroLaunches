@@ -108,7 +108,6 @@
 		7CB0A2C72788F99200A542D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CE6156628D91F550082459A /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CE6156728D91F550082459A /* Astro Launches iOS macOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Astro Launches iOS macOS copy-Info.plist"; path = "/Users/rocketjeff/Projects/AstroLaunches/Astro Launches iOS macOS copy-Info.plist"; sourceTree = "<absolute>"; };
 		7CE6156E28D920CA0082459A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiantLaunchCountdown.swift; sourceTree = "<group>"; };
 		7CF43B5D27E256E400A7DD4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -255,7 +254,6 @@
 				7C184B0C28D52CD300DCCEFF /* watchOS */,
 				7CF87F2125AE45F300BD9D06 /* Products */,
 				7C37E6592603CDC300F259F8 /* Frameworks */,
-				7CE6156728D91F550082459A /* Astro Launches iOS macOS copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
