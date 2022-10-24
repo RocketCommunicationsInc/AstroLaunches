@@ -117,7 +117,7 @@
 		7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF87F2025AE45F300BD9D06 /* Astro Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F2325AE45F300BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CF87F8325AE49B600BD9D06 /* Astro Launches (tvOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches (tvOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CF87F8325AE49B600BD9D06 /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astro_Launches_TVApp.swift; sourceTree = "<group>"; };
 		7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpsFloorView.swift; sourceTree = "<group>"; };
 		7CF87F8925AE49B700BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				7CF87F2025AE45F300BD9D06 /* Astro Launches.app */,
-				7CF87F8325AE49B600BD9D06 /* Astro Launches (tvOS).app */,
+				7CF87F8325AE49B600BD9D06 /* Launches.app */,
 				7C184B0B28D52CD300DCCEFF /* Astro Launches (watchOS).app */,
 				7CE6156628D91F550082459A /* Launches.app */,
 			);
@@ -403,7 +403,7 @@
 				7CF7967329036B2000FC2460 /* AstroSwiftUtilities */,
 			);
 			productName = "Astro Launches TV";
-			productReference = 7CF87F8325AE49B600BD9D06 /* Astro Launches (tvOS).app */;
+			productReference = 7CF87F8325AE49B600BD9D06 /* Launches.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -901,7 +901,7 @@
 				);
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Launches;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -926,7 +926,7 @@
 				);
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Launches;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
