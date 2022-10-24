@@ -22,6 +22,8 @@
 	<string>35</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.reference</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -35,7 +37,5 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>NSHumanReadableCopyright</key>
-	<string>© 2022 Rocket Communications, Inc.</string>
 </dict>
 </plist>
