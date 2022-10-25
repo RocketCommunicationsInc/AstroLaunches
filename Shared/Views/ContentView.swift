@@ -13,7 +13,7 @@ import AstroSwiftUtilities
 // Divide the screen with a NavigationSplitView, list of launches on the left, detail view on the right
 struct ContentView: View {
     @ObservedObject var networkManager: NetworkManager
-    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .dark
+    @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic
     @AppStorage("TimePeriod") private var timeSpan:TimePeriod = .upcoming
     
     var body: some View{
@@ -78,7 +78,7 @@ struct ContentView: View {
     struct LaunchStack: View {
         @ObservedObject var networkManager: NetworkManager
         var timePeriod:TimePeriod
-//        @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .dark // LaunchStack does not use this, but this must be present for ColorSchemeAutomaticToolbarContent to receive updates to colorSchemeAutomatic??
+//        @AppStorage(colorSchemeAutomaticName) var colorSchemeAutomatic:ColorSchemeAutomatic = .automatic // LaunchStack does not use this, but this must be present for ColorSchemeAutomaticToolbarContent to receive updates to colorSchemeAutomatic??
         
         var body: some View {
             ZStack{
