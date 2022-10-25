@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "astroswiftutilities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RocketCommunicationsInc/AstroSwiftUtilities",
+      "state" : {
+        "revision" : "3ce7393cea5dd786a37da447e5c963596c4140d6",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "swiftui-cached-async-image",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
