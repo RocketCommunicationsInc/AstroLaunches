@@ -8,8 +8,9 @@
 import SwiftUI
 import AstroSwiftFoundation
 import CachedAsyncImage
+
 // Display Launch info with conventional tvOS sizing
-struct ConferenceRoomView: View {
+struct LaunchView: View {
     
     @ObservedObject var networkManager: NetworkManager
     @Binding var launchIndex:Int
@@ -18,35 +19,35 @@ struct ConferenceRoomView: View {
 
         if networkManager.upcomingLaunches.count > 0
         {
-        let launch = networkManager.upcomingLaunches[launchIndex]
-            // HStack for the whole screen
-            HStack(spacing:0) {
-                // ZStack for the large left side image and overlaid contents
-                ZStack(alignment:.leading) {
-                    
-                    CachedAsyncImage(url:launch.imageURL, content: { image in
+            let launch = networkManager.upcomingLaunches[launchIndex]
+                HStack(spacing:0) {
+                    // ZStack for the large left side image and overlaid contents
+                    ZStack(alignment:.leading) {
+                        
+                        CachedAsyncImage(url:launch.imageURL, content: { image in
                             image.resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 1280, height: 1080, alignment: .topLeading)
-                            .clipped()
-                            .blur(radius:4)
-                    }, placeholder: {
-                        ProgressView()
-                    }).frame(width: 1280, height: 1080)
-                    
-                    VStack(alignment:.leading,spacing: 100) {
-                        LogoNameCountdown(launch:launch)
-                        HStack{
-                            LaunchDate(launch:launch, labelStyle:.headline)
-                            LaunchTime(launch:launch, labelStyle:.headline)
-                        }
-                    }.padding(.leading, 80)
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 1280, height: 1080, alignment: .topLeading)
+                                .clipped()
+                                .blur(radius:4)
+                        }, placeholder: {
+                            ProgressView()
+                        }).frame(width: 1280, height: 1080)
+                        
+                        VStack(alignment:.leading,spacing: 100) {
+                            LogoNameCountdown(launch:launch)
+                            HStack{
+                                LaunchDate(launch:launch, labelStyle:.headline)
+                                LaunchTime(launch:launch, labelStyle:.headline)
+                            }
+                        }.padding(.leading, 80)
+                    }
+                    // Right side bar
+                    Sidebar(launch: launch)
                 }
-                // Right side bar
-                Sidebar(launch: launch)
-            }
-            .transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
+                .transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
                 .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
+                
         }
     }
 }

@@ -51,9 +51,10 @@
 		7C9BDD8A271642EC00A97374 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7C9FCDDC2882057F0032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDB2882057F0032EA88 /* CachedAsyncImage */; };
 		7C9FCDE0288209040032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDF288209040032EA88 /* CachedAsyncImage */; };
-		7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */; };
+		7CA49FAA270BB08F00181220 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* LaunchView.swift */; };
 		7CB57D5E290354160044577E /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
+		7CDB913D290C220600056940 /* PlayPauseHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB913C290C220600056940 /* PlayPauseHUD.swift */; };
 		7CE6154B28D91F550082459A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CE6154C28D91F550082459A /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
 		7CE6154E28D91F550082459A /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
@@ -68,7 +69,6 @@
 		7CE6156028D91F550082459A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7CE6156128D91F550082459A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
 		7CE6156228D91F550082459A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
-		7CF260E127E3C1990030A98F /* GiantLaunchCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */; };
 		7CF43B5E27E256E400A7DD4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF43B5D27E256E400A7DD4F /* ContentView.swift */; };
 		7CF7967029036AC100FC2460 /* AstroSwiftUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF7966F29036AC100FC2460 /* AstroSwiftUtilities */; };
 		7CF7967229036B1C00FC2460 /* AstroSwiftUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF7967129036B1C00FC2460 /* AstroSwiftUtilities */; };
@@ -76,8 +76,7 @@
 		7CF7967629036B2300FC2460 /* AstroSwiftUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF7967529036B2300FC2460 /* AstroSwiftUtilities */; };
 		7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
 		7CF87F3425AE45F300BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
-		7CF87F8625AE49B600BD9D06 /* Astro_Launches_TVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */; };
-		7CF87F8825AE49B600BD9D06 /* OpsFloorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */; };
+		7CF87F8625AE49B600BD9D06 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F8525AE49B600BD9D06 /* AstroLaunchesApp.swift */; };
 		7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8925AE49B700BD9D06 /* Assets.xcassets */; };
 		7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -105,12 +104,12 @@
 		7C834937260931D1008B4895 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		7C8976C127556A8F000815F7 /* CentralTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralTimer.swift; sourceTree = "<group>"; };
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
-		7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceRoomView.swift; sourceTree = "<group>"; };
+		7CA49FA9270BB08F00181220 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		7CB0A2C72788F99200A542D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7CDB913C290C220600056940 /* PlayPauseHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseHUD.swift; sourceTree = "<group>"; };
 		7CE6156628D91F550082459A /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6156E28D920CA0082459A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiantLaunchCountdown.swift; sourceTree = "<group>"; };
 		7CF43B5D27E256E400A7DD4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7CF87F1925AE45F300BD9D06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,8 +117,7 @@
 		7CF87F2025AE45F300BD9D06 /* Astro Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF87F2325AE45F300BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF87F8325AE49B600BD9D06 /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astro_Launches_TVApp.swift; sourceTree = "<group>"; };
-		7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpsFloorView.swift; sourceTree = "<group>"; };
+		7CF87F8525AE49B600BD9D06 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7CF87F8925AE49B700BD9D06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CF87F9325AE49B700BD9D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -297,11 +295,10 @@
 		7CF87F8425AE49B600BD9D06 /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				7CF87F8525AE49B600BD9D06 /* Astro_Launches_TVApp.swift */,
+				7CF87F8525AE49B600BD9D06 /* AstroLaunchesApp.swift */,
 				7CF43B5D27E256E400A7DD4F /* ContentView.swift */,
-				7CF87F8725AE49B600BD9D06 /* OpsFloorView.swift */,
-				7CA49FA9270BB08F00181220 /* ConferenceRoomView.swift */,
-				7CF260E027E3C1990030A98F /* GiantLaunchCountdown.swift */,
+				7CDB913C290C220600056940 /* PlayPauseHUD.swift */,
+				7CA49FA9270BB08F00181220 /* LaunchView.swift */,
 				7CF87F8925AE49B700BD9D06 /* Assets.xcassets */,
 				7CF87F9325AE49B700BD9D06 /* Info.plist */,
 				7CF87F8B25AE49B700BD9D06 /* Preview Content */,
@@ -559,17 +556,16 @@
 			files = (
 				7C47D6182710B53100F5997E /* Countdown.swift in Sources */,
 				7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */,
+				7CDB913D290C220600056940 /* PlayPauseHUD.swift in Sources */,
 				7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */,
-				7CF260E127E3C1990030A98F /* GiantLaunchCountdown.swift in Sources */,
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
 				7C3CB5DC270F4FA4000448C6 /* LaunchDate.swift in Sources */,
-				7CA49FAA270BB08F00181220 /* ConferenceRoomView.swift in Sources */,
-				7CF87F8825AE49B600BD9D06 /* OpsFloorView.swift in Sources */,
+				7CA49FAA270BB08F00181220 /* LaunchView.swift in Sources */,
 				7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */,
 				7C5A1B10261BB54500E452DE /* AppSettings.swift in Sources */,
 				7C5A1B02261BB52300E452DE /* Launch.swift in Sources */,
 				7CF43B5E27E256E400A7DD4F /* ContentView.swift in Sources */,
-				7CF87F8625AE49B600BD9D06 /* Astro_Launches_TVApp.swift in Sources */,
+				7CF87F8625AE49B600BD9D06 /* AstroLaunchesApp.swift in Sources */,
 				7C9BDD8A271642EC00A97374 /* PadMap.swift in Sources */,
 				7C3CB5D8270F4F98000448C6 /* LaunchTime.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  Astro_Launches_TVApp.swift
+//  AstroLaunchesApp.swift
 //  Astro Launches TV
 //
 //  Created by rocketjeff on 1/12/21.
@@ -8,11 +8,9 @@
 import SwiftUI
 
 @main
-struct Astro_Launches_TVApp: App {
+struct AstroLaunchesApp: App {
     
-
     init(){
-       // _ = DateFormatters() // init the DateFormatters
     }
 
     var body: some Scene {
