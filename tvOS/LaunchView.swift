@@ -14,40 +14,40 @@ struct LaunchView: View {
     
     @ObservedObject var networkManager: NetworkManager
     @Binding var launchIndex:Int
-       
+    
     var body: some View {
-
+        
         if networkManager.upcomingLaunches.count > 0
         {
             let launch = networkManager.upcomingLaunches[launchIndex]
-                HStack(spacing:0) {
-                    // ZStack for the large left side image and overlaid contents
-                    ZStack(alignment:.leading) {
+            HStack(spacing:0) {
+                // ZStack for the large left side image and overlaid contents
+                ZStack(alignment:.leading) {
+                    
+                    CachedAsyncImage(url:launch.imageURL, content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 1280, height: 1080, alignment: .topLeading)
+                            .clipped()
+                        // .blur(radius:4)
+                    }, placeholder: {
+                        ProgressView()
+                    }).frame(width: 1280, height: 1080)
+                    
+                    VStack() {
+                        Spacer()
+                        Countdown(launch:launch, digitStyle: .title, labelStyle: .caption)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(6)
                         
-                        CachedAsyncImage(url:launch.imageURL, content: { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 1280, height: 1080, alignment: .topLeading)
-                                .clipped()
-                                .blur(radius:4)
-                        }, placeholder: {
-                            ProgressView()
-                        }).frame(width: 1280, height: 1080)
-                        
-                        VStack(alignment:.leading,spacing: 100) {
-                            LogoNameCountdown(launch:launch)
-                            HStack{
-                                LaunchDate(launch:launch, labelStyle:.headline)
-                                LaunchTime(launch:launch, labelStyle:.headline)
-                            }
-                        }.padding(.leading, 80)
-                    }
-                    // Right side bar
-                    Sidebar(launch: launch)
+                    }.padding(60)
                 }
-                .transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
-                .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
-                
+                // Right side bar
+                Sidebar(launch: launch)
+            }
+            .transition(.opacity.animation(.easeInOut(duration:2.0))) // fade when launch updates
+            .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
         }
     }
 }
@@ -57,8 +57,11 @@ struct Sidebar: View {
     var launch:Launch
 
     var body: some View {
+        
         VStack(alignment: .leading) {
             Group {
+                Text(launch.missionName)
+                    .font(.system(size: 34, weight: .semibold))
                 Spacer()
                 Text("ROCKET").font(.system(size: 24))
                     .foregroundColor(.launchesTextColor)
@@ -78,8 +81,8 @@ struct Sidebar: View {
                     .focusable(false) // doesn't always work, still get focus if it's the only thing onscreen
                 Spacer()
                 Divider()
-                
             }
+            
             Group {
                 Spacer()
                 Text("MISSION").font(.system(size: 24))
@@ -89,6 +92,7 @@ struct Sidebar: View {
                 Spacer()
                 Divider()
             }
+            
             Group {
                 Spacer()
                 Text("STATUS").font(.system(size: 24))
@@ -99,66 +103,11 @@ struct Sidebar: View {
                 }
             }
             Spacer()
-            
         }
         .padding(.all,40)
         .frame(width: 640, height: 1080, alignment: .leading)
-        .background(Color.astroUIBackground)
+        .background(Color.astroUIBackground) // *** Astro customization
     }
 }
-
-
-
-struct LogoNameCountdown: View {
-    var launch:Launch
-
-    var body: some View {
-        HStack(alignment: .bottom) {
-            if let url = launch.agency?.logoURL
-            {
-                // if this malformed spaceX logo is referenced, use our internal copy instead
-                if url == URL(string: "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/logo/spacex_logo_20191121063502.png")
-                {
-                    Image(uiImage: UIImage(named:"spacex_logo_trimmed")!)
-                    .resizable()
-                    .padding(4)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 300, height: 300,alignment: .center)
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(6)
-                }
-                else
-                {
-                    CachedAsyncImage(url:url, content: { image in
-                            image.resizable()
-                            .padding()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 300, height: 300,alignment: .center)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(6)
-
-                    }, placeholder: {
-                        ProgressView()
-                    }).frame(width: 300, height: 300)
-                }
-            }
-            
-            VStack(alignment: .leading)
-            {
-                let titleFontSize = UIFont.preferredFont(forTextStyle: .title1).pointSize
-                
-                Text(launch.missionName)
-                    .font(.system(size: titleFontSize * 1.2, weight: .semibold))
-                    .padding()
-                Countdown(launch:launch, digitStyle: .title, labelStyle: .caption)
-                    .padding()
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(6)
-            }
-            Spacer()
-        }
-    }
-}
-
 
 
