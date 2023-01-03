@@ -95,7 +95,10 @@ struct PlayButtonBlock: View {
                     openURL(videoURL)
                 }) {
                     Label(launch.webcast ? "Watch Live" : "Watch", systemImage: "video.fill").background(.clear)
-                }.buttonStyle(.bordered).font(.caption).background(.thinMaterial, in:RoundedRectangle(cornerRadius: 6)) // need to add RoundedRectangle as setting a background color seems to spoil the shape usually given by the .bordered style
+                }.buttonStyle(.borderless)
+                    .font(.caption)
+                    .padding(6)
+                    .background(.thinMaterial, in:RoundedRectangle(cornerRadius: 6)) // add RoundedRectangle to background color to set the shape of this borderless button
             }
         }.padding(6) // inset from the top right
     }
