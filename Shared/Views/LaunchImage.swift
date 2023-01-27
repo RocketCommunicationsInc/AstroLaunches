@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CachedAsyncImage
+import AstroSwiftFoundation
 
 struct LaunchCardImage: View {
     
@@ -124,15 +125,18 @@ struct LogoCountdownBlock: View {
             }
             Spacer()
             // only show countown for launches in the future
-            if let interval = launch.windowOpenDate?.timeIntervalSinceNow
+            if let windowOpenDate = launch.windowOpenDate
             {
-                if interval > 0
-                {
-                    Countdown(launch: launch)
-                        .padding(.trailing, 8)
-                        .padding(.top, 2)
-                        .padding(.bottom, 2)
-                }
+                IntervalTimer(targetDate: windowOpenDate,options: .all)
+#if os(iOS)
+                    .foregroundColor(Color(.label))
+#endif
+#if os(macOS)
+                    .foregroundColor(Color(.labelColor))
+#endif
+                    .padding(.trailing, 8)
+                    .padding(.top, 2)
+                    .padding(.bottom, 2)
             }
         }
         .frame(maxWidth: .infinity)

@@ -36,11 +36,14 @@ struct LaunchView: View {
                     
                     VStack() {
                         Spacer()
-                        Countdown(launch:launch, digitStyle: .title, labelStyle: .caption)
-                            .padding()
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(6)
-                        
+                        if let windowOpenDate = launch.windowOpenDate
+                        {
+                            IntervalTimer(targetDate: windowOpenDate,options: .all, digitTextStyle: .title, labelFontStyle: .caption)
+                                .padding()
+                                //.foregroundColor(Color(.label))
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(6)
+                        }
                     }.padding(60)
                 }
                 // Right side bar
