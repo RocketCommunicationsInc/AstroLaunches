@@ -18,11 +18,9 @@
 		7C3CB5D8270F4F98000448C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
 		7C3CB5DA270F4FA4000448C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
 		7C3CB5DC270F4FA4000448C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
-		7C3CB5DE270F4FD1000448C6 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5DD270F4FD1000448C6 /* Countdown.swift */; };
 		7C3D4CCE2603EFDA00CB0C41 /* LaunchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D4CCD2603EFDA00CB0C41 /* LaunchCard.swift */; };
 		7C44C05C2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7C44C05F2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
-		7C47D6182710B53100F5997E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5DD270F4FD1000448C6 /* Countdown.swift */; };
 		7C4DB82229035144007088A5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DB82129035144007088A5 /* SettingsView.swift */; };
 		7C54438026178C65007CCCC4 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
 		7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
@@ -41,8 +39,6 @@
 		7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7C83150125AE52B700E18441 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7C83150025AE52B700E18441 /* AstroSwiftFoundation */; };
 		7C834938260931D1008B4895 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C834937260931D1008B4895 /* AppSettings.swift */; };
-		7C8976C227556A8F000815F7 /* CentralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8976C127556A8F000815F7 /* CentralTimer.swift */; };
-		7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8976C127556A8F000815F7 /* CentralTimer.swift */; };
 		7C8BFBF1270374BD00D6AB09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
 		7C8BFBF22703808C00D6AB09 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7C92392028E394CD00364E5A /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
@@ -58,8 +54,6 @@
 		7CE6154B28D91F550082459A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CE6154C28D91F550082459A /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
 		7CE6154E28D91F550082459A /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
-		7CE6155328D91F550082459A /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5DD270F4FD1000448C6 /* Countdown.swift */; };
-		7CE6155428D91F550082459A /* CentralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8976C127556A8F000815F7 /* CentralTimer.swift */; };
 		7CE6155528D91F550082459A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
 		7CE6155628D91F550082459A /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7CE6155828D91F550082459A /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
@@ -92,7 +86,6 @@
 		7C31CEB827F7BC3D00EA2DCC /* LaunchImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchImage.swift; sourceTree = "<group>"; };
 		7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTime.swift; sourceTree = "<group>"; };
 		7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDate.swift; sourceTree = "<group>"; };
-		7C3CB5DD270F4FD1000448C6 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		7C3D4CCD2603EFDA00CB0C41 /* LaunchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCard.swift; sourceTree = "<group>"; };
 		7C44C05B2608FEDB00B8D86A /* launches.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launches.json; sourceTree = "<group>"; };
 		7C4DB82129035144007088A5 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -102,7 +95,6 @@
 		7C7243C826E8188400233B33 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7C79988226FB7EC700FCAEF2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7C834937260931D1008B4895 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		7C8976C127556A8F000815F7 /* CentralTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralTimer.swift; sourceTree = "<group>"; };
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
 		7CA49FA9270BB08F00181220 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		7CB0A2C72788F99200A542D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -180,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				7C3D4CCD2603EFDA00CB0C41 /* LaunchCard.swift */,
-				7C3CB5DD270F4FD1000448C6 /* Countdown.swift */,
 				7C9BDD87271642EC00A97374 /* PadMap.swift */,
 				7CF87F1925AE45F300BD9D06 /* ContentView.swift */,
 				7C7243C826E8188400233B33 /* LaunchDetail.swift */,
@@ -263,7 +254,6 @@
 				7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */,
 				7C834937260931D1008B4895 /* AppSettings.swift */,
 				7C79988226FB7EC700FCAEF2 /* Colors.swift */,
-				7C8976C127556A8F000815F7 /* CentralTimer.swift */,
 				7C09A5B228E7A4B90035CBD4 /* Data */,
 				7C09A5B328E7A4E60035CBD4 /* Views */,
 				7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */,
@@ -512,8 +502,6 @@
 				7C71FEA328F0DC9F00F75C77 /* MissionStatusDate.swift in Sources */,
 				7CE6154E28D91F550082459A /* LaunchTime.swift in Sources */,
 				7C92392128E394D700364E5A /* AppSettings.swift in Sources */,
-				7CE6155328D91F550082459A /* Countdown.swift in Sources */,
-				7CE6155428D91F550082459A /* CentralTimer.swift in Sources */,
 				7C92392028E394CD00364E5A /* AstroLaunchesApp.swift in Sources */,
 				7CE6155528D91F550082459A /* Colors.swift in Sources */,
 				7C71FEA428F0DDD400F75C77 /* LaunchCard.swift in Sources */,
@@ -538,8 +526,6 @@
 				7C3D4CCE2603EFDA00CB0C41 /* LaunchCard.swift in Sources */,
 				7C31CEB727F7B74600EA2DCC /* MissionStatusDate.swift in Sources */,
 				7C31CEB927F7BC3D00EA2DCC /* LaunchImage.swift in Sources */,
-				7C3CB5DE270F4FD1000448C6 /* Countdown.swift in Sources */,
-				7C8976C227556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C79988326FB7EC700FCAEF2 /* Colors.swift in Sources */,
 				7C9BDD88271642EC00A97374 /* PadMap.swift in Sources */,
 				7CF87F3025AE45F300BD9D06 /* ContentView.swift in Sources */,
@@ -554,10 +540,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C47D6182710B53100F5997E /* Countdown.swift in Sources */,
 				7C5A1B09261BB52B00E452DE /* DateFormatters.swift in Sources */,
 				7CDB913D290C220600056940 /* PlayPauseHUD.swift in Sources */,
-				7C8976C427556A8F000815F7 /* CentralTimer.swift in Sources */,
 				7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */,
 				7C3CB5DC270F4FA4000448C6 /* LaunchDate.swift in Sources */,
 				7CA49FAA270BB08F00181220 /* LaunchView.swift in Sources */,
@@ -988,8 +972,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RocketCommunicationsInc/AstroSwiftFoundation.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				branch = "platforms-75";
+				kind = branch;
 			};
 		};
 		7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
