@@ -47,6 +47,11 @@
 		7C9BDD8A271642EC00A97374 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7C9FCDDC2882057F0032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDB2882057F0032EA88 /* CachedAsyncImage */; };
 		7C9FCDE0288209040032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDF288209040032EA88 /* CachedAsyncImage */; };
+		7CA386022A0AEB670073E046 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
+		7CA386032A0AEBDE0073E046 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
+		7CA386042A0AEBE30073E046 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
+		7CA386062A0AEC240073E046 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA386052A0AEC240073E046 /* AstroSwiftFoundation */; };
+		7CA386082A0AEFF90073E046 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA386072A0AEFF90073E046 /* CachedAsyncImage */; };
 		7CA49FAA270BB08F00181220 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* LaunchView.swift */; };
 		7CB57D5E290354160044577E /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
@@ -120,7 +125,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA386082A0AEFF90073E046 /* CachedAsyncImage in Frameworks */,
 				7CF7967629036B2300FC2460 /* AstroSwiftUtilities in Frameworks */,
+				7CA386062A0AEC240073E046 /* AstroSwiftFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +329,8 @@
 			name = "Astro Launches (watchOS)";
 			packageProductDependencies = (
 				7CF7967529036B2300FC2460 /* AstroSwiftUtilities */,
+				7CA386052A0AEC240073E046 /* AstroSwiftFoundation */,
+				7CA386072A0AEFF90073E046 /* CachedAsyncImage */,
 			);
 			productName = "Astro Launches Watch App";
 			productReference = 7C184B0B28D52CD300DCCEFF /* Astro Launches (watchOS).app */;
@@ -489,7 +498,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA386022A0AEB670073E046 /* NetworkManager.swift in Sources */,
+				7CA386042A0AEBE30073E046 /* DateFormatters.swift in Sources */,
 				7C184B1028D52CD300DCCEFF /* ContentView.swift in Sources */,
+				7CA386032A0AEBDE0073E046 /* Launch.swift in Sources */,
 				7C184B0E28D52CD300DCCEFF /* Astro_LaunchesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1030,6 +1042,16 @@
 			productName = CachedAsyncImage;
 		};
 		7C9FCDDF288209040032EA88 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		7CA386052A0AEC240073E046 /* AstroSwiftFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */;
+			productName = AstroSwiftFoundation;
+		};
+		7CA386072A0AEFF90073E046 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;

@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct Astro_Launches_Watch_AppApp: App {
+struct AstroLaunchesApp: App {
+    @StateObject var networkManager = NetworkManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(networkManager: networkManager)
         }
     }
 }
