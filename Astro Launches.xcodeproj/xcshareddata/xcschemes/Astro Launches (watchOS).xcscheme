@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7C184B0A28D52CD300DCCEFF"
-               BuildableName = "Astro Launches (watchOS).app"
-               BlueprintName = "Astro Launches (watchOS)"
+               BuildableName = "Astro Launches watchOS.app"
+               BlueprintName = "Astro Launches watchOS"
                ReferencedContainer = "container:Astro Launches.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C184B0A28D52CD300DCCEFF"
-            BuildableName = "Astro Launches (watchOS).app"
-            BlueprintName = "Astro Launches (watchOS)"
+            BuildableName = "Astro Launches watchOS.app"
+            BlueprintName = "Astro Launches watchOS"
             ReferencedContainer = "container:Astro Launches.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C184B0A28D52CD300DCCEFF"
-            BuildableName = "Astro Launches (watchOS).app"
-            BlueprintName = "Astro Launches (watchOS)"
+            BuildableName = "Astro Launches watchOS.app"
+            BlueprintName = "Astro Launches watchOS"
             ReferencedContainer = "container:Astro Launches.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
