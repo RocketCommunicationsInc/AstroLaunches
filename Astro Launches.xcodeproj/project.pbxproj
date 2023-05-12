@@ -12,6 +12,7 @@
 		7C184B1028D52CD300DCCEFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0F28D52CD300DCCEFF /* ContentView.swift */; };
 		7C184B1228D52CD400DCCEFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C184B1128D52CD400DCCEFF /* Assets.xcassets */; };
 		7C184B1528D52CD400DCCEFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C184B1428D52CD400DCCEFF /* Preview Assets.xcassets */; };
+		7C2138832A0EEA1A00375C55 /* Astro Launches (watchOS).app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7C184B0B28D52CD300DCCEFF /* Astro Launches (watchOS).app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7C31CEB727F7B74600EA2DCC /* MissionStatusDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB627F7B6C000EA2DCC /* MissionStatusDate.swift */; };
 		7C31CEB927F7BC3D00EA2DCC /* LaunchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB827F7BC3D00EA2DCC /* LaunchImage.swift */; };
 		7C3CB5D6270F4F98000448C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
@@ -79,6 +80,37 @@
 		7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8925AE49B700BD9D06 /* Assets.xcassets */; };
 		7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7C2138812A0EE9FE00375C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CF87F1125AE45F200BD9D06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C184B0A28D52CD300DCCEFF;
+			remoteInfo = "Astro Launches (watchOS)";
+		};
+		7C2138842A0EEA1A00375C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CF87F1125AE45F200BD9D06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C184B0A28D52CD300DCCEFF;
+			remoteInfo = "Astro Launches (watchOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C2138862A0EEA1A00375C55 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				7C2138832A0EEA1A00375C55 /* Astro Launches (watchOS).app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7C1472D029074D4200641ECD /* Astro Launches (macOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Astro Launches (macOS).entitlements"; sourceTree = "<group>"; };
@@ -365,10 +397,13 @@
 				7CF87F1C25AE45F300BD9D06 /* Sources */,
 				7CF87F1D25AE45F300BD9D06 /* Frameworks */,
 				7CF87F1E25AE45F300BD9D06 /* Resources */,
+				7C2138862A0EEA1A00375C55 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7C2138822A0EE9FE00375C55 /* PBXTargetDependency */,
+				7C2138852A0EEA1A00375C55 /* PBXTargetDependency */,
 			);
 			name = "Astro Launches (iOS)";
 			packageProductDependencies = (
@@ -569,6 +604,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7C2138822A0EE9FE00375C55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C184B0A28D52CD300DCCEFF /* Astro Launches (watchOS) */;
+			targetProxy = 7C2138812A0EE9FE00375C55 /* PBXContainerItemProxy */;
+		};
+		7C2138852A0EEA1A00375C55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C184B0A28D52CD300DCCEFF /* Astro Launches (watchOS) */;
+			targetProxy = 7C2138842A0EEA1A00375C55 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7C184B1728D52CD400DCCEFF /* Debug */ = {
