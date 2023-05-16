@@ -28,7 +28,7 @@ struct ContentView: View {
                         ForEach(timePeriod == .upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches, id: \.id) { launch in
                             NavigationLink {
                                 Text(launch.missionDescription)
-                               // LaunchDetail(launch: launch)
+                                // LaunchDetail(launch: launch)
                             } label: {
                                 LaunchCard(launch:launch)
                                     .padding(.top,3)
@@ -41,12 +41,12 @@ struct ContentView: View {
                         }
                     }
                 }.background(Color.astroUIBackground) // *** Astro customization
-                   
+                
                 // if no data is available show a ProgressView
                 let zeroData = timePeriod == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
                 ProgressView()
                     .opacity(zeroData ? 1 : 0)
-            }
+            }.navigationTitle("Launches")
         }
     }
     

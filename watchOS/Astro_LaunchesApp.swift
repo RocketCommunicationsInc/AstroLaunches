@@ -13,7 +13,9 @@ struct AstroLaunchesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(networkManager: networkManager)
+            NavigationView {
+                ContentView(networkManager: networkManager).tint(.astroUIAccent).accentColor(.astroUIAccent)//  must also set tint color in Assets
+            }
         }
     }
 }
