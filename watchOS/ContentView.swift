@@ -63,13 +63,10 @@ struct ContentView: View {
                 LaunchCardImage(launch: launch, height: 160)
                 
                 VStack{
-                    // Launch Image and Countdown clock
                     Text(launch.missionName)
                         .font(.body)
-                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
                         .padding()
-                        .background(Color.init(white: 0.4, opacity: 0.5))
-                        .cornerRadius(6)
 
                     Spacer()
                     
@@ -78,9 +75,8 @@ struct ContentView: View {
                     {
                         IntervalTimer(targetDate:windowOpenDate,digitTextStyle: .caption2, labelFontStyle: .footnote)
                             .frame(maxWidth: .infinity)
-                            .padding()
+                            .padding(4)
                             .background(Color.init(white: 0.4, opacity: 0.5))
-                            .cornerRadius(6)
                     }
                 }
             }
@@ -108,8 +104,9 @@ struct ContentView: View {
                         ProgressView()
                     }).frame(height: height)
                 }
-                else { // no image available, use our stock photo
+                else { // no image available, use a simple rectangle fill
                     Rectangle()
+                        .foregroundColor(.astroUIBackground)
                         .aspectRatio(contentMode: .fill)
                         .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, idealHeight: height, maxHeight: height, alignment: .top)
                         .clipped()
