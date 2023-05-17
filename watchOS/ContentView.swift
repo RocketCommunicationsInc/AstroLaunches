@@ -14,44 +14,38 @@ struct ContentView: View {
     @AppStorage("TimePeriod") private var timeSpan:TimePeriod = .upcoming
 
     var body: some View {
-        LaunchStack(networkManager: networkManager, timePeriod: .upcoming)
-    }
-    
-    struct LaunchStack: View {
-        @ObservedObject var networkManager: NetworkManager
-        var timePeriod:TimePeriod
-        
-        var body: some View {
+        GeometryReader { proxy in
             ZStack{
                 ScrollView {
                     LazyVStack() {
-                        ForEach(timePeriod == .upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches, id: \.id) { launch in
+                        ForEach(timeSpan == .upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches, id: \.id) { launch in
                             NavigationLink {
-                                Text(launch.missionDescription)
-                                // LaunchDetail(launch: launch)
+                                LaunchDetail(launch: launch)
                             } label: {
-                                LaunchCard(launch:launch)
+                                LaunchCard(launch:launch, height:proxy.size.height) // make the LaunchCard fit the available area for any screen size
                                     .padding(.top,3)
                                     .padding(.bottom,3)
                                     .padding(.leading,6)
                                     .padding(.trailing,6)
                             }
                             .buttonStyle(BorderlessButtonStyle())
-                            .listRowBackground(Color.astroUISecondaryBackground) // *** Astro customization
                         }
                     }
-                }.background(Color.astroUIBackground) // *** Astro customization
+                }
                 
                 // if no data is available show a ProgressView
-                let zeroData = timePeriod == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
+                let zeroData = timeSpan == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
                 ProgressView()
                     .opacity(zeroData ? 1 : 0)
             }.navigationTitle("Launches")
         }
     }
     
+
+    
     struct LaunchCard: View {
         var launch:Launch
+        var height:CGFloat
         
         var body: some View {
             ZStack() {
@@ -60,7 +54,7 @@ struct ContentView: View {
                     .font(.body)
                     .padding()
                 
-                LaunchCardImage(launch: launch, height: 160)
+                LaunchCardImage(launch: launch, height: height)
                 
                 VStack{
                     Text(launch.missionName)
@@ -100,8 +94,13 @@ struct ContentView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
                             .clipped()
-                    }, placeholder: {
-                        ProgressView()
+                    }, placeholder: { // image still loading, use a simple rectangle fill + ProgressView
+                        ZStack{
+                            Rectangle()
+                                .foregroundColor(.astroUIBackground)
+                                .frame(minWidth: 10, idealWidth: .infinity, maxWidth: .infinity, minHeight: height, maxHeight: height, alignment: .top)
+                            ProgressView()
+                        }
                     }).frame(height: height)
                 }
                 else { // no image available, use a simple rectangle fill

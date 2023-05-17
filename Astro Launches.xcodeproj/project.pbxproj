@@ -55,6 +55,11 @@
 		7CA386082A0AEFF90073E046 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA386072A0AEFF90073E046 /* CachedAsyncImage */; };
 		7CA49FAA270BB08F00181220 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* LaunchView.swift */; };
 		7CB57D5E290354160044577E /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
+		7CC0D89F2A15606500B447C6 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */; };
+		7CC0D8A02A1563A200B447C6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
+		7CC0D8A12A15641000B447C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
+		7CC0D8A22A15641300B447C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
+		7CC0D8A32A1569C800B447C6 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CDB913D290C220600056940 /* PlayPauseHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB913C290C220600056940 /* PlayPauseHUD.swift */; };
 		7CE6154B28D91F550082459A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
@@ -135,6 +140,7 @@
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
 		7CA49FA9270BB08F00181220 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		7CB0A2C72788F99200A542D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CDB913C290C220600056940 /* PlayPauseHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseHUD.swift; sourceTree = "<group>"; };
 		7CE6156628D91F550082459A /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +231,7 @@
 			children = (
 				7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */,
 				7C184B0F28D52CD300DCCEFF /* ContentView.swift */,
+				7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */,
 				7C184B1128D52CD400DCCEFF /* Assets.xcassets */,
 				7C184B1328D52CD400DCCEFF /* Preview Content */,
 			);
@@ -536,7 +543,12 @@
 				7CA386022A0AEB670073E046 /* NetworkManager.swift in Sources */,
 				7CA386042A0AEBE30073E046 /* DateFormatters.swift in Sources */,
 				7C184B1028D52CD300DCCEFF /* ContentView.swift in Sources */,
+				7CC0D8A02A1563A200B447C6 /* Colors.swift in Sources */,
+				7CC0D8A22A15641300B447C6 /* LaunchDate.swift in Sources */,
+				7CC0D89F2A15606500B447C6 /* LaunchDetail.swift in Sources */,
+				7CC0D8A12A15641000B447C6 /* LaunchTime.swift in Sources */,
 				7CA386032A0AEBDE0073E046 /* Launch.swift in Sources */,
+				7CC0D8A32A1569C800B447C6 /* PadMap.swift in Sources */,
 				7C184B0E28D52CD300DCCEFF /* Astro_LaunchesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
