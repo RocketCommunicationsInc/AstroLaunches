@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C09A5B528E7A8110035CBD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
-		7C184B0E28D52CD300DCCEFF /* Astro_LaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */; };
+		7C184B0E28D52CD300DCCEFF /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0D28D52CD300DCCEFF /* AstroLaunchesApp.swift */; };
 		7C184B1028D52CD300DCCEFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0F28D52CD300DCCEFF /* ContentView.swift */; };
 		7C184B1228D52CD400DCCEFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C184B1128D52CD400DCCEFF /* Assets.xcassets */; };
 		7C184B1528D52CD400DCCEFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C184B1428D52CD400DCCEFF /* Preview Assets.xcassets */; };
@@ -120,7 +120,7 @@
 /* Begin PBXFileReference section */
 		7C1472D029074D4200641ECD /* Astro Launches macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Astro Launches macOS.entitlements"; sourceTree = "<group>"; };
 		7C184B0B28D52CD300DCCEFF /* Astro Launches watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astro_LaunchesApp.swift; sourceTree = "<group>"; };
+		7C184B0D28D52CD300DCCEFF /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7C184B0F28D52CD300DCCEFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C184B1128D52CD400DCCEFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C184B1428D52CD400DCCEFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		7C184B0C28D52CD300DCCEFF /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
-				7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */,
+				7C184B0D28D52CD300DCCEFF /* AstroLaunchesApp.swift */,
 				7C184B0F28D52CD300DCCEFF /* ContentView.swift */,
 				7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */,
 				7C184B1128D52CD400DCCEFF /* Assets.xcassets */,
@@ -549,7 +549,7 @@
 				7CC0D8A12A15641000B447C6 /* LaunchTime.swift in Sources */,
 				7CA386032A0AEBDE0073E046 /* Launch.swift in Sources */,
 				7CC0D8A32A1569C800B447C6 /* PadMap.swift in Sources */,
-				7C184B0E28D52CD300DCCEFF /* Astro_LaunchesApp.swift in Sources */,
+				7C184B0E28D52CD300DCCEFF /* AstroLaunchesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
