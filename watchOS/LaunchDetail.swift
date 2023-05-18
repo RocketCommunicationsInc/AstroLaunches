@@ -90,6 +90,7 @@ struct LaunchDetailImage: View {
                 }, placeholder: { // image still loading, use a simple rectangle fill + ProgressView
                     ZStack{
                         Rectangle()
+                            .foregroundColor(.astroUIBackground)
                             .aspectRatio(contentMode: .fill)
                             .clipped()
                         ProgressView()
