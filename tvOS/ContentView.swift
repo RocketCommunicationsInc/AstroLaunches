@@ -44,17 +44,20 @@ struct ContentView: View {
         
         
         .onMoveCommand(perform: {(direction) in // activated by a TAP (not a presss) on the left or right remote control pad
-            switch direction {
-            case .left:
-                launchIndex = ((launchIndex - 1) + networkManager.upcomingLaunches.count)  % networkManager.upcomingLaunches.count
-            case .right:
-                launchIndex = (launchIndex + 1)  % networkManager.upcomingLaunches.count
-            default:
-                break
+            if networkManager.upcomingLaunches.count > 0
+            {
+                switch direction {
+                case .left:
+                    launchIndex = ((launchIndex - 1) + networkManager.upcomingLaunches.count)  % networkManager.upcomingLaunches.count
+                case .right:
+                    launchIndex = (launchIndex + 1)  % networkManager.upcomingLaunches.count
+                default:
+                    break
+                }
             }
         })
         .onReceive(displayTimer) { _ in
-            if (advanceMode == .automatic)
+            if (advanceMode == .automatic && networkManager.upcomingLaunches.count > 0)
             {
                 // When receiving the timer, advance to the next launchIndex, wrapping around.
                 launchIndex = (launchIndex + 1)  % networkManager.upcomingLaunches.count
