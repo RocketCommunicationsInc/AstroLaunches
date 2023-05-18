@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7C09A5B528E7A8110035CBD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
-		7C184B0E28D52CD300DCCEFF /* Astro_LaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */; };
+		7C184B0E28D52CD300DCCEFF /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0D28D52CD300DCCEFF /* AstroLaunchesApp.swift */; };
 		7C184B1028D52CD300DCCEFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C184B0F28D52CD300DCCEFF /* ContentView.swift */; };
 		7C184B1228D52CD400DCCEFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C184B1128D52CD400DCCEFF /* Assets.xcassets */; };
 		7C184B1528D52CD400DCCEFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C184B1428D52CD400DCCEFF /* Preview Assets.xcassets */; };
+		7C2138832A0EEA1A00375C55 /* Astro Launches watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7C184B0B28D52CD300DCCEFF /* Astro Launches watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7C31CEB727F7B74600EA2DCC /* MissionStatusDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB627F7B6C000EA2DCC /* MissionStatusDate.swift */; };
 		7C31CEB927F7BC3D00EA2DCC /* LaunchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C31CEB827F7BC3D00EA2DCC /* LaunchImage.swift */; };
 		7C3CB5D6270F4F98000448C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
@@ -47,8 +48,18 @@
 		7C9BDD8A271642EC00A97374 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7C9FCDDC2882057F0032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDB2882057F0032EA88 /* CachedAsyncImage */; };
 		7C9FCDE0288209040032EA88 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9FCDDF288209040032EA88 /* CachedAsyncImage */; };
+		7CA386022A0AEB670073E046 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
+		7CA386032A0AEBDE0073E046 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
+		7CA386042A0AEBE30073E046 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
+		7CA386062A0AEC240073E046 /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA386052A0AEC240073E046 /* AstroSwiftFoundation */; };
+		7CA386082A0AEFF90073E046 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA386072A0AEFF90073E046 /* CachedAsyncImage */; };
 		7CA49FAA270BB08F00181220 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA49FA9270BB08F00181220 /* LaunchView.swift */; };
 		7CB57D5E290354160044577E /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1825AE45F300BD9D06 /* AstroLaunchesApp.swift */; };
+		7CC0D89F2A15606500B447C6 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */; };
+		7CC0D8A02A1563A200B447C6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79988226FB7EC700FCAEF2 /* Colors.swift */; };
+		7CC0D8A12A15641000B447C6 /* LaunchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */; };
+		7CC0D8A22A15641300B447C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
+		7CC0D8A32A1569C800B447C6 /* PadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BDD87271642EC00A97374 /* PadMap.swift */; };
 		7CD3C90526028B020071FB78 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
 		7CDB913D290C220600056940 /* PlayPauseHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB913C290C220600056940 /* PlayPauseHUD.swift */; };
 		7CE6154B28D91F550082459A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
@@ -75,10 +86,41 @@
 		7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F8C25AE49B700BD9D06 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7C2138812A0EE9FE00375C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CF87F1125AE45F200BD9D06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C184B0A28D52CD300DCCEFF;
+			remoteInfo = "Astro Launches (watchOS)";
+		};
+		7C2138842A0EEA1A00375C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CF87F1125AE45F200BD9D06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C184B0A28D52CD300DCCEFF;
+			remoteInfo = "Astro Launches (watchOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C2138862A0EEA1A00375C55 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				7C2138832A0EEA1A00375C55 /* Astro Launches watchOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		7C1472D029074D4200641ECD /* Astro Launches (macOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Astro Launches (macOS).entitlements"; sourceTree = "<group>"; };
-		7C184B0B28D52CD300DCCEFF /* Astro Launches (watchOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches (watchOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astro_LaunchesApp.swift; sourceTree = "<group>"; };
+		7C1472D029074D4200641ECD /* Astro Launches macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Astro Launches macOS.entitlements"; sourceTree = "<group>"; };
+		7C184B0B28D52CD300DCCEFF /* Astro Launches watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C184B0D28D52CD300DCCEFF /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7C184B0F28D52CD300DCCEFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C184B1128D52CD400DCCEFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C184B1428D52CD400DCCEFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -98,6 +140,7 @@
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
 		7CA49FA9270BB08F00181220 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		7CB0A2C72788F99200A542D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CDB913C290C220600056940 /* PlayPauseHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseHUD.swift; sourceTree = "<group>"; };
 		7CE6156628D91F550082459A /* Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launches.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +163,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA386082A0AEFF90073E046 /* CachedAsyncImage in Frameworks */,
 				7CF7967629036B2300FC2460 /* AstroSwiftUtilities in Frameworks */,
+				7CA386062A0AEC240073E046 /* AstroSwiftFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,8 +229,9 @@
 		7C184B0C28D52CD300DCCEFF /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
-				7C184B0D28D52CD300DCCEFF /* Astro_LaunchesApp.swift */,
+				7C184B0D28D52CD300DCCEFF /* AstroLaunchesApp.swift */,
 				7C184B0F28D52CD300DCCEFF /* ContentView.swift */,
+				7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */,
 				7C184B1128D52CD400DCCEFF /* Assets.xcassets */,
 				7C184B1328D52CD400DCCEFF /* Preview Content */,
 			);
@@ -237,7 +283,7 @@
 		7CF87F1025AE45F200BD9D06 = {
 			isa = PBXGroup;
 			children = (
-				7C1472D029074D4200641ECD /* Astro Launches (macOS).entitlements */,
+				7C1472D029074D4200641ECD /* Astro Launches macOS.entitlements */,
 				7CF87F1525AE45F300BD9D06 /* Shared */,
 				7CF87F2225AE45F300BD9D06 /* iOS */,
 				7CE6156828D920870082459A /* macOS */,
@@ -267,7 +313,7 @@
 			children = (
 				7CF87F2025AE45F300BD9D06 /* Astro Launches.app */,
 				7CF87F8325AE49B600BD9D06 /* Launches.app */,
-				7C184B0B28D52CD300DCCEFF /* Astro Launches (watchOS).app */,
+				7C184B0B28D52CD300DCCEFF /* Astro Launches watchOS.app */,
 				7CE6156628D91F550082459A /* Launches.app */,
 			);
 			name = Products;
@@ -307,9 +353,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C184B0A28D52CD300DCCEFF /* Astro Launches (watchOS) */ = {
+		7C184B0A28D52CD300DCCEFF /* Astro Launches watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C184B1628D52CD400DCCEFF /* Build configuration list for PBXNativeTarget "Astro Launches (watchOS)" */;
+			buildConfigurationList = 7C184B1628D52CD400DCCEFF /* Build configuration list for PBXNativeTarget "Astro Launches watchOS" */;
 			buildPhases = (
 				7C184B0728D52CD300DCCEFF /* Sources */,
 				7C184B0828D52CD300DCCEFF /* Frameworks */,
@@ -319,17 +365,19 @@
 			);
 			dependencies = (
 			);
-			name = "Astro Launches (watchOS)";
+			name = "Astro Launches watchOS";
 			packageProductDependencies = (
 				7CF7967529036B2300FC2460 /* AstroSwiftUtilities */,
+				7CA386052A0AEC240073E046 /* AstroSwiftFoundation */,
+				7CA386072A0AEFF90073E046 /* CachedAsyncImage */,
 			);
 			productName = "Astro Launches Watch App";
-			productReference = 7C184B0B28D52CD300DCCEFF /* Astro Launches (watchOS).app */;
+			productReference = 7C184B0B28D52CD300DCCEFF /* Astro Launches watchOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7CE6154428D91F550082459A /* Astro Launches (macOS) */ = {
+		7CE6154428D91F550082459A /* Astro Launches macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CE6156328D91F550082459A /* Build configuration list for PBXNativeTarget "Astro Launches (macOS)" */;
+			buildConfigurationList = 7CE6156328D91F550082459A /* Build configuration list for PBXNativeTarget "Astro Launches macOS" */;
 			buildPhases = (
 				7CE6154928D91F550082459A /* Sources */,
 				7CE6155C28D91F550082459A /* Frameworks */,
@@ -339,7 +387,7 @@
 			);
 			dependencies = (
 			);
-			name = "Astro Launches (macOS)";
+			name = "Astro Launches macOS";
 			packageProductDependencies = (
 				7CE6154528D91F550082459A /* AstroSwiftFoundation */,
 				7CE6154728D91F550082459A /* CachedAsyncImage */,
@@ -349,19 +397,22 @@
 			productReference = 7CE6156628D91F550082459A /* Launches.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7CF87F1F25AE45F300BD9D06 /* Astro Launches (iOS) */ = {
+		7CF87F1F25AE45F300BD9D06 /* Astro Launches iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CF87F3825AE45F300BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches (iOS)" */;
+			buildConfigurationList = 7CF87F3825AE45F300BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches iOS" */;
 			buildPhases = (
 				7CF87F1C25AE45F300BD9D06 /* Sources */,
 				7CF87F1D25AE45F300BD9D06 /* Frameworks */,
 				7CF87F1E25AE45F300BD9D06 /* Resources */,
+				7C2138862A0EEA1A00375C55 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7C2138822A0EE9FE00375C55 /* PBXTargetDependency */,
+				7C2138852A0EEA1A00375C55 /* PBXTargetDependency */,
 			);
-			name = "Astro Launches (iOS)";
+			name = "Astro Launches iOS";
 			packageProductDependencies = (
 				7C83150025AE52B700E18441 /* AstroSwiftFoundation */,
 				7C9FCDDB2882057F0032EA88 /* CachedAsyncImage */,
@@ -371,9 +422,9 @@
 			productReference = 7CF87F2025AE45F300BD9D06 /* Astro Launches.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7CF87F8225AE49B600BD9D06 /* Astro Launches (tvOS) */ = {
+		7CF87F8225AE49B600BD9D06 /* Astro Launches tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CF87F9425AE49B700BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches (tvOS)" */;
+			buildConfigurationList = 7CF87F9425AE49B700BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches tvOS" */;
 			buildPhases = (
 				7CF87F7F25AE49B600BD9D06 /* Sources */,
 				7CF87F8025AE49B600BD9D06 /* Frameworks */,
@@ -383,7 +434,7 @@
 			);
 			dependencies = (
 			);
-			name = "Astro Launches (tvOS)";
+			name = "Astro Launches tvOS";
 			packageProductDependencies = (
 				7C5A1B17261BB5E700E452DE /* AstroSwiftFoundation */,
 				7C9FCDDF288209040032EA88 /* CachedAsyncImage */,
@@ -399,8 +450,9 @@
 		7CF87F1125AE45F200BD9D06 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					7C184B0A28D52CD300DCCEFF = {
 						CreatedOnToolsVersion = 14.1;
@@ -431,10 +483,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7CF87F1F25AE45F300BD9D06 /* Astro Launches (iOS) */,
-				7CE6154428D91F550082459A /* Astro Launches (macOS) */,
-				7CF87F8225AE49B600BD9D06 /* Astro Launches (tvOS) */,
-				7C184B0A28D52CD300DCCEFF /* Astro Launches (watchOS) */,
+				7CF87F1F25AE45F300BD9D06 /* Astro Launches iOS */,
+				7CE6154428D91F550082459A /* Astro Launches macOS */,
+				7CF87F8225AE49B600BD9D06 /* Astro Launches tvOS */,
+				7C184B0A28D52CD300DCCEFF /* Astro Launches watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -488,8 +540,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA386022A0AEB670073E046 /* NetworkManager.swift in Sources */,
+				7CA386042A0AEBE30073E046 /* DateFormatters.swift in Sources */,
 				7C184B1028D52CD300DCCEFF /* ContentView.swift in Sources */,
-				7C184B0E28D52CD300DCCEFF /* Astro_LaunchesApp.swift in Sources */,
+				7CC0D8A02A1563A200B447C6 /* Colors.swift in Sources */,
+				7CC0D8A22A15641300B447C6 /* LaunchDate.swift in Sources */,
+				7CC0D89F2A15606500B447C6 /* LaunchDetail.swift in Sources */,
+				7CC0D8A12A15641000B447C6 /* LaunchTime.swift in Sources */,
+				7CA386032A0AEBDE0073E046 /* Launch.swift in Sources */,
+				7CC0D8A32A1569C800B447C6 /* PadMap.swift in Sources */,
+				7C184B0E28D52CD300DCCEFF /* AstroLaunchesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +617,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7C2138822A0EE9FE00375C55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C184B0A28D52CD300DCCEFF /* Astro Launches watchOS */;
+			targetProxy = 7C2138812A0EE9FE00375C55 /* PBXContainerItemProxy */;
+		};
+		7C2138852A0EEA1A00375C55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C184B0A28D52CD300DCCEFF /* Astro Launches watchOS */;
+			targetProxy = 7C2138842A0EEA1A00375C55 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		7C184B1728D52CD400DCCEFF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -571,14 +644,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Launches;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.rocketcom.Astro-Launches";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -603,14 +677,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Launches;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.rocketcom.Astro-Launches";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -628,7 +703,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Astro Launches (macOS).entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Astro Launches macOS.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content";
@@ -643,7 +718,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = Launches;
 				SDKROOT = macosx;
@@ -659,7 +734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Astro Launches (macOS).entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Astro Launches macOS.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Shared/Preview\\ Content";
@@ -674,7 +749,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = Launches;
 				SDKROOT = macosx;
@@ -824,7 +899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "Astro Launches";
 				SDKROOT = iphoneos;
@@ -853,7 +928,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = "Astro Launches";
 				SDKROOT = iphoneos;
@@ -881,7 +956,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = Launches;
 				SDKROOT = appletvos;
@@ -906,7 +981,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rocketcom.Astro-Launches";
 				PRODUCT_NAME = Launches;
 				SDKROOT = appletvos;
@@ -920,7 +995,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7C184B1628D52CD400DCCEFF /* Build configuration list for PBXNativeTarget "Astro Launches (watchOS)" */ = {
+		7C184B1628D52CD400DCCEFF /* Build configuration list for PBXNativeTarget "Astro Launches watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C184B1728D52CD400DCCEFF /* Debug */,
@@ -929,7 +1004,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CE6156328D91F550082459A /* Build configuration list for PBXNativeTarget "Astro Launches (macOS)" */ = {
+		7CE6156328D91F550082459A /* Build configuration list for PBXNativeTarget "Astro Launches macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CE6156428D91F550082459A /* Debug */,
@@ -947,7 +1022,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CF87F3825AE45F300BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches (iOS)" */ = {
+		7CF87F3825AE45F300BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CF87F3925AE45F300BD9D06 /* Debug */,
@@ -956,7 +1031,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CF87F9425AE49B700BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches (tvOS)" */ = {
+		7CF87F9425AE49B700BD9D06 /* Build configuration list for PBXNativeTarget "Astro Launches tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CF87F9525AE49B700BD9D06 /* Debug */,
@@ -1027,6 +1102,16 @@
 			productName = CachedAsyncImage;
 		};
 		7C9FCDDF288209040032EA88 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+		7CA386052A0AEC240073E046 /* AstroSwiftFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C8314FF25AE52B700E18441 /* XCRemoteSwiftPackageReference "AstroSwiftFoundation" */;
+			productName = AstroSwiftFoundation;
+		};
+		7CA386072A0AEFF90073E046 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7C9FCDDA2882057F0032EA88 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;

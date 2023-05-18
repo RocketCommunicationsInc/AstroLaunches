@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1420"
+   LastUpgradeVersion = "1430"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7CE6154428D91F550082459A"
                BuildableName = "Launches.app"
-               BlueprintName = "Astro Launches (macOS)"
+               BlueprintName = "Astro Launches macOS"
                ReferencedContainer = "container:Astro Launches.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,7 +46,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7CE6154428D91F550082459A"
             BuildableName = "Launches.app"
-            BlueprintName = "Astro Launches (macOS)"
+            BlueprintName = "Astro Launches macOS"
             ReferencedContainer = "container:Astro Launches.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7CE6154428D91F550082459A"
             BuildableName = "Launches.app"
-            BlueprintName = "Astro Launches (macOS)"
+            BlueprintName = "Astro Launches macOS"
             ReferencedContainer = "container:Astro Launches.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
