@@ -20,9 +20,9 @@ enum TimePeriod:Int {
 
 
 private struct LaunchReplies:Decodable{
-    //let count:Int
     let results:[LaunchReply]
 }
+
 
 class NetworkManager:ObservableObject
 {
@@ -35,9 +35,7 @@ class NetworkManager:ObservableObject
     @Published var alertTitle = ""
     @Published var alertMessage = ""
     @Published var isShowingNetworkAlert = false
-    
-  //  private var timePeriods:[TimePeriod]
-    
+        
     // Let observers know that an error has occured.
     // Do nothing if a previous error has not been acknowledged by setting isShowingNetworkAlert to false
     func prepareAlert(title:String, message:String)
