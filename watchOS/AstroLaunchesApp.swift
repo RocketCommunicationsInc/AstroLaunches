@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct AstroLaunchesApp: App {
-    @StateObject var networkManager = NetworkManager()
+    @StateObject var networkManager = NetworkManager(timePeriods: [.upcoming])
 
     var body: some Scene {
         WindowGroup {

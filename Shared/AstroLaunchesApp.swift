@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Astro_LaunchesApp: App {
 
-    @StateObject var networkManager = NetworkManager()
+    @StateObject var networkManager = NetworkManager(timePeriods: [.upcoming,.recent])
 
     init(){
         _ = AppSettings.sharedInstance // init the AppSettings

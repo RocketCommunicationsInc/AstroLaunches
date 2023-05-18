@@ -36,6 +36,8 @@ class NetworkManager:ObservableObject
     @Published var alertMessage = ""
     @Published var isShowingNetworkAlert = false
     
+  //  private var timePeriods:[TimePeriod]
+    
     // Let observers know that an error has occured.
     // Do nothing if a previous error has not been acknowledged by setting isShowingNetworkAlert to false
     func prepareAlert(title:String, message:String)
@@ -48,11 +50,17 @@ class NetworkManager:ObservableObject
         }
     }
     
-    init(){
-        // load both TimePeriods
+    init(timePeriods:[TimePeriod]){
+        // load chosen TimePeriods
         Task{
-            await loadLaunches(TimePeriod.upcoming)
-            await loadLaunches(TimePeriod.recent)
+            if timePeriods.contains(.upcoming)
+            {
+                await loadLaunches(TimePeriod.upcoming)
+            }
+            if timePeriods.contains(.recent)
+            {
+                await loadLaunches(TimePeriod.recent)
+            }
         }
     }
     

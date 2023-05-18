@@ -29,7 +29,7 @@ struct LaunchTime: View {
 
 
 struct LaunchClock_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
+    static var networkManager = NetworkManager(timePeriods:[.upcoming])
     static var previews: some View {
         LaunchTime(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)

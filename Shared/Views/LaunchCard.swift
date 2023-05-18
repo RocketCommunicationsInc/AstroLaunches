@@ -30,7 +30,7 @@ struct LaunchCard: View {
 
 
 struct LaunchRow_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
+    static var networkManager = NetworkManager(timePeriods: [.upcoming])
     static var previews: some View {
         LaunchCard(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
