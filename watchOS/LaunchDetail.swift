@@ -16,7 +16,20 @@ struct LaunchDetail: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading,spacing:0){
                 // Launch Image and Countdown clock
-                LaunchDetailImage(launch: launch)
+                ZStack{
+                    LaunchDetailImage(launch: launch)
+                    VStack{
+                        Spacer()
+                        // only show countown for launches in the future
+                        if let windowOpenDate = launch.windowOpenDate
+                        {
+                            IntervalTimer(targetDate:windowOpenDate,digitTextStyle: .caption2, labelFontStyle: .footnote)
+                                .frame(maxWidth: .infinity)
+                                .padding(4)
+                                .background(Color.init(white: 0.4, opacity: 0.5))
+                        }
+                    }
+                }
                 
                 //Calendar, Clock
                 ViewThatFits{
