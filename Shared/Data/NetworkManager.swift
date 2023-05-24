@@ -77,7 +77,11 @@ class NetworkManager:ObservableObject
         #endif
         
         do {
-            let (data, response) = try await URLSession.shared.data(from: url!)
+            let session = URLSession.shared
+            let request = URLRequest(url: url!,cachePolicy: .returnCacheDataElseLoad)
+            let cachedResp = URLCache.shared.cachedResponse(for: request)
+            print(cachedResp?.description as Any)
+            let (data, response) = try await session.data(for: request)
             let urlResponse = response as! HTTPURLResponse
             let status = urlResponse.statusCode
             guard (200...299).contains(status) else {
@@ -99,6 +103,10 @@ class NetworkManager:ObservableObject
                 self.prepareAlert(title: "No Data Returned", message: HTTPURLResponse.localizedString(forStatusCode: status))
                 return
             }
+            
+            response
+            let cachedData = CachedURLResponse(response: response, data: data)
+            URLCache.shared.storeCachedResponse(cachedData, for: request)
             
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
             Task { @MainActor in
