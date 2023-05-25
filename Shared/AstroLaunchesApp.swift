@@ -14,7 +14,6 @@ struct Astro_LaunchesApp: App {
     @StateObject var networkManager = NetworkManager(timePeriods: [.upcoming,.recent])
 
     init(){
-        _ = AppSettings.sharedInstance // init the AppSettings
         
 #if os(iOS)
         // allow background colors set by List's .background modifier to work in grouped configurations in light mode
