@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RocketCommunicationsInc/AstroSwiftUtilities",
       "state" : {
-        "revision" : "85e1533e64cb603ee743c6def2d5117844ae6bef",
-        "version" : "1.0.2"
+        "revision" : "9461f21b5f3e0149db8f37b26ccde7f3754040a0",
+        "version" : "1.1.0"
       }
     },
     {

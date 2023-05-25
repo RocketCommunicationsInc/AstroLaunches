@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import AstroSwiftUtilities
 
 // NetworkManager handles the data connection and initiates the parsing of the results into an array of *Launch* objects
 
@@ -23,7 +25,6 @@ private struct LaunchReplies:Decodable{
     let results:[LaunchReply]
 }
 
-
 class NetworkManager:ObservableObject
 {
     // the main observable lists of launch objects, upcoming and past
@@ -36,6 +37,9 @@ class NetworkManager:ObservableObject
     @Published var alertMessage = ""
     @Published var isShowingNetworkAlert = false
         
+    @AppStorage("DataCache") var dataCache:String = ""
+    @AppStorage("DataCacheDate") var dataCacheDate:Date = Date.distantPast
+
     // Let observers know that an error has occured.
     // Do nothing if a previous error has not been acknowledged by setting isShowingNetworkAlert to false
     func prepareAlert(title:String, message:String)
