@@ -58,11 +58,11 @@ class NetworkManager:ObservableObject
         }
     }
     
-    // at initialization, begin loading the selected launch periods
+    // at initialization just remember the timePeriods.
+    // loading will begin in a moment when the app becomes active.
     init(timePeriods:[TimePeriod]){
         // load chosen TimePeriods
         self.timePeriods = timePeriods
-        loadLaunchesForPeriods(timePeriods: self.timePeriods)
     }
     
     // reload the selected launch periods
