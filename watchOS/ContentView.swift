@@ -18,7 +18,7 @@ struct ContentView: View {
             ZStack{
                 ScrollView {
                     LazyVStack() {
-                        ForEach(timeSpan == .upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches, id: \.id) { launch in
+                        ForEach(timeSpan == .upcoming ? networkManager.upcomingLaunches : networkManager.recentLaunches, id: \.id) { launch in
                             NavigationLink {
                                 LaunchDetail(launch: launch)
                             } label: {
@@ -34,7 +34,7 @@ struct ContentView: View {
                 }
                 
                 // if no data is available show a ProgressView
-                let zeroData = timeSpan == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
+                let zeroData = timeSpan == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.recentLaunches.count == 0
                 ProgressView()
                     .opacity(zeroData ? 1 : 0)
             }.navigationTitle("Launches")

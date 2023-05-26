@@ -25,7 +25,7 @@ let appStorageAdvanceModeKey = "AdvanceMode"
 // A root container view top host both view modes, and handle automatic view updating on a timer
 struct ContentView: View {
     @State var hudIsShowing = false
-    @StateObject var networkManager = NetworkManager(timePeriods: [.upcoming])
+    @ObservedObject var networkManager: NetworkManager
     @State var launchIndex:Int = 0  // keep track of which launch is displayed. Shared by ConferenceRoomView OpsFloorView so their states are synchronized
     let hudDelay:UInt64 = 3_000_000_000 // 3 billion nanoseconds == 3 seconds
     

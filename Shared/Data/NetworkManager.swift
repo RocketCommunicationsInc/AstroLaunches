@@ -29,7 +29,9 @@ class NetworkManager:ObservableObject
 {
     // the main observable lists of launch objects, upcoming and past
     @Published var upcomingLaunches = [Launch]()
-    @Published var pastLaunches = [Launch]()
+    @Published var recentLaunches = [Launch]()
+    @Published var loading = false
+    private var timePeriods:[TimePeriod] = []
     
     // stored when encountering a network error
     @Published var statusCode:Int?
@@ -42,7 +44,7 @@ class NetworkManager:ObservableObject
     @AppStorage("UpcomingDataCacheDate") var upcomingDataCacheDate:Date = Date.distantPast
     @AppStorage("RecentDataCache") var recentDataCache:Data = Data()
     @AppStorage("RecentDataCacheDate") var recentDataCacheDate:Date = Date.distantPast
-    let twelveHours:TimeInterval = 12 * 60 * 60 // TimeInterval unit is seconds
+    let refreshInterval:TimeInterval = 1 * 60 * 60 // One hour in seconds
 
     // Let observers know that an error has occured.
     // Do nothing if a previous error has not been acknowledged by setting isShowingNetworkAlert to false
@@ -56,41 +58,73 @@ class NetworkManager:ObservableObject
         }
     }
     
+    // at initialization, begin loading the selected launch periods
     init(timePeriods:[TimePeriod]){
         // load chosen TimePeriods
+        self.timePeriods = timePeriods
+        loadLaunchesForPeriods(timePeriods: self.timePeriods)
+    }
+    
+    // reload the selected launch periods
+    public func refreshLaunches()
+    {
+        loadLaunchesForPeriods(timePeriods: self.timePeriods)
+    }
+    
+    // true if there are not Launches for the time period
+    private func launchesEmpty(_ timePeriod:TimePeriod)->Bool
+    {
+        if timePeriod == .upcoming {
+            return upcomingLaunches.count == 0
+        }
+        else if timePeriod == .recent {
+            return recentLaunches.count == 0
+        }
+        return false
+    }
+    
+    // load Launches for the selected period.
+    // function returns immediately if a load is already in progress
+    private func loadLaunchesForPeriods(timePeriods:[TimePeriod]){
+        // don't start a Task if one is already active
+        if loading {return}
+            
+        // load chosen TimePeriods
+        loading = true
         Task{
-            if timePeriods.contains(.upcoming)
-            {
+            if timePeriods.contains(.upcoming) {
                 await loadLaunches(TimePeriod.upcoming)
             }
-            if timePeriods.contains(.recent)
-            {
+            if timePeriods.contains(.recent) {
                 await loadLaunches(TimePeriod.recent)
             }
         }
+        loading = false
     }
-    
-    // Load launches for timePeriod, from cache or network
+
+    // Load launches for one timePeriod, from cache or network
     // Convert into an array of Launch objects
-    func loadLaunches(_ timePeriod:TimePeriod) async
+    private func loadLaunches(_ timePeriod:TimePeriod) async
     {
         // if the cached data is usable process that data, otherwise download new data
-        if cacheIsUsable(timePeriod) {
-            loadFromCache(timePeriod)
+        if cacheIsUsable(timePeriod){
+            if launchesEmpty(timePeriod) // no need to reload existing cached data
+            {
+                loadFromCache(timePeriod)
+            }
         }
         else {
             await loadFromNetwork(timePeriod)
         }
     }
 
-    // return true if the cache for timePeriod is less than twelve hours old, and there is some data in the cache
+    // return true if the cache for timePeriod is less than refreshInterval minutes old, and there is some data in the cache
     func cacheIsUsable(_ timePeriod:TimePeriod)->Bool {
-        
         let cacheAge = timePeriod == .upcoming ? Date().timeIntervalSince(upcomingDataCacheDate) :  Date().timeIntervalSince(recentDataCacheDate)
         
         let cacheSize = timePeriod == .upcoming ? upcomingDataCache.count : recentDataCache.count
         
-        return cacheAge < twelveHours && cacheSize > 1
+        return cacheAge < refreshInterval && cacheSize > 1
     }
     
     // load from cached data for timePeriod
@@ -106,7 +140,7 @@ class NetworkManager:ObservableObject
                     self.upcomingLaunches.append(Launch(launchJSON))
                 }
                 else {
-                    self.pastLaunches.append(Launch(launchJSON))
+                    self.recentLaunches.append(Launch(launchJSON))
                 }
             }
         }
@@ -147,28 +181,35 @@ class NetworkManager:ObservableObject
             
             let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
             
-            Task { @MainActor in
-                // if the cache is old, write fresh data to cache on the main thread as required for @AppStorage
-                if !cacheIsUsable(timePeriod) {
-                    if timePeriod == .upcoming {
-                        upcomingDataCache = data
-                        upcomingDataCacheDate = Date()
-                        print("writing to upcoming cache")
-                    }
-                    else {
-                        recentDataCache = data
-                        recentDataCacheDate = Date()
-                        print("writing to recent cache")
-                    }
+            Task { @MainActor in // do these tasks on the main thread, as they will trigger UI updates
+                
+                // Write fresh data to cache on the main thread as required for @AppStorage
+                if timePeriod == .upcoming {
+                    upcomingDataCache = data
+                    upcomingDataCacheDate = Date()
+                    print("writing to upcoming cache")
+                }
+                else {
+                    recentDataCache = data
+                    recentDataCacheDate = Date()
+                    print("writing to recent cache")
                 }
                 
-                // post process launchJSONs into launches on the main thread, as this will trigger UI updates
+                // remove any old launches
+                if (timePeriod == .upcoming) {
+                    self.upcomingLaunches.removeAll()
+                }
+                else {
+                    self.recentLaunches.removeAll()
+                }
+                
+                // process launchJSONs into launches
                 myLaunches.results.forEach() { launchJSON in
                     if (timePeriod == .upcoming) {
                         self.upcomingLaunches.append(Launch(launchJSON))
                     }
                     else {
-                        self.pastLaunches.append(Launch(launchJSON))
+                        self.recentLaunches.append(Launch(launchJSON))
                     }
                 }
             }
