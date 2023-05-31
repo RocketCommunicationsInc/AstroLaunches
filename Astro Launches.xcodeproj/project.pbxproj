@@ -20,8 +20,6 @@
 		7C3CB5DA270F4FA4000448C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
 		7C3CB5DC270F4FA4000448C6 /* LaunchDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */; };
 		7C3D4CCE2603EFDA00CB0C41 /* LaunchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3D4CCD2603EFDA00CB0C41 /* LaunchCard.swift */; };
-		7C44C05C2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
-		7C44C05F2608FEDB00B8D86A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7C4DB82229035144007088A5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DB82129035144007088A5 /* SettingsView.swift */; };
 		7C54438026178C65007CCCC4 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54437F26178C65007CCCC4 /* DateFormatters.swift */; };
 		7C5A1AFB261BB51A00E452DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3C90426028B020071FB78 /* NetworkManager.swift */; };
@@ -68,7 +66,6 @@
 		7CE6155A28D91F550082459A /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6954092612876E008A811E /* Launch.swift */; };
 		7CE6155D28D91F550082459A /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7CE6154728D91F550082459A /* CachedAsyncImage */; };
 		7CE6155E28D91F550082459A /* AstroSwiftFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7CE6154528D91F550082459A /* AstroSwiftFoundation */; };
-		7CE6156028D91F550082459A /* launches.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C44C05B2608FEDB00B8D86A /* launches.json */; };
 		7CE6156128D91F550082459A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6A025D26278C6900273563 /* Preview Assets.xcassets */; };
 		7CE6156228D91F550082459A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF87F1B25AE45F300BD9D06 /* Assets.xcassets */; };
 		7CF43B5E27E256E400A7DD4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF43B5D27E256E400A7DD4F /* ContentView.swift */; };
@@ -126,7 +123,6 @@
 		7C3CB5D5270F4F98000448C6 /* LaunchTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTime.swift; sourceTree = "<group>"; };
 		7C3CB5D9270F4FA4000448C6 /* LaunchDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDate.swift; sourceTree = "<group>"; };
 		7C3D4CCD2603EFDA00CB0C41 /* LaunchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCard.swift; sourceTree = "<group>"; };
-		7C44C05B2608FEDB00B8D86A /* launches.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launches.json; sourceTree = "<group>"; };
 		7C4DB82129035144007088A5 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7C54437F26178C65007CCCC4 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		7C6954092612876E008A811E /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
@@ -200,7 +196,6 @@
 		7C09A5B228E7A4B90035CBD4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				7C44C05B2608FEDB00B8D86A /* launches.json */,
 				7C54437F26178C65007CCCC4 /* DateFormatters.swift */,
 				7CD3C90426028B020071FB78 /* NetworkManager.swift */,
 				7C6954092612876E008A811E /* Launch.swift */,
@@ -498,7 +493,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CE6156028D91F550082459A /* launches.json in Resources */,
 				7CE6156128D91F550082459A /* Preview Assets.xcassets in Resources */,
 				7CE6156228D91F550082459A /* Assets.xcassets in Resources */,
 			);
@@ -508,7 +502,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C44C05C2608FEDB00B8D86A /* launches.json in Resources */,
 				7C6A025E26278C6900273563 /* Preview Assets.xcassets in Resources */,
 				7CF87F3425AE45F300BD9D06 /* Assets.xcassets in Resources */,
 			);
@@ -521,7 +514,6 @@
 				7C6A026126278C6900273563 /* Preview Assets.xcassets in Resources */,
 				7CF87F8D25AE49B700BD9D06 /* Preview Assets.xcassets in Resources */,
 				7CF87F8A25AE49B700BD9D06 /* Assets.xcassets in Resources */,
-				7C44C05F2608FEDB00B8D86A /* launches.json in Resources */,
 				7C8BFBF1270374BD00D6AB09 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

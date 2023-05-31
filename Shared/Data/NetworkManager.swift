@@ -44,7 +44,7 @@ class NetworkManager:ObservableObject
     @AppStorage("UpcomingDataCacheDate") var upcomingDataCacheDate:Date = Date.distantPast
     @AppStorage("RecentDataCache") var recentDataCache:Data = Data()
     @AppStorage("RecentDataCacheDate") var recentDataCacheDate:Date = Date.distantPast
-    let refreshInterval:TimeInterval = 1 * 60 * 60 // One hour in seconds
+    let refreshInterval:TimeInterval = 12 * 60 * 60 // twelve hours in seconds
 
     // Let observers know that an error has occured.
     // Do nothing if a previous error has not been acknowledged by setting isShowingNetworkAlert to false
