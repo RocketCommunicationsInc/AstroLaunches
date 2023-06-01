@@ -25,7 +25,7 @@ let appStorageAdvanceModeKey = "AdvanceMode"
 // A root container view top host both view modes, and handle automatic view updating on a timer
 struct ContentView: View {
     @State var hudIsShowing = false
-    @StateObject var networkManager = NetworkManager()
+    @ObservedObject var networkManager: NetworkManager
     @State var launchIndex:Int = 0  // keep track of which launch is displayed. Shared by ConferenceRoomView OpsFloorView so their states are synchronized
     let hudDelay:UInt64 = 3_000_000_000 // 3 billion nanoseconds == 3 seconds
     
@@ -41,8 +41,12 @@ struct ContentView: View {
             }
         }
         .focusable(true) // attract the automatic focus when swiftui loads this view, to receive contextMenu long press and other remote control functions
-        
-        
+        // show any alerts created by the NetworkManager
+        .alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
+            Button("Continue", role: .cancel) {}
+        } message: {
+            Text(networkManager.alertMessage)
+        }
         .onMoveCommand(perform: {(direction) in // activated by a TAP (not a presss) on the left or right remote control pad
             if networkManager.upcomingLaunches.count > 0
             {

@@ -11,10 +11,10 @@ import SwiftUI
 
 struct Astro_LaunchesApp: App {
 
-    @StateObject var networkManager = NetworkManager()
+    @StateObject var networkManager = NetworkManager(timePeriods: [.upcoming,.recent])
+    @Environment(\.scenePhase) var scenePhase
 
     init(){
-        _ = AppSettings.sharedInstance // init the AppSettings
         
 #if os(iOS)
         // allow background colors set by List's .background modifier to work in grouped configurations in light mode
@@ -25,7 +25,15 @@ struct Astro_LaunchesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(networkManager: networkManager)
+                .onChange(of: scenePhase) { newPhase in
+                    if newPhase == .active {
+                        // refresh each time the app is activated, in case the cached data is stale
+                        // if the cache is good, this call is inexpensive and will not change the data
+                        networkManager.refreshLaunches()
+                    }
+                }
         }
+
 
 #if os(macOS)
         Settings {

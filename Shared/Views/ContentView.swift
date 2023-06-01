@@ -59,12 +59,12 @@ struct ContentView: View {
         }
     detail: {
         // preload the detail view before any selection is made
-        let launches = timeSpan == .upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches
+        let launches = timeSpan == .upcoming ? networkManager.upcomingLaunches : networkManager.recentLaunches
         if let launch = launches.first{
             LaunchDetail(launch: launch)
         }
     }
-        // show any alerts created by the NetworkManager
+    // show any alerts created by the NetworkManager
     .alert(String(networkManager.alertTitle), isPresented: $networkManager.isShowingNetworkAlert){
         Button("Continue", role: .cancel) {}
     } message: {
@@ -84,7 +84,7 @@ struct ContentView: View {
             ZStack{
                 ScrollView {
                     LazyVStack() {
-                        ForEach(timePeriod == .upcoming ? networkManager.upcomingLaunches : networkManager.pastLaunches, id: \.id) { launch in
+                        ForEach(timePeriod == .upcoming ? networkManager.upcomingLaunches : networkManager.recentLaunches, id: \.id) { launch in
                             NavigationLink {
                                 LaunchDetail(launch: launch)
                             } label: {
@@ -104,9 +104,12 @@ struct ContentView: View {
                     }
 #endif
                 }.background(Color.astroUIBackground) // *** Astro customization
+                    .refreshable {
+                        networkManager.refreshLaunches()
+                    }
                 
                 // if no data is available show a ProgressView
-                let zeroData = timePeriod == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.pastLaunches.count == 0
+                let zeroData = timePeriod == .upcoming ? networkManager.upcomingLaunches.count == 0 : networkManager.recentLaunches.count == 0
                 ProgressView().opacity(zeroData ? 1 : 0)
             }
             

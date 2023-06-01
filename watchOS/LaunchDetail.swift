@@ -173,7 +173,7 @@ struct Location: View {
 
 
 struct LaunchDetail_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
+    static var networkManager = NetworkManager(timePeriods: [.upcoming])
 
     static var previews: some View {
         LaunchDetail(launch:networkManager.upcomingLaunches[0])

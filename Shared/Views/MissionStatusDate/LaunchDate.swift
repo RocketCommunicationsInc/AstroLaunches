@@ -27,7 +27,7 @@ struct LaunchDate: View {
 }
 
 struct LaunchCalendar_Previews: PreviewProvider {
-    static var networkManager = NetworkManager()
+    static var networkManager = NetworkManager(timePeriods: [.upcoming])
     static var previews: some View {
         LaunchDate(launch:networkManager.upcomingLaunches[0])
             .previewLayout(.sizeThatFits)
