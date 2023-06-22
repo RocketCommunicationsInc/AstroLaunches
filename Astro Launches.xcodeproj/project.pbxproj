@@ -131,6 +131,7 @@
 		7C79988226FB7EC700FCAEF2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7C9BDD87271642EC00A97374 /* PadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMap.swift; sourceTree = "<group>"; };
 		7CA49FA9270BB08F00181220 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		7CAD28B82A449A7C00FC3A2C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		7CC0D89E2A15606500B447C6 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		7CD3C90426028B020071FB78 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7CDB913C290C220600056940 /* PlayPauseHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseHUD.swift; sourceTree = "<group>"; };
@@ -261,6 +262,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		7CAD28B72A449A7C00FC3A2C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				7CAD28B82A449A7C00FC3A2C /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		7CE6156828D920870082459A /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +288,7 @@
 				7CE6156828D920870082459A /* macOS */,
 				7CF87F8425AE49B600BD9D06 /* tvOS */,
 				7C184B0C28D52CD300DCCEFF /* watchOS */,
+				7CAD28B72A449A7C00FC3A2C /* Packages */,
 				7CF87F2125AE45F300BD9D06 /* Products */,
 				7C37E6592603CDC300F259F8 /* Frameworks */,
 			);
@@ -439,8 +449,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					7C184B0A28D52CD300DCCEFF = {
 						CreatedOnToolsVersion = 14.1;
@@ -747,6 +757,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -811,6 +822,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
