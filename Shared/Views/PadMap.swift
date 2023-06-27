@@ -45,7 +45,7 @@ struct PadMap: View {
         #if os(tvOS)
         .focusable(false) // doesn't work, still gets focus if it's the only thing onscreen
         #endif
-        .onChange(of: coordinates) { newCoordinates in // on change of coordinates, update our related state variable 'region'
+        .onChange(of: coordinates) { oldCoordinates , newCoordinates in  // on change of coordinates, update our related state variable 'region'
             region = MKCoordinateRegion(
                 center: newCoordinates,
                 latitudinalMeters: fiveHundredMiles,
