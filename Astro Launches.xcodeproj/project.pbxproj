@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7C09A5B528E7A8110035CBD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF87F1925AE45F300BD9D06 /* ContentView.swift */; };
 		7C17D6C72A44BBA100D236E2 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 7C17D6C62A44BBA100D236E2 /* RealityKitContent */; };
-		7C17D6C92A44BBA100D236E2 /* Astro_LaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17D6C82A44BBA100D236E2 /* Astro_LaunchesApp.swift */; };
+		7C17D6C92A44BBA100D236E2 /* AstroLaunchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17D6C82A44BBA100D236E2 /* AstroLaunchesApp.swift */; };
 		7C17D6CB2A44BBA100D236E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17D6CA2A44BBA100D236E2 /* ContentView.swift */; };
 		7C17D6CD2A44BBA300D236E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C17D6CC2A44BBA300D236E2 /* Assets.xcassets */; };
 		7C17D6D02A44BBA300D236E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C17D6CF2A44BBA300D236E2 /* Preview Assets.xcassets */; };
@@ -129,7 +129,7 @@
 /* Begin PBXFileReference section */
 		7C1472D029074D4200641ECD /* Astro Launches macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Astro Launches macOS.entitlements"; sourceTree = "<group>"; };
 		7C17D6C42A44BBA100D236E2 /* Astro Launches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astro Launches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C17D6C82A44BBA100D236E2 /* Astro_LaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astro_LaunchesApp.swift; sourceTree = "<group>"; };
+		7C17D6C82A44BBA100D236E2 /* AstroLaunchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroLaunchesApp.swift; sourceTree = "<group>"; };
 		7C17D6CA2A44BBA100D236E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C17D6CC2A44BBA300D236E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C17D6CF2A44BBA300D236E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -249,16 +249,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7C17D6C52A44BBA100D236E2 /* Astro Launches */ = {
+		7C17D6C52A44BBA100D236E2 /* visionOS */ = {
 			isa = PBXGroup;
 			children = (
-				7C17D6C82A44BBA100D236E2 /* Astro_LaunchesApp.swift */,
+				7C17D6C82A44BBA100D236E2 /* AstroLaunchesApp.swift */,
 				7C17D6CA2A44BBA100D236E2 /* ContentView.swift */,
 				7C7ACD912A463FA100F4C813 /* LaunchView.swift */,
 				7C17D6CC2A44BBA300D236E2 /* Assets.xcassets */,
 				7C17D6CE2A44BBA300D236E2 /* Preview Content */,
 			);
-			path = "Astro Launches";
+			path = visionOS;
 			sourceTree = "<group>";
 		};
 		7C17D6CE2A44BBA300D236E2 /* Preview Content */ = {
@@ -340,8 +340,8 @@
 				7CE6156828D920870082459A /* macOS */,
 				7CF87F8425AE49B600BD9D06 /* tvOS */,
 				7C184B0C28D52CD300DCCEFF /* watchOS */,
+				7C17D6C52A44BBA100D236E2 /* visionOS */,
 				7CAD28B72A449A7C00FC3A2C /* Packages */,
-				7C17D6C52A44BBA100D236E2 /* Astro Launches */,
 				7CF87F2125AE45F300BD9D06 /* Products */,
 				7C37E6592603CDC300F259F8 /* Frameworks */,
 			);
@@ -633,7 +633,7 @@
 				7C7ACD932A463FE500F4C813 /* PadMap.swift in Sources */,
 				7C17D6CB2A44BBA100D236E2 /* ContentView.swift in Sources */,
 				7C17D6D62A44E4F500D236E2 /* Launch.swift in Sources */,
-				7C17D6C92A44BBA100D236E2 /* Astro_LaunchesApp.swift in Sources */,
+				7C17D6C92A44BBA100D236E2 /* AstroLaunchesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,7 +737,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Astro Launches/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"visionOS/Preview Content\"";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -771,7 +771,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Astro Launches/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"visionOS/Preview Content\"";
 				DEVELOPMENT_TEAM = H4S8Z5V45T;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;

@@ -16,7 +16,7 @@ import CachedAsyncImage
 struct LaunchView: View {
     
     @ObservedObject var networkManager: NetworkManager
-    var launchIndex:Int = 3
+    @State var launchIndex:Int = 0
     
     var body: some View {
         GeometryReader { proxy in
@@ -55,6 +55,23 @@ struct LaunchView: View {
                 // .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
             }
         }
+        .ornament(attachmentAnchor: .scene(alignment: .bottom)) {
+            HStack{
+                Button(action: {
+                    launchIndex = ((launchIndex - 1) + networkManager.upcomingLaunches.count)  % networkManager.upcomingLaunches.count
+                }) {
+                    Image(systemName:"arrow.left.circle").font(.title)
+                }
+                Button(action: {
+                    launchIndex = (launchIndex + 1)  % networkManager.upcomingLaunches.count
+                }) {
+                    Image(systemName:"arrow.right.circle").font(.title)
+                }
+            }
+        }
+        .transition(.opacity.animation(.easeInOut(duration:1.0))) // fade when launch updates
+        .id("Main" + "\(launchIndex)") // create a changing ID so transition() will update all subviews
+
     }
 }
 
@@ -69,9 +86,10 @@ struct Sidebar: View {
                 .font(.title)
                 Spacer()
                 Text("ROCKET").font(.title3)
-                    .foregroundColor(.launchesTextColor)
                 Text(launch.rocketName).font(.body)
-                    .foregroundColor(Color(.label))
+                    .padding()
+                    .background(.regularMaterial, in: .rect(cornerRadius: 12))
+                    .hoverEffect()
                 Spacer()
                 Divider()
             }

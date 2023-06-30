@@ -28,7 +28,9 @@ struct ContentView: View {
             Button("Continue", role: .cancel) {}
         } message: {
             Text(networkManager.alertMessage)
+            
         }
+
     }
 }
 
