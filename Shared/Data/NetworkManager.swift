@@ -106,17 +106,32 @@ class NetworkManager:ObservableObject
     // Convert into an array of Launch objects
     private func loadLaunches(_ timePeriod:TimePeriod) async
     {
-        // if the cached data is usable process that data, otherwise download new data
-        if cacheIsUsable(timePeriod){
-            if launchesEmpty(timePeriod) // no need to reload existing cached data
+        // if no data is available, probably startup or first run
+        if launchesEmpty(timePeriod)
+        {
+            // if ANY cache is available, even if old
+            if cacheIsAvailable(timePeriod)
             {
+                // load the cache, even if old
                 loadFromCache(timePeriod)
             }
         }
-        else {
+            
+        // check if cache is old, begin to load from network
+        if !cacheIsUsable(timePeriod)
+        {
             await loadFromNetwork(timePeriod)
         }
     }
+    
+    // return true if there is some data in the cache
+    func cacheIsAvailable(_ timePeriod:TimePeriod)->Bool {
+        
+        let cacheSize = timePeriod == .upcoming ? upcomingDataCache.count : recentDataCache.count
+        
+        return cacheSize > 1
+    }
+    
 
     // return true if the cache for timePeriod is less than refreshInterval minutes old, and there is some data in the cache
     func cacheIsUsable(_ timePeriod:TimePeriod)->Bool {
@@ -129,7 +144,6 @@ class NetworkManager:ObservableObject
     
     // load from cached data for timePeriod
     func loadFromCache(_ timePeriod:TimePeriod) {
-        print("good cache found")
         let data = timePeriod == .upcoming ? upcomingDataCache : recentDataCache
         let myLaunches = try! JSONDecoder().decode(LaunchReplies.self, from: data)
         
