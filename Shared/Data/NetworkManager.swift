@@ -178,7 +178,13 @@ class NetworkManager:ObservableObject
             guard (200...299).contains(status) else {
                 if (status == 429) {
                     // handle "Too Many Requests" error
-                    self.prepareAlert(title: "Too Many Requests", message: HTTPURLResponse.localizedString(forStatusCode: status))
+                    // Do not show an alert for this error. Because launches uses the free version
+                    // of the API, this error can rise often with multiple users on the same IP address.
+                    // Instead, just fail silently, hopefully displaying some cached data.
+                    // A better solution would be to show a small note somewhere in the display
+                    // indicating that the data is stale.
+                    // Even better, paying for API access.
+                    //self.prepareAlert(title: "Too Many Requests", message: HTTPURLResponse.localizedString(forStatusCode: status))
                 }
                 else {
                     // handle generic error
